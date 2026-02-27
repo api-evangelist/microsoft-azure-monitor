@@ -1,0 +1,140 @@
+name: Azure Monitor
+description: Azure Monitor helps you maximize the availability and performance of your applications and services. It delivers a comprehensive solution for collecting, analyzing, and acting on telemetry from your cloud and on-premises environments.
+image: https://azure.microsoft.com/svghandler/monitor/
+tags:
+- Monitoring
+- Observability
+- Metrics
+- Logs
+- Application Insights
+- Cloud
+created: '2024'
+modified: '2024'
+url: https://azure.microsoft.com/en-us/services/monitor/
+specificationVersion: '0.18'
+apis:
+- name: Azure Monitor Metrics API
+  description: Retrieve metrics for Azure resources, including performance counters and custom metrics
+  image: https://azure.microsoft.com/svghandler/monitor/
+  humanURL: https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/metrics-supported
+  baseURL: https://management.azure.com
+  tags:
+  - Metrics
+  - Time Series
+  - Performance
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/monitor/metrics
+  - type: OpenAPI
+    url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/monitor/resource-manager/Microsoft.Insights/stable/2018-01-01/metrics_API.json
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/rest-api-walkthrough
+- name: Azure Monitor Logs API
+  description: Query and retrieve log data from Azure Monitor Logs and Application Insights
+  image: https://azure.microsoft.com/svghandler/monitor/
+  humanURL: https://learn.microsoft.com/en-us/azure/azure-monitor/logs/api/overview
+  baseURL: https://api.loganalytics.io
+  tags:
+  - Logs
+  - Query
+  - Analytics
+  - KQL
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/loganalytics/
+  - type: OpenAPI
+    url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/operationalinsights/data-plane/Microsoft.OperationalInsights/stable/2022-10-27/OperationalInsights.json
+  - type: Query Language
+    url: https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/
+- name: Azure Monitor Alerts API
+  description: Create, update, and manage alert rules and action groups
+  image: https://azure.microsoft.com/svghandler/monitor/
+  humanURL: https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-overview
+  baseURL: https://management.azure.com
+  tags:
+  - Alerts
+  - Notifications
+  - Action Groups
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/monitor/alertrules
+  - type: OpenAPI
+    url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/alertRules_API.json
+- name: Azure Monitor Autoscale API
+  description: Configure autoscale settings for Azure resources
+  image: https://azure.microsoft.com/svghandler/monitor/
+  humanURL: https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-overview
+  baseURL: https://management.azure.com
+  tags:
+  - Autoscale
+  - Scaling
+  - Performance
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/monitor/autoscale-settings
+  - type: OpenAPI
+    url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/monitor/resource-manager/Microsoft.Insights/stable/2022-10-01/autoscale_API.json
+- name: Azure Application Insights API
+  description: Access Application Insights data including requests, dependencies, exceptions, and custom events
+  image: https://azure.microsoft.com/svghandler/monitor/
+  humanURL: https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview
+  baseURL: https://api.applicationinsights.io
+  tags:
+  - Application Performance
+  - APM
+  - Telemetry
+  - Tracing
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/application-insights/
+  - type: OpenAPI
+    url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/applicationinsights/data-plane/Microsoft.Insights/stable/v1/AppInsights.json
+  - type: SDK
+    url: https://learn.microsoft.com/en-us/azure/azure-monitor/app/api-custom-events-metrics
+- name: Azure Monitor Diagnostic Settings API
+  description: Configure diagnostic settings to route platform logs and metrics to various destinations
+  image: https://azure.microsoft.com/svghandler/monitor/
+  humanURL: https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/diagnostic-settings
+  baseURL: https://management.azure.com
+  tags:
+  - Diagnostics
+  - Logs
+  - Configuration
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/monitor/diagnostic-settings
+  - type: OpenAPI
+    url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/monitor/resource-manager/Microsoft.Insights/stable/2021-05-01-preview/diagnosticsSettings_API.json
+- name: Azure Monitor Activity Log API
+  description: Access Azure Activity Log events for subscription-level operations
+  image: https://azure.microsoft.com/svghandler/monitor/
+  humanURL: https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/activity-log
+  baseURL: https://management.azure.com
+  tags:
+  - Activity Log
+  - Audit
+  - Events
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/monitor/activity-logs
+  - type: OpenAPI
+    url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/activityLogs_API.json
+common:
+- type: Getting Started
+  url: https://learn.microsoft.com/en-us/azure/azure-monitor/overview
+- type: Authentication
+  url: https://learn.microsoft.com/en-us/azure/azure-monitor/logs/api/access-api
+- type: SDKs
+  url: https://learn.microsoft.com/en-us/azure/azure-monitor/app/platforms
+- type: Pricing
+  url: https://azure.microsoft.com/en-us/pricing/details/monitor/
+- type: Status
+  url: https://status.azure.com/
+- type: Support
+  url: https://azure.microsoft.com/en-us/support/options/
+- type: Terms of Service
+  url: https://azure.microsoft.com/en-us/support/legal/
+maintainers:
+- FN: Microsoft Azure
+  email: azuresupport@microsoft.com
+  url: https://azure.microsoft.com/
