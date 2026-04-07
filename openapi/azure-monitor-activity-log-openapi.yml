@@ -24,7 +24,7 @@ paths:
   /subscriptions/{subscriptionId}/providers/Microsoft.Insights/eventtypes/management/values:
     get:
       operationId: ActivityLogs_List
-      summary: List Activity Log events
+      summary: Azure Monitor List Activity Log events
       description: >-
         Provides the list of records from the Activity Log. The $filter parameter
         is required and must include a time range. Optionally filter by resource

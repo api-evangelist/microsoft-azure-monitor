@@ -24,7 +24,7 @@ paths:
   /subscriptions/{subscriptionId}/providers/Microsoft.Insights/metricDefinitions:
     get:
       operationId: MetricDefinitions_ListAtSubscriptionScope
-      summary: List metric definitions at subscription scope
+      summary: Azure Monitor List metric definitions at subscription scope
       description: >-
         Lists the metric definitions for the subscription. Returns the available
         metric definitions that can be queried at the subscription level.
@@ -51,7 +51,7 @@ paths:
   /{resourceUri}/providers/Microsoft.Insights/metricDefinitions:
     get:
       operationId: MetricDefinitions_List
-      summary: List metric definitions for a resource
+      summary: Azure Monitor List metric definitions for a resource
       description: >-
         Lists the metric definitions for the resource. Returns the available
         metric definitions and their properties for the specified resource.

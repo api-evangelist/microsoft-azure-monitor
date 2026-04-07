@@ -25,7 +25,7 @@ paths:
   /subscriptions/{subscriptionId}/providers/Microsoft.Insights/metrics:
     get:
       operationId: Metrics_ListAtSubscriptionScope
-      summary: List metrics at subscription scope
+      summary: Azure Monitor List metrics at subscription scope
       description: >-
         Lists the metric values for a subscription. The $filter parameter is used
         to reduce the set of metric data returned. Only some dimensions are
@@ -63,7 +63,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     post:
       operationId: Metrics_ListAtSubscriptionScopePost
-      summary: List metrics at subscription scope via POST
+      summary: Azure Monitor List metrics at subscription scope via POST
       description: >-
         Lists the metric values for a subscription using a POST request. Allows
         the same filtering as the GET variant but with a request body for complex
@@ -97,7 +97,7 @@ paths:
   /{resourceUri}/providers/Microsoft.Insights/metrics:
     get:
       operationId: Metrics_List
-      summary: List metrics for a resource
+      summary: Azure Monitor List metrics for a resource
       description: >-
         Lists the metric values for a resource. The $filter parameter is used to
         reduce the set of metric data returned.

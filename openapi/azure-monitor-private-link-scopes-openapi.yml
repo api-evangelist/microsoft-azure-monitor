@@ -29,7 +29,7 @@ paths:
   /subscriptions/{subscriptionId}/providers/microsoft.insights/privateLinkScopes:
     get:
       operationId: PrivateLinkScopes_List
-      summary: List private link scopes in a subscription
+      summary: Azure Monitor List private link scopes in a subscription
       description: >-
         Gets a list of all Azure Monitor Private Link Scopes within a subscription.
       tags:
@@ -53,7 +53,7 @@ paths:
   /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopes:
     get:
       operationId: PrivateLinkScopes_ListByResourceGroup
-      summary: List private link scopes in a resource group
+      summary: Azure Monitor List private link scopes in a resource group
       description: >-
         Gets a list of Azure Monitor Private Link Scopes within a resource group.
       tags:
@@ -75,10 +75,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopes/{scopeName}:
-    get:
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopes/{scopeName}
+  : get:
       operationId: PrivateLinkScopes_Get
-      summary: Get a private link scope
+      summary: Azure Monitor Get a private link scope
       description: >-
         Returns an Azure Monitor Private Link Scope.
       tags:
@@ -103,7 +103,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     put:
       operationId: PrivateLinkScopes_CreateOrUpdate
-      summary: Create or update a private link scope
+      summary: Azure Monitor Create or update a private link scope
       description: >-
         Creates or updates an Azure Monitor Private Link Scope. A Private Link
         Scope groups Azure Monitor resources together for secure access via
@@ -143,7 +143,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     patch:
       operationId: PrivateLinkScopes_UpdateTags
-      summary: Update tags on a private link scope
+      summary: Azure Monitor Update tags on a private link scope
       description: >-
         Updates an existing Private Link Scope's tags. Use this method to update
         tags only.
@@ -176,7 +176,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     delete:
       operationId: PrivateLinkScopes_Delete
-      summary: Delete a private link scope
+      summary: Azure Monitor Delete a private link scope
       description: >-
         Deletes an Azure Monitor Private Link Scope.
       tags:
@@ -199,10 +199,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopes/{scopeName}/scopedResources:
-    get:
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopes/{scopeName}/scopedResources
+  : get:
       operationId: ScopedResources_ListByPrivateLinkScope
-      summary: List scoped resources in a private link scope
+      summary: Azure Monitor List scoped resources in a private link scope
       description: >-
         Gets all private endpoint connections on a private link scope.
       tags:
@@ -225,10 +225,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopes/{scopeName}/scopedResources/{name}:
-    get:
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopes/{scopeName}/scopedResources/{name}
+  : get:
       operationId: ScopedResources_Get
-      summary: Get a scoped resource
+      summary: Azure Monitor Get a scoped resource
       description: >-
         Gets a scoped resource in a private link scope.
       tags:
@@ -259,7 +259,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     put:
       operationId: ScopedResources_CreateOrUpdate
-      summary: Create or update a scoped resource
+      summary: Azure Monitor Create or update a scoped resource
       description: >-
         Approve or reject a scoped resource in a private link scope.
       tags:
@@ -305,7 +305,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     delete:
       operationId: ScopedResources_Delete
-      summary: Delete a scoped resource
+      summary: Azure Monitor Delete a scoped resource
       description: >-
         Deletes a scoped resource from a private link scope.
       tags:

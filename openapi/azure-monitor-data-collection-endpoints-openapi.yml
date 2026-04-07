@@ -24,7 +24,7 @@ paths:
   /subscriptions/{subscriptionId}/providers/Microsoft.Insights/dataCollectionEndpoints:
     get:
       operationId: DataCollectionEndpoints_ListBySubscription
-      summary: List data collection endpoints in a subscription
+      summary: Azure Monitor List data collection endpoints in a subscription
       description: >-
         Lists all data collection endpoints in the specified subscription.
       tags:
@@ -48,7 +48,7 @@ paths:
   /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionEndpoints:
     get:
       operationId: DataCollectionEndpoints_ListByResourceGroup
-      summary: List data collection endpoints in a resource group
+      summary: Azure Monitor List data collection endpoints in a resource group
       description: >-
         Lists all data collection endpoints in the specified resource group.
       tags:
@@ -70,10 +70,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionEndpoints/{dataCollectionEndpointName}:
-    get:
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionEndpoints/{dataCollectionEndpointName}
+  : get:
       operationId: DataCollectionEndpoints_Get
-      summary: Get a data collection endpoint
+      summary: Azure Monitor Get a data collection endpoint
       description: >-
         Returns the specified data collection endpoint.
       tags:
@@ -98,7 +98,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     put:
       operationId: DataCollectionEndpoints_Create
-      summary: Create or update a data collection endpoint
+      summary: Azure Monitor Create or update a data collection endpoint
       description: >-
         Creates or updates a data collection endpoint. Data collection endpoints
         provide unique ingestion and configuration access points.
@@ -137,7 +137,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     patch:
       operationId: DataCollectionEndpoints_Update
-      summary: Update a data collection endpoint
+      summary: Azure Monitor Update a data collection endpoint
       description: >-
         Updates part of a data collection endpoint. Only tags and identity can
         be updated.
@@ -170,7 +170,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     delete:
       operationId: DataCollectionEndpoints_Delete
-      summary: Delete a data collection endpoint
+      summary: Azure Monitor Delete a data collection endpoint
       description: >-
         Deletes a data collection endpoint.
       tags:

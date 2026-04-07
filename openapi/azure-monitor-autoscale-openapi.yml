@@ -26,7 +26,7 @@ paths:
   /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/autoscalesettings:
     get:
       operationId: AutoscaleSettings_ListByResourceGroup
-      summary: List autoscale settings in a resource group
+      summary: Azure Monitor List autoscale settings in a resource group
       description: >-
         Lists the autoscale settings for a resource group. Returns all configured
         autoscale settings within the specified resource group.
@@ -52,7 +52,7 @@ paths:
   /subscriptions/{subscriptionId}/providers/Microsoft.Insights/autoscalesettings:
     get:
       operationId: AutoscaleSettings_ListBySubscription
-      summary: List autoscale settings in a subscription
+      summary: Azure Monitor List autoscale settings in a subscription
       description: >-
         Lists the autoscale settings for a subscription. Returns all configured
         autoscale settings within the specified subscription.
@@ -74,10 +74,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-  /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/autoscalesettings/{autoscaleSettingName}:
-    put:
+  ? /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/autoscalesettings/{autoscaleSettingName}
+  : put:
       operationId: AutoscaleSettings_CreateOrUpdate
-      summary: Create or update an autoscale setting
+      summary: Azure Monitor Create or update an autoscale setting
       description: >-
         Creates or updates an autoscale setting. Autoscale settings define the
         rules and profiles for automatically scaling Azure resources.
@@ -116,7 +116,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     get:
       operationId: AutoscaleSettings_Get
-      summary: Get an autoscale setting
+      summary: Azure Monitor Get an autoscale setting
       description: >-
         Gets an autoscale setting by name from a resource group.
       tags:
@@ -141,7 +141,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     patch:
       operationId: AutoscaleSettings_Update
-      summary: Update an autoscale setting
+      summary: Azure Monitor Update an autoscale setting
       description: >-
         Updates an existing autoscale setting resource. Only tag and property
         changes are supported.
@@ -174,7 +174,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     delete:
       operationId: AutoscaleSettings_Delete
-      summary: Delete an autoscale setting
+      summary: Azure Monitor Delete an autoscale setting
       description: >-
         Deletes an autoscale setting from a resource group.
       tags:
@@ -195,10 +195,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-  /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/autoscalesettings/{autoscaleSettingName}/predictiveMetrics:
-    get:
+  ? /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/autoscalesettings/{autoscaleSettingName}/predictiveMetrics
+  : get:
       operationId: PredictiveMetric_Get
-      summary: Get predictive autoscale metrics
+      summary: Azure Monitor Get predictive autoscale metrics
       description: >-
         Get predictive autoscale metric data for an autoscale setting. Returns
         predicted values based on the autoscale setting's predictive policy.

@@ -25,7 +25,7 @@ paths:
   /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/alertrules/{ruleName}:
     put:
       operationId: AlertRules_CreateOrUpdate
-      summary: Create or update a classic metric alert rule
+      summary: Azure Monitor Create or update a classic metric alert rule
       description: >-
         Creates or updates a classic metric alert rule. Classic alert rules
         evaluate metrics at regular intervals and trigger actions when conditions
@@ -65,7 +65,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     get:
       operationId: AlertRules_Get
-      summary: Get a classic metric alert rule
+      summary: Azure Monitor Get a classic metric alert rule
       description: >-
         Gets a classic metric alert rule by name from a specified resource group.
       tags:
@@ -90,7 +90,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     delete:
       operationId: AlertRules_Delete
-      summary: Delete a classic metric alert rule
+      summary: Azure Monitor Delete a classic metric alert rule
       description: >-
         Deletes a classic metric alert rule from a specified resource group.
       tags:
@@ -113,7 +113,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     patch:
       operationId: AlertRules_Update
-      summary: Update a classic metric alert rule
+      summary: Azure Monitor Update a classic metric alert rule
       description: >-
         Updates an existing classic metric alert rule. This can be used to update
         tags on the rule resource.
@@ -147,7 +147,7 @@ paths:
   /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/alertrules:
     get:
       operationId: AlertRules_ListByResourceGroup
-      summary: List classic alert rules in a resource group
+      summary: Azure Monitor List classic alert rules in a resource group
       description: >-
         Lists the classic metric alert rules within a resource group.
       tags:
@@ -172,7 +172,7 @@ paths:
   /subscriptions/{subscriptionId}/providers/Microsoft.Insights/alertrules:
     get:
       operationId: AlertRules_ListBySubscription
-      summary: List classic alert rules in a subscription
+      summary: Azure Monitor List classic alert rules in a subscription
       description: >-
         Lists the classic metric alert rules within a subscription.
       tags:

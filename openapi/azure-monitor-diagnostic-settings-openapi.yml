@@ -25,7 +25,7 @@ paths:
   /{resourceUri}/providers/Microsoft.Insights/diagnosticSettings:
     get:
       operationId: DiagnosticSettings_List
-      summary: List diagnostic settings for a resource
+      summary: Azure Monitor List diagnostic settings for a resource
       description: >-
         Gets the active diagnostic settings list for the specified resource.
         Returns all diagnostic settings configured for the resource.
@@ -50,7 +50,7 @@ paths:
   /{resourceUri}/providers/Microsoft.Insights/diagnosticSettings/{name}:
     get:
       operationId: DiagnosticSettings_Get
-      summary: Get a diagnostic setting
+      summary: Azure Monitor Get a diagnostic setting
       description: >-
         Gets the active diagnostic settings for the specified resource by name.
       tags:
@@ -74,7 +74,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     put:
       operationId: DiagnosticSettings_CreateOrUpdate
-      summary: Create or update a diagnostic setting
+      summary: Azure Monitor Create or update a diagnostic setting
       description: >-
         Creates or updates diagnostic settings for the specified resource.
         Diagnostic settings determine where platform logs and metrics are routed.
@@ -106,7 +106,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     delete:
       operationId: DiagnosticSettings_Delete
-      summary: Delete a diagnostic setting
+      summary: Azure Monitor Delete a diagnostic setting
       description: >-
         Deletes existing diagnostic settings for the specified resource.
       tags:

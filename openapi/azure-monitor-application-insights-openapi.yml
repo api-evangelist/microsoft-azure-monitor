@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Azure Application Insights API
+  title: Azure Monitor Azure Application Insights API
   description: >-
     Access Application Insights telemetry data including requests, dependencies,
     exceptions, traces, and custom events for application performance
@@ -32,7 +32,7 @@ paths:
   /apps/{appId}/query:
     get:
       operationId: Query_Get
-      summary: Execute an Application Insights query via GET
+      summary: Azure Monitor Execute an Application Insights query via GET
       description: >-
         Executes an Analytics query against Application Insights data using
         Kusto Query Language (KQL). The query is provided as a query parameter.
@@ -67,7 +67,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     post:
       operationId: Query_Execute
-      summary: Execute an Application Insights query via POST
+      summary: Azure Monitor Execute an Application Insights query via POST
       description: >-
         Executes an Analytics query against Application Insights data using
         Kusto Query Language (KQL). The query is provided in the request body.
@@ -98,7 +98,7 @@ paths:
   /apps/{appId}/metrics/{metricId}:
     get:
       operationId: Metrics_Get
-      summary: Get an Application Insights metric
+      summary: Azure Monitor Get an Application Insights metric
       description: >-
         Gets metric values for a single Application Insights metric. Returns
         aggregated metric data for the specified timespan and interval.
@@ -183,7 +183,7 @@ paths:
   /apps/{appId}/metrics:
     post:
       operationId: Metrics_GetMultiple
-      summary: Get multiple Application Insights metrics
+      summary: Azure Monitor Get multiple Application Insights metrics
       description: >-
         Gets metric values for multiple Application Insights metrics in a single
         request.
@@ -218,7 +218,7 @@ paths:
   /apps/{appId}/metrics/metadata:
     get:
       operationId: Metrics_GetMetadata
-      summary: Get metric metadata
+      summary: Azure Monitor Get metric metadata
       description: >-
         Gets metadata describing the available metrics for the Application
         Insights component.
@@ -243,7 +243,7 @@ paths:
   /apps/{appId}/events/{eventType}:
     get:
       operationId: Events_GetByType
-      summary: Get events by type
+      summary: Azure Monitor Get events by type
       description: >-
         Gets the results of an OData query for events of a specific type from
         Application Insights telemetry.
@@ -345,7 +345,7 @@ paths:
   /apps/{appId}/events/{eventType}/{eventId}:
     get:
       operationId: Events_Get
-      summary: Get a single event
+      summary: Azure Monitor Get a single event
       description: >-
         Gets the data for a single event from Application Insights telemetry.
       tags:

@@ -29,7 +29,7 @@ paths:
   /workspaces/{workspaceId}/query:
     get:
       operationId: Query_Get
-      summary: Execute a Log Analytics query via GET
+      summary: Azure Monitor Execute a Log Analytics query via GET
       description: >-
         Executes an Analytics query for data from a Log Analytics workspace using
         Kusto Query Language (KQL). The query is provided as a query parameter.
@@ -65,7 +65,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     post:
       operationId: Query_Execute
-      summary: Execute a Log Analytics query via POST
+      summary: Azure Monitor Execute a Log Analytics query via POST
       description: >-
         Executes an Analytics query for data from a Log Analytics workspace using
         Kusto Query Language (KQL). The query is provided in the request body along
@@ -97,7 +97,7 @@ paths:
   /workspaces/{workspaceId}/metadata:
     get:
       operationId: Metadata_Get
-      summary: Get workspace metadata
+      summary: Azure Monitor Get workspace metadata
       description: >-
         Gets metadata information about the Log Analytics workspace including
         available tables, functions, and schemas.

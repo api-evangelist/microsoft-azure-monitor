@@ -29,7 +29,7 @@ paths:
   /dataCollectionRules/{ruleId}/streams/{stream}:
     post:
       operationId: Upload_Logs
-      summary: Upload logs to a custom table
+      summary: Azure Monitor Upload logs to a custom table
       description: >-
         Ingests log data to a Log Analytics workspace via a data collection rule.
         The data is sent to the specified stream, which is mapped to a table in

@@ -29,7 +29,7 @@ paths:
   /subscriptions/{subscriptionId}/metrics:batchGet:
     post:
       operationId: MetricsBatch_Batch
-      summary: Batch query metrics for multiple resources
+      summary: Azure Monitor Batch query metrics for multiple resources
       description: >-
         Lists the metric values for multiple resources in a single batch request.
         All resources must be in the same subscription, region, and resource type.

@@ -24,10 +24,10 @@ tags:
   - name: Test Notifications
     description: Operations for sending and retrieving test notifications
 paths:
-  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups/{actionGroupName}:
-    put:
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups/{actionGroupName}
+  : put:
       operationId: ActionGroups_CreateOrUpdate
-      summary: Create or update an action group
+      summary: Azure Monitor Create or update an action group
       description: >-
         Create a new action group or update an existing one. Action groups define
         the actions to take when an alert is fired.
@@ -66,7 +66,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     get:
       operationId: ActionGroups_Get
-      summary: Get an action group
+      summary: Azure Monitor Get an action group
       description: >-
         Get an action group by name from a resource group.
       tags:
@@ -91,7 +91,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     delete:
       operationId: ActionGroups_Delete
-      summary: Delete an action group
+      summary: Azure Monitor Delete an action group
       description: >-
         Delete an action group from a resource group.
       tags:
@@ -114,7 +114,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     patch:
       operationId: ActionGroups_Update
-      summary: Update an action group
+      summary: Azure Monitor Update an action group
       description: >-
         Updates an existing action group's tags. Only tag updates are supported
         via PATCH.
@@ -148,7 +148,7 @@ paths:
   /subscriptions/{subscriptionId}/providers/Microsoft.Insights/actionGroups:
     get:
       operationId: ActionGroups_ListBySubscriptionId
-      summary: List action groups in a subscription
+      summary: Azure Monitor List action groups in a subscription
       description: >-
         Get a list of all action groups in a subscription.
       tags:
@@ -172,7 +172,7 @@ paths:
   /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups:
     get:
       operationId: ActionGroups_ListByResourceGroup
-      summary: List action groups in a resource group
+      summary: Azure Monitor List action groups in a resource group
       description: >-
         Get a list of all action groups in a resource group.
       tags:
@@ -194,10 +194,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups/{actionGroupName}/subscribe:
-    post:
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups/{actionGroupName}/subscribe
+  : post:
       operationId: ActionGroups_EnableReceiver
-      summary: Enable a receiver in an action group
+      summary: Azure Monitor Enable a receiver in an action group
       description: >-
         Enable a receiver in an action group. This re-subscribes a receiver that
         has been unsubscribed.
@@ -229,7 +229,7 @@ paths:
   /subscriptions/{subscriptionId}/providers/Microsoft.Insights/createNotifications:
     post:
       operationId: ActionGroups_PostTestNotifications
-      summary: Send test notifications
+      summary: Azure Monitor Send test notifications
       description: >-
         Send test notifications to a set of provided receivers to validate
         the action group configuration.
@@ -268,7 +268,7 @@ paths:
   /subscriptions/{subscriptionId}/providers/Microsoft.Insights/notificationStatus/{notificationId}:
     get:
       operationId: ActionGroups_GetTestNotifications
-      summary: Get test notification results
+      summary: Azure Monitor Get test notification results
       description: >-
         Get the test notification results by notification ID.
       tags:
