@@ -23,8 +23,6 @@ tags:
     description: Operations for managing Azure Monitor Private Link Scopes
   - name: Scoped Resources
     description: Operations for managing scoped resources within a Private Link Scope
-  - name: Private Endpoint Connections
-    description: Operations for managing private endpoint connections
 paths:
   /subscriptions/{subscriptionId}/providers/microsoft.insights/privateLinkScopes:
     get:

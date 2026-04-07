@@ -20,14 +20,14 @@ security:
       - https://api.applicationinsights.io/.default
   - apiKey: []
 tags:
-  - name: Query
-    description: Operations for querying Application Insights telemetry data
-  - name: Metrics
-    description: Operations for retrieving Application Insights metrics
   - name: Events
     description: Operations for retrieving Application Insights events
   - name: Metadata
     description: Operations for retrieving Application Insights metadata
+  - name: Metrics
+    description: Operations for retrieving Application Insights metrics
+  - name: Query
+    description: Operations for querying Application Insights telemetry data
 paths:
   /apps/{appId}/query:
     get:

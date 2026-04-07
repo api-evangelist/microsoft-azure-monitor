@@ -21,10 +21,10 @@ security:
   - oauth2:
       - https://api.loganalytics.io/.default
 tags:
-  - name: Query
-    description: Operations for querying log data using KQL
   - name: Metadata
     description: Operations for retrieving workspace and table metadata
+  - name: Query
+    description: Operations for querying log data using KQL
 paths:
   /workspaces/{workspaceId}/query:
     get:
