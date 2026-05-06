@@ -1,0 +1,323 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Azure Monitor Action Groups API
+  description: Create and manage action groups that define notification and automation actions triggered by Azure Monitor
+    alerts, including email, SMS, webhooks, and Azure Functions.
+  tags:
+  - Microsoft
+  - Azure
+  - Monitor
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: microsoft-azure-monitor
+    baseUri: https://management.azure.com
+    description: Azure Monitor Action Groups API HTTP API.
+    authentication:
+      type: bearer
+      token: '{{MICROSOFT_AZURE_MONITOR_TOKEN}}'
+    resources:
+    - name: subscriptions-subscriptionid-resourcegroups-reso
+      path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups/{actionGroupName}
+      operations:
+      - name: actiongroups-createorupdate
+        method: PUT
+        description: Azure Monitor Create or update an action group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: actiongroups-get
+        method: GET
+        description: Azure Monitor Get an action group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: actiongroups-delete
+        method: DELETE
+        description: Azure Monitor Delete an action group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: actiongroups-update
+        method: PATCH
+        description: Azure Monitor Update an action group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: subscriptions-subscriptionid-providers-microsoft
+      path: /subscriptions/{subscriptionId}/providers/Microsoft.Insights/actionGroups
+      operations:
+      - name: actiongroups-listbysubscriptionid
+        method: GET
+        description: Azure Monitor List action groups in a subscription
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: subscriptions-subscriptionid-resourcegroups-reso
+      path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups
+      operations:
+      - name: actiongroups-listbyresourcegroup
+        method: GET
+        description: Azure Monitor List action groups in a resource group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: subscriptions-subscriptionid-resourcegroups-reso
+      path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups/{actionGroupName}/subscribe
+      operations:
+      - name: actiongroups-enablereceiver
+        method: POST
+        description: Azure Monitor Enable a receiver in an action group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: subscriptions-subscriptionid-providers-microsoft
+      path: /subscriptions/{subscriptionId}/providers/Microsoft.Insights/createNotifications
+      operations:
+      - name: actiongroups-posttestnotifications
+        method: POST
+        description: Azure Monitor Send test notifications
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: subscriptions-subscriptionid-providers-microsoft
+      path: /subscriptions/{subscriptionId}/providers/Microsoft.Insights/notificationStatus/{notificationId}
+      operations:
+      - name: actiongroups-gettestnotifications
+        method: GET
+        description: Azure Monitor Get test notification results
+        inputParameters:
+        - name: notificationId
+          in: path
+          type: string
+          required: true
+          description: The notification ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: microsoft-azure-monitor-rest
+    description: REST adapter for Azure Monitor Action Groups API.
+    resources:
+    - path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups/{actionGroupName}
+      name: actiongroups-createorupdate
+      operations:
+      - method: PUT
+        name: actiongroups-createorupdate
+        description: Azure Monitor Create or update an action group
+        call: microsoft-azure-monitor.actiongroups-createorupdate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups/{actionGroupName}
+      name: actiongroups-get
+      operations:
+      - method: GET
+        name: actiongroups-get
+        description: Azure Monitor Get an action group
+        call: microsoft-azure-monitor.actiongroups-get
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups/{actionGroupName}
+      name: actiongroups-delete
+      operations:
+      - method: DELETE
+        name: actiongroups-delete
+        description: Azure Monitor Delete an action group
+        call: microsoft-azure-monitor.actiongroups-delete
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups/{actionGroupName}
+      name: actiongroups-update
+      operations:
+      - method: PATCH
+        name: actiongroups-update
+        description: Azure Monitor Update an action group
+        call: microsoft-azure-monitor.actiongroups-update
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /subscriptions/{subscriptionId}/providers/Microsoft.Insights/actionGroups
+      name: actiongroups-listbysubscriptionid
+      operations:
+      - method: GET
+        name: actiongroups-listbysubscriptionid
+        description: Azure Monitor List action groups in a subscription
+        call: microsoft-azure-monitor.actiongroups-listbysubscriptionid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups
+      name: actiongroups-listbyresourcegroup
+      operations:
+      - method: GET
+        name: actiongroups-listbyresourcegroup
+        description: Azure Monitor List action groups in a resource group
+        call: microsoft-azure-monitor.actiongroups-listbyresourcegroup
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups/{actionGroupName}/subscribe
+      name: actiongroups-enablereceiver
+      operations:
+      - method: POST
+        name: actiongroups-enablereceiver
+        description: Azure Monitor Enable a receiver in an action group
+        call: microsoft-azure-monitor.actiongroups-enablereceiver
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /subscriptions/{subscriptionId}/providers/Microsoft.Insights/createNotifications
+      name: actiongroups-posttestnotifications
+      operations:
+      - method: POST
+        name: actiongroups-posttestnotifications
+        description: Azure Monitor Send test notifications
+        call: microsoft-azure-monitor.actiongroups-posttestnotifications
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /subscriptions/{subscriptionId}/providers/Microsoft.Insights/notificationStatus/{notificationId}
+      name: actiongroups-gettestnotifications
+      operations:
+      - method: GET
+        name: actiongroups-gettestnotifications
+        description: Azure Monitor Get test notification results
+        call: microsoft-azure-monitor.actiongroups-gettestnotifications
+        with:
+          notificationId: rest.notificationId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: microsoft-azure-monitor-mcp
+    transport: http
+    description: MCP adapter for Azure Monitor Action Groups API for AI agent use.
+    tools:
+    - name: actiongroups-createorupdate
+      description: Azure Monitor Create or update an action group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: microsoft-azure-monitor.actiongroups-createorupdate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: actiongroups-get
+      description: Azure Monitor Get an action group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-azure-monitor.actiongroups-get
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: actiongroups-delete
+      description: Azure Monitor Delete an action group
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: microsoft-azure-monitor.actiongroups-delete
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: actiongroups-update
+      description: Azure Monitor Update an action group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: microsoft-azure-monitor.actiongroups-update
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: actiongroups-listbysubscriptionid
+      description: Azure Monitor List action groups in a subscription
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-azure-monitor.actiongroups-listbysubscriptionid
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: actiongroups-listbyresourcegroup
+      description: Azure Monitor List action groups in a resource group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-azure-monitor.actiongroups-listbyresourcegroup
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: actiongroups-enablereceiver
+      description: Azure Monitor Enable a receiver in an action group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: microsoft-azure-monitor.actiongroups-enablereceiver
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: actiongroups-posttestnotifications
+      description: Azure Monitor Send test notifications
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: microsoft-azure-monitor.actiongroups-posttestnotifications
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: actiongroups-gettestnotifications
+      description: Azure Monitor Get test notification results
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-azure-monitor.actiongroups-gettestnotifications
+      with:
+        notificationId: tools.notificationId
+      inputParameters:
+      - name: notificationId
+        type: string
+        description: The notification ID.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_AZURE_MONITOR_TOKEN: MICROSOFT_AZURE_MONITOR_TOKEN
