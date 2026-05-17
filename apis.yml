@@ -41,7 +41,7 @@ apis:
         url: json-schema/azure-monitor-metric-schema.json
       - type: Authentication
         url: https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/rest-api-walkthrough
-      - type: Getting Started
+      - type: GettingStarted
         url: https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/rest-api-walkthrough
   - name: Azure Monitor Metric Definitions API
     description: >-
@@ -107,7 +107,7 @@ apis:
         url: json-schema/azure-monitor-log-query-schema.json
       - type: Query Language
         url: https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/
-      - type: Getting Started
+      - type: GettingStarted
         url: https://learn.microsoft.com/en-us/azure/azure-monitor/logs/api/overview
   - name: Azure Monitor Logs Ingestion API
     description: >-
@@ -127,7 +127,7 @@ apis:
         url: https://learn.microsoft.com/en-us/azure/azure-monitor/logs/logs-ingestion-api-overview
       - type: OpenAPI
         url: openapi/azure-monitor-logs-ingestion-openapi.yml
-      - type: Getting Started
+      - type: GettingStarted
         url: https://learn.microsoft.com/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-api
       - type: Reference
         url: https://learn.microsoft.com/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-code
@@ -221,7 +221,7 @@ apis:
         url: openapi/azure-monitor-autoscale-openapi.yml
       - type: JSONSchema
         url: json-schema/azure-monitor-autoscale-setting-schema.json
-      - type: Getting Started
+      - type: GettingStarted
         url: https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-best-practices
   - name: Azure Application Insights API
     description: >-
@@ -245,7 +245,7 @@ apis:
         url: openapi/azure-monitor-application-insights-openapi.yml
       - type: SDKs
         url: https://learn.microsoft.com/en-us/azure/azure-monitor/app/api-custom-events-metrics
-      - type: Getting Started
+      - type: GettingStarted
         url: https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-enable
   - name: Azure Monitor Diagnostic Settings API
     description: >-
@@ -269,7 +269,7 @@ apis:
         url: openapi/azure-monitor-diagnostic-settings-openapi.yml
       - type: JSONSchema
         url: json-schema/azure-monitor-diagnostic-setting-schema.json
-      - type: Getting Started
+      - type: GettingStarted
         url: https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/diagnostic-settings
   - name: Azure Monitor Activity Log API
     description: >-
@@ -315,7 +315,7 @@ apis:
         url: openapi/azure-monitor-data-collection-rules-openapi.yml
       - type: JSONSchema
         url: json-schema/azure-monitor-data-collection-rule-schema.json
-      - type: Getting Started
+      - type: GettingStarted
         url: https://learn.microsoft.com/en-us/azure/azure-monitor/data-collection/data-collection-rule-create-edit
   - name: Azure Monitor Data Collection Endpoints API
     description: >-
@@ -336,7 +336,7 @@ apis:
         url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/monitor/resource-manager/Microsoft.Insights/stable/2023-03-11/dataCollectionEndpoints_API.json
       - type: OpenAPI
         url: openapi/azure-monitor-data-collection-endpoints-openapi.yml
-      - type: Getting Started
+      - type: GettingStarted
         url: https://learn.microsoft.com/en-us/azure/azure-monitor/data-collection/data-collection-endpoint-overview
   - name: Azure Monitor Private Link Scopes API
     description: >-
@@ -356,7 +356,7 @@ apis:
         url: https://learn.microsoft.com/en-us/rest/api/monitor/private-link-scopes
       - type: OpenAPI
         url: openapi/azure-monitor-private-link-scopes-openapi.yml
-      - type: Getting Started
+      - type: GettingStarted
         url: https://learn.microsoft.com/en-us/azure/azure-monitor/logs/private-link-configure
       - type: Reference
         url: https://learn.microsoft.com/en-us/azure/azure-monitor/logs/private-link-design
@@ -365,27 +365,27 @@ common:
     url: https://portal.azure.com
   - type: Documentation
     url: https://learn.microsoft.com/en-us/azure/azure-monitor/
-  - type: Getting Started
+  - type: GettingStarted
     url: https://learn.microsoft.com/en-us/azure/azure-monitor/overview
   - type: Authentication
     url: https://learn.microsoft.com/en-us/azure/azure-monitor/logs/api/access-api
   - type: Blog
     url: https://azure.microsoft.com/en-us/blog/topics/monitor/
-  - type: Change Log
+  - type: ChangeLog
     url: https://learn.microsoft.com/en-us/azure/azure-monitor/fundamentals/whats-new
   - type: SDKs
     url: https://learn.microsoft.com/en-us/azure/azure-monitor/app/platforms
   - type: Pricing
     url: https://azure.microsoft.com/en-us/pricing/details/monitor/
-  - type: Status
+  - type: StatusPage
     url: https://status.azure.com/
   - type: Support
     url: https://azure.microsoft.com/en-us/support/options/
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://azure.microsoft.com/en-us/support/legal/
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://azure.microsoft.com/en-us/explore/trusted-cloud/privacy
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/Azure
   - type: Community
     url: https://techcommunity.microsoft.com/t5/azure-monitor/bd-p/AzureMonitor
@@ -393,9 +393,9 @@ common:
     url: https://azure.microsoft.com/en-us/products/monitor
   - type: Login
     url: https://portal.azure.com
-  - type: Sign Up
+  - type: SignUp
     url: https://azure.microsoft.com/en-us/free
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/azure-monitor-context.jsonld
 maintainers:
   - FN: Kin Lane
