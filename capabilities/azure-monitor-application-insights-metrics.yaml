@@ -1,0 +1,165 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Azure Monitor Azure Application Insights API — Metrics
+  description: 'Azure Monitor Azure Application Insights API — Metrics. 2 operations. Lead operation: Azure Monitor Get multiple
+    Application Insights metrics. Self-contained Naftiko capability covering one Microsoft Azure Monitor business surface.'
+  tags:
+  - Microsoft Azure Monitor
+  - Metrics
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_AZURE_MONITOR_API_KEY: MICROSOFT_AZURE_MONITOR_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: azure-monitor-application-insights-metrics
+    baseUri: https://api.applicationinsights.io/v1
+    description: Azure Monitor Azure Application Insights API — Metrics business capability. Self-contained, no shared references.
+    resources:
+    - name: apps-appId-metrics
+      path: /apps/{appId}/metrics
+      operations:
+      - name: metricsgetmultiple
+        method: POST
+        description: Azure Monitor Get multiple Application Insights metrics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: apps-appId-metrics-metricId
+      path: /apps/{appId}/metrics/{metricId}
+      operations:
+      - name: metricsget
+        method: GET
+        description: Azure Monitor Get an Application Insights metric
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: metricId
+          in: path
+          type: string
+          description: ID of the metric. Standard metrics include requests/count, requests/duration, dependencies/count, exceptions/count,
+            etc.
+          required: true
+        - name: timespan
+          in: query
+          type: string
+          description: The timespan over which to query in ISO 8601 duration format.
+        - name: interval
+          in: query
+          type: string
+          description: The time interval to use when retrieving metric values.
+        - name: aggregation
+          in: query
+          type: array
+          description: The aggregation to use when computing the metric values.
+        - name: segment
+          in: query
+          type: array
+          description: The name of the dimension to segment the metric values by.
+        - name: top
+          in: query
+          type: integer
+          description: The number of segments to return.
+        - name: orderby
+          in: query
+          type: string
+          description: The aggregation function and direction to sort the segments by.
+        - name: filter
+          in: query
+          type: string
+          description: An expression to filter the results.
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_AZURE_MONITOR_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: azure-monitor-application-insights-metrics-rest
+    port: 8080
+    description: REST adapter for Azure Monitor Azure Application Insights API — Metrics. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/apps/{appid}/metrics
+      name: apps-appid-metrics
+      description: REST surface for apps-appId-metrics.
+      operations:
+      - method: POST
+        name: metricsgetmultiple
+        description: Azure Monitor Get multiple Application Insights metrics
+        call: azure-monitor-application-insights-metrics.metricsgetmultiple
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/apps/{appid}/metrics/{metricid}
+      name: apps-appid-metrics-metricid
+      description: REST surface for apps-appId-metrics-metricId.
+      operations:
+      - method: GET
+        name: metricsget
+        description: Azure Monitor Get an Application Insights metric
+        call: azure-monitor-application-insights-metrics.metricsget
+        with:
+          metricId: rest.metricId
+          timespan: rest.timespan
+          interval: rest.interval
+          aggregation: rest.aggregation
+          segment: rest.segment
+          top: rest.top
+          orderby: rest.orderby
+          filter: rest.filter
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: azure-monitor-application-insights-metrics-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Azure Monitor Azure Application Insights API — Metrics. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: azure-monitor-get-multiple-application
+      description: Azure Monitor Get multiple Application Insights metrics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: azure-monitor-application-insights-metrics.metricsgetmultiple
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-monitor-get-application-insights
+      description: Azure Monitor Get an Application Insights metric
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: azure-monitor-application-insights-metrics.metricsget
+      with:
+        metricId: tools.metricId
+        timespan: tools.timespan
+        interval: tools.interval
+        aggregation: tools.aggregation
+        segment: tools.segment
+        top: tools.top
+        orderby: tools.orderby
+        filter: tools.filter
+      outputParameters:
+      - type: object
+        mapping: $.

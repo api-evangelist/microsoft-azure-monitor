@@ -1,0 +1,137 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Azure Monitor Metrics API — Metrics
+  description: 'Azure Monitor Metrics API — Metrics. 3 operations. Lead operation: Azure Monitor List metrics at subscription
+    scope. Self-contained Naftiko capability covering one Microsoft Azure Monitor business surface.'
+  tags:
+  - Microsoft Azure Monitor
+  - Metrics
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_AZURE_MONITOR_API_KEY: MICROSOFT_AZURE_MONITOR_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: azure-monitor-metrics-metrics
+    baseUri: https://management.azure.com
+    description: Azure Monitor Metrics API — Metrics business capability. Self-contained, no shared references.
+    resources:
+    - name: subscriptions-subscriptionId-providers-Microsoft.Insights-metrics
+      path: /subscriptions/{subscriptionId}/providers/Microsoft.Insights/metrics
+      operations:
+      - name: metricslistatsubscriptionscope
+        method: GET
+        description: Azure Monitor List metrics at subscription scope
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: metricslistatsubscriptionscopepost
+        method: POST
+        description: Azure Monitor List metrics at subscription scope via POST
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: resourceUri-providers-Microsoft.Insights-metrics
+      path: /{resourceUri}/providers/Microsoft.Insights/metrics
+      operations:
+      - name: metricslist
+        method: GET
+        description: Azure Monitor List metrics for a resource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_AZURE_MONITOR_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: azure-monitor-metrics-metrics-rest
+    port: 8080
+    description: REST adapter for Azure Monitor Metrics API — Metrics. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/subscriptions/{subscriptionid}/providers/microsoft-insights/metrics
+      name: subscriptions-subscriptionid-providers-microsoft-insights-metrics
+      description: REST surface for subscriptions-subscriptionId-providers-Microsoft.Insights-metrics.
+      operations:
+      - method: GET
+        name: metricslistatsubscriptionscope
+        description: Azure Monitor List metrics at subscription scope
+        call: azure-monitor-metrics-metrics.metricslistatsubscriptionscope
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: metricslistatsubscriptionscopepost
+        description: Azure Monitor List metrics at subscription scope via POST
+        call: azure-monitor-metrics-metrics.metricslistatsubscriptionscopepost
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/{resourceuri}/providers/microsoft-insights/metrics
+      name: resourceuri-providers-microsoft-insights-metrics
+      description: REST surface for resourceUri-providers-Microsoft.Insights-metrics.
+      operations:
+      - method: GET
+        name: metricslist
+        description: Azure Monitor List metrics for a resource
+        call: azure-monitor-metrics-metrics.metricslist
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: azure-monitor-metrics-metrics-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Azure Monitor Metrics API — Metrics. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: azure-monitor-list-metrics-subscription
+      description: Azure Monitor List metrics at subscription scope
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: azure-monitor-metrics-metrics.metricslistatsubscriptionscope
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-monitor-list-metrics-subscription-2
+      description: Azure Monitor List metrics at subscription scope via POST
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: azure-monitor-metrics-metrics.metricslistatsubscriptionscopepost
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-monitor-list-metrics-resource
+      description: Azure Monitor List metrics for a resource
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: azure-monitor-metrics-metrics.metricslist
+      outputParameters:
+      - type: object
+        mapping: $.

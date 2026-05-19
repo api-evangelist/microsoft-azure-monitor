@@ -1,0 +1,231 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Azure Monitor Private Link Scopes API — Private Link Scopes
+  description: 'Azure Monitor Private Link Scopes API — Private Link Scopes. 6 operations. Lead operation: Azure Monitor List
+    private link scopes in a subscription. Self-contained Naftiko capability covering one Microsoft Azure Monitor business
+    surface.'
+  tags:
+  - Microsoft Azure Monitor
+  - Private Link Scopes
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_AZURE_MONITOR_API_KEY: MICROSOFT_AZURE_MONITOR_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: azure-monitor-private-link-scopes-private-link-scopes
+    baseUri: https://management.azure.com
+    description: Azure Monitor Private Link Scopes API — Private Link Scopes business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: subscriptions-subscriptionId-providers-microsoft.insights-privateLinkScopes
+      path: /subscriptions/{subscriptionId}/providers/microsoft.insights/privateLinkScopes
+      operations:
+      - name: privatelinkscopeslist
+        method: GET
+        description: Azure Monitor List private link scopes in a subscription
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-microsof
+      path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopes
+      operations:
+      - name: privatelinkscopeslistbyresourcegroup
+        method: GET
+        description: Azure Monitor List private link scopes in a resource group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-microsof
+      path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopes/{scopeName}
+      operations:
+      - name: privatelinkscopesget
+        method: GET
+        description: Azure Monitor Get a private link scope
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: privatelinkscopescreateorupdate
+        method: PUT
+        description: Azure Monitor Create or update a private link scope
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: privatelinkscopesupdatetags
+        method: PATCH
+        description: Azure Monitor Update tags on a private link scope
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: privatelinkscopesdelete
+        method: DELETE
+        description: Azure Monitor Delete a private link scope
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_AZURE_MONITOR_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: azure-monitor-private-link-scopes-private-link-scopes-rest
+    port: 8080
+    description: REST adapter for Azure Monitor Private Link Scopes API — Private Link Scopes. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/subscriptions/{subscriptionid}/providers/microsoft-insights/privatelinkscopes
+      name: subscriptions-subscriptionid-providers-microsoft-insights-privatelinkscopes
+      description: REST surface for subscriptions-subscriptionId-providers-microsoft.insights-privateLinkScopes.
+      operations:
+      - method: GET
+        name: privatelinkscopeslist
+        description: Azure Monitor List private link scopes in a subscription
+        call: azure-monitor-private-link-scopes-private-link-scopes.privatelinkscopeslist
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subscriptions/{subscriptionid}/resourcegroups/{resourcegroupname}/providers/microsoft-insights/privatelinkscopes
+      name: subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsof
+      description: REST surface for subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-microsof.
+      operations:
+      - method: GET
+        name: privatelinkscopeslistbyresourcegroup
+        description: Azure Monitor List private link scopes in a resource group
+        call: azure-monitor-private-link-scopes-private-link-scopes.privatelinkscopeslistbyresourcegroup
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subscriptions/{subscriptionid}/resourcegroups/{resourcegroupname}/providers/microsoft-insights/privatelinkscopes/{scopename}
+      name: subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsof
+      description: REST surface for subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-microsof.
+      operations:
+      - method: GET
+        name: privatelinkscopesget
+        description: Azure Monitor Get a private link scope
+        call: azure-monitor-private-link-scopes-private-link-scopes.privatelinkscopesget
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: privatelinkscopescreateorupdate
+        description: Azure Monitor Create or update a private link scope
+        call: azure-monitor-private-link-scopes-private-link-scopes.privatelinkscopescreateorupdate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: privatelinkscopesupdatetags
+        description: Azure Monitor Update tags on a private link scope
+        call: azure-monitor-private-link-scopes-private-link-scopes.privatelinkscopesupdatetags
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: privatelinkscopesdelete
+        description: Azure Monitor Delete a private link scope
+        call: azure-monitor-private-link-scopes-private-link-scopes.privatelinkscopesdelete
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: azure-monitor-private-link-scopes-private-link-scopes-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Azure Monitor Private Link Scopes API — Private Link Scopes. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: azure-monitor-list-private-link
+      description: Azure Monitor List private link scopes in a subscription
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: azure-monitor-private-link-scopes-private-link-scopes.privatelinkscopeslist
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-monitor-list-private-link-2
+      description: Azure Monitor List private link scopes in a resource group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: azure-monitor-private-link-scopes-private-link-scopes.privatelinkscopeslistbyresourcegroup
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-monitor-get-private-link
+      description: Azure Monitor Get a private link scope
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: azure-monitor-private-link-scopes-private-link-scopes.privatelinkscopesget
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-monitor-create-update-private
+      description: Azure Monitor Create or update a private link scope
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: azure-monitor-private-link-scopes-private-link-scopes.privatelinkscopescreateorupdate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-monitor-update-tags-private
+      description: Azure Monitor Update tags on a private link scope
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: azure-monitor-private-link-scopes-private-link-scopes.privatelinkscopesupdatetags
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-monitor-delete-private-link
+      description: Azure Monitor Delete a private link scope
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: azure-monitor-private-link-scopes-private-link-scopes.privatelinkscopesdelete
+      outputParameters:
+      - type: object
+        mapping: $.

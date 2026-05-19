@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Azure Monitor Azure Application Insights API — Metadata
+  description: 'Azure Monitor Azure Application Insights API — Metadata. 1 operations. Lead operation: Azure Monitor Get metric
+    metadata. Self-contained Naftiko capability covering one Microsoft Azure Monitor business surface.'
+  tags:
+  - Microsoft Azure Monitor
+  - Metadata
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_AZURE_MONITOR_API_KEY: MICROSOFT_AZURE_MONITOR_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: azure-monitor-application-insights-metadata
+    baseUri: https://api.applicationinsights.io/v1
+    description: Azure Monitor Azure Application Insights API — Metadata business capability. Self-contained, no shared references.
+    resources:
+    - name: apps-appId-metrics-metadata
+      path: /apps/{appId}/metrics/metadata
+      operations:
+      - name: metricsgetmetadata
+        method: GET
+        description: Azure Monitor Get metric metadata
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_AZURE_MONITOR_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: azure-monitor-application-insights-metadata-rest
+    port: 8080
+    description: REST adapter for Azure Monitor Azure Application Insights API — Metadata. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/apps/{appid}/metrics/metadata
+      name: apps-appid-metrics-metadata
+      description: REST surface for apps-appId-metrics-metadata.
+      operations:
+      - method: GET
+        name: metricsgetmetadata
+        description: Azure Monitor Get metric metadata
+        call: azure-monitor-application-insights-metadata.metricsgetmetadata
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: azure-monitor-application-insights-metadata-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Azure Monitor Azure Application Insights API — Metadata. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: azure-monitor-get-metric-metadata
+      description: Azure Monitor Get metric metadata
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: azure-monitor-application-insights-metadata.metricsgetmetadata
+      outputParameters:
+      - type: object
+        mapping: $.

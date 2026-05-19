@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Azure Monitor Metrics Batch API — Metrics Batch
+  description: 'Azure Monitor Metrics Batch API — Metrics Batch. 1 operations. Lead operation: Azure Monitor Batch query metrics
+    for multiple resources. Self-contained Naftiko capability covering one Microsoft Azure Monitor business surface.'
+  tags:
+  - Microsoft Azure Monitor
+  - Metrics Batch
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_AZURE_MONITOR_API_KEY: MICROSOFT_AZURE_MONITOR_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: azure-monitor-metrics-batch-metrics-batch
+    baseUri: https://{region}.metrics.monitor.azure.com
+    description: Azure Monitor Metrics Batch API — Metrics Batch business capability. Self-contained, no shared references.
+    resources:
+    - name: subscriptions-subscriptionId-metrics:batchGet
+      path: /subscriptions/{subscriptionId}/metrics:batchGet
+      operations:
+      - name: metricsbatchbatch
+        method: POST
+        description: Azure Monitor Batch query metrics for multiple resources
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_AZURE_MONITOR_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: azure-monitor-metrics-batch-metrics-batch-rest
+    port: 8080
+    description: REST adapter for Azure Monitor Metrics Batch API — Metrics Batch. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/subscriptions/{subscriptionid}/metrics-batchget
+      name: subscriptions-subscriptionid-metrics-batchget
+      description: REST surface for subscriptions-subscriptionId-metrics:batchGet.
+      operations:
+      - method: POST
+        name: metricsbatchbatch
+        description: Azure Monitor Batch query metrics for multiple resources
+        call: azure-monitor-metrics-batch-metrics-batch.metricsbatchbatch
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: azure-monitor-metrics-batch-metrics-batch-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Azure Monitor Metrics Batch API — Metrics Batch. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: azure-monitor-batch-query-metrics
+      description: Azure Monitor Batch query metrics for multiple resources
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: azure-monitor-metrics-batch-metrics-batch.metricsbatchbatch
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

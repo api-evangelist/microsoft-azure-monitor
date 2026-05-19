@@ -1,0 +1,229 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Azure Monitor Alerts API — Alert Rules
+  description: 'Azure Monitor Alerts API — Alert Rules. 6 operations. Lead operation: Azure Monitor List classic alert rules
+    in a subscription. Self-contained Naftiko capability covering one Microsoft Azure Monitor business surface.'
+  tags:
+  - Microsoft Azure Monitor
+  - Alert Rules
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_AZURE_MONITOR_API_KEY: MICROSOFT_AZURE_MONITOR_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: azure-monitor-alerts-alert-rules
+    baseUri: https://management.azure.com
+    description: Azure Monitor Alerts API — Alert Rules business capability. Self-contained, no shared references.
+    resources:
+    - name: subscriptions-subscriptionId-providers-Microsoft.Insights-alertrules
+      path: /subscriptions/{subscriptionId}/providers/Microsoft.Insights/alertrules
+      operations:
+      - name: alertruleslistbysubscription
+        method: GET
+        description: Azure Monitor List classic alert rules in a subscription
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: subscriptions-subscriptionId-resourcegroups-resourceGroupName-providers-Microsof
+      path: /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/alertrules
+      operations:
+      - name: alertruleslistbyresourcegroup
+        method: GET
+        description: Azure Monitor List classic alert rules in a resource group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: subscriptions-subscriptionId-resourcegroups-resourceGroupName-providers-Microsof
+      path: /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/alertrules/{ruleName}
+      operations:
+      - name: alertrulescreateorupdate
+        method: PUT
+        description: Azure Monitor Create or update a classic metric alert rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: alertrulesget
+        method: GET
+        description: Azure Monitor Get a classic metric alert rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: alertrulesdelete
+        method: DELETE
+        description: Azure Monitor Delete a classic metric alert rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: alertrulesupdate
+        method: PATCH
+        description: Azure Monitor Update a classic metric alert rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_AZURE_MONITOR_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: azure-monitor-alerts-alert-rules-rest
+    port: 8080
+    description: REST adapter for Azure Monitor Alerts API — Alert Rules. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/subscriptions/{subscriptionid}/providers/microsoft-insights/alertrules
+      name: subscriptions-subscriptionid-providers-microsoft-insights-alertrules
+      description: REST surface for subscriptions-subscriptionId-providers-Microsoft.Insights-alertrules.
+      operations:
+      - method: GET
+        name: alertruleslistbysubscription
+        description: Azure Monitor List classic alert rules in a subscription
+        call: azure-monitor-alerts-alert-rules.alertruleslistbysubscription
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subscriptions/{subscriptionid}/resourcegroups/{resourcegroupname}/providers/microsoft-insights/alertrules
+      name: subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsof
+      description: REST surface for subscriptions-subscriptionId-resourcegroups-resourceGroupName-providers-Microsof.
+      operations:
+      - method: GET
+        name: alertruleslistbyresourcegroup
+        description: Azure Monitor List classic alert rules in a resource group
+        call: azure-monitor-alerts-alert-rules.alertruleslistbyresourcegroup
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subscriptions/{subscriptionid}/resourcegroups/{resourcegroupname}/providers/microsoft-insights/alertrules/{rulename}
+      name: subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsof
+      description: REST surface for subscriptions-subscriptionId-resourcegroups-resourceGroupName-providers-Microsof.
+      operations:
+      - method: PUT
+        name: alertrulescreateorupdate
+        description: Azure Monitor Create or update a classic metric alert rule
+        call: azure-monitor-alerts-alert-rules.alertrulescreateorupdate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: alertrulesget
+        description: Azure Monitor Get a classic metric alert rule
+        call: azure-monitor-alerts-alert-rules.alertrulesget
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: alertrulesdelete
+        description: Azure Monitor Delete a classic metric alert rule
+        call: azure-monitor-alerts-alert-rules.alertrulesdelete
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: alertrulesupdate
+        description: Azure Monitor Update a classic metric alert rule
+        call: azure-monitor-alerts-alert-rules.alertrulesupdate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: azure-monitor-alerts-alert-rules-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Azure Monitor Alerts API — Alert Rules. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: azure-monitor-list-classic-alert
+      description: Azure Monitor List classic alert rules in a subscription
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: azure-monitor-alerts-alert-rules.alertruleslistbysubscription
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-monitor-list-classic-alert-2
+      description: Azure Monitor List classic alert rules in a resource group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: azure-monitor-alerts-alert-rules.alertruleslistbyresourcegroup
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-monitor-create-update-classic
+      description: Azure Monitor Create or update a classic metric alert rule
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: azure-monitor-alerts-alert-rules.alertrulescreateorupdate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-monitor-get-classic-metric
+      description: Azure Monitor Get a classic metric alert rule
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: azure-monitor-alerts-alert-rules.alertrulesget
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-monitor-delete-classic-metric
+      description: Azure Monitor Delete a classic metric alert rule
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: azure-monitor-alerts-alert-rules.alertrulesdelete
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-monitor-update-classic-metric
+      description: Azure Monitor Update a classic metric alert rule
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: azure-monitor-alerts-alert-rules.alertrulesupdate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

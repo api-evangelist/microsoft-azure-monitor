@@ -1,0 +1,108 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Azure Monitor Logs Ingestion API — Logs Ingestion
+  description: 'Azure Monitor Logs Ingestion API — Logs Ingestion. 1 operations. Lead operation: Azure Monitor Upload logs
+    to a custom table. Self-contained Naftiko capability covering one Microsoft Azure Monitor business surface.'
+  tags:
+  - Microsoft Azure Monitor
+  - Logs Ingestion
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_AZURE_MONITOR_API_KEY: MICROSOFT_AZURE_MONITOR_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: azure-monitor-logs-ingestion-logs-ingestion
+    baseUri: https://{dataCollectionEndpoint}
+    description: Azure Monitor Logs Ingestion API — Logs Ingestion business capability. Self-contained, no shared references.
+    resources:
+    - name: dataCollectionRules-ruleId-streams-stream
+      path: /dataCollectionRules/{ruleId}/streams/{stream}
+      operations:
+      - name: uploadlogs
+        method: POST
+        description: Azure Monitor Upload logs to a custom table
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ruleId
+          in: path
+          type: string
+          description: The immutable ID of the data collection rule resource.
+          required: true
+        - name: stream
+          in: path
+          type: string
+          description: The name of the stream to send data to. For built-in tables, use the stream name format like Custom-TableName.
+            For custom tables, use Custom-TableName_CL.
+          required: true
+        - name: api-version
+          in: query
+          type: string
+          description: The API version to use for this operation.
+          required: true
+        - name: Content-Encoding
+          in: header
+          type: string
+          description: The content encoding of the request body. Use gzip for compressed payloads.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_AZURE_MONITOR_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: azure-monitor-logs-ingestion-logs-ingestion-rest
+    port: 8080
+    description: REST adapter for Azure Monitor Logs Ingestion API — Logs Ingestion. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/datacollectionrules/{ruleid}/streams/{stream}
+      name: datacollectionrules-ruleid-streams-stream
+      description: REST surface for dataCollectionRules-ruleId-streams-stream.
+      operations:
+      - method: POST
+        name: uploadlogs
+        description: Azure Monitor Upload logs to a custom table
+        call: azure-monitor-logs-ingestion-logs-ingestion.uploadlogs
+        with:
+          ruleId: rest.ruleId
+          stream: rest.stream
+          api-version: rest.api-version
+          Content-Encoding: rest.Content-Encoding
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: azure-monitor-logs-ingestion-logs-ingestion-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Azure Monitor Logs Ingestion API — Logs Ingestion. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: azure-monitor-upload-logs-custom
+      description: Azure Monitor Upload logs to a custom table
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: azure-monitor-logs-ingestion-logs-ingestion.uploadlogs
+      with:
+        ruleId: tools.ruleId
+        stream: tools.stream
+        api-version: tools.api-version
+        Content-Encoding: tools.Content-Encoding
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

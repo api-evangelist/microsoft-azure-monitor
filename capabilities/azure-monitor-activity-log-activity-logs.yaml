@@ -1,0 +1,87 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Azure Monitor Activity Log API — Activity Logs
+  description: 'Azure Monitor Activity Log API — Activity Logs. 1 operations. Lead operation: Azure Monitor List Activity
+    Log events. Self-contained Naftiko capability covering one Microsoft Azure Monitor business surface.'
+  tags:
+  - Microsoft Azure Monitor
+  - Activity Logs
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_AZURE_MONITOR_API_KEY: MICROSOFT_AZURE_MONITOR_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: azure-monitor-activity-log-activity-logs
+    baseUri: https://management.azure.com
+    description: Azure Monitor Activity Log API — Activity Logs business capability. Self-contained, no shared references.
+    resources:
+    - name: subscriptions-subscriptionId-providers-Microsoft.Insights-eventtypes-management-
+      path: /subscriptions/{subscriptionId}/providers/Microsoft.Insights/eventtypes/management/values
+      operations:
+      - name: activitylogslist
+        method: GET
+        description: Azure Monitor List Activity Log events
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: $filter
+          in: query
+          type: string
+          description: Reduces the set of data collected. Must include a time range filter using eventTimestamp. Supports
+            filtering by resourceGroupName, resourceUri, resourceProvider
+          required: true
+        - name: $select
+          in: query
+          type: string
+          description: Used to fetch events with only the given properties. Accepts a comma-separated list of property names.
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_AZURE_MONITOR_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: azure-monitor-activity-log-activity-logs-rest
+    port: 8080
+    description: REST adapter for Azure Monitor Activity Log API — Activity Logs. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/subscriptions/{subscriptionid}/providers/microsoft-insights/eventtypes/management/values
+      name: subscriptions-subscriptionid-providers-microsoft-insights-eventtypes-management
+      description: REST surface for subscriptions-subscriptionId-providers-Microsoft.Insights-eventtypes-management-.
+      operations:
+      - method: GET
+        name: activitylogslist
+        description: Azure Monitor List Activity Log events
+        call: azure-monitor-activity-log-activity-logs.activitylogslist
+        with:
+          $filter: rest.$filter
+          $select: rest.$select
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: azure-monitor-activity-log-activity-logs-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Azure Monitor Activity Log API — Activity Logs. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: azure-monitor-list-activity-log
+      description: Azure Monitor List Activity Log events
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: azure-monitor-activity-log-activity-logs.activitylogslist
+      with:
+        $filter: tools.$filter
+        $select: tools.$select
+      outputParameters:
+      - type: object
+        mapping: $.

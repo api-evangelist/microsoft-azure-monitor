@@ -1,0 +1,231 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Azure Monitor Data Collection Rules API — Data Collection Rules
+  description: 'Azure Monitor Data Collection Rules API — Data Collection Rules. 6 operations. Lead operation: Azure Monitor
+    List data collection rules in a subscription. Self-contained Naftiko capability covering one Microsoft Azure Monitor business
+    surface.'
+  tags:
+  - Microsoft Azure Monitor
+  - Data Collection Rules
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_AZURE_MONITOR_API_KEY: MICROSOFT_AZURE_MONITOR_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: azure-monitor-data-collection-rules-data-collection-rules
+    baseUri: https://management.azure.com
+    description: Azure Monitor Data Collection Rules API — Data Collection Rules business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: subscriptions-subscriptionId-providers-Microsoft.Insights-dataCollectionRules
+      path: /subscriptions/{subscriptionId}/providers/Microsoft.Insights/dataCollectionRules
+      operations:
+      - name: datacollectionruleslistbysubscription
+        method: GET
+        description: Azure Monitor List data collection rules in a subscription
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof
+      path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionRules
+      operations:
+      - name: datacollectionruleslistbyresourcegroup
+        method: GET
+        description: Azure Monitor List data collection rules in a resource group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof
+      path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionRules/{dataCollectionRuleName}
+      operations:
+      - name: datacollectionrulesget
+        method: GET
+        description: Azure Monitor Get a data collection rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: datacollectionrulescreate
+        method: PUT
+        description: Azure Monitor Create or update a data collection rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: datacollectionrulesupdate
+        method: PATCH
+        description: Azure Monitor Update a data collection rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: datacollectionrulesdelete
+        method: DELETE
+        description: Azure Monitor Delete a data collection rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_AZURE_MONITOR_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: azure-monitor-data-collection-rules-data-collection-rules-rest
+    port: 8080
+    description: REST adapter for Azure Monitor Data Collection Rules API — Data Collection Rules. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/subscriptions/{subscriptionid}/providers/microsoft-insights/datacollectionrules
+      name: subscriptions-subscriptionid-providers-microsoft-insights-datacollectionrules
+      description: REST surface for subscriptions-subscriptionId-providers-Microsoft.Insights-dataCollectionRules.
+      operations:
+      - method: GET
+        name: datacollectionruleslistbysubscription
+        description: Azure Monitor List data collection rules in a subscription
+        call: azure-monitor-data-collection-rules-data-collection-rules.datacollectionruleslistbysubscription
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subscriptions/{subscriptionid}/resourcegroups/{resourcegroupname}/providers/microsoft-insights/datacollectionrules
+      name: subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsof
+      description: REST surface for subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof.
+      operations:
+      - method: GET
+        name: datacollectionruleslistbyresourcegroup
+        description: Azure Monitor List data collection rules in a resource group
+        call: azure-monitor-data-collection-rules-data-collection-rules.datacollectionruleslistbyresourcegroup
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subscriptions/{subscriptionid}/resourcegroups/{resourcegroupname}/providers/microsoft-insights/datacollectionrules/{datacollectionrulename}
+      name: subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsof
+      description: REST surface for subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof.
+      operations:
+      - method: GET
+        name: datacollectionrulesget
+        description: Azure Monitor Get a data collection rule
+        call: azure-monitor-data-collection-rules-data-collection-rules.datacollectionrulesget
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: datacollectionrulescreate
+        description: Azure Monitor Create or update a data collection rule
+        call: azure-monitor-data-collection-rules-data-collection-rules.datacollectionrulescreate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: datacollectionrulesupdate
+        description: Azure Monitor Update a data collection rule
+        call: azure-monitor-data-collection-rules-data-collection-rules.datacollectionrulesupdate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: datacollectionrulesdelete
+        description: Azure Monitor Delete a data collection rule
+        call: azure-monitor-data-collection-rules-data-collection-rules.datacollectionrulesdelete
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: azure-monitor-data-collection-rules-data-collection-rules-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Azure Monitor Data Collection Rules API — Data Collection Rules. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: azure-monitor-list-data-collection
+      description: Azure Monitor List data collection rules in a subscription
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: azure-monitor-data-collection-rules-data-collection-rules.datacollectionruleslistbysubscription
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-monitor-list-data-collection-2
+      description: Azure Monitor List data collection rules in a resource group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: azure-monitor-data-collection-rules-data-collection-rules.datacollectionruleslistbyresourcegroup
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-monitor-get-data-collection
+      description: Azure Monitor Get a data collection rule
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: azure-monitor-data-collection-rules-data-collection-rules.datacollectionrulesget
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-monitor-create-update-data
+      description: Azure Monitor Create or update a data collection rule
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: azure-monitor-data-collection-rules-data-collection-rules.datacollectionrulescreate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-monitor-update-data-collection
+      description: Azure Monitor Update a data collection rule
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: azure-monitor-data-collection-rules-data-collection-rules.datacollectionrulesupdate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-monitor-delete-data-collection
+      description: Azure Monitor Delete a data collection rule
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: azure-monitor-data-collection-rules-data-collection-rules.datacollectionrulesdelete
+      outputParameters:
+      - type: object
+        mapping: $.
