@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Condition",
+  "title": "Condition",
+  "type": "object",
+  "properties": {
+    "query": {
+      "type": "string",
+      "description": "Log query alert query."
+    },
+    "timeAggregation": {
+      "type": "string",
+      "enum": [
+        "Count",
+        "Average",
+        "Minimum",
+        "Maximum",
+        "Total"
+      ],
+      "description": "Aggregation type."
+    },
+    "metricMeasureColumn": {
+      "type": "string",
+      "description": "The column containing the metric measure number."
+    },
+    "resourceIdColumn": {
+      "type": "string",
+      "description": "The column containing the resource ID."
+    },
+    "dimensions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Dimension"
+      },
+      "description": "List of dimension conditions."
+    },
+    "operator": {
+      "type": "string",
+      "enum": [
+        "Equals",
+        "GreaterThan",
+        "GreaterThanOrEqual",
+        "LessThan",
+        "LessThanOrEqual"
+      ],
+      "description": "The criteria operator."
+    },
+    "threshold": {
+      "type": "number",
+      "format": "double",
+      "description": "The criteria threshold value that activates the alert."
+    },
+    "failingPeriods": {
+      "type": "object",
+      "properties": {
+        "numberOfEvaluationPeriods": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The number of aggregated lookback points.",
+          "default": 1
+        },
+        "minFailingPeriodsToAlert": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The number of violations to trigger an alert.",
+          "default": 1
+        }
+      },
+      "description": "The minimum number of violations required within the selected lookback time window."
+    },
+    "metricName": {
+      "type": "string",
+      "description": "The name of the metric to be sent."
+    }
+  }
+}

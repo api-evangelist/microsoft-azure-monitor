@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Recurrence",
+  "title": "Recurrence",
+  "type": "object",
+  "required": [
+    "frequency",
+    "schedule"
+  ],
+  "properties": {
+    "frequency": {
+      "type": "string",
+      "enum": [
+        "None",
+        "Second",
+        "Minute",
+        "Hour",
+        "Day",
+        "Week",
+        "Month",
+        "Year"
+      ],
+      "description": "The recurrence frequency."
+    },
+    "schedule": {
+      "$ref": "#/components/schemas/RecurrentSchedule"
+    }
+  }
+}

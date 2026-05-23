@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RuleCondition",
+  "title": "RuleCondition",
+  "type": "object",
+  "required": [
+    "odata.type"
+  ],
+  "properties": {
+    "odata.type": {
+      "type": "string",
+      "description": "Specifies the type of condition. Possible values include ThresholdRuleCondition, LocationThresholdRuleCondition, ManagementEventRuleCondition."
+    },
+    "dataSource": {
+      "$ref": "#/components/schemas/RuleDataSource"
+    }
+  }
+}

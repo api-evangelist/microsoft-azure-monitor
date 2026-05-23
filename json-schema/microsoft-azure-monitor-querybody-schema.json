@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/QueryBody",
+  "title": "QueryBody",
+  "type": "object",
+  "required": [
+    "query"
+  ],
+  "properties": {
+    "query": {
+      "type": "string",
+      "description": "The Analytics query in KQL format."
+    },
+    "timespan": {
+      "type": "string",
+      "description": "The timespan over which to query data."
+    },
+    "applications": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "A list of Application Insights application IDs for cross-application queries."
+    }
+  }
+}

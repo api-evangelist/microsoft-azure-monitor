@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LocalizableString",
+  "title": "LocalizableString",
+  "type": "object",
+  "required": [
+    "value"
+  ],
+  "properties": {
+    "value": {
+      "type": "string",
+      "description": "The invariant value."
+    },
+    "localizedValue": {
+      "type": "string",
+      "description": "The display name."
+    }
+  }
+}

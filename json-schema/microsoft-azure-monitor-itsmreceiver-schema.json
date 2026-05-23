@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ItsmReceiver",
+  "title": "ItsmReceiver",
+  "type": "object",
+  "required": [
+    "name",
+    "workspaceId",
+    "connectionId",
+    "ticketConfiguration",
+    "region"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the ITSM receiver."
+    },
+    "workspaceId": {
+      "type": "string",
+      "description": "Log Analytics workspace ID."
+    },
+    "connectionId": {
+      "type": "string",
+      "description": "The unique connection identifier."
+    },
+    "ticketConfiguration": {
+      "type": "string",
+      "description": "JSON blob for the configurations of the ITSM action."
+    },
+    "region": {
+      "type": "string",
+      "description": "Region in which workspace resides."
+    }
+  }
+}

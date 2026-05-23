@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Dimension",
+  "title": "Dimension",
+  "type": "object",
+  "required": [
+    "name",
+    "operator",
+    "values"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the dimension."
+    },
+    "operator": {
+      "type": "string",
+      "enum": [
+        "Include",
+        "Exclude"
+      ],
+      "description": "Operator for dimension values."
+    },
+    "values": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of dimension values."
+    }
+  }
+}

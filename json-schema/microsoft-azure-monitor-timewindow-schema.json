@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TimeWindow",
+  "title": "TimeWindow",
+  "type": "object",
+  "required": [
+    "start",
+    "end"
+  ],
+  "properties": {
+    "timeZone": {
+      "type": "string",
+      "description": "The timezone of the start and end times."
+    },
+    "start": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The start time for the profile."
+    },
+    "end": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The end time for the profile."
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AzureMonitorPrivateLinkScopeListResult",
+  "title": "AzureMonitorPrivateLinkScopeListResult",
+  "type": "object",
+  "required": [
+    "value"
+  ],
+  "properties": {
+    "value": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/AzureMonitorPrivateLinkScope"
+      },
+      "description": "List of Azure Monitor Private Link Scope definitions."
+    },
+    "nextLink": {
+      "type": "string",
+      "description": "The URI to get the next set of results."
+    }
+  }
+}

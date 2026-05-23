@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Actions",
+  "title": "Actions",
+  "type": "object",
+  "properties": {
+    "actionGroups": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Action Group resource IDs to invoke when the alert fires."
+    },
+    "customProperties": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "The properties of an alert payload."
+    }
+  }
+}

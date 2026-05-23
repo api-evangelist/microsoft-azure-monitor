@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RuleAction",
+  "title": "RuleAction",
+  "type": "object",
+  "required": [
+    "odata.type"
+  ],
+  "properties": {
+    "odata.type": {
+      "type": "string",
+      "description": "Specifies the type of action. Possible values include RuleEmailAction and RuleWebhookAction."
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MetricDefinition",
+  "title": "MetricDefinition",
+  "type": "object",
+  "properties": {
+    "isDimensionRequired": {
+      "type": "boolean",
+      "description": "Flag to indicate whether the dimension is required."
+    },
+    "resourceId": {
+      "type": "string",
+      "description": "The resource identifier of the resource that emitted the metric."
+    },
+    "namespace": {
+      "type": "string",
+      "description": "The namespace the metric belongs to."
+    },
+    "name": {
+      "$ref": "#/components/schemas/LocalizableString"
+    },
+    "displayDescription": {
+      "type": "string",
+      "description": "Detailed description of this metric."
+    },
+    "category": {
+      "type": "string",
+      "description": "Custom category name for this metric."
+    },
+    "metricClass": {
+      "type": "string",
+      "enum": [
+        "Availability",
+        "Transactions",
+        "Errors",
+        "Latency",
+        "Saturation"
+      ],
+      "description": "The class of the metric."
+    },
+    "unit": {
+      "type": "string",
+      "enum": [
+        "Count",
+        "Bytes",
+        "Seconds",
+        "CountPerSecond",
+        "BytesPerSecond",
+        "Percent",
+        "MilliSeconds",
+        "ByteSeconds",
+        "Unspecified",
+        "Cores",
+        "MilliCores",
+        "NanoCores",
+        "BitsPerSecond"
+      ],
+      "description": "The unit of the metric."
+    },
+    "primaryAggregationType": {
+      "type": "string",
+      "enum": [
+        "None",
+        "Average",
+        "Count",
+        "Minimum",
+        "Maximum",
+        "Total"
+      ],
+      "description": "The primary aggregation type value defining how to use the values."
+    },
+    "supportedAggregationTypes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "None",
+          "Average",
+          "Count",
+          "Minimum",
+          "Maximum",
+          "Total"
+        ]
+      },
+      "description": "The collection of what aggregation types are supported."
+    },
+    "metricAvailabilities": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/MetricAvailability"
+      },
+      "description": "The collection of what aggregation intervals are available."
+    },
+    "id": {
+      "type": "string",
+      "description": "The resource identifier of the metric definition."
+    },
+    "dimensions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LocalizableString"
+      },
+      "description": "The name and the display name of the dimension, i.e. the localized string representation."
+    }
+  }
+}

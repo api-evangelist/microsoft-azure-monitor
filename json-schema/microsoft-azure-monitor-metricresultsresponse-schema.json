@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MetricResultsResponse",
+  "title": "MetricResultsResponse",
+  "type": "object",
+  "properties": {
+    "starttime": {
+      "type": "string",
+      "description": "The start time, in datetime format, for which the data was retrieved."
+    },
+    "endtime": {
+      "type": "string",
+      "description": "The end time, in datetime format, for which the data was retrieved."
+    },
+    "interval": {
+      "type": "string",
+      "description": "The interval (window size) for which the metric data was returned."
+    },
+    "namespace": {
+      "type": "string",
+      "description": "The namespace of the metrics being queried."
+    },
+    "resourceregion": {
+      "type": "string",
+      "description": "The region of the resource being queried for metrics."
+    },
+    "resourceid": {
+      "type": "string",
+      "description": "The resource ID for which metrics were retrieved."
+    },
+    "value": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Metric"
+      },
+      "description": "The value of the collection."
+    }
+  }
+}

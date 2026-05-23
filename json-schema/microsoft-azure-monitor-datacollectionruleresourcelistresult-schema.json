@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DataCollectionRuleResourceListResult",
+  "title": "DataCollectionRuleResourceListResult",
+  "type": "object",
+  "required": [
+    "value"
+  ],
+  "properties": {
+    "value": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/DataCollectionRuleResource"
+      },
+      "description": "A list of data collection rules."
+    },
+    "nextLink": {
+      "type": "string",
+      "description": "The URI to fetch the next page."
+    }
+  }
+}

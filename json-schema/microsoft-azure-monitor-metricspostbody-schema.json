@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MetricsPostBody",
+  "title": "MetricsPostBody",
+  "type": "object",
+  "required": [
+    "id",
+    "parameters"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "An identifier for this query."
+    },
+    "parameters": {
+      "type": "object",
+      "required": [
+        "metricId"
+      ],
+      "properties": {
+        "metricId": {
+          "type": "string",
+          "description": "The metric ID."
+        },
+        "timespan": {
+          "type": "string",
+          "description": "The timespan."
+        },
+        "aggregation": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "segment": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "top": {
+          "type": "integer"
+        },
+        "orderby": {
+          "type": "string"
+        },
+        "filter": {
+          "type": "string"
+        },
+        "interval": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

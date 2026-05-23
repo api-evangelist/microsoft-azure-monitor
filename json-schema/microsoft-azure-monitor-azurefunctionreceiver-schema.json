@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AzureFunctionReceiver",
+  "title": "AzureFunctionReceiver",
+  "type": "object",
+  "required": [
+    "name",
+    "functionAppResourceId",
+    "functionName",
+    "httpTriggerUrl"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the Azure Function receiver."
+    },
+    "functionAppResourceId": {
+      "type": "string",
+      "description": "The Azure resource ID of the function app."
+    },
+    "functionName": {
+      "type": "string",
+      "description": "The function name in the function app."
+    },
+    "httpTriggerUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "The HTTP trigger URL."
+    },
+    "useCommonAlertSchema": {
+      "type": "boolean",
+      "default": false,
+      "description": "Indicates whether to use common alert schema."
+    }
+  }
+}

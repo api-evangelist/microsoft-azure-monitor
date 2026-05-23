@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EventHubReceiver",
+  "title": "EventHubReceiver",
+  "type": "object",
+  "required": [
+    "name",
+    "eventHubNameSpace",
+    "eventHubName",
+    "subscriptionId"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the Event Hub receiver."
+    },
+    "eventHubNameSpace": {
+      "type": "string",
+      "description": "The Event Hub namespace."
+    },
+    "eventHubName": {
+      "type": "string",
+      "description": "The name of the specific Event Hub queue."
+    },
+    "subscriptionId": {
+      "type": "string",
+      "description": "The ID for the subscription containing the Event Hub."
+    },
+    "tenantId": {
+      "type": "string",
+      "description": "The tenant ID to access the Event Hub."
+    },
+    "useCommonAlertSchema": {
+      "type": "boolean",
+      "default": false,
+      "description": "Indicates whether to use common alert schema."
+    }
+  }
+}

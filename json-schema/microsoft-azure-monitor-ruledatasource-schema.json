@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RuleDataSource",
+  "title": "RuleDataSource",
+  "type": "object",
+  "required": [
+    "odata.type"
+  ],
+  "properties": {
+    "odata.type": {
+      "type": "string",
+      "description": "Specifies the type of data source. Possible values include RuleMetricDataSource, RuleManagementEventDataSource."
+    },
+    "resourceUri": {
+      "type": "string",
+      "description": "The resource identifier of the resource the rule monitors."
+    },
+    "legacyResourceId": {
+      "type": "string",
+      "description": "The legacy resource identifier of the resource the rule monitors."
+    },
+    "resourceLocation": {
+      "type": "string",
+      "description": "The location of the resource."
+    },
+    "metricNamespace": {
+      "type": "string",
+      "description": "The namespace of the metric."
+    }
+  }
+}

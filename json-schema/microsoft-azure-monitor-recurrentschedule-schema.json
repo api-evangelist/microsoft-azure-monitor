@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RecurrentSchedule",
+  "title": "RecurrentSchedule",
+  "type": "object",
+  "required": [
+    "timeZone",
+    "days",
+    "hours",
+    "minutes"
+  ],
+  "properties": {
+    "timeZone": {
+      "type": "string",
+      "description": "The timezone for the hours of the profile."
+    },
+    "days": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The collection of days that the profile takes effect on."
+    },
+    "hours": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      },
+      "description": "The collection of hours that the profile takes effect on."
+    },
+    "minutes": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      },
+      "description": "The collection of minutes at which the profile takes effect."
+    }
+  }
+}

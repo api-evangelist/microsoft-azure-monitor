@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ActionGroup",
+  "title": "ActionGroup",
+  "type": "object",
+  "required": [
+    "groupShortName",
+    "enabled"
+  ],
+  "properties": {
+    "groupShortName": {
+      "type": "string",
+      "maxLength": 12,
+      "description": "The short name of the action group (max 12 characters)."
+    },
+    "enabled": {
+      "type": "boolean",
+      "description": "Indicates whether this action group is enabled.",
+      "default": true
+    },
+    "emailReceivers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/EmailReceiver"
+      },
+      "description": "The list of email receivers."
+    },
+    "smsReceivers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/SmsReceiver"
+      },
+      "description": "The list of SMS receivers."
+    },
+    "webhookReceivers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/WebhookReceiver"
+      },
+      "description": "The list of webhook receivers."
+    },
+    "itsmReceivers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ItsmReceiver"
+      },
+      "description": "The list of ITSM receivers."
+    },
+    "azureAppPushReceivers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/AzureAppPushReceiver"
+      },
+      "description": "The list of Azure App Push receivers."
+    },
+    "automationRunbookReceivers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/AutomationRunbookReceiver"
+      },
+      "description": "The list of Automation Runbook receivers."
+    },
+    "voiceReceivers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/VoiceReceiver"
+      },
+      "description": "The list of voice receivers."
+    },
+    "logicAppReceivers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LogicAppReceiver"
+      },
+      "description": "The list of Logic App receivers."
+    },
+    "azureFunctionReceivers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/AzureFunctionReceiver"
+      },
+      "description": "The list of Azure Function receivers."
+    },
+    "armRoleReceivers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ArmRoleReceiver"
+      },
+      "description": "The list of ARM role receivers."
+    },
+    "eventHubReceivers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/EventHubReceiver"
+      },
+      "description": "The list of Event Hub receivers."
+    }
+  }
+}

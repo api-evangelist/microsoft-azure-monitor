@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DataCollectionEndpointResource",
+  "title": "DataCollectionEndpointResource",
+  "type": "object",
+  "required": [
+    "location"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "readOnly": true,
+      "description": "Fully qualified resource ID."
+    },
+    "name": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The name of the resource."
+    },
+    "type": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The type of the resource."
+    },
+    "location": {
+      "type": "string",
+      "description": "The geo-location where the resource lives."
+    },
+    "tags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Resource tags."
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "Linux",
+        "Windows"
+      ],
+      "description": "The kind of the resource."
+    },
+    "identity": {
+      "$ref": "#/components/schemas/ManagedServiceIdentity"
+    },
+    "properties": {
+      "$ref": "#/components/schemas/DataCollectionEndpoint"
+    },
+    "systemData": {
+      "$ref": "#/components/schemas/SystemData"
+    }
+  }
+}

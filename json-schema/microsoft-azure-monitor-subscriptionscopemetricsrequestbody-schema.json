@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SubscriptionScopeMetricsRequestBody",
+  "title": "SubscriptionScopeMetricsRequestBody",
+  "type": "object",
+  "properties": {
+    "timespan": {
+      "type": "string",
+      "description": "The timespan of the query."
+    },
+    "interval": {
+      "type": "string",
+      "description": "The interval (window size) of the query."
+    },
+    "metricNames": {
+      "type": "string",
+      "description": "The names of the metrics (comma-separated) to retrieve."
+    },
+    "aggregation": {
+      "type": "string",
+      "description": "The list of aggregation types to retrieve."
+    },
+    "filter": {
+      "type": "string",
+      "description": "The $filter used to reduce the set of metric data returned."
+    },
+    "top": {
+      "type": "integer",
+      "format": "int32",
+      "description": "The maximum number of records to retrieve."
+    },
+    "orderBy": {
+      "type": "string",
+      "description": "The aggregation to use for sorting results."
+    },
+    "rollUpBy": {
+      "type": "string",
+      "description": "Dimension name(s) to rollup results by."
+    },
+    "resultType": {
+      "type": "string",
+      "enum": [
+        "Data",
+        "Metadata"
+      ],
+      "description": "Reduces the set of data collected."
+    },
+    "metricNamespace": {
+      "type": "string",
+      "description": "Metric namespace to query metric definitions for."
+    },
+    "autoAdjustTimegrain": {
+      "type": "boolean",
+      "description": "Auto-adjust the time grain based on the timespan."
+    },
+    "validateDimensions": {
+      "type": "boolean",
+      "description": "Validate dimension filter parameter values."
+    }
+  }
+}

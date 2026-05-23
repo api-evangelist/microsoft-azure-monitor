@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AutoscaleSetting",
+  "title": "AutoscaleSetting",
+  "type": "object",
+  "required": [
+    "profiles"
+  ],
+  "properties": {
+    "profiles": {
+      "type": "array",
+      "maxItems": 20,
+      "items": {
+        "$ref": "#/components/schemas/AutoscaleProfile"
+      },
+      "description": "The collection of automatic scaling profiles (maximum 20)."
+    },
+    "notifications": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/AutoscaleNotification"
+      },
+      "description": "The collection of notifications."
+    },
+    "enabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "The enabled flag."
+    },
+    "predictiveAutoscalePolicy": {
+      "$ref": "#/components/schemas/PredictiveAutoscalePolicy"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the autoscale setting."
+    },
+    "targetResourceUri": {
+      "type": "string",
+      "description": "The resource identifier of the resource to autoscale."
+    },
+    "targetResourceLocation": {
+      "type": "string",
+      "description": "The location of the resource to autoscale."
+    }
+  }
+}

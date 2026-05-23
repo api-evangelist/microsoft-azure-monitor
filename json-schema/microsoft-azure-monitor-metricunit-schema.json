@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MetricUnit",
+  "title": "MetricUnit",
+  "type": "string",
+  "enum": [
+    "Count",
+    "Bytes",
+    "Seconds",
+    "CountPerSecond",
+    "BytesPerSecond",
+    "Percent",
+    "MilliSeconds",
+    "ByteSeconds",
+    "Unspecified",
+    "Cores",
+    "MilliCores",
+    "NanoCores",
+    "BitsPerSecond"
+  ],
+  "description": "The unit of the metric."
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AutoscaleProfile",
+  "title": "AutoscaleProfile",
+  "type": "object",
+  "required": [
+    "name",
+    "capacity",
+    "rules"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the profile."
+    },
+    "capacity": {
+      "$ref": "#/components/schemas/ScaleCapacity"
+    },
+    "rules": {
+      "type": "array",
+      "maxItems": 10,
+      "items": {
+        "$ref": "#/components/schemas/ScaleRule"
+      },
+      "description": "The collection of rules (maximum 10)."
+    },
+    "fixedDate": {
+      "$ref": "#/components/schemas/TimeWindow"
+    },
+    "recurrence": {
+      "$ref": "#/components/schemas/Recurrence"
+    }
+  }
+}

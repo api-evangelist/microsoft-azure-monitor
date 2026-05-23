@@ -1,0 +1,263 @@
+{
+  "provider": "Azure Monitor",
+  "providerId": "microsoft-azure-monitor",
+  "kind": "json-structure",
+  "description": "Structural overview of the Azure Monitor API surface; extracted from openapi/.",
+  "schemaCount": 19,
+  "operationCount": 9,
+  "schemas": [
+    {
+      "name": "ActionGroupResource",
+      "type": "object",
+      "propertyCount": 6,
+      "required": [
+        "location"
+      ]
+    },
+    {
+      "name": "ActionGroup",
+      "type": "object",
+      "propertyCount": 13,
+      "required": [
+        "groupShortName",
+        "enabled"
+      ]
+    },
+    {
+      "name": "EmailReceiver",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "name",
+        "emailAddress"
+      ]
+    },
+    {
+      "name": "SmsReceiver",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "name",
+        "countryCode",
+        "phoneNumber"
+      ]
+    },
+    {
+      "name": "WebhookReceiver",
+      "type": "object",
+      "propertyCount": 7,
+      "required": [
+        "name",
+        "serviceUri"
+      ]
+    },
+    {
+      "name": "ItsmReceiver",
+      "type": "object",
+      "propertyCount": 5,
+      "required": [
+        "name",
+        "workspaceId",
+        "connectionId",
+        "ticketConfiguration",
+        "region"
+      ]
+    },
+    {
+      "name": "AzureAppPushReceiver",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "name",
+        "emailAddress"
+      ]
+    },
+    {
+      "name": "AutomationRunbookReceiver",
+      "type": "object",
+      "propertyCount": 7,
+      "required": [
+        "automationAccountId",
+        "runbookName",
+        "webhookResourceId",
+        "isGlobalRunbook"
+      ]
+    },
+    {
+      "name": "VoiceReceiver",
+      "type": "object",
+      "propertyCount": 3,
+      "required": [
+        "name",
+        "countryCode",
+        "phoneNumber"
+      ]
+    },
+    {
+      "name": "LogicAppReceiver",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "name",
+        "resourceId",
+        "callbackUrl"
+      ]
+    },
+    {
+      "name": "AzureFunctionReceiver",
+      "type": "object",
+      "propertyCount": 5,
+      "required": [
+        "name",
+        "functionAppResourceId",
+        "functionName",
+        "httpTriggerUrl"
+      ]
+    },
+    {
+      "name": "ArmRoleReceiver",
+      "type": "object",
+      "propertyCount": 3,
+      "required": [
+        "name",
+        "roleId"
+      ]
+    },
+    {
+      "name": "EventHubReceiver",
+      "type": "object",
+      "propertyCount": 6,
+      "required": [
+        "name",
+        "eventHubNameSpace",
+        "eventHubName",
+        "subscriptionId"
+      ]
+    },
+    {
+      "name": "ActionGroupPatchBody",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "EnableRequest",
+      "type": "object",
+      "propertyCount": 1,
+      "required": [
+        "receiverName"
+      ]
+    },
+    {
+      "name": "NotificationRequestBody",
+      "type": "object",
+      "propertyCount": 6,
+      "required": [
+        "alertType"
+      ]
+    },
+    {
+      "name": "TestNotificationDetailsResponse",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "state"
+      ]
+    },
+    {
+      "name": "ActionGroupList",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ErrorResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups/{actionGroupName}",
+      "operationId": "ActionGroups_Get",
+      "summary": "Azure Monitor Get an action group",
+      "tags": [
+        "Action Groups"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups/{actionGroupName}",
+      "operationId": "ActionGroups_CreateOrUpdate",
+      "summary": "Azure Monitor Create or update an action group",
+      "tags": [
+        "Action Groups"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups/{actionGroupName}",
+      "operationId": "ActionGroups_Delete",
+      "summary": "Azure Monitor Delete an action group",
+      "tags": [
+        "Action Groups"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups/{actionGroupName}",
+      "operationId": "ActionGroups_Update",
+      "summary": "Azure Monitor Update an action group",
+      "tags": [
+        "Action Groups"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Insights/actionGroups",
+      "operationId": "ActionGroups_ListBySubscriptionId",
+      "summary": "Azure Monitor List action groups in a subscription",
+      "tags": [
+        "Action Groups"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups",
+      "operationId": "ActionGroups_ListByResourceGroup",
+      "summary": "Azure Monitor List action groups in a resource group",
+      "tags": [
+        "Action Groups"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups/{actionGroupName}/subscribe",
+      "operationId": "ActionGroups_EnableReceiver",
+      "summary": "Azure Monitor Enable a receiver in an action group",
+      "tags": [
+        "Action Groups"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Insights/createNotifications",
+      "operationId": "ActionGroups_PostTestNotifications",
+      "summary": "Azure Monitor Send test notifications",
+      "tags": [
+        "Test Notifications"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Insights/notificationStatus/{notificationId}",
+      "operationId": "ActionGroups_GetTestNotifications",
+      "summary": "Azure Monitor Get test notification results",
+      "tags": [
+        "Test Notifications"
+      ]
+    }
+  ]
+}

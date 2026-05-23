@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DataSources",
+  "title": "DataSources",
+  "type": "object",
+  "properties": {
+    "performanceCounters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "A friendly name for the data source."
+          },
+          "streams": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "samplingFrequencyInSeconds": {
+            "type": "integer",
+            "description": "The number of seconds between consecutive counter measurements."
+          },
+          "counterSpecifiers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "A list of specifier names of the performance counters."
+          }
+        }
+      },
+      "description": "The list of performance counter data sources."
+    },
+    "windowsEventLogs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "streams": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "xPathQueries": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "description": "The list of Windows Event Log data sources."
+    },
+    "syslog": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "streams": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "facilityNames": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "logLevels": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "description": "The list of Syslog data sources."
+    },
+    "extensions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "streams": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "extensionName": {
+            "type": "string"
+          },
+          "extensionSettings": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "inputDataSources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "description": "The list of Azure VM extension data sources."
+    },
+    "logFiles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "streams": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "filePatterns": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "format": {
+            "type": "string",
+            "enum": [
+              "text"
+            ]
+          },
+          "settings": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "object",
+                "properties": {
+                  "recordStartTimestampFormat": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "description": "The list of Log file data sources."
+    }
+  }
+}

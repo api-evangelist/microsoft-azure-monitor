@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RetentionPolicy",
+  "title": "RetentionPolicy",
+  "type": "object",
+  "required": [
+    "enabled",
+    "days"
+  ],
+  "properties": {
+    "enabled": {
+      "type": "boolean",
+      "description": "Indicates whether the retention policy is enabled."
+    },
+    "days": {
+      "type": "integer",
+      "format": "int32",
+      "minimum": 0,
+      "description": "The number of days for the retention policy. A value of 0 retains data indefinitely."
+    }
+  }
+}

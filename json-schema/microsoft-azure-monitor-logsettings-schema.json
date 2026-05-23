@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LogSettings",
+  "title": "LogSettings",
+  "type": "object",
+  "required": [
+    "enabled"
+  ],
+  "properties": {
+    "category": {
+      "type": "string",
+      "description": "Name of a Diagnostic Log category for a resource type."
+    },
+    "categoryGroup": {
+      "type": "string",
+      "description": "Name of a Diagnostic Log category group for a resource type."
+    },
+    "enabled": {
+      "type": "boolean",
+      "description": "Indicates whether this log category is enabled."
+    },
+    "retentionPolicy": {
+      "$ref": "#/components/schemas/RetentionPolicy"
+    }
+  }
+}

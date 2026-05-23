@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DiagnosticSettings",
+  "title": "DiagnosticSettings",
+  "type": "object",
+  "properties": {
+    "storageAccountId": {
+      "type": "string",
+      "description": "The resource ID of the storage account to which diagnostics logs are sent."
+    },
+    "serviceBusRuleId": {
+      "type": "string",
+      "description": "The service bus rule ID of the diagnostic setting."
+    },
+    "eventHubAuthorizationRuleId": {
+      "type": "string",
+      "description": "The resource ID of the Event Hub authorization rule."
+    },
+    "eventHubName": {
+      "type": "string",
+      "description": "The name of the Event Hub. If not specified, the default Event Hub is selected."
+    },
+    "metrics": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/MetricSettings"
+      },
+      "description": "The list of metric settings."
+    },
+    "logs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LogSettings"
+      },
+      "description": "The list of logs settings."
+    },
+    "workspaceId": {
+      "type": "string",
+      "description": "The full resource ID of the Log Analytics workspace to which diagnostics are sent."
+    },
+    "marketplacePartnerId": {
+      "type": "string",
+      "description": "The full resource ID of the Marketplace resource to which diagnostics are sent."
+    },
+    "logAnalyticsDestinationType": {
+      "type": "string",
+      "description": "A string indicating whether the export to Log Analytics should use the default destination type (AzureDiagnostics) or a dedicated type."
+    }
+  }
+}

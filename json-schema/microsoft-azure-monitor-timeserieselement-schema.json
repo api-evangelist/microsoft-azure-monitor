@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TimeSeriesElement",
+  "title": "TimeSeriesElement",
+  "type": "object",
+  "properties": {
+    "metadatavalues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string"
+              },
+              "localizedValue": {
+                "type": "string"
+              }
+            }
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "The metadata values returned."
+    },
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/MetricValue"
+      },
+      "description": "An array of data points representing the metric values."
+    }
+  }
+}

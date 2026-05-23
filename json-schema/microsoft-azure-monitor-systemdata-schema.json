@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SystemData",
+  "title": "SystemData",
+  "type": "object",
+  "properties": {
+    "createdBy": {
+      "type": "string"
+    },
+    "createdByType": {
+      "type": "string",
+      "enum": [
+        "User",
+        "Application",
+        "ManagedIdentity",
+        "Key"
+      ]
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastModifiedBy": {
+      "type": "string"
+    },
+    "lastModifiedByType": {
+      "type": "string",
+      "enum": [
+        "User",
+        "Application",
+        "ManagedIdentity",
+        "Key"
+      ]
+    },
+    "lastModifiedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

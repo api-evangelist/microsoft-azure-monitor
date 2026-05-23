@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MetricValue",
+  "title": "MetricValue",
+  "type": "object",
+  "required": [
+    "timeStamp"
+  ],
+  "properties": {
+    "timeStamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The timestamp for the metric value in ISO 8601 format."
+    },
+    "average": {
+      "type": "number",
+      "format": "double",
+      "description": "The average value in the time range."
+    },
+    "minimum": {
+      "type": "number",
+      "format": "double",
+      "description": "The least value in the time range."
+    },
+    "maximum": {
+      "type": "number",
+      "format": "double",
+      "description": "The greatest value in the time range."
+    },
+    "total": {
+      "type": "number",
+      "format": "double",
+      "description": "The sum of all of the values in the time range."
+    },
+    "count": {
+      "type": "number",
+      "format": "double",
+      "description": "The number of samples in the time range."
+    }
+  }
+}

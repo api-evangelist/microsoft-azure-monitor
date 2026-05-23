@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MetadataResults",
+  "title": "MetadataResults",
+  "type": "object",
+  "properties": {
+    "tables": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/MetadataTable"
+      },
+      "description": "The list of tables in the workspace."
+    },
+    "functions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/MetadataFunction"
+      },
+      "description": "The list of saved functions in the workspace."
+    }
+  }
+}

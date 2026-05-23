@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PredictiveAutoscalePolicy",
+  "title": "PredictiveAutoscalePolicy",
+  "type": "object",
+  "required": [
+    "scaleMode"
+  ],
+  "properties": {
+    "scaleMode": {
+      "type": "string",
+      "enum": [
+        "Disabled",
+        "ForecastOnly",
+        "Enabled"
+      ],
+      "description": "The predictive autoscale mode."
+    },
+    "scaleLookAheadTime": {
+      "type": "string",
+      "description": "The amount of time to specify by which instances are launched in advance in ISO 8601 duration format."
+    }
+  }
+}

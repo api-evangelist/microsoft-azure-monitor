@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EventsResults",
+  "title": "EventsResults",
+  "type": "object",
+  "properties": {
+    "@ai.messages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Messages from the service."
+    },
+    "@odata.context": {
+      "type": "string",
+      "description": "OData context."
+    },
+    "@odata.count": {
+      "type": "integer",
+      "description": "Count of matching results."
+    },
+    "value": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/EventsResultData"
+      },
+      "description": "The collection of events."
+    }
+  }
+}

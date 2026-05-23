@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MetricsResponse",
+  "title": "MetricsResponse",
+  "type": "object",
+  "required": [
+    "timespan",
+    "value"
+  ],
+  "properties": {
+    "cost": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The integer value representing the relative cost of the query."
+    },
+    "timespan": {
+      "type": "string",
+      "description": "The timespan for which the data was retrieved, in ISO 8601 format."
+    },
+    "interval": {
+      "type": "string",
+      "description": "The interval (window size) for which the metric data was returned in ISO 8601 format."
+    },
+    "namespace": {
+      "type": "string",
+      "description": "The namespace of the metrics being queried."
+    },
+    "resourceregion": {
+      "type": "string",
+      "description": "The region of the resource being queried for metrics."
+    },
+    "value": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Metric"
+      },
+      "description": "The value of the collection."
+    }
+  }
+}

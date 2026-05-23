@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ActionGroupResource",
+  "title": "ActionGroupResource",
+  "type": "object",
+  "required": [
+    "location"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "readOnly": true,
+      "description": "Azure resource ID."
+    },
+    "name": {
+      "type": "string",
+      "readOnly": true,
+      "description": "Azure resource name."
+    },
+    "type": {
+      "type": "string",
+      "readOnly": true,
+      "description": "Azure resource type."
+    },
+    "location": {
+      "type": "string",
+      "description": "Resource location."
+    },
+    "tags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Resource tags."
+    },
+    "properties": {
+      "$ref": "#/components/schemas/ActionGroup"
+    }
+  }
+}

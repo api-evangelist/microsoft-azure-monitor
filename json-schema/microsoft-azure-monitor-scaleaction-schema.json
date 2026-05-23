@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ScaleAction",
+  "title": "ScaleAction",
+  "type": "object",
+  "required": [
+    "direction",
+    "type",
+    "cooldown"
+  ],
+  "properties": {
+    "direction": {
+      "type": "string",
+      "enum": [
+        "None",
+        "Increase",
+        "Decrease"
+      ],
+      "description": "The scale direction."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ChangeCount",
+        "PercentChangeCount",
+        "ExactCount",
+        "ServiceAllowedNextValue"
+      ],
+      "description": "The type of action that should occur when the scale rule fires."
+    },
+    "value": {
+      "type": "string",
+      "description": "The number of instances involved in the scaling action.",
+      "default": "1"
+    },
+    "cooldown": {
+      "type": "string",
+      "description": "The amount of time to wait since the last scaling action before this action occurs in ISO 8601 duration format."
+    }
+  }
+}

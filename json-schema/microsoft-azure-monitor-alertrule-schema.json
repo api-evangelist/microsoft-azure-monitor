@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AlertRule",
+  "title": "AlertRule",
+  "type": "object",
+  "required": [
+    "name",
+    "isEnabled",
+    "condition"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the alert rule."
+    },
+    "description": {
+      "type": "string",
+      "description": "The description of the alert rule."
+    },
+    "provisioningState": {
+      "type": "string",
+      "description": "The provisioning state."
+    },
+    "isEnabled": {
+      "type": "boolean",
+      "description": "The flag that indicates whether the alert rule is enabled."
+    },
+    "condition": {
+      "$ref": "#/components/schemas/RuleCondition"
+    },
+    "lastUpdatedTime": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "description": "Last time the rule was updated in ISO 8601 format."
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/RuleAction"
+      },
+      "description": "The array of actions that are performed when the alert rule becomes active."
+    }
+  }
+}

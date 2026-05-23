@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ScopedResourceListResult",
+  "title": "ScopedResourceListResult",
+  "type": "object",
+  "properties": {
+    "value": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ScopedResource"
+      },
+      "description": "List of scoped resources."
+    },
+    "nextLink": {
+      "type": "string",
+      "description": "The URI to get the next set of results."
+    }
+  }
+}

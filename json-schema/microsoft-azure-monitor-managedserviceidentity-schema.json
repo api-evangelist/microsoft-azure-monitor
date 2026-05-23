@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ManagedServiceIdentity",
+  "title": "ManagedServiceIdentity",
+  "type": "object",
+  "required": [
+    "type"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "None",
+        "SystemAssigned",
+        "UserAssigned",
+        "SystemAssigned,UserAssigned"
+      ],
+      "description": "Type of managed service identity."
+    },
+    "principalId": {
+      "type": "string",
+      "readOnly": true
+    },
+    "tenantId": {
+      "type": "string",
+      "readOnly": true
+    },
+    "userAssignedIdentities": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "principalId": {
+            "type": "string",
+            "readOnly": true
+          },
+          "clientId": {
+            "type": "string",
+            "readOnly": true
+          }
+        }
+      }
+    }
+  }
+}

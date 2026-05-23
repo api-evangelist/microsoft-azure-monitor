@@ -1,0 +1,9 @@
+name: Azure Monitor Domain Vocabulary
+provider: Azure Monitor
+providerId: microsoft-azure-monitor
+description: Tag-derived vocabulary for the Azure Monitor API surface; sourced from openapi/ tags.
+terms:
+- term: Action Groups
+  description: Operations for managing action groups
+- term: Test Notifications
+  description: Operations for sending and retrieving test notifications

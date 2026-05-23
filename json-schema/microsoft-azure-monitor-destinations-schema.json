@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Destinations",
+  "title": "Destinations",
+  "type": "object",
+  "properties": {
+    "logAnalytics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "workspaceResourceId": {
+            "type": "string",
+            "description": "The resource ID of the Log Analytics workspace."
+          },
+          "workspaceId": {
+            "type": "string",
+            "readOnly": true,
+            "description": "The workspace ID (GUID)."
+          },
+          "name": {
+            "type": "string",
+            "description": "A friendly name for the destination."
+          }
+        }
+      },
+      "description": "List of Log Analytics destinations."
+    },
+    "monitoringAccounts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "accountResourceId": {
+            "type": "string"
+          },
+          "accountId": {
+            "type": "string",
+            "readOnly": true
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "List of monitoring account destinations."
+    },
+    "azureMonitorMetrics": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "A friendly name for the destination."
+        }
+      },
+      "description": "Azure Monitor Metrics destination."
+    },
+    "eventHubs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "eventHubResourceId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "List of Event Hub destinations."
+    },
+    "eventHubsDirect": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "eventHubResourceId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "List of direct Event Hub destinations."
+    },
+    "storageBlobsDirect": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "storageAccountResourceId": {
+            "type": "string"
+          },
+          "containerName": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "List of Storage Blob Direct destinations."
+    },
+    "storageTablesDirect": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "storageAccountResourceId": {
+            "type": "string"
+          },
+          "tableName": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "List of Storage Table Direct destinations."
+    }
+  }
+}

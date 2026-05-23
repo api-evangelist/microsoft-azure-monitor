@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/VoiceReceiver",
+  "title": "VoiceReceiver",
+  "type": "object",
+  "required": [
+    "name",
+    "countryCode",
+    "phoneNumber"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the voice receiver."
+    },
+    "countryCode": {
+      "type": "string",
+      "description": "The country code of the voice receiver."
+    },
+    "phoneNumber": {
+      "type": "string",
+      "description": "The phone number of the voice receiver."
+    }
+  }
+}

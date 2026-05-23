@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Column",
+  "title": "Column",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of this column."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "bool",
+        "datetime",
+        "dynamic",
+        "int",
+        "long",
+        "real",
+        "string",
+        "guid",
+        "decimal",
+        "timespan"
+      ],
+      "description": "The data type of this column."
+    }
+  }
+}

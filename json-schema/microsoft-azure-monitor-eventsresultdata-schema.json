@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EventsResultData",
+  "title": "EventsResultData",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique ID for this event."
+    },
+    "type": {
+      "type": "string",
+      "description": "The type of event."
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The timestamp of the event."
+    },
+    "customDimensions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Custom dimensions of the event."
+    },
+    "customMeasurements": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number"
+      },
+      "description": "Custom measurements of the event."
+    },
+    "operation": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "parentId": {
+          "type": "string"
+        },
+        "syntheticSource": {
+          "type": "string"
+        }
+      }
+    },
+    "session": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "user": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "authenticatedId": {
+          "type": "string"
+        },
+        "accountId": {
+          "type": "string"
+        }
+      }
+    },
+    "cloud": {
+      "type": "object",
+      "properties": {
+        "roleName": {
+          "type": "string"
+        },
+        "roleInstance": {
+          "type": "string"
+        }
+      }
+    },
+    "ai": {
+      "type": "object",
+      "properties": {
+        "iKey": {
+          "type": "string"
+        },
+        "appName": {
+          "type": "string"
+        },
+        "appId": {
+          "type": "string"
+        },
+        "sdkVersion": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

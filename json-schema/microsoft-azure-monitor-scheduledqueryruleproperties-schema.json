@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ScheduledQueryRuleProperties",
+  "title": "ScheduledQueryRuleProperties",
+  "type": "object",
+  "required": [
+    "severity",
+    "enabled",
+    "scopes",
+    "evaluationFrequency",
+    "windowSize",
+    "criteria"
+  ],
+  "properties": {
+    "createdWithApiVersion": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The API version used when creating this alert rule."
+    },
+    "isLegacyLogAnalyticsRule": {
+      "type": "boolean",
+      "readOnly": true,
+      "description": "True if this alert rule is a legacy Log Analytics rule."
+    },
+    "description": {
+      "type": "string",
+      "description": "The description of the scheduled query rule."
+    },
+    "displayName": {
+      "type": "string",
+      "description": "The display name of the alert rule."
+    },
+    "severity": {
+      "type": "integer",
+      "format": "int64",
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "description": "Severity of the alert. Should be an integer between 0-4. Value of 0 is severest."
+    },
+    "enabled": {
+      "type": "boolean",
+      "description": "The flag that indicates whether this scheduled query rule is enabled."
+    },
+    "scopes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The list of resource IDs that this scheduled query rule is scoped to."
+    },
+    "evaluationFrequency": {
+      "type": "string",
+      "description": "How often the scheduled query rule is evaluated in ISO 8601 duration format."
+    },
+    "windowSize": {
+      "type": "string",
+      "description": "The period of time in ISO 8601 duration format on which the alert rule will be executed."
+    },
+    "overrideQueryTimeRange": {
+      "type": "string",
+      "description": "If specified, overrides the query time range."
+    },
+    "targetResourceTypes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of resource type of the target resources on which the alert is created."
+    },
+    "criteria": {
+      "$ref": "#/components/schemas/ScheduledQueryRuleCriteria"
+    },
+    "muteActionsDuration": {
+      "type": "string",
+      "description": "Mute actions for the chosen period of time in ISO 8601 duration format."
+    },
+    "actions": {
+      "$ref": "#/components/schemas/Actions"
+    },
+    "isWorkspaceAlertsStorageConfigured": {
+      "type": "boolean",
+      "readOnly": true,
+      "description": "The flag that indicates whether this scheduled query rule has been configured to be stored in the customer's storage."
+    },
+    "checkWorkspaceAlertsStorageConfigured": {
+      "type": "boolean",
+      "description": "The flag that indicates whether this scheduled query rule should be stored in the customer's storage."
+    },
+    "skipQueryValidation": {
+      "type": "boolean",
+      "description": "The flag that indicates whether the provided query should be validated."
+    },
+    "autoMitigate": {
+      "type": "boolean",
+      "description": "The flag that indicates whether the alert should be automatically resolved."
+    }
+  }
+}

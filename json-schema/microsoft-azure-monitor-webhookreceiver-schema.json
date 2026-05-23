@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/WebhookReceiver",
+  "title": "WebhookReceiver",
+  "type": "object",
+  "required": [
+    "name",
+    "serviceUri"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the webhook receiver."
+    },
+    "serviceUri": {
+      "type": "string",
+      "format": "uri",
+      "description": "The URI where webhooks should be sent."
+    },
+    "useCommonAlertSchema": {
+      "type": "boolean",
+      "default": false,
+      "description": "Indicates whether to use common alert schema."
+    },
+    "useAadAuth": {
+      "type": "boolean",
+      "default": false,
+      "description": "Indicates whether to use AAD authentication."
+    },
+    "objectId": {
+      "type": "string",
+      "description": "The object ID for AAD auth."
+    },
+    "identifierUri": {
+      "type": "string",
+      "description": "The identifier URI for AAD auth."
+    },
+    "tenantId": {
+      "type": "string",
+      "description": "The tenant ID for AAD auth."
+    }
+  }
+}

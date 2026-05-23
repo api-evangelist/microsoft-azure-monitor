@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ScaleRuleMetricDimension",
+  "title": "ScaleRuleMetricDimension",
+  "type": "object",
+  "required": [
+    "DimensionName",
+    "Operator",
+    "Values"
+  ],
+  "properties": {
+    "DimensionName": {
+      "type": "string",
+      "description": "Name of the dimension."
+    },
+    "Operator": {
+      "type": "string",
+      "enum": [
+        "Equals",
+        "NotEquals"
+      ],
+      "description": "The dimension operator."
+    },
+    "Values": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of dimension values."
+    }
+  }
+}

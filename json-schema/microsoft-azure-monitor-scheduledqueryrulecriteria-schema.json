@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ScheduledQueryRuleCriteria",
+  "title": "ScheduledQueryRuleCriteria",
+  "type": "object",
+  "properties": {
+    "allOf": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Condition"
+      },
+      "description": "A list of conditions to evaluate against the specified scopes."
+    }
+  }
+}

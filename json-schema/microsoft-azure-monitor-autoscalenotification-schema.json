@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AutoscaleNotification",
+  "title": "AutoscaleNotification",
+  "type": "object",
+  "required": [
+    "operation"
+  ],
+  "properties": {
+    "operation": {
+      "type": "string",
+      "enum": [
+        "Scale"
+      ],
+      "description": "The operation associated with the notification."
+    },
+    "email": {
+      "type": "object",
+      "properties": {
+        "sendToSubscriptionAdministrator": {
+          "type": "boolean",
+          "description": "Send email to subscription administrator."
+        },
+        "sendToSubscriptionCoAdministrators": {
+          "type": "boolean",
+          "description": "Send email to subscription co-administrators."
+        },
+        "customEmails": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The custom email list."
+        }
+      }
+    },
+    "webhooks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "serviceUri": {
+            "type": "string",
+            "format": "uri",
+            "description": "The service address to receive the notification."
+          },
+          "properties": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

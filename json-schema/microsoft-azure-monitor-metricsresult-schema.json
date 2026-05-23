@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MetricsResult",
+  "title": "MetricsResult",
+  "type": "object",
+  "properties": {
+    "value": {
+      "type": "object",
+      "properties": {
+        "start": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Start time of the metric."
+        },
+        "end": {
+          "type": "string",
+          "format": "date-time",
+          "description": "End time of the metric."
+        },
+        "interval": {
+          "type": "string",
+          "description": "The interval used for segmenting the metric data."
+        },
+        "segments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "description": "Segmented metric data."
+        }
+      }
+    }
+  }
+}

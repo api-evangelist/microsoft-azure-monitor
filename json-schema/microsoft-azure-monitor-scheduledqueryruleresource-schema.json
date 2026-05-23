@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ScheduledQueryRuleResource",
+  "title": "ScheduledQueryRuleResource",
+  "type": "object",
+  "required": [
+    "location",
+    "properties"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "readOnly": true,
+      "description": "Fully qualified resource ID."
+    },
+    "name": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The name of the resource."
+    },
+    "type": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The type of the resource."
+    },
+    "location": {
+      "type": "string",
+      "description": "The geo-location where the resource lives."
+    },
+    "tags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Resource tags."
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "LogAlert",
+        "LogToMetric"
+      ],
+      "description": "Indicates the type of scheduled query rule. The default is LogAlert."
+    },
+    "etag": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The etag field is not required."
+    },
+    "systemData": {
+      "$ref": "#/components/schemas/SystemData"
+    },
+    "properties": {
+      "$ref": "#/components/schemas/ScheduledQueryRuleProperties"
+    }
+  }
+}

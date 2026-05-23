@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AutomationRunbookReceiver",
+  "title": "AutomationRunbookReceiver",
+  "type": "object",
+  "required": [
+    "automationAccountId",
+    "runbookName",
+    "webhookResourceId",
+    "isGlobalRunbook"
+  ],
+  "properties": {
+    "automationAccountId": {
+      "type": "string",
+      "description": "The Azure automation account ID."
+    },
+    "runbookName": {
+      "type": "string",
+      "description": "The name for this runbook."
+    },
+    "webhookResourceId": {
+      "type": "string",
+      "description": "The resource ID for webhook linked to this runbook."
+    },
+    "isGlobalRunbook": {
+      "type": "boolean",
+      "description": "Indicates whether this is a global runbook."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the automation runbook receiver."
+    },
+    "serviceUri": {
+      "type": "string",
+      "format": "uri",
+      "description": "The URI where webhooks should be sent."
+    },
+    "useCommonAlertSchema": {
+      "type": "boolean",
+      "default": false,
+      "description": "Indicates whether to use common alert schema."
+    }
+  }
+}

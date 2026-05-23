@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AutoscaleSettingResourcePatch",
+  "title": "AutoscaleSettingResourcePatch",
+  "type": "object",
+  "properties": {
+    "tags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Resource tags."
+    },
+    "properties": {
+      "$ref": "#/components/schemas/AutoscaleSetting"
+    }
+  }
+}

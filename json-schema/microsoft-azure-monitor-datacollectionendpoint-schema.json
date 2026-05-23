@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DataCollectionEndpoint",
+  "title": "DataCollectionEndpoint",
+  "type": "object",
+  "properties": {
+    "description": {
+      "type": "string",
+      "description": "Description of the data collection endpoint."
+    },
+    "immutableId": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The immutable ID of this data collection endpoint resource."
+    },
+    "configurationAccess": {
+      "type": "object",
+      "properties": {
+        "endpoint": {
+          "type": "string",
+          "readOnly": true,
+          "description": "The endpoint URL for configuration access."
+        }
+      },
+      "description": "The endpoint used for accessing configuration."
+    },
+    "logsIngestion": {
+      "type": "object",
+      "properties": {
+        "endpoint": {
+          "type": "string",
+          "readOnly": true,
+          "description": "The endpoint URL for logs ingestion."
+        }
+      },
+      "description": "The endpoint used for ingesting logs."
+    },
+    "metricsIngestion": {
+      "type": "object",
+      "properties": {
+        "endpoint": {
+          "type": "string",
+          "readOnly": true,
+          "description": "The endpoint URL for metrics ingestion."
+        }
+      },
+      "description": "The endpoint used for ingesting metrics."
+    },
+    "networkAcls": {
+      "type": "object",
+      "properties": {
+        "publicNetworkAccess": {
+          "type": "string",
+          "enum": [
+            "Enabled",
+            "Disabled",
+            "SecuredByPerimeter"
+          ],
+          "description": "The configuration to set whether network access from public internet is allowed."
+        }
+      },
+      "description": "Network access control rules for the endpoints."
+    },
+    "provisioningState": {
+      "type": "string",
+      "readOnly": true,
+      "enum": [
+        "Creating",
+        "Updating",
+        "Deleting",
+        "Succeeded",
+        "Canceled",
+        "Failed"
+      ],
+      "description": "The resource provisioning state."
+    },
+    "privateLinkScopedResources": {
+      "type": "array",
+      "readOnly": true,
+      "items": {
+        "type": "object",
+        "properties": {
+          "resourceId": {
+            "type": "string"
+          },
+          "scopeId": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "List of Azure Monitor Private Link Scope resources."
+    },
+    "failoverConfiguration": {
+      "type": "object",
+      "readOnly": true,
+      "properties": {
+        "activeLocation": {
+          "type": "string"
+        },
+        "locations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "location": {
+                "type": "string"
+              },
+              "provisioningStatus": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "description": "Failover configuration on this endpoint."
+    },
+    "metadata": {
+      "type": "object",
+      "readOnly": true,
+      "properties": {
+        "provisionedBy": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Azure offering managing this resource on-behalf-of customer."
+        },
+        "provisionedByResourceId": {
+          "type": "string",
+          "readOnly": true
+        }
+      },
+      "description": "Metadata for the resource."
+    }
+  }
+}

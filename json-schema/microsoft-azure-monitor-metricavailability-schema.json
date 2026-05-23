@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MetricAvailability",
+  "title": "MetricAvailability",
+  "type": "object",
+  "properties": {
+    "timeGrain": {
+      "type": "string",
+      "description": "The time grain specifies the aggregation interval in ISO 8601 duration format."
+    },
+    "retention": {
+      "type": "string",
+      "description": "The retention period for the metric in ISO 8601 duration format."
+    }
+  }
+}

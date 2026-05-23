@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MetricTrigger",
+  "title": "MetricTrigger",
+  "type": "object",
+  "required": [
+    "metricName",
+    "metricResourceUri",
+    "timeGrain",
+    "statistic",
+    "timeWindow",
+    "timeAggregation",
+    "operator",
+    "threshold"
+  ],
+  "properties": {
+    "metricName": {
+      "type": "string",
+      "description": "The name of the metric that defines what the rule monitors."
+    },
+    "metricNamespace": {
+      "type": "string",
+      "description": "The namespace of the metric."
+    },
+    "metricResourceUri": {
+      "type": "string",
+      "description": "The resource identifier of the resource the rule monitors."
+    },
+    "metricResourceLocation": {
+      "type": "string",
+      "description": "The location of the resource the rule monitors."
+    },
+    "timeGrain": {
+      "type": "string",
+      "description": "The granularity of metrics the rule monitors in ISO 8601 duration format."
+    },
+    "statistic": {
+      "type": "string",
+      "enum": [
+        "Average",
+        "Min",
+        "Max",
+        "Sum"
+      ],
+      "description": "The metric statistic type."
+    },
+    "timeWindow": {
+      "type": "string",
+      "description": "The range of time in which instance data is collected in ISO 8601 format."
+    },
+    "timeAggregation": {
+      "type": "string",
+      "enum": [
+        "Average",
+        "Minimum",
+        "Maximum",
+        "Total",
+        "Count",
+        "Last"
+      ],
+      "description": "The time aggregation type."
+    },
+    "operator": {
+      "type": "string",
+      "enum": [
+        "Equals",
+        "NotEquals",
+        "GreaterThan",
+        "GreaterThanOrEqual",
+        "LessThan",
+        "LessThanOrEqual"
+      ],
+      "description": "The operator used to compare the metric data and the threshold."
+    },
+    "threshold": {
+      "type": "number",
+      "format": "double",
+      "description": "The threshold of the metric that triggers the scale action."
+    },
+    "dimensions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ScaleRuleMetricDimension"
+      },
+      "description": "List of dimension conditions."
+    },
+    "dividePerInstance": {
+      "type": "boolean",
+      "description": "Indicates whether the metric should divide per instance."
+    }
+  }
+}

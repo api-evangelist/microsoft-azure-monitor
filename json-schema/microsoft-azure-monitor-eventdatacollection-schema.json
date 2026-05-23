@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EventDataCollection",
+  "title": "EventDataCollection",
+  "type": "object",
+  "required": [
+    "value"
+  ],
+  "properties": {
+    "value": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/EventData"
+      },
+      "description": "The collection of events."
+    },
+    "nextLink": {
+      "type": "string",
+      "description": "Provides the link to retrieve the next set of events."
+    }
+  }
+}

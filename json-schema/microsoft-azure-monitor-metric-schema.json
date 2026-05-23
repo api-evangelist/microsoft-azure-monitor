@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Metric",
+  "title": "Metric",
+  "type": "object",
+  "required": [
+    "id",
+    "type",
+    "name",
+    "unit",
+    "timeseries"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The metric ID."
+    },
+    "type": {
+      "type": "string",
+      "description": "The resource type of the metric resource."
+    },
+    "name": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "The invariant value."
+        },
+        "localizedValue": {
+          "type": "string",
+          "description": "The display name."
+        }
+      },
+      "required": [
+        "value"
+      ]
+    },
+    "displayDescription": {
+      "type": "string",
+      "description": "Detailed description of this metric."
+    },
+    "unit": {
+      "type": "string",
+      "enum": [
+        "Count",
+        "Bytes",
+        "Seconds",
+        "CountPerSecond",
+        "BytesPerSecond",
+        "Percent",
+        "MilliSeconds",
+        "ByteSeconds",
+        "Unspecified",
+        "Cores",
+        "MilliCores",
+        "NanoCores",
+        "BitsPerSecond"
+      ],
+      "description": "The unit of the metric."
+    },
+    "timeseries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TimeSeriesElement"
+      },
+      "description": "The time series returned when a data query is performed."
+    }
+  }
+}

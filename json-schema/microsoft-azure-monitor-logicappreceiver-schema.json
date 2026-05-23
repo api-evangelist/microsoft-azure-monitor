@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LogicAppReceiver",
+  "title": "LogicAppReceiver",
+  "type": "object",
+  "required": [
+    "name",
+    "resourceId",
+    "callbackUrl"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the Logic App receiver."
+    },
+    "resourceId": {
+      "type": "string",
+      "description": "The Azure resource ID of the Logic App."
+    },
+    "callbackUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "The callback URL."
+    },
+    "useCommonAlertSchema": {
+      "type": "boolean",
+      "default": false,
+      "description": "Indicates whether to use common alert schema."
+    }
+  }
+}

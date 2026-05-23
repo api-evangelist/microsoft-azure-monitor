@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/NotificationRequestBody",
+  "title": "NotificationRequestBody",
+  "type": "object",
+  "required": [
+    "alertType"
+  ],
+  "properties": {
+    "alertType": {
+      "type": "string",
+      "description": "The value of the supported alert type."
+    },
+    "emailReceivers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/EmailReceiver"
+      }
+    },
+    "smsReceivers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/SmsReceiver"
+      }
+    },
+    "webhookReceivers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/WebhookReceiver"
+      }
+    },
+    "azureAppPushReceivers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/AzureAppPushReceiver"
+      }
+    },
+    "armRoleReceivers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ArmRoleReceiver"
+      }
+    }
+  }
+}

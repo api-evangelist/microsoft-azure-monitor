@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MetricSettings",
+  "title": "MetricSettings",
+  "type": "object",
+  "required": [
+    "enabled"
+  ],
+  "properties": {
+    "timeGrain": {
+      "type": "string",
+      "description": "The timegrain of the metric in ISO 8601 format."
+    },
+    "category": {
+      "type": "string",
+      "description": "Name of a Diagnostic Metric category for a resource type."
+    },
+    "enabled": {
+      "type": "boolean",
+      "description": "Indicates whether this metric category is enabled."
+    },
+    "retentionPolicy": {
+      "$ref": "#/components/schemas/RetentionPolicy"
+    }
+  }
+}

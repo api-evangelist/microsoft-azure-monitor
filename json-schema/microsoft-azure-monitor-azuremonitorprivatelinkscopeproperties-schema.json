@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AzureMonitorPrivateLinkScopeProperties",
+  "title": "AzureMonitorPrivateLinkScopeProperties",
+  "type": "object",
+  "required": [
+    "accessModeSettings"
+  ],
+  "properties": {
+    "provisioningState": {
+      "type": "string",
+      "readOnly": true,
+      "description": "Current state of this Private Link Scope."
+    },
+    "privateEndpointConnections": {
+      "type": "array",
+      "readOnly": true,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "properties": {
+            "type": "object",
+            "properties": {
+              "privateEndpoint": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  }
+                }
+              },
+              "privateLinkServiceConnectionState": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "actionsRequired": {
+                    "type": "string"
+                  }
+                }
+              },
+              "provisioningState": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "description": "List of private endpoint connections."
+    },
+    "accessModeSettings": {
+      "type": "object",
+      "required": [
+        "queryAccessMode",
+        "ingestionAccessMode"
+      ],
+      "properties": {
+        "queryAccessMode": {
+          "type": "string",
+          "enum": [
+            "Open",
+            "PrivateOnly"
+          ],
+          "description": "Specifies the default access mode of queries through associated private endpoints in scope."
+        },
+        "ingestionAccessMode": {
+          "type": "string",
+          "enum": [
+            "Open",
+            "PrivateOnly"
+          ],
+          "description": "Specifies the default access mode of ingestion through associated private endpoints in scope."
+        },
+        "exclusions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "ingestionAccessMode": {
+                "type": "string",
+                "enum": [
+                  "Open",
+                  "PrivateOnly"
+                ]
+              },
+              "queryAccessMode": {
+                "type": "string",
+                "enum": [
+                  "Open",
+                  "PrivateOnly"
+                ]
+              },
+              "privateEndpointConnectionName": {
+                "type": "string"
+              }
+            }
+          },
+          "description": "List of exclusions that override the default access mode."
+        }
+      },
+      "description": "Access mode settings for the Private Link Scope."
+    }
+  }
+}

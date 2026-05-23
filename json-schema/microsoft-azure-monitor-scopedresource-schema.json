@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ScopedResource",
+  "title": "ScopedResource",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "readOnly": true,
+      "description": "Azure resource ID."
+    },
+    "name": {
+      "type": "string",
+      "readOnly": true,
+      "description": "Azure resource name."
+    },
+    "type": {
+      "type": "string",
+      "readOnly": true,
+      "description": "Azure resource type."
+    },
+    "properties": {
+      "type": "object",
+      "properties": {
+        "linkedResourceId": {
+          "type": "string",
+          "description": "The resource ID of the scoped Azure Monitor resource."
+        },
+        "provisioningState": {
+          "type": "string",
+          "readOnly": true,
+          "description": "State of the private endpoint connection."
+        }
+      }
+    },
+    "systemData": {
+      "$ref": "#/components/schemas/SystemData"
+    }
+  }
+}

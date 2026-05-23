@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DataCollectionEndpointResourceListResult",
+  "title": "DataCollectionEndpointResourceListResult",
+  "type": "object",
+  "required": [
+    "value"
+  ],
+  "properties": {
+    "value": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/DataCollectionEndpointResource"
+      },
+      "description": "A list of data collection endpoints."
+    },
+    "nextLink": {
+      "type": "string",
+      "description": "The URI to fetch the next page."
+    }
+  }
+}

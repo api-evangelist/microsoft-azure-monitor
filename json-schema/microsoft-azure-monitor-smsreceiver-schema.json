@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SmsReceiver",
+  "title": "SmsReceiver",
+  "type": "object",
+  "required": [
+    "name",
+    "countryCode",
+    "phoneNumber"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the SMS receiver."
+    },
+    "countryCode": {
+      "type": "string",
+      "description": "The country code of the SMS receiver."
+    },
+    "phoneNumber": {
+      "type": "string",
+      "description": "The phone number of the SMS receiver."
+    },
+    "status": {
+      "type": "string",
+      "readOnly": true,
+      "enum": [
+        "NotSpecified",
+        "Enabled",
+        "Disabled"
+      ],
+      "description": "The receiver status."
+    }
+  }
+}

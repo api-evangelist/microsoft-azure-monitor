@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ScaleCapacity",
+  "title": "ScaleCapacity",
+  "type": "object",
+  "required": [
+    "minimum",
+    "maximum",
+    "default"
+  ],
+  "properties": {
+    "minimum": {
+      "type": "string",
+      "description": "The minimum number of instances."
+    },
+    "maximum": {
+      "type": "string",
+      "description": "The maximum number of instances."
+    },
+    "default": {
+      "type": "string",
+      "description": "The number of instances when autoscale cannot read metrics."
+    }
+  }
+}

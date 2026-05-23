@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ScaleRule",
+  "title": "ScaleRule",
+  "type": "object",
+  "required": [
+    "metricTrigger",
+    "scaleAction"
+  ],
+  "properties": {
+    "metricTrigger": {
+      "$ref": "#/components/schemas/MetricTrigger"
+    },
+    "scaleAction": {
+      "$ref": "#/components/schemas/ScaleAction"
+    }
+  }
+}

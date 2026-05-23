@@ -1,0 +1,227 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EventData",
+  "title": "EventData",
+  "type": "object",
+  "properties": {
+    "authorization": {
+      "type": "object",
+      "readOnly": true,
+      "properties": {
+        "action": {
+          "type": "string",
+          "description": "The permissible actions."
+        },
+        "role": {
+          "type": "string",
+          "description": "The role of the user."
+        },
+        "scope": {
+          "type": "string",
+          "description": "The scope."
+        }
+      },
+      "description": "The sender authorization information."
+    },
+    "claims": {
+      "type": "object",
+      "readOnly": true,
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Key value pairs to identify ARM permissions."
+    },
+    "caller": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The email address of the user who performed the operation."
+    },
+    "description": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The description of the event."
+    },
+    "id": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The Id of this event."
+    },
+    "eventDataId": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The event data ID."
+    },
+    "correlationId": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The correlation ID, usually a GUID."
+    },
+    "eventName": {
+      "type": "object",
+      "readOnly": true,
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "localizedValue": {
+          "type": "string"
+        }
+      },
+      "description": "The event name."
+    },
+    "category": {
+      "type": "object",
+      "readOnly": true,
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "localizedValue": {
+          "type": "string"
+        }
+      },
+      "description": "The event category."
+    },
+    "httpRequest": {
+      "type": "object",
+      "readOnly": true,
+      "properties": {
+        "clientRequestId": {
+          "type": "string"
+        },
+        "clientIpAddress": {
+          "type": "string"
+        },
+        "method": {
+          "type": "string"
+        },
+        "uri": {
+          "type": "string"
+        }
+      },
+      "description": "The HTTP request info."
+    },
+    "level": {
+      "type": "string",
+      "readOnly": true,
+      "enum": [
+        "Critical",
+        "Error",
+        "Warning",
+        "Informational",
+        "Verbose"
+      ],
+      "description": "The event level."
+    },
+    "resourceGroupName": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The resource group name."
+    },
+    "resourceProviderName": {
+      "type": "object",
+      "readOnly": true,
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "localizedValue": {
+          "type": "string"
+        }
+      },
+      "description": "The resource provider name."
+    },
+    "resourceId": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The resource URI that uniquely identifies the resource."
+    },
+    "resourceType": {
+      "type": "object",
+      "readOnly": true,
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "localizedValue": {
+          "type": "string"
+        }
+      },
+      "description": "The resource type."
+    },
+    "operationId": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The operation ID."
+    },
+    "operationName": {
+      "type": "object",
+      "readOnly": true,
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "localizedValue": {
+          "type": "string"
+        }
+      },
+      "description": "The operation name."
+    },
+    "properties": {
+      "type": "object",
+      "readOnly": true,
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "The set of key-value pairs that includes details about the event."
+    },
+    "status": {
+      "type": "object",
+      "readOnly": true,
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "localizedValue": {
+          "type": "string"
+        }
+      },
+      "description": "The event status."
+    },
+    "subStatus": {
+      "type": "object",
+      "readOnly": true,
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "localizedValue": {
+          "type": "string"
+        }
+      },
+      "description": "The event sub status."
+    },
+    "eventTimestamp": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "description": "The timestamp of when the event was generated."
+    },
+    "submissionTimestamp": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true,
+      "description": "The timestamp of when the event became available for querying."
+    },
+    "subscriptionId": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The Azure subscription ID."
+    },
+    "tenantId": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The Azure tenant ID."
+    }
+  }
+}

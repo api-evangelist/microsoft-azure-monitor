@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DiagnosticSettingsResource",
+  "title": "DiagnosticSettingsResource",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "readOnly": true,
+      "description": "Fully qualified resource ID."
+    },
+    "name": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The name of the resource."
+    },
+    "type": {
+      "type": "string",
+      "readOnly": true,
+      "description": "The type of the resource."
+    },
+    "properties": {
+      "$ref": "#/components/schemas/DiagnosticSettings"
+    },
+    "systemData": {
+      "$ref": "#/components/schemas/SystemData"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ArmRoleReceiver",
+  "title": "ArmRoleReceiver",
+  "type": "object",
+  "required": [
+    "name",
+    "roleId"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the ARM role receiver."
+    },
+    "roleId": {
+      "type": "string",
+      "description": "The ARM role ID."
+    },
+    "useCommonAlertSchema": {
+      "type": "boolean",
+      "default": false,
+      "description": "Indicates whether to use common alert schema."
+    }
+  }
+}

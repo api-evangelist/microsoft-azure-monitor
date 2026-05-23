@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PredictiveResponse",
+  "title": "PredictiveResponse",
+  "type": "object",
+  "properties": {
+    "timespan": {
+      "type": "string",
+      "description": "The timespan for which the data was retrieved."
+    },
+    "interval": {
+      "type": "string",
+      "description": "The interval (window size) for which the metric data was returned."
+    },
+    "metricName": {
+      "type": "string",
+      "description": "The metrics being queried."
+    },
+    "targetResourceId": {
+      "type": "string",
+      "description": "Resource of the predictive metric."
+    },
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "timeStamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The timestamp."
+          },
+          "value": {
+            "type": "number",
+            "format": "double",
+            "description": "The predicted metric value."
+          }
+        }
+      },
+      "description": "The predicted metric values."
+    }
+  }
+}

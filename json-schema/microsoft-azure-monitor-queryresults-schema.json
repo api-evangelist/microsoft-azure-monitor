@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/QueryResults",
+  "title": "QueryResults",
+  "type": "object",
+  "required": [
+    "tables"
+  ],
+  "properties": {
+    "tables": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Table"
+      },
+      "description": "The list of tables, columns and rows."
+    }
+  }
+}
