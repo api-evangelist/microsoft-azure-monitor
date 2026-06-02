@@ -2,12 +2,17 @@
   "repo": "microsoft-azure-monitor",
   "feeds": [
     {
-      "source": "https://azure.microsoft.com/en-us/blog/topics/monitor/",
+      "source": "https://azure.microsoft.com/en-us/blog/topics/monitor/feed/",
       "feed_url": "https://azure.microsoft.com/en-us/blog/topics/monitor/feed/",
-      "title": "Azure Monitor | Microsoft Azure Blog | Microsoft Azure",
-      "saved": 10
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/api/access-api",
+      "error": "HTTPError"
     }
   ],
   "post_count": 20,
-  "fetched": "2026-05-17T20:20:35Z"
+  "fetched": "2026-06-01T23:35:02Z"
 }
