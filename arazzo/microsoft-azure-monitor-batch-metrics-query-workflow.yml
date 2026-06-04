@@ -1,0 +1,127 @@
+arazzo: 1.0.1
+info:
+  title: Azure Monitor Batch Metrics Query
+  summary: Resolve a resource's metric definitions, then batch-query the same metric across many resources at once.
+  description: >-
+    The fleet-wide metrics pattern. The workflow first lists the metric
+    definitions for a representative resource to confirm the metric name and
+    namespace, then issues a single batch query that retrieves those metric
+    values for a list of resources in the same subscription, region, and resource
+    type. Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: metricDefinitionsApi
+  url: ../openapi/azure-monitor-metric-definitions-openapi.yml
+  type: openapi
+- name: metricsBatchApi
+  url: ../openapi/azure-monitor-metrics-batch-openapi.yml
+  type: openapi
+workflows:
+- workflowId: batch-query-metrics
+  summary: Confirm a metric definition, then batch-query that metric across multiple resources.
+  description: >-
+    Resolves the metric definitions for a representative resource and then
+    retrieves the chosen metric values across a list of resource IDs in a single
+    batch request.
+  inputs:
+    type: object
+    required:
+    - subscriptionId
+    - representativeResourceUri
+    - metricNamespace
+    - metricnames
+    - starttime
+    - endtime
+    - resourceids
+    properties:
+      subscriptionId:
+        type: string
+        description: The ID of the target subscription.
+      representativeResourceUri:
+        type: string
+        description: A representative resource used to resolve metric definitions before the batch query.
+      metricNamespace:
+        type: string
+        description: The metric namespace shared by all resources in the batch.
+      metricnames:
+        type: string
+        description: The comma-separated metric names to retrieve.
+      starttime:
+        type: string
+        description: The start time of the batch query in ISO 8601 format.
+      endtime:
+        type: string
+        description: The end time of the batch query in ISO 8601 format.
+      interval:
+        type: string
+        description: The interval (window size) of the query in ISO 8601 duration format.
+      aggregation:
+        type: string
+        description: The comma-separated list of aggregation types to retrieve.
+      resourceids:
+        type: array
+        description: The list of resource IDs to query metrics for; all must share subscription, region, and type.
+        items:
+          type: string
+  steps:
+  - stepId: listMetricDefinitions
+    description: >-
+      List the metric definitions for the representative resource to confirm the
+      metric name and namespace before batching.
+    operationId: MetricDefinitions_List
+    parameters:
+    - name: resourceUri
+      in: path
+      value: $inputs.representativeResourceUri
+    - name: api-version
+      in: query
+      value: '2023-10-01'
+    - name: metricNamespace
+      in: query
+      value: $inputs.metricNamespace
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      definitions: $response.body#/value
+  - stepId: batchGetMetrics
+    description: >-
+      Retrieve the chosen metric values across the supplied resource IDs in a
+      single batch request.
+    operationId: MetricsBatch_Batch
+    parameters:
+    - name: subscriptionId
+      in: path
+      value: $inputs.subscriptionId
+    - name: api-version
+      in: query
+      value: '2024-02-01'
+    - name: starttime
+      in: query
+      value: $inputs.starttime
+    - name: endtime
+      in: query
+      value: $inputs.endtime
+    - name: interval
+      in: query
+      value: $inputs.interval
+    - name: metricnames
+      in: query
+      value: $inputs.metricnames
+    - name: metricNamespace
+      in: query
+      value: $inputs.metricNamespace
+    - name: aggregation
+      in: query
+      value: $inputs.aggregation
+    requestBody:
+      contentType: application/json
+      payload:
+        resourceids: $inputs.resourceids
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      batchValues: $response.body#/values
+  outputs:
+    definitions: $steps.listMetricDefinitions.outputs.definitions
+    batchValues: $steps.batchGetMetrics.outputs.batchValues

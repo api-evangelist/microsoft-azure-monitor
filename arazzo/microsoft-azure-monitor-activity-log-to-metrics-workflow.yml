@@ -1,0 +1,127 @@
+arazzo: 1.0.1
+info:
+  title: Azure Monitor Activity Log To Metrics
+  summary: Pull recent Activity Log events for a subscription, then drill into a resource's metric definitions and values.
+  description: >-
+    The incident triage flow. The workflow first lists recent Activity Log
+    management events for a subscription over a time range, then for a resource
+    of interest lists its metric definitions, and finally reads the metric values
+    for a chosen metric. Every step spells out its request inline so the flow can
+    be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: activityLogApi
+  url: ../openapi/azure-monitor-activity-log-openapi.yml
+  type: openapi
+- name: metricDefinitionsApi
+  url: ../openapi/azure-monitor-metric-definitions-openapi.yml
+  type: openapi
+- name: metricsApi
+  url: ../openapi/azure-monitor-metrics-openapi.yml
+  type: openapi
+workflows:
+- workflowId: triage-activity-and-metrics
+  summary: List Activity Log events, then a resource's metric definitions and metric values.
+  description: >-
+    Lists recent Activity Log events for a subscription, resolves the metric
+    definitions for the resource under investigation, and reads its metric
+    values over the supplied timespan.
+  inputs:
+    type: object
+    required:
+    - subscriptionId
+    - eventFilter
+    - resourceUri
+    - metricnames
+    properties:
+      subscriptionId:
+        type: string
+        description: The ID of the target subscription.
+      eventFilter:
+        type: string
+        description: The required OData $filter including an eventTimestamp time range for the Activity Log query.
+      resourceUri:
+        type: string
+        description: The full ARM resource identifier to inspect metrics for.
+      metricNamespace:
+        type: string
+        description: The metric namespace to scope metric definitions and values to.
+      metricnames:
+        type: string
+        description: The comma-separated metric names to retrieve values for.
+      timespan:
+        type: string
+        description: The timespan of the metrics query in ISO 8601 duration format.
+      interval:
+        type: string
+        description: The interval of the metrics query in ISO 8601 duration format.
+  steps:
+  - stepId: listActivityLog
+    description: >-
+      List the recent Activity Log management events for the subscription using
+      the supplied time-range filter.
+    operationId: ActivityLogs_List
+    parameters:
+    - name: subscriptionId
+      in: path
+      value: $inputs.subscriptionId
+    - name: api-version
+      in: query
+      value: '2015-04-01'
+    - name: $filter
+      in: query
+      value: $inputs.eventFilter
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      events: $response.body#/value
+  - stepId: listMetricDefinitions
+    description: >-
+      List the metric definitions exposed by the resource under investigation.
+    operationId: MetricDefinitions_List
+    parameters:
+    - name: resourceUri
+      in: path
+      value: $inputs.resourceUri
+    - name: api-version
+      in: query
+      value: '2023-10-01'
+    - name: metricNamespace
+      in: query
+      value: $inputs.metricNamespace
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      definitions: $response.body#/value
+  - stepId: listMetrics
+    description: >-
+      Read the metric values for the chosen metric over the supplied timespan
+      and interval.
+    operationId: Metrics_List
+    parameters:
+    - name: resourceUri
+      in: path
+      value: $inputs.resourceUri
+    - name: api-version
+      in: query
+      value: '2023-10-01'
+    - name: timespan
+      in: query
+      value: $inputs.timespan
+    - name: interval
+      in: query
+      value: $inputs.interval
+    - name: metricnames
+      in: query
+      value: $inputs.metricnames
+    - name: metricNamespace
+      in: query
+      value: $inputs.metricNamespace
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      metrics: $response.body#/value
+  outputs:
+    events: $steps.listActivityLog.outputs.events
+    definitions: $steps.listMetricDefinitions.outputs.definitions
+    metrics: $steps.listMetrics.outputs.metrics

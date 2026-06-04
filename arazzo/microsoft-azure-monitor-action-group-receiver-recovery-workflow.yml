@@ -1,0 +1,94 @@
+arazzo: 1.0.1
+info:
+  title: Azure Monitor Action Group Receiver Recovery
+  summary: Read an action group, then re-enable a receiver that had been unsubscribed.
+  description: >-
+    The receiver recovery flow. The workflow reads an action group to confirm it
+    exists and to surface its receivers, then re-enables a named receiver that
+    had previously unsubscribed itself so that it resumes getting alert
+    notifications. Every step spells out its request inline so the flow can be
+    read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: actionGroupsApi
+  url: ../openapi/azure-monitor-action-groups-openapi.yml
+  type: openapi
+workflows:
+- workflowId: recover-action-group-receiver
+  summary: Confirm an action group, then re-enable an unsubscribed receiver in it.
+  description: >-
+    Reads an action group to confirm it exists and surface its receivers, then
+    re-enables the named receiver so it resumes receiving notifications.
+  inputs:
+    type: object
+    required:
+    - subscriptionId
+    - resourceGroupName
+    - actionGroupName
+    - receiverName
+    properties:
+      subscriptionId:
+        type: string
+        description: The ID of the target subscription.
+      resourceGroupName:
+        type: string
+        description: The name of the resource group.
+      actionGroupName:
+        type: string
+        description: The name of the action group containing the receiver.
+      receiverName:
+        type: string
+        description: The name of the receiver to re-enable.
+  steps:
+  - stepId: getActionGroup
+    description: >-
+      Read the action group to confirm it exists and surface its current
+      receivers before re-enabling one.
+    operationId: ActionGroups_Get
+    parameters:
+    - name: subscriptionId
+      in: path
+      value: $inputs.subscriptionId
+    - name: resourceGroupName
+      in: path
+      value: $inputs.resourceGroupName
+    - name: actionGroupName
+      in: path
+      value: $inputs.actionGroupName
+    - name: api-version
+      in: query
+      value: '2022-06-01'
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      actionGroupId: $response.body#/id
+      emailReceivers: $response.body#/properties/emailReceivers
+  - stepId: enableReceiver
+    description: >-
+      Re-enable the named receiver in the action group so it resumes getting
+      alert notifications.
+    operationId: ActionGroups_EnableReceiver
+    parameters:
+    - name: subscriptionId
+      in: path
+      value: $inputs.subscriptionId
+    - name: resourceGroupName
+      in: path
+      value: $inputs.resourceGroupName
+    - name: actionGroupName
+      in: path
+      value: $inputs.actionGroupName
+    - name: api-version
+      in: query
+      value: '2022-06-01'
+    requestBody:
+      contentType: application/json
+      payload:
+        receiverName: $inputs.receiverName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      enabledReceiverStatus: $statusCode
+  outputs:
+    actionGroupId: $steps.getActionGroup.outputs.actionGroupId
+    enabledReceiverStatus: $steps.enableReceiver.outputs.enabledReceiverStatus

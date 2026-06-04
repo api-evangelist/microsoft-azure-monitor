@@ -1,0 +1,187 @@
+arazzo: 1.0.1
+info:
+  title: Azure Monitor Autoscale Setting Provision
+  summary: Create an autoscale setting with a CPU-driven scale rule, confirm it, and pull its predictive metrics.
+  description: >-
+    The elastic-scaling provisioning flow. The workflow creates or updates an
+    autoscale setting whose single profile scales the target resource out and in
+    based on a CPU metric trigger, reads the setting back to confirm it, and then
+    queries the predictive autoscale metrics for it. Every step spells out its
+    ARM request body inline so the flow can be read and executed without opening
+    the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: autoscaleApi
+  url: ../openapi/azure-monitor-autoscale-openapi.yml
+  type: openapi
+workflows:
+- workflowId: provision-autoscale-setting
+  summary: Create an autoscale setting, confirm it, and read its predictive metrics.
+  description: >-
+    Creates an autoscale setting with a single profile that scales out on high
+    CPU and in on low CPU, confirms the setting, and queries its predictive
+    autoscale metrics.
+  inputs:
+    type: object
+    required:
+    - subscriptionId
+    - resourceGroupName
+    - autoscaleSettingName
+    - location
+    - targetResourceUri
+    - metricResourceUri
+    properties:
+      subscriptionId:
+        type: string
+        description: The ID of the target subscription.
+      resourceGroupName:
+        type: string
+        description: The name of the resource group.
+      autoscaleSettingName:
+        type: string
+        description: The autoscale setting name.
+      location:
+        type: string
+        description: The Azure location for the autoscale setting resource.
+      targetResourceUri:
+        type: string
+        description: The resource identifier of the resource to autoscale.
+      metricResourceUri:
+        type: string
+        description: The resource identifier of the resource the scale rule monitors.
+      timespan:
+        type: string
+        description: The timespan of the predictive metrics query in ISO 8601 format.
+      interval:
+        type: string
+        description: The interval of the predictive metrics query in ISO 8601 duration format.
+  steps:
+  - stepId: createAutoscaleSetting
+    description: >-
+      Create or update an autoscale setting with one profile that scales out by
+      one instance on high CPU and in by one instance on low CPU.
+    operationId: AutoscaleSettings_CreateOrUpdate
+    parameters:
+    - name: subscriptionId
+      in: path
+      value: $inputs.subscriptionId
+    - name: resourceGroupName
+      in: path
+      value: $inputs.resourceGroupName
+    - name: autoscaleSettingName
+      in: path
+      value: $inputs.autoscaleSettingName
+    - name: api-version
+      in: query
+      value: '2022-10-01'
+    requestBody:
+      contentType: application/json
+      payload:
+        location: $inputs.location
+        properties:
+          enabled: true
+          targetResourceUri: $inputs.targetResourceUri
+          profiles:
+          - name: defaultProfile
+            capacity:
+              minimum: '1'
+              maximum: '10'
+              default: '1'
+            rules:
+            - metricTrigger:
+                metricName: Percentage CPU
+                metricResourceUri: $inputs.metricResourceUri
+                timeGrain: PT1M
+                statistic: Average
+                timeWindow: PT5M
+                timeAggregation: Average
+                operator: GreaterThan
+                threshold: 75
+              scaleAction:
+                direction: Increase
+                type: ChangeCount
+                value: '1'
+                cooldown: PT5M
+            - metricTrigger:
+                metricName: Percentage CPU
+                metricResourceUri: $inputs.metricResourceUri
+                timeGrain: PT1M
+                statistic: Average
+                timeWindow: PT5M
+                timeAggregation: Average
+                operator: LessThan
+                threshold: 25
+              scaleAction:
+                direction: Decrease
+                type: ChangeCount
+                value: '1'
+                cooldown: PT5M
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      autoscaleSettingId: $response.body#/id
+      autoscaleSettingName: $response.body#/name
+  - stepId: confirmAutoscaleSetting
+    description: >-
+      Read the autoscale setting back to confirm it is enabled and capture its
+      profiles.
+    operationId: AutoscaleSettings_Get
+    parameters:
+    - name: subscriptionId
+      in: path
+      value: $inputs.subscriptionId
+    - name: resourceGroupName
+      in: path
+      value: $inputs.resourceGroupName
+    - name: autoscaleSettingName
+      in: path
+      value: $inputs.autoscaleSettingName
+    - name: api-version
+      in: query
+      value: '2022-10-01'
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      enabled: $response.body#/properties/enabled
+      profiles: $response.body#/properties/profiles
+  - stepId: getPredictiveMetrics
+    description: >-
+      Query the predictive autoscale metric data for the setting over the
+      supplied timespan and interval.
+    operationId: PredictiveMetric_Get
+    parameters:
+    - name: subscriptionId
+      in: path
+      value: $inputs.subscriptionId
+    - name: resourceGroupName
+      in: path
+      value: $inputs.resourceGroupName
+    - name: autoscaleSettingName
+      in: path
+      value: $inputs.autoscaleSettingName
+    - name: api-version
+      in: query
+      value: '2022-10-01'
+    - name: timespan
+      in: query
+      value: $inputs.timespan
+    - name: interval
+      in: query
+      value: $inputs.interval
+    - name: metricNamespace
+      in: query
+      value: microsoft.compute/virtualmachinescalesets
+    - name: metricName
+      in: query
+      value: PercentageCPU
+    - name: aggregation
+      in: query
+      value: Average
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      predictiveData: $response.body
+  outputs:
+    autoscaleSettingId: $steps.createAutoscaleSetting.outputs.autoscaleSettingId
+    enabled: $steps.confirmAutoscaleSetting.outputs.enabled
+    predictiveData: $steps.getPredictiveMetrics.outputs.predictiveData

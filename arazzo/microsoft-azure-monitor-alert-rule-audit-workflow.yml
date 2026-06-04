@@ -1,0 +1,130 @@
+arazzo: 1.0.1
+info:
+  title: Azure Monitor Alert Rule Audit
+  summary: List classic alert rules in a resource group, branch on whether any exist, then inspect and re-tag the first rule.
+  description: >-
+    The alert-rule governance flow. The workflow lists the classic metric alert
+    rules in a resource group and branches: when at least one rule exists it
+    reads the first rule in detail and then patches its tags to mark it as
+    audited, and when none exist it ends. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: alertsApi
+  url: ../openapi/azure-monitor-alerts-openapi.yml
+  type: openapi
+workflows:
+- workflowId: audit-alert-rules
+  summary: List classic alert rules and tag the first one as audited when present.
+  description: >-
+    Lists the classic metric alert rules in a resource group, and when any
+    exist, reads the first rule and patches its tags to record an audit marker.
+  inputs:
+    type: object
+    required:
+    - subscriptionId
+    - resourceGroupName
+    - ruleName
+    - auditTag
+    properties:
+      subscriptionId:
+        type: string
+        description: The ID of the target subscription.
+      resourceGroupName:
+        type: string
+        description: The name of the resource group.
+      ruleName:
+        type: string
+        description: The name of the rule to inspect and tag when rules are present.
+      auditTag:
+        type: string
+        description: The value to write to the audited tag on the rule.
+  steps:
+  - stepId: listAlertRules
+    description: >-
+      List the classic metric alert rules in the resource group and branch on
+      whether any exist.
+    operationId: AlertRules_ListByResourceGroup
+    parameters:
+    - name: resourceGroupName
+      in: path
+      value: $inputs.resourceGroupName
+    - name: subscriptionId
+      in: path
+      value: $inputs.subscriptionId
+    - name: api-version
+      in: query
+      value: '2016-03-01'
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      rules: $response.body#/value
+      firstRuleName: $response.body#/value/0/name
+    onSuccess:
+    - name: rulesExist
+      type: goto
+      stepId: getAlertRule
+      criteria:
+      - context: $response.body
+        condition: $.value.length > 0
+        type: jsonpath
+    - name: noRules
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.value.length == 0
+        type: jsonpath
+  - stepId: getAlertRule
+    description: >-
+      Read the named alert rule in detail to capture its enabled state and
+      condition before tagging it.
+    operationId: AlertRules_Get
+    parameters:
+    - name: resourceGroupName
+      in: path
+      value: $inputs.resourceGroupName
+    - name: ruleName
+      in: path
+      value: $inputs.ruleName
+    - name: subscriptionId
+      in: path
+      value: $inputs.subscriptionId
+    - name: api-version
+      in: query
+      value: '2016-03-01'
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      ruleId: $response.body#/id
+      isEnabled: $response.body#/properties/isEnabled
+  - stepId: tagAlertRule
+    description: >-
+      Patch the alert rule's tags to record that it has been audited.
+    operationId: AlertRules_Update
+    parameters:
+    - name: resourceGroupName
+      in: path
+      value: $inputs.resourceGroupName
+    - name: ruleName
+      in: path
+      value: $inputs.ruleName
+    - name: subscriptionId
+      in: path
+      value: $inputs.subscriptionId
+    - name: api-version
+      in: query
+      value: '2016-03-01'
+    requestBody:
+      contentType: application/json
+      payload:
+        tags:
+          audited: $inputs.auditTag
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      taggedRuleId: $response.body#/id
+  outputs:
+    rules: $steps.listAlertRules.outputs.rules
+    ruleId: $steps.getAlertRule.outputs.ruleId
+    taggedRuleId: $steps.tagAlertRule.outputs.taggedRuleId

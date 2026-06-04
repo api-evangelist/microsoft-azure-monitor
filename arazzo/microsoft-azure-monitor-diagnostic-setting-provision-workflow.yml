@@ -1,0 +1,116 @@
+arazzo: 1.0.1
+info:
+  title: Azure Monitor Diagnostic Setting Provision
+  summary: Inventory existing diagnostic settings on a resource, route its logs and metrics to a destination, and confirm.
+  description: >-
+    The platform-logging onboarding flow. The workflow first lists the
+    diagnostic settings already configured on a resource, then creates or
+    updates a diagnostic setting that routes the resource's platform metrics and
+    logs to a Log Analytics workspace, and finally reads the setting back to
+    confirm the routing. Every step spells out its ARM request body inline so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: diagnosticSettingsApi
+  url: ../openapi/azure-monitor-diagnostic-settings-openapi.yml
+  type: openapi
+workflows:
+- workflowId: provision-diagnostic-setting
+  summary: List, create or update, and confirm a diagnostic setting on a resource.
+  description: >-
+    Surveys the resource's existing diagnostic settings, routes its platform
+    metrics and logs to a Log Analytics workspace, and reads the setting back to
+    confirm.
+  inputs:
+    type: object
+    required:
+    - resourceUri
+    - name
+    - workspaceId
+    properties:
+      resourceUri:
+        type: string
+        description: The identifier of the resource to configure diagnostics for.
+      name:
+        type: string
+        description: The name of the diagnostic setting.
+      workspaceId:
+        type: string
+        description: The full resource ID of the Log Analytics workspace to send diagnostics to.
+      metricCategory:
+        type: string
+        description: The diagnostic metric category to enable (e.g. AllMetrics).
+      logCategoryGroup:
+        type: string
+        description: The diagnostic log category group to enable (e.g. allLogs).
+  steps:
+  - stepId: listDiagnosticSettings
+    description: >-
+      List the diagnostic settings already configured on the resource so the
+      caller can confirm whether the named setting already exists.
+    operationId: DiagnosticSettings_List
+    parameters:
+    - name: resourceUri
+      in: path
+      value: $inputs.resourceUri
+    - name: api-version
+      in: query
+      value: '2021-05-01-preview'
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      existingSettings: $response.body#/value
+  - stepId: createDiagnosticSetting
+    description: >-
+      Create or update the diagnostic setting to route the resource's platform
+      metrics and logs to the supplied Log Analytics workspace.
+    operationId: DiagnosticSettings_CreateOrUpdate
+    parameters:
+    - name: resourceUri
+      in: path
+      value: $inputs.resourceUri
+    - name: name
+      in: path
+      value: $inputs.name
+    - name: api-version
+      in: query
+      value: '2021-05-01-preview'
+    requestBody:
+      contentType: application/json
+      payload:
+        properties:
+          workspaceId: $inputs.workspaceId
+          metrics:
+          - category: $inputs.metricCategory
+            enabled: true
+          logs:
+          - categoryGroup: $inputs.logCategoryGroup
+            enabled: true
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      settingId: $response.body#/id
+      settingName: $response.body#/name
+  - stepId: confirmDiagnosticSetting
+    description: >-
+      Read the diagnostic setting back to confirm the destination workspace and
+      enabled categories were persisted.
+    operationId: DiagnosticSettings_Get
+    parameters:
+    - name: resourceUri
+      in: path
+      value: $inputs.resourceUri
+    - name: name
+      in: path
+      value: $inputs.name
+    - name: api-version
+      in: query
+      value: '2021-05-01-preview'
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      confirmedWorkspaceId: $response.body#/properties/workspaceId
+  outputs:
+    settingId: $steps.createDiagnosticSetting.outputs.settingId
+    confirmedWorkspaceId: $steps.confirmDiagnosticSetting.outputs.confirmedWorkspaceId

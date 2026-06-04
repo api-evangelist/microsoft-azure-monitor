@@ -1,0 +1,166 @@
+arazzo: 1.0.1
+info:
+  title: Azure Monitor Action Group With Metric Alert
+  summary: Create an action group, attach it to a new classic metric alert rule, and confirm the rule.
+  description: >-
+    The core alerting bootstrap for Azure Monitor. The workflow first creates or
+    updates an action group that defines who is notified, then creates a classic
+    metric alert rule whose action references that action group, and finally
+    reads the rule back to confirm it was provisioned. Every step spells out its
+    ARM request body inline so the flow can be read and executed without opening
+    the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: actionGroupsApi
+  url: ../openapi/azure-monitor-action-groups-openapi.yml
+  type: openapi
+- name: alertsApi
+  url: ../openapi/azure-monitor-alerts-openapi.yml
+  type: openapi
+workflows:
+- workflowId: provision-action-group-and-alert
+  summary: Create an action group then a classic metric alert rule that targets it.
+  description: >-
+    Creates an action group with an email receiver, then creates a classic
+    metric alert rule whose email action notifies that receiver, and reads the
+    rule back to confirm provisioning.
+  inputs:
+    type: object
+    required:
+    - subscriptionId
+    - resourceGroupName
+    - actionGroupName
+    - groupShortName
+    - receiverName
+    - emailAddress
+    - ruleName
+    - location
+    - monitoredResourceUri
+    properties:
+      subscriptionId:
+        type: string
+        description: The ID of the target subscription.
+      resourceGroupName:
+        type: string
+        description: The name of the resource group.
+      actionGroupName:
+        type: string
+        description: The name of the action group to create or update.
+      groupShortName:
+        type: string
+        description: The short name of the action group (max 12 characters).
+      receiverName:
+        type: string
+        description: The name of the email receiver inside the action group.
+      emailAddress:
+        type: string
+        description: The email address that should receive notifications.
+      ruleName:
+        type: string
+        description: The name of the classic metric alert rule.
+      location:
+        type: string
+        description: The Azure location for the action group and alert rule resources.
+      monitoredResourceUri:
+        type: string
+        description: The resource identifier the alert rule monitors.
+  steps:
+  - stepId: createActionGroup
+    description: >-
+      Create or update the action group with a single email receiver that will
+      be notified when alerts fire.
+    operationId: ActionGroups_CreateOrUpdate
+    parameters:
+    - name: subscriptionId
+      in: path
+      value: $inputs.subscriptionId
+    - name: resourceGroupName
+      in: path
+      value: $inputs.resourceGroupName
+    - name: actionGroupName
+      in: path
+      value: $inputs.actionGroupName
+    - name: api-version
+      in: query
+      value: '2022-06-01'
+    requestBody:
+      contentType: application/json
+      payload:
+        location: $inputs.location
+        properties:
+          groupShortName: $inputs.groupShortName
+          enabled: true
+          emailReceivers:
+          - name: $inputs.receiverName
+            emailAddress: $inputs.emailAddress
+            useCommonAlertSchema: true
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      actionGroupId: $response.body#/id
+      actionGroupName: $response.body#/name
+  - stepId: createAlertRule
+    description: >-
+      Create or update a classic metric alert rule that monitors the supplied
+      resource and is enabled on creation.
+    operationId: AlertRules_CreateOrUpdate
+    parameters:
+    - name: resourceGroupName
+      in: path
+      value: $inputs.resourceGroupName
+    - name: ruleName
+      in: path
+      value: $inputs.ruleName
+    - name: subscriptionId
+      in: path
+      value: $inputs.subscriptionId
+    - name: api-version
+      in: query
+      value: '2016-03-01'
+    requestBody:
+      contentType: application/json
+      payload:
+        location: $inputs.location
+        properties:
+          name: $inputs.ruleName
+          description: Classic metric alert rule provisioned alongside its action group.
+          isEnabled: true
+          condition:
+            odata.type: Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition
+            dataSource:
+              odata.type: Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource
+              resourceUri: $inputs.monitoredResourceUri
+          actions:
+          - odata.type: Microsoft.Azure.Management.Insights.Models.RuleEmailAction
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      alertRuleId: $response.body#/id
+      alertRuleName: $response.body#/name
+  - stepId: confirmAlertRule
+    description: >-
+      Read the alert rule back to confirm it was created and capture its enabled
+      state and last updated time.
+    operationId: AlertRules_Get
+    parameters:
+    - name: resourceGroupName
+      in: path
+      value: $inputs.resourceGroupName
+    - name: ruleName
+      in: path
+      value: $inputs.ruleName
+    - name: subscriptionId
+      in: path
+      value: $inputs.subscriptionId
+    - name: api-version
+      in: query
+      value: '2016-03-01'
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      isEnabled: $response.body#/properties/isEnabled
+      lastUpdatedTime: $response.body#/properties/lastUpdatedTime
+  outputs:
+    actionGroupId: $steps.createActionGroup.outputs.actionGroupId
+    alertRuleId: $steps.createAlertRule.outputs.alertRuleId
+    isEnabled: $steps.confirmAlertRule.outputs.isEnabled

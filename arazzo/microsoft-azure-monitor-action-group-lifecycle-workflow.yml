@@ -1,0 +1,140 @@
+arazzo: 1.0.1
+info:
+  title: Azure Monitor Action Group Lifecycle
+  summary: Create an action group, read it back, and send a test notification to validate its receivers.
+  description: >-
+    The action-group validation flow. The workflow creates or updates an action
+    group with an email receiver, reads the group back to confirm it, and then
+    sends a test notification to validate that the configured receivers can be
+    reached. Every step spells out its ARM request body inline so the flow can be
+    read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: actionGroupsApi
+  url: ../openapi/azure-monitor-action-groups-openapi.yml
+  type: openapi
+workflows:
+- workflowId: validate-action-group
+  summary: Create an action group, confirm it, and send a test notification.
+  description: >-
+    Creates an action group with an email receiver, reads it back to confirm
+    provisioning, and sends a test notification to validate the receiver.
+  inputs:
+    type: object
+    required:
+    - subscriptionId
+    - resourceGroupName
+    - actionGroupName
+    - groupShortName
+    - receiverName
+    - emailAddress
+    - location
+    properties:
+      subscriptionId:
+        type: string
+        description: The ID of the target subscription.
+      resourceGroupName:
+        type: string
+        description: The name of the resource group.
+      actionGroupName:
+        type: string
+        description: The name of the action group to create or update.
+      groupShortName:
+        type: string
+        description: The short name of the action group (max 12 characters).
+      receiverName:
+        type: string
+        description: The name of the email receiver.
+      emailAddress:
+        type: string
+        description: The email address that should receive notifications.
+      location:
+        type: string
+        description: The Azure location for the action group resource.
+      alertType:
+        type: string
+        description: The supported alert type sent in the test notification.
+  steps:
+  - stepId: createActionGroup
+    description: >-
+      Create or update the action group with a single email receiver.
+    operationId: ActionGroups_CreateOrUpdate
+    parameters:
+    - name: subscriptionId
+      in: path
+      value: $inputs.subscriptionId
+    - name: resourceGroupName
+      in: path
+      value: $inputs.resourceGroupName
+    - name: actionGroupName
+      in: path
+      value: $inputs.actionGroupName
+    - name: api-version
+      in: query
+      value: '2022-06-01'
+    requestBody:
+      contentType: application/json
+      payload:
+        location: $inputs.location
+        properties:
+          groupShortName: $inputs.groupShortName
+          enabled: true
+          emailReceivers:
+          - name: $inputs.receiverName
+            emailAddress: $inputs.emailAddress
+            useCommonAlertSchema: true
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      actionGroupId: $response.body#/id
+  - stepId: confirmActionGroup
+    description: >-
+      Read the action group back to confirm it is enabled and capture its
+      receivers.
+    operationId: ActionGroups_Get
+    parameters:
+    - name: subscriptionId
+      in: path
+      value: $inputs.subscriptionId
+    - name: resourceGroupName
+      in: path
+      value: $inputs.resourceGroupName
+    - name: actionGroupName
+      in: path
+      value: $inputs.actionGroupName
+    - name: api-version
+      in: query
+      value: '2022-06-01'
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      enabled: $response.body#/properties/enabled
+      emailReceivers: $response.body#/properties/emailReceivers
+  - stepId: sendTestNotification
+    description: >-
+      Send a test notification to the email receiver to validate that the action
+      group can deliver alerts.
+    operationId: ActionGroups_PostTestNotifications
+    parameters:
+    - name: subscriptionId
+      in: path
+      value: $inputs.subscriptionId
+    - name: api-version
+      in: query
+      value: '2022-06-01'
+    requestBody:
+      contentType: application/json
+      payload:
+        alertType: $inputs.alertType
+        emailReceivers:
+        - name: $inputs.receiverName
+          emailAddress: $inputs.emailAddress
+          useCommonAlertSchema: true
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      notificationResponse: $response.body
+  outputs:
+    actionGroupId: $steps.createActionGroup.outputs.actionGroupId
+    enabled: $steps.confirmActionGroup.outputs.enabled
+    notificationResponse: $steps.sendTestNotification.outputs.notificationResponse

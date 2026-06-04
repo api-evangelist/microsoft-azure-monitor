@@ -1,0 +1,106 @@
+arazzo: 1.0.1
+info:
+  title: Azure Monitor Resource Metrics Explorer
+  summary: Discover the metric definitions available for a resource and then pull the metric values for them.
+  description: >-
+    The foundational Azure Monitor observability pattern. The workflow first
+    lists the metric definitions exposed by a resource so the caller knows which
+    metric names and namespaces are emittable, and then queries the metric
+    values for a selected metric over a timespan and interval. Every step spells
+    out its request inline so the flow can be read and executed without opening
+    the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: metricDefinitionsApi
+  url: ../openapi/azure-monitor-metric-definitions-openapi.yml
+  type: openapi
+- name: metricsApi
+  url: ../openapi/azure-monitor-metrics-openapi.yml
+  type: openapi
+workflows:
+- workflowId: explore-resource-metrics
+  summary: List a resource's metric definitions, then read the metric values for a chosen metric.
+  description: >-
+    Resolves the metric definitions for the target resource and then queries the
+    metric values for a specified metric name over the supplied timespan and
+    interval.
+  inputs:
+    type: object
+    required:
+    - resourceUri
+    - metricnames
+    properties:
+      resourceUri:
+        type: string
+        description: The full ARM resource identifier to query metrics for (e.g. subscriptions/.../resourceGroups/.../providers/...).
+      metricNamespace:
+        type: string
+        description: The metric namespace to scope metric definitions and values to.
+      metricnames:
+        type: string
+        description: The comma-separated metric names to retrieve values for.
+      timespan:
+        type: string
+        description: The timespan of the query in ISO 8601 duration format (start/end).
+      interval:
+        type: string
+        description: The interval (window size) of the query in ISO 8601 duration format.
+      aggregation:
+        type: string
+        description: The comma-separated list of aggregation types to retrieve.
+  steps:
+  - stepId: listMetricDefinitions
+    description: >-
+      List the metric definitions exposed by the resource so the caller can
+      confirm the metric name and namespace before reading values.
+    operationId: MetricDefinitions_List
+    parameters:
+    - name: resourceUri
+      in: path
+      value: $inputs.resourceUri
+    - name: api-version
+      in: query
+      value: '2023-10-01'
+    - name: metricNamespace
+      in: query
+      value: $inputs.metricNamespace
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      definitions: $response.body#/value
+      firstMetricName: $response.body#/value/0/name/value
+  - stepId: listMetrics
+    description: >-
+      Read the metric values for the requested metric over the supplied timespan
+      and interval.
+    operationId: Metrics_List
+    parameters:
+    - name: resourceUri
+      in: path
+      value: $inputs.resourceUri
+    - name: api-version
+      in: query
+      value: '2023-10-01'
+    - name: timespan
+      in: query
+      value: $inputs.timespan
+    - name: interval
+      in: query
+      value: $inputs.interval
+    - name: metricnames
+      in: query
+      value: $inputs.metricnames
+    - name: aggregation
+      in: query
+      value: $inputs.aggregation
+    - name: metricNamespace
+      in: query
+      value: $inputs.metricNamespace
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      metrics: $response.body#/value
+      metricsTimespan: $response.body#/timespan
+  outputs:
+    definitions: $steps.listMetricDefinitions.outputs.definitions
+    metrics: $steps.listMetrics.outputs.metrics

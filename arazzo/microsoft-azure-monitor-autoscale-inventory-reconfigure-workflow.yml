@@ -1,0 +1,128 @@
+arazzo: 1.0.1
+info:
+  title: Azure Monitor Autoscale Inventory And Reconfigure
+  summary: List autoscale settings in a resource group, branch on whether any exist, then inspect and disable a named setting.
+  description: >-
+    The autoscale governance flow. The workflow lists the autoscale settings in a
+    resource group and branches: when at least one exists it reads a named
+    setting in detail and then patches it to disable autoscaling, and when none
+    exist it ends. Every step spells out its request inline so the flow can be
+    read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: autoscaleApi
+  url: ../openapi/azure-monitor-autoscale-openapi.yml
+  type: openapi
+workflows:
+- workflowId: reconfigure-autoscale-settings
+  summary: List autoscale settings and disable a named setting when present.
+  description: >-
+    Lists the autoscale settings in a resource group and, when any exist, reads
+    the named setting and patches it to disable autoscaling.
+  inputs:
+    type: object
+    required:
+    - subscriptionId
+    - resourceGroupName
+    - autoscaleSettingName
+    properties:
+      subscriptionId:
+        type: string
+        description: The ID of the target subscription.
+      resourceGroupName:
+        type: string
+        description: The name of the resource group.
+      autoscaleSettingName:
+        type: string
+        description: The autoscale setting to inspect and disable when settings are present.
+  steps:
+  - stepId: listAutoscaleSettings
+    description: >-
+      List the autoscale settings in the resource group and branch on whether
+      any exist.
+    operationId: AutoscaleSettings_ListByResourceGroup
+    parameters:
+    - name: subscriptionId
+      in: path
+      value: $inputs.subscriptionId
+    - name: resourceGroupName
+      in: path
+      value: $inputs.resourceGroupName
+    - name: api-version
+      in: query
+      value: '2022-10-01'
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      settings: $response.body#/value
+      firstSettingName: $response.body#/value/0/name
+    onSuccess:
+    - name: settingsExist
+      type: goto
+      stepId: getAutoscaleSetting
+      criteria:
+      - context: $response.body
+        condition: $.value.length > 0
+        type: jsonpath
+    - name: noSettings
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.value.length == 0
+        type: jsonpath
+  - stepId: getAutoscaleSetting
+    description: >-
+      Read the named autoscale setting in detail to capture its enabled state
+      and profiles before reconfiguring it.
+    operationId: AutoscaleSettings_Get
+    parameters:
+    - name: subscriptionId
+      in: path
+      value: $inputs.subscriptionId
+    - name: resourceGroupName
+      in: path
+      value: $inputs.resourceGroupName
+    - name: autoscaleSettingName
+      in: path
+      value: $inputs.autoscaleSettingName
+    - name: api-version
+      in: query
+      value: '2022-10-01'
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      settingId: $response.body#/id
+      enabled: $response.body#/properties/enabled
+      profiles: $response.body#/properties/profiles
+  - stepId: disableAutoscaleSetting
+    description: >-
+      Patch the autoscale setting to disable autoscaling while leaving its
+      profiles intact.
+    operationId: AutoscaleSettings_Update
+    parameters:
+    - name: subscriptionId
+      in: path
+      value: $inputs.subscriptionId
+    - name: resourceGroupName
+      in: path
+      value: $inputs.resourceGroupName
+    - name: autoscaleSettingName
+      in: path
+      value: $inputs.autoscaleSettingName
+    - name: api-version
+      in: query
+      value: '2022-10-01'
+    requestBody:
+      contentType: application/json
+      payload:
+        properties:
+          enabled: false
+          profiles: $steps.getAutoscaleSetting.outputs.profiles
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      updatedEnabled: $response.body#/properties/enabled
+  outputs:
+    settings: $steps.listAutoscaleSettings.outputs.settings
+    settingId: $steps.getAutoscaleSetting.outputs.settingId
+    updatedEnabled: $steps.disableAutoscaleSetting.outputs.updatedEnabled
