@@ -1,0 +1,571 @@
+{
+  "info": {
+    "_postman_id": "1328deac-20fc-46f6-8e1e-5f980797b21f",
+    "name": "Azure Monitor Logs API",
+    "description": "Query and retrieve log data from Azure Monitor Logs and Application Insights using the Kusto Query Language (KQL). Provides access to Log Analytics workspace data and Application Insights telemetry.\n\nContact Support:\n Name: Microsoft Azure Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:11:29.000Z",
+    "updatedAt": "2026-06-05T15:11:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1328deac-20fc-46f6-8e1e-5f980797b21f"
+  },
+  "item": [
+    {
+      "name": "workspaces",
+      "item": [
+        {
+          "name": "{workspaceId}",
+          "item": [
+            {
+              "name": "query",
+              "item": [
+                {
+                  "name": "Azure Monitor Execute a Log Analytics query via GET",
+                  "id": "c90ada76-8789-4132-94de-833a17c91b23",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/workspaces/:workspaceId/query?query=<string>&timespan=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workspaces",
+                        ":workspaceId",
+                        "query"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The Analytics query in KQL format.",
+                          "key": "query",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The timespan over which to query data in ISO 8601 duration format.",
+                          "key": "timespan",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "c37e0f28-7016-43a3-90bc-30fc42255d8d",
+                          "key": "workspaceId",
+                          "value": "<uuid>",
+                          "description": "(Required) ID of the workspace. This is the Workspace ID from the Properties blade in the Azure portal."
+                        }
+                      ]
+                    },
+                    "description": "Executes an Analytics query for data from a Log Analytics workspace using Kusto Query Language (KQL). The query is provided as a query parameter."
+                  },
+                  "response": [
+                    {
+                      "id": "ffb92e80-7153-4ac4-b8dc-89ec86cc7c98",
+                      "name": "Successful query response containing table results.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workspaces/:workspaceId/query?query=<string>&timespan=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workspaces",
+                            ":workspaceId",
+                            "query"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The Analytics query in KQL format.",
+                              "key": "query",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The timespan over which to query data in ISO 8601 duration format.",
+                              "key": "timespan",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "workspaceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"tables\": [\n    {\n      \"name\": \"<string>\",\n      \"columns\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"long\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"real\"\n        }\n      ],\n      \"rows\": [\n        [],\n        []\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"columns\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"long\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"decimal\"\n        }\n      ],\n      \"rows\": [\n        [],\n        []\n      ]\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:11:29.000Z",
+                      "updatedAt": "2026-06-05T15:11:29.000Z",
+                      "uid": "35240-ffb92e80-7153-4ac4-b8dc-89ec86cc7c98"
+                    },
+                    {
+                      "id": "3da27249-847d-4fed-8f92-48e582ab9d42",
+                      "name": "Error response describing why the operation failed.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workspaces/:workspaceId/query?query=<string>&timespan=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workspaces",
+                            ":workspaceId",
+                            "query"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The Analytics query in KQL format.",
+                              "key": "query",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The timespan over which to query data in ISO 8601 duration format.",
+                              "key": "timespan",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "workspaceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:11:29.000Z",
+                      "updatedAt": "2026-06-05T15:11:29.000Z",
+                      "uid": "35240-3da27249-847d-4fed-8f92-48e582ab9d42"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:11:29.000Z",
+                  "updatedAt": "2026-06-05T15:11:29.000Z",
+                  "uid": "35240-c90ada76-8789-4132-94de-833a17c91b23"
+                },
+                {
+                  "name": "Azure Monitor Execute a Log Analytics query via POST",
+                  "id": "349df22e-127a-43a2-b981-a78d3d1f9476",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"query\": \"<string>\",\n  \"timespan\": \"<string>\",\n  \"workspaces\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"applications\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/workspaces/:workspaceId/query",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workspaces",
+                        ":workspaceId",
+                        "query"
+                      ],
+                      "variable": [
+                        {
+                          "id": "233591ba-c196-4c2b-a08a-84d73591c3c8",
+                          "key": "workspaceId",
+                          "value": "<uuid>",
+                          "description": "(Required) ID of the workspace. This is the Workspace ID from the Properties blade in the Azure portal."
+                        }
+                      ]
+                    },
+                    "description": "Executes an Analytics query for data from a Log Analytics workspace using Kusto Query Language (KQL). The query is provided in the request body along with optional parameters."
+                  },
+                  "response": [
+                    {
+                      "id": "9dd3675d-a3a8-4102-9603-2e4c9b48efca",
+                      "name": "Successful query response containing table results.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"query\": \"<string>\",\n  \"timespan\": \"<string>\",\n  \"workspaces\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"applications\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/workspaces/:workspaceId/query",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workspaces",
+                            ":workspaceId",
+                            "query"
+                          ],
+                          "variable": [
+                            {
+                              "key": "workspaceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"tables\": [\n    {\n      \"name\": \"<string>\",\n      \"columns\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"long\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"real\"\n        }\n      ],\n      \"rows\": [\n        [],\n        []\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"columns\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"long\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"decimal\"\n        }\n      ],\n      \"rows\": [\n        [],\n        []\n      ]\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:11:29.000Z",
+                      "updatedAt": "2026-06-05T15:11:29.000Z",
+                      "uid": "35240-9dd3675d-a3a8-4102-9603-2e4c9b48efca"
+                    },
+                    {
+                      "id": "a88ae764-6089-41fd-b0dc-0f0c61eaec23",
+                      "name": "Error response describing why the operation failed.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"query\": \"<string>\",\n  \"timespan\": \"<string>\",\n  \"workspaces\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"applications\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/workspaces/:workspaceId/query",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workspaces",
+                            ":workspaceId",
+                            "query"
+                          ],
+                          "variable": [
+                            {
+                              "key": "workspaceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:11:29.000Z",
+                      "updatedAt": "2026-06-05T15:11:29.000Z",
+                      "uid": "35240-a88ae764-6089-41fd-b0dc-0f0c61eaec23"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:11:29.000Z",
+                  "updatedAt": "2026-06-05T15:11:29.000Z",
+                  "uid": "35240-349df22e-127a-43a2-b981-a78d3d1f9476"
+                }
+              ],
+              "id": "3d2e34d8-0c8f-4f36-b5bc-a2a2c1732206",
+              "createdAt": "2026-06-05T15:11:29.000Z",
+              "updatedAt": "2026-06-05T15:11:29.000Z",
+              "uid": "35240-3d2e34d8-0c8f-4f36-b5bc-a2a2c1732206"
+            },
+            {
+              "name": "metadata",
+              "item": [
+                {
+                  "name": "Azure Monitor Get workspace metadata",
+                  "id": "606bbe4a-f0f4-42ef-a0f2-247103a34cfd",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/workspaces/:workspaceId/metadata",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "workspaces",
+                        ":workspaceId",
+                        "metadata"
+                      ],
+                      "variable": [
+                        {
+                          "id": "0a7ccf13-da55-4793-8807-4364f6fd4473",
+                          "key": "workspaceId",
+                          "value": "<uuid>",
+                          "description": "(Required) ID of the workspace. This is the Workspace ID from the Properties blade in the Azure portal."
+                        }
+                      ]
+                    },
+                    "description": "Gets metadata information about the Log Analytics workspace including available tables, functions, and schemas."
+                  },
+                  "response": [
+                    {
+                      "id": "e599e6b4-4490-4779-bc88-2cac3ed1d19a",
+                      "name": "Successful request to get workspace metadata.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workspaces/:workspaceId/metadata",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workspaces",
+                            ":workspaceId",
+                            "metadata"
+                          ],
+                          "variable": [
+                            {
+                              "key": "workspaceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"tables\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"columns\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"real\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"dynamic\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"columns\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"guid\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"int\"\n        }\n      ]\n    }\n  ],\n  \"functions\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"body\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"body\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:11:29.000Z",
+                      "updatedAt": "2026-06-05T15:11:29.000Z",
+                      "uid": "35240-e599e6b4-4490-4779-bc88-2cac3ed1d19a"
+                    },
+                    {
+                      "id": "481a6621-626d-4baf-ba53-92b2e2692199",
+                      "name": "Error response describing why the operation failed.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workspaces/:workspaceId/metadata",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workspaces",
+                            ":workspaceId",
+                            "metadata"
+                          ],
+                          "variable": [
+                            {
+                              "key": "workspaceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:11:29.000Z",
+                      "updatedAt": "2026-06-05T15:11:29.000Z",
+                      "uid": "35240-481a6621-626d-4baf-ba53-92b2e2692199"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:11:29.000Z",
+                  "updatedAt": "2026-06-05T15:11:29.000Z",
+                  "uid": "35240-606bbe4a-f0f4-42ef-a0f2-247103a34cfd"
+                }
+              ],
+              "id": "029e044b-5934-4e79-89ff-bbf7e8c79ef1",
+              "createdAt": "2026-06-05T15:11:29.000Z",
+              "updatedAt": "2026-06-05T15:11:29.000Z",
+              "uid": "35240-029e044b-5934-4e79-89ff-bbf7e8c79ef1"
+            }
+          ],
+          "id": "732298b2-fc04-4fcb-9d0e-152c05d2696a",
+          "createdAt": "2026-06-05T15:11:29.000Z",
+          "updatedAt": "2026-06-05T15:11:29.000Z",
+          "uid": "35240-732298b2-fc04-4fcb-9d0e-152c05d2696a"
+        }
+      ],
+      "id": "7d8525dd-44a2-4f23-8a86-1ae54a2945e3",
+      "createdAt": "2026-06-05T15:11:29.000Z",
+      "updatedAt": "2026-06-05T15:11:29.000Z",
+      "uid": "35240-7d8525dd-44a2-4f23-8a86-1ae54a2945e3"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://api.loganalytics.io/.default",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.loganalytics.io/v1"
+    }
+  ]
+}

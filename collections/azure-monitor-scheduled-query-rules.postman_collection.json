@@ -1,0 +1,1536 @@
+{
+  "item": [
+    {
+      "id": "1166d3bd-5cd6-4c49-9e36-9aae249eb047",
+      "name": "Scheduled Query Rules",
+      "description": {
+        "content": "Operations for managing scheduled query-based alert rules",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "061433ca-f62f-4e6f-831c-e4afddc12936",
+          "name": "Azure Monitor List scheduled query rules in a subscription",
+          "request": {
+            "name": "Azure Monitor List scheduled query rules in a subscription",
+            "description": {
+              "content": "Retrieve a list of all scheduled query rules defined within a subscription.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "providers",
+                "Microsoft.Insights",
+                "scheduledQueryRules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2021-08-01",
+                  "description": "(Required) Client API version."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "89b51e08-2497-4429-b7d9-43bded239167",
+              "name": "Successful request for a list of scheduled query rules.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "providers",
+                    "Microsoft.Insights",
+                    "scheduledQueryRules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-08-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"location\": \"string\",\n      \"properties\": {\n        \"severity\": 1,\n        \"enabled\": false,\n        \"scopes\": [\n          \"string\",\n          \"string\"\n        ],\n        \"evaluationFrequency\": \"string\",\n        \"windowSize\": \"string\",\n        \"criteria\": {\n          \"allOf\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"createdWithApiVersion\": \"string\",\n        \"isLegacyLogAnalyticsRule\": true,\n        \"description\": \"string\",\n        \"displayName\": \"string\",\n        \"overrideQueryTimeRange\": \"string\",\n        \"targetResourceTypes\": [\n          \"string\",\n          \"string\"\n        ],\n        \"muteActionsDuration\": \"string\",\n        \"actions\": {\n          \"actionGroups\": [\n            \"string\",\n            \"string\"\n          ],\n          \"customProperties\": {\n            \"key_0\": \"string\"\n          }\n        },\n        \"isWorkspaceAlertsStorageConfigured\": false,\n        \"checkWorkspaceAlertsStorageConfigured\": false,\n        \"skipQueryValidation\": true,\n        \"autoMitigate\": true\n      },\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"tags\": {\n        \"key_0\": \"string\"\n      },\n      \"kind\": \"LogAlert\",\n      \"etag\": \"string\",\n      \"systemData\": {\n        \"createdBy\": \"string\",\n        \"createdByType\": \"Key\",\n        \"createdAt\": \"1983-06-13T02:07:57.611Z\",\n        \"lastModifiedBy\": \"string\",\n        \"lastModifiedByType\": \"ManagedIdentity\",\n        \"lastModifiedAt\": \"1950-08-02T14:26:16.722Z\"\n      }\n    },\n    {\n      \"location\": \"string\",\n      \"properties\": {\n        \"severity\": 4,\n        \"enabled\": false,\n        \"scopes\": [\n          \"string\",\n          \"string\"\n        ],\n        \"evaluationFrequency\": \"string\",\n        \"windowSize\": \"string\",\n        \"criteria\": {\n          \"allOf\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"createdWithApiVersion\": \"string\",\n        \"isLegacyLogAnalyticsRule\": true,\n        \"description\": \"string\",\n        \"displayName\": \"string\",\n        \"overrideQueryTimeRange\": \"string\",\n        \"targetResourceTypes\": [\n          \"string\",\n          \"string\"\n        ],\n        \"muteActionsDuration\": \"string\",\n        \"actions\": {\n          \"actionGroups\": [\n            \"string\",\n            \"string\"\n          ],\n          \"customProperties\": {\n            \"key_0\": \"string\"\n          }\n        },\n        \"isWorkspaceAlertsStorageConfigured\": true,\n        \"checkWorkspaceAlertsStorageConfigured\": false,\n        \"skipQueryValidation\": false,\n        \"autoMitigate\": false\n      },\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"tags\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": \"string\"\n      },\n      \"kind\": \"LogToMetric\",\n      \"etag\": \"string\",\n      \"systemData\": {\n        \"createdBy\": \"string\",\n        \"createdByType\": \"ManagedIdentity\",\n        \"createdAt\": \"1946-06-24T17:14:28.208Z\",\n        \"lastModifiedBy\": \"string\",\n        \"lastModifiedByType\": \"Application\",\n        \"lastModifiedAt\": \"2022-02-07T21:03:25.300Z\"\n      }\n    }\n  ],\n  \"nextLink\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3af49904-7017-436d-9fe7-c5cd20ca5589",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "providers",
+                    "Microsoft.Insights",
+                    "scheduledQueryRules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-08-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ba7559fe-1534-47b2-925c-8998328a9226",
+          "name": "Azure Monitor List scheduled query rules in a resource group",
+          "request": {
+            "name": "Azure Monitor List scheduled query rules in a resource group",
+            "description": {
+              "content": "Retrieve a list of scheduled query rules within a resource group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourceGroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Insights",
+                "scheduledQueryRules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2021-08-01",
+                  "description": "(Required) Client API version."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f0c36068-98de-43ea-8a44-3e23381f89cb",
+              "name": "Successful request for a list of scheduled query rules.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "scheduledQueryRules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-08-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"location\": \"string\",\n      \"properties\": {\n        \"severity\": 1,\n        \"enabled\": false,\n        \"scopes\": [\n          \"string\",\n          \"string\"\n        ],\n        \"evaluationFrequency\": \"string\",\n        \"windowSize\": \"string\",\n        \"criteria\": {\n          \"allOf\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"createdWithApiVersion\": \"string\",\n        \"isLegacyLogAnalyticsRule\": true,\n        \"description\": \"string\",\n        \"displayName\": \"string\",\n        \"overrideQueryTimeRange\": \"string\",\n        \"targetResourceTypes\": [\n          \"string\",\n          \"string\"\n        ],\n        \"muteActionsDuration\": \"string\",\n        \"actions\": {\n          \"actionGroups\": [\n            \"string\",\n            \"string\"\n          ],\n          \"customProperties\": {\n            \"key_0\": \"string\"\n          }\n        },\n        \"isWorkspaceAlertsStorageConfigured\": false,\n        \"checkWorkspaceAlertsStorageConfigured\": false,\n        \"skipQueryValidation\": true,\n        \"autoMitigate\": true\n      },\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"tags\": {\n        \"key_0\": \"string\"\n      },\n      \"kind\": \"LogAlert\",\n      \"etag\": \"string\",\n      \"systemData\": {\n        \"createdBy\": \"string\",\n        \"createdByType\": \"Key\",\n        \"createdAt\": \"1983-06-13T02:07:57.611Z\",\n        \"lastModifiedBy\": \"string\",\n        \"lastModifiedByType\": \"ManagedIdentity\",\n        \"lastModifiedAt\": \"1950-08-02T14:26:16.722Z\"\n      }\n    },\n    {\n      \"location\": \"string\",\n      \"properties\": {\n        \"severity\": 4,\n        \"enabled\": false,\n        \"scopes\": [\n          \"string\",\n          \"string\"\n        ],\n        \"evaluationFrequency\": \"string\",\n        \"windowSize\": \"string\",\n        \"criteria\": {\n          \"allOf\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"createdWithApiVersion\": \"string\",\n        \"isLegacyLogAnalyticsRule\": true,\n        \"description\": \"string\",\n        \"displayName\": \"string\",\n        \"overrideQueryTimeRange\": \"string\",\n        \"targetResourceTypes\": [\n          \"string\",\n          \"string\"\n        ],\n        \"muteActionsDuration\": \"string\",\n        \"actions\": {\n          \"actionGroups\": [\n            \"string\",\n            \"string\"\n          ],\n          \"customProperties\": {\n            \"key_0\": \"string\"\n          }\n        },\n        \"isWorkspaceAlertsStorageConfigured\": true,\n        \"checkWorkspaceAlertsStorageConfigured\": false,\n        \"skipQueryValidation\": false,\n        \"autoMitigate\": false\n      },\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"tags\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": \"string\"\n      },\n      \"kind\": \"LogToMetric\",\n      \"etag\": \"string\",\n      \"systemData\": {\n        \"createdBy\": \"string\",\n        \"createdByType\": \"ManagedIdentity\",\n        \"createdAt\": \"1946-06-24T17:14:28.208Z\",\n        \"lastModifiedBy\": \"string\",\n        \"lastModifiedByType\": \"Application\",\n        \"lastModifiedAt\": \"2022-02-07T21:03:25.300Z\"\n      }\n    }\n  ],\n  \"nextLink\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4c8732ea-0b77-4de9-80cf-7e6fbfa42545",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "scheduledQueryRules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-08-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "76c61d0a-1357-498e-8419-a1d3babbe7ea",
+          "name": "Azure Monitor Get a scheduled query rule",
+          "request": {
+            "name": "Azure Monitor Get a scheduled query rule",
+            "description": {
+              "content": "Retrieve a scheduled query rule definition by name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourceGroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Insights",
+                "scheduledQueryRules",
+                ":ruleName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2021-08-01",
+                  "description": "(Required) Client API version."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ruleName",
+                  "description": "(Required) The name of the rule."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5c0b31cd-2db5-4362-a052-6bfedc74f5bf",
+              "name": "Successful request to get a scheduled query rule.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "scheduledQueryRules",
+                    ":ruleName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-08-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleName",
+                      "description": "(Required) The name of the rule."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"location\": \"string\",\n  \"properties\": {\n    \"severity\": 0,\n    \"enabled\": false,\n    \"scopes\": [\n      \"string\",\n      \"string\"\n    ],\n    \"evaluationFrequency\": \"string\",\n    \"windowSize\": \"string\",\n    \"criteria\": {\n      \"allOf\": [\n        {\n          \"query\": \"string\",\n          \"timeAggregation\": \"Count\",\n          \"metricMeasureColumn\": \"string\",\n          \"resourceIdColumn\": \"string\",\n          \"dimensions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"operator\": \"GreaterThan\",\n          \"threshold\": 5490.117990228177,\n          \"failingPeriods\": {\n            \"numberOfEvaluationPeriods\": 1,\n            \"minFailingPeriodsToAlert\": 1\n          },\n          \"metricName\": \"string\"\n        },\n        {\n          \"query\": \"string\",\n          \"timeAggregation\": \"Maximum\",\n          \"metricMeasureColumn\": \"string\",\n          \"resourceIdColumn\": \"string\",\n          \"dimensions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"operator\": \"GreaterThanOrEqual\",\n          \"threshold\": 9298.180254909543,\n          \"failingPeriods\": {\n            \"numberOfEvaluationPeriods\": 1,\n            \"minFailingPeriodsToAlert\": 1\n          },\n          \"metricName\": \"string\"\n        }\n      ]\n    },\n    \"createdWithApiVersion\": \"string\",\n    \"isLegacyLogAnalyticsRule\": true,\n    \"description\": \"string\",\n    \"displayName\": \"string\",\n    \"overrideQueryTimeRange\": \"string\",\n    \"targetResourceTypes\": [\n      \"string\",\n      \"string\"\n    ],\n    \"muteActionsDuration\": \"string\",\n    \"actions\": {\n      \"actionGroups\": [\n        \"string\",\n        \"string\"\n      ],\n      \"customProperties\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      }\n    },\n    \"isWorkspaceAlertsStorageConfigured\": false,\n    \"checkWorkspaceAlertsStorageConfigured\": true,\n    \"skipQueryValidation\": true,\n    \"autoMitigate\": false\n  },\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"tags\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"kind\": \"LogAlert\",\n  \"etag\": \"string\",\n  \"systemData\": {\n    \"createdBy\": \"string\",\n    \"createdByType\": \"Application\",\n    \"createdAt\": \"2024-05-26T08:17:49.822Z\",\n    \"lastModifiedBy\": \"string\",\n    \"lastModifiedByType\": \"Application\",\n    \"lastModifiedAt\": \"2024-08-28T15:22:34.159Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7cbe16a2-9e29-4829-84fb-3da254114710",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "scheduledQueryRules",
+                    ":ruleName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-08-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleName",
+                      "description": "(Required) The name of the rule."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0afb2ddc-3906-44fe-bf92-271f6255ca3e",
+          "name": "Azure Monitor Create or update a scheduled query rule",
+          "request": {
+            "name": "Azure Monitor Create or update a scheduled query rule",
+            "description": {
+              "content": "Creates or updates a scheduled query rule. These rules evaluate log queries at defined intervals and trigger alerts when specified conditions are met.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourceGroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Insights",
+                "scheduledQueryRules",
+                ":ruleName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2021-08-01",
+                  "description": "(Required) Client API version."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ruleName",
+                  "description": "(Required) The name of the rule."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"location\": \"<string>\",\n  \"properties\": {\n    \"severity\": \"<long>\",\n    \"enabled\": \"<boolean>\",\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"evaluationFrequency\": \"<string>\",\n    \"windowSize\": \"<string>\",\n    \"criteria\": {\n      \"allOf\": [\n        {\n          \"query\": \"<string>\",\n          \"timeAggregation\": \"<string>\",\n          \"metricMeasureColumn\": \"<string>\",\n          \"resourceIdColumn\": \"<string>\",\n          \"dimensions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"operator\": \"<string>\",\n          \"threshold\": \"<double>\",\n          \"failingPeriods\": {\n            \"numberOfEvaluationPeriods\": 1,\n            \"minFailingPeriodsToAlert\": 1\n          },\n          \"metricName\": \"<string>\"\n        },\n        {\n          \"query\": \"<string>\",\n          \"timeAggregation\": \"<string>\",\n          \"metricMeasureColumn\": \"<string>\",\n          \"resourceIdColumn\": \"<string>\",\n          \"dimensions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"operator\": \"<string>\",\n          \"threshold\": \"<double>\",\n          \"failingPeriods\": {\n            \"numberOfEvaluationPeriods\": 1,\n            \"minFailingPeriodsToAlert\": 1\n          },\n          \"metricName\": \"<string>\"\n        }\n      ]\n    },\n    \"description\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"overrideQueryTimeRange\": \"<string>\",\n    \"targetResourceTypes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"muteActionsDuration\": \"<string>\",\n    \"actions\": {\n      \"actionGroups\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"customProperties\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    },\n    \"checkWorkspaceAlertsStorageConfigured\": \"<boolean>\",\n    \"skipQueryValidation\": \"<boolean>\",\n    \"autoMitigate\": \"<boolean>\"\n  },\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"kind\": \"<string>\",\n  \"systemData\": {\n    \"createdBy\": \"<string>\",\n    \"createdByType\": \"<string>\",\n    \"createdAt\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByType\": \"<string>\",\n    \"lastModifiedAt\": \"<dateTime>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "aa01c482-7758-453f-a7d3-7ba38956b10b",
+              "name": "Successful request to update a scheduled query rule.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "scheduledQueryRules",
+                    ":ruleName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-08-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleName",
+                      "description": "(Required) The name of the rule."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"location\": \"<string>\",\n  \"properties\": {\n    \"severity\": 1,\n    \"enabled\": false,\n    \"scopes\": [\n      \"string\",\n      \"string\"\n    ],\n    \"evaluationFrequency\": \"string\",\n    \"windowSize\": \"string\",\n    \"criteria\": {\n      \"allOf\": [\n        {\n          \"query\": \"string\",\n          \"timeAggregation\": \"Total\",\n          \"metricMeasureColumn\": \"string\",\n          \"resourceIdColumn\": \"string\",\n          \"dimensions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"operator\": \"LessThanOrEqual\",\n          \"threshold\": 8216.126735433227,\n          \"failingPeriods\": {\n            \"numberOfEvaluationPeriods\": 1,\n            \"minFailingPeriodsToAlert\": 1\n          },\n          \"metricName\": \"string\"\n        },\n        {\n          \"query\": \"string\",\n          \"timeAggregation\": \"Maximum\",\n          \"metricMeasureColumn\": \"string\",\n          \"resourceIdColumn\": \"string\",\n          \"dimensions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"operator\": \"GreaterThanOrEqual\",\n          \"threshold\": 4177.636358298718,\n          \"failingPeriods\": {\n            \"numberOfEvaluationPeriods\": 1,\n            \"minFailingPeriodsToAlert\": 1\n          },\n          \"metricName\": \"string\"\n        }\n      ]\n    },\n    \"description\": \"string\",\n    \"displayName\": \"string\",\n    \"overrideQueryTimeRange\": \"string\",\n    \"targetResourceTypes\": [\n      \"string\",\n      \"string\"\n    ],\n    \"muteActionsDuration\": \"string\",\n    \"actions\": {\n      \"actionGroups\": [\n        \"string\",\n        \"string\"\n      ],\n      \"customProperties\": {\n        \"key_0\": \"string\"\n      }\n    },\n    \"checkWorkspaceAlertsStorageConfigured\": false,\n    \"skipQueryValidation\": false,\n    \"autoMitigate\": true\n  },\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"kind\": \"<string>\",\n  \"systemData\": {\n    \"createdBy\": \"string\",\n    \"createdByType\": \"Key\",\n    \"createdAt\": \"1970-06-15T16:17:08.643Z\",\n    \"lastModifiedBy\": \"string\",\n    \"lastModifiedByType\": \"ManagedIdentity\",\n    \"lastModifiedAt\": \"1968-02-02T19:13:51.902Z\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"location\": \"string\",\n  \"properties\": {\n    \"severity\": 0,\n    \"enabled\": false,\n    \"scopes\": [\n      \"string\",\n      \"string\"\n    ],\n    \"evaluationFrequency\": \"string\",\n    \"windowSize\": \"string\",\n    \"criteria\": {\n      \"allOf\": [\n        {\n          \"query\": \"string\",\n          \"timeAggregation\": \"Count\",\n          \"metricMeasureColumn\": \"string\",\n          \"resourceIdColumn\": \"string\",\n          \"dimensions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"operator\": \"GreaterThan\",\n          \"threshold\": 5490.117990228177,\n          \"failingPeriods\": {\n            \"numberOfEvaluationPeriods\": 1,\n            \"minFailingPeriodsToAlert\": 1\n          },\n          \"metricName\": \"string\"\n        },\n        {\n          \"query\": \"string\",\n          \"timeAggregation\": \"Maximum\",\n          \"metricMeasureColumn\": \"string\",\n          \"resourceIdColumn\": \"string\",\n          \"dimensions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"operator\": \"GreaterThanOrEqual\",\n          \"threshold\": 9298.180254909543,\n          \"failingPeriods\": {\n            \"numberOfEvaluationPeriods\": 1,\n            \"minFailingPeriodsToAlert\": 1\n          },\n          \"metricName\": \"string\"\n        }\n      ]\n    },\n    \"createdWithApiVersion\": \"string\",\n    \"isLegacyLogAnalyticsRule\": true,\n    \"description\": \"string\",\n    \"displayName\": \"string\",\n    \"overrideQueryTimeRange\": \"string\",\n    \"targetResourceTypes\": [\n      \"string\",\n      \"string\"\n    ],\n    \"muteActionsDuration\": \"string\",\n    \"actions\": {\n      \"actionGroups\": [\n        \"string\",\n        \"string\"\n      ],\n      \"customProperties\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      }\n    },\n    \"isWorkspaceAlertsStorageConfigured\": false,\n    \"checkWorkspaceAlertsStorageConfigured\": true,\n    \"skipQueryValidation\": true,\n    \"autoMitigate\": false\n  },\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"tags\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"kind\": \"LogAlert\",\n  \"etag\": \"string\",\n  \"systemData\": {\n    \"createdBy\": \"string\",\n    \"createdByType\": \"Application\",\n    \"createdAt\": \"2024-05-26T08:17:49.822Z\",\n    \"lastModifiedBy\": \"string\",\n    \"lastModifiedByType\": \"Application\",\n    \"lastModifiedAt\": \"2024-08-28T15:22:34.159Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "75b451e5-1f23-4edb-8322-8eae0250b4a1",
+              "name": "Created new scheduled query rule successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "scheduledQueryRules",
+                    ":ruleName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-08-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleName",
+                      "description": "(Required) The name of the rule."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"location\": \"<string>\",\n  \"properties\": {\n    \"severity\": 1,\n    \"enabled\": false,\n    \"scopes\": [\n      \"string\",\n      \"string\"\n    ],\n    \"evaluationFrequency\": \"string\",\n    \"windowSize\": \"string\",\n    \"criteria\": {\n      \"allOf\": [\n        {\n          \"query\": \"string\",\n          \"timeAggregation\": \"Total\",\n          \"metricMeasureColumn\": \"string\",\n          \"resourceIdColumn\": \"string\",\n          \"dimensions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"operator\": \"LessThanOrEqual\",\n          \"threshold\": 8216.126735433227,\n          \"failingPeriods\": {\n            \"numberOfEvaluationPeriods\": 1,\n            \"minFailingPeriodsToAlert\": 1\n          },\n          \"metricName\": \"string\"\n        },\n        {\n          \"query\": \"string\",\n          \"timeAggregation\": \"Maximum\",\n          \"metricMeasureColumn\": \"string\",\n          \"resourceIdColumn\": \"string\",\n          \"dimensions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"operator\": \"GreaterThanOrEqual\",\n          \"threshold\": 4177.636358298718,\n          \"failingPeriods\": {\n            \"numberOfEvaluationPeriods\": 1,\n            \"minFailingPeriodsToAlert\": 1\n          },\n          \"metricName\": \"string\"\n        }\n      ]\n    },\n    \"description\": \"string\",\n    \"displayName\": \"string\",\n    \"overrideQueryTimeRange\": \"string\",\n    \"targetResourceTypes\": [\n      \"string\",\n      \"string\"\n    ],\n    \"muteActionsDuration\": \"string\",\n    \"actions\": {\n      \"actionGroups\": [\n        \"string\",\n        \"string\"\n      ],\n      \"customProperties\": {\n        \"key_0\": \"string\"\n      }\n    },\n    \"checkWorkspaceAlertsStorageConfigured\": false,\n    \"skipQueryValidation\": false,\n    \"autoMitigate\": true\n  },\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"kind\": \"<string>\",\n  \"systemData\": {\n    \"createdBy\": \"string\",\n    \"createdByType\": \"Key\",\n    \"createdAt\": \"1970-06-15T16:17:08.643Z\",\n    \"lastModifiedBy\": \"string\",\n    \"lastModifiedByType\": \"ManagedIdentity\",\n    \"lastModifiedAt\": \"1968-02-02T19:13:51.902Z\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"location\": \"string\",\n  \"properties\": {\n    \"severity\": 0,\n    \"enabled\": false,\n    \"scopes\": [\n      \"string\",\n      \"string\"\n    ],\n    \"evaluationFrequency\": \"string\",\n    \"windowSize\": \"string\",\n    \"criteria\": {\n      \"allOf\": [\n        {\n          \"query\": \"string\",\n          \"timeAggregation\": \"Count\",\n          \"metricMeasureColumn\": \"string\",\n          \"resourceIdColumn\": \"string\",\n          \"dimensions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"operator\": \"GreaterThan\",\n          \"threshold\": 5490.117990228177,\n          \"failingPeriods\": {\n            \"numberOfEvaluationPeriods\": 1,\n            \"minFailingPeriodsToAlert\": 1\n          },\n          \"metricName\": \"string\"\n        },\n        {\n          \"query\": \"string\",\n          \"timeAggregation\": \"Maximum\",\n          \"metricMeasureColumn\": \"string\",\n          \"resourceIdColumn\": \"string\",\n          \"dimensions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"operator\": \"GreaterThanOrEqual\",\n          \"threshold\": 9298.180254909543,\n          \"failingPeriods\": {\n            \"numberOfEvaluationPeriods\": 1,\n            \"minFailingPeriodsToAlert\": 1\n          },\n          \"metricName\": \"string\"\n        }\n      ]\n    },\n    \"createdWithApiVersion\": \"string\",\n    \"isLegacyLogAnalyticsRule\": true,\n    \"description\": \"string\",\n    \"displayName\": \"string\",\n    \"overrideQueryTimeRange\": \"string\",\n    \"targetResourceTypes\": [\n      \"string\",\n      \"string\"\n    ],\n    \"muteActionsDuration\": \"string\",\n    \"actions\": {\n      \"actionGroups\": [\n        \"string\",\n        \"string\"\n      ],\n      \"customProperties\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      }\n    },\n    \"isWorkspaceAlertsStorageConfigured\": false,\n    \"checkWorkspaceAlertsStorageConfigured\": true,\n    \"skipQueryValidation\": true,\n    \"autoMitigate\": false\n  },\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"tags\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"kind\": \"LogAlert\",\n  \"etag\": \"string\",\n  \"systemData\": {\n    \"createdBy\": \"string\",\n    \"createdByType\": \"Application\",\n    \"createdAt\": \"2024-05-26T08:17:49.822Z\",\n    \"lastModifiedBy\": \"string\",\n    \"lastModifiedByType\": \"Application\",\n    \"lastModifiedAt\": \"2024-08-28T15:22:34.159Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "944190aa-6690-45a6-815b-12a911dff532",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "scheduledQueryRules",
+                    ":ruleName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-08-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleName",
+                      "description": "(Required) The name of the rule."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"location\": \"<string>\",\n  \"properties\": {\n    \"severity\": 1,\n    \"enabled\": false,\n    \"scopes\": [\n      \"string\",\n      \"string\"\n    ],\n    \"evaluationFrequency\": \"string\",\n    \"windowSize\": \"string\",\n    \"criteria\": {\n      \"allOf\": [\n        {\n          \"query\": \"string\",\n          \"timeAggregation\": \"Total\",\n          \"metricMeasureColumn\": \"string\",\n          \"resourceIdColumn\": \"string\",\n          \"dimensions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"operator\": \"LessThanOrEqual\",\n          \"threshold\": 8216.126735433227,\n          \"failingPeriods\": {\n            \"numberOfEvaluationPeriods\": 1,\n            \"minFailingPeriodsToAlert\": 1\n          },\n          \"metricName\": \"string\"\n        },\n        {\n          \"query\": \"string\",\n          \"timeAggregation\": \"Maximum\",\n          \"metricMeasureColumn\": \"string\",\n          \"resourceIdColumn\": \"string\",\n          \"dimensions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"operator\": \"GreaterThanOrEqual\",\n          \"threshold\": 4177.636358298718,\n          \"failingPeriods\": {\n            \"numberOfEvaluationPeriods\": 1,\n            \"minFailingPeriodsToAlert\": 1\n          },\n          \"metricName\": \"string\"\n        }\n      ]\n    },\n    \"description\": \"string\",\n    \"displayName\": \"string\",\n    \"overrideQueryTimeRange\": \"string\",\n    \"targetResourceTypes\": [\n      \"string\",\n      \"string\"\n    ],\n    \"muteActionsDuration\": \"string\",\n    \"actions\": {\n      \"actionGroups\": [\n        \"string\",\n        \"string\"\n      ],\n      \"customProperties\": {\n        \"key_0\": \"string\"\n      }\n    },\n    \"checkWorkspaceAlertsStorageConfigured\": false,\n    \"skipQueryValidation\": false,\n    \"autoMitigate\": true\n  },\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"kind\": \"<string>\",\n  \"systemData\": {\n    \"createdBy\": \"string\",\n    \"createdByType\": \"Key\",\n    \"createdAt\": \"1970-06-15T16:17:08.643Z\",\n    \"lastModifiedBy\": \"string\",\n    \"lastModifiedByType\": \"ManagedIdentity\",\n    \"lastModifiedAt\": \"1968-02-02T19:13:51.902Z\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c7d7819f-cb10-46c6-847f-76792ab43780",
+          "name": "Azure Monitor Update a scheduled query rule",
+          "request": {
+            "name": "Azure Monitor Update a scheduled query rule",
+            "description": {
+              "content": "Update a scheduled query rule. Allows partial updates to an existing rule.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourceGroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Insights",
+                "scheduledQueryRules",
+                ":ruleName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2021-08-01",
+                  "description": "(Required) Client API version."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ruleName",
+                  "description": "(Required) The name of the rule."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tags\": {\n    \"key_0\": \"<string>\"\n  },\n  \"properties\": {\n    \"severity\": \"<long>\",\n    \"enabled\": \"<boolean>\",\n    \"scopes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"evaluationFrequency\": \"<string>\",\n    \"windowSize\": \"<string>\",\n    \"criteria\": {\n      \"allOf\": [\n        {\n          \"query\": \"<string>\",\n          \"timeAggregation\": \"<string>\",\n          \"metricMeasureColumn\": \"<string>\",\n          \"resourceIdColumn\": \"<string>\",\n          \"dimensions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"operator\": \"<string>\",\n          \"threshold\": \"<double>\",\n          \"failingPeriods\": {\n            \"numberOfEvaluationPeriods\": 1,\n            \"minFailingPeriodsToAlert\": 1\n          },\n          \"metricName\": \"<string>\"\n        },\n        {\n          \"query\": \"<string>\",\n          \"timeAggregation\": \"<string>\",\n          \"metricMeasureColumn\": \"<string>\",\n          \"resourceIdColumn\": \"<string>\",\n          \"dimensions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"operator\": \"<string>\",\n          \"threshold\": \"<double>\",\n          \"failingPeriods\": {\n            \"numberOfEvaluationPeriods\": 1,\n            \"minFailingPeriodsToAlert\": 1\n          },\n          \"metricName\": \"<string>\"\n        }\n      ]\n    },\n    \"description\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"overrideQueryTimeRange\": \"<string>\",\n    \"targetResourceTypes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"muteActionsDuration\": \"<string>\",\n    \"actions\": {\n      \"actionGroups\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"customProperties\": {\n        \"key_0\": \"<string>\"\n      }\n    },\n    \"checkWorkspaceAlertsStorageConfigured\": \"<boolean>\",\n    \"skipQueryValidation\": \"<boolean>\",\n    \"autoMitigate\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2815e3e2-184f-45b5-b323-d7ff1227593c",
+              "name": "Successful request to update a scheduled query rule.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "scheduledQueryRules",
+                    ":ruleName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-08-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleName",
+                      "description": "(Required) The name of the rule."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tags\": {\n    \"key_0\": \"<string>\"\n  },\n  \"properties\": {\n    \"severity\": 0,\n    \"enabled\": true,\n    \"scopes\": [\n      \"string\",\n      \"string\"\n    ],\n    \"evaluationFrequency\": \"string\",\n    \"windowSize\": \"string\",\n    \"criteria\": {\n      \"allOf\": [\n        {\n          \"query\": \"string\",\n          \"timeAggregation\": \"Count\",\n          \"metricMeasureColumn\": \"string\",\n          \"resourceIdColumn\": \"string\",\n          \"dimensions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"operator\": \"LessThan\",\n          \"threshold\": 1160.5333039177856,\n          \"failingPeriods\": {\n            \"numberOfEvaluationPeriods\": 1,\n            \"minFailingPeriodsToAlert\": 1\n          },\n          \"metricName\": \"string\"\n        },\n        {\n          \"query\": \"string\",\n          \"timeAggregation\": \"Count\",\n          \"metricMeasureColumn\": \"string\",\n          \"resourceIdColumn\": \"string\",\n          \"dimensions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"operator\": \"LessThanOrEqual\",\n          \"threshold\": 8001.334069398714,\n          \"failingPeriods\": {\n            \"numberOfEvaluationPeriods\": 1,\n            \"minFailingPeriodsToAlert\": 1\n          },\n          \"metricName\": \"string\"\n        }\n      ]\n    },\n    \"description\": \"string\",\n    \"displayName\": \"string\",\n    \"overrideQueryTimeRange\": \"string\",\n    \"targetResourceTypes\": [\n      \"string\",\n      \"string\"\n    ],\n    \"muteActionsDuration\": \"string\",\n    \"actions\": {\n      \"actionGroups\": [\n        \"string\",\n        \"string\"\n      ],\n      \"customProperties\": {\n        \"key_0\": \"string\"\n      }\n    },\n    \"checkWorkspaceAlertsStorageConfigured\": true,\n    \"skipQueryValidation\": true,\n    \"autoMitigate\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"location\": \"string\",\n  \"properties\": {\n    \"severity\": 0,\n    \"enabled\": false,\n    \"scopes\": [\n      \"string\",\n      \"string\"\n    ],\n    \"evaluationFrequency\": \"string\",\n    \"windowSize\": \"string\",\n    \"criteria\": {\n      \"allOf\": [\n        {\n          \"query\": \"string\",\n          \"timeAggregation\": \"Count\",\n          \"metricMeasureColumn\": \"string\",\n          \"resourceIdColumn\": \"string\",\n          \"dimensions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"operator\": \"GreaterThan\",\n          \"threshold\": 5490.117990228177,\n          \"failingPeriods\": {\n            \"numberOfEvaluationPeriods\": 1,\n            \"minFailingPeriodsToAlert\": 1\n          },\n          \"metricName\": \"string\"\n        },\n        {\n          \"query\": \"string\",\n          \"timeAggregation\": \"Maximum\",\n          \"metricMeasureColumn\": \"string\",\n          \"resourceIdColumn\": \"string\",\n          \"dimensions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"operator\": \"GreaterThanOrEqual\",\n          \"threshold\": 9298.180254909543,\n          \"failingPeriods\": {\n            \"numberOfEvaluationPeriods\": 1,\n            \"minFailingPeriodsToAlert\": 1\n          },\n          \"metricName\": \"string\"\n        }\n      ]\n    },\n    \"createdWithApiVersion\": \"string\",\n    \"isLegacyLogAnalyticsRule\": true,\n    \"description\": \"string\",\n    \"displayName\": \"string\",\n    \"overrideQueryTimeRange\": \"string\",\n    \"targetResourceTypes\": [\n      \"string\",\n      \"string\"\n    ],\n    \"muteActionsDuration\": \"string\",\n    \"actions\": {\n      \"actionGroups\": [\n        \"string\",\n        \"string\"\n      ],\n      \"customProperties\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      }\n    },\n    \"isWorkspaceAlertsStorageConfigured\": false,\n    \"checkWorkspaceAlertsStorageConfigured\": true,\n    \"skipQueryValidation\": true,\n    \"autoMitigate\": false\n  },\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"tags\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"kind\": \"LogAlert\",\n  \"etag\": \"string\",\n  \"systemData\": {\n    \"createdBy\": \"string\",\n    \"createdByType\": \"Application\",\n    \"createdAt\": \"2024-05-26T08:17:49.822Z\",\n    \"lastModifiedBy\": \"string\",\n    \"lastModifiedByType\": \"Application\",\n    \"lastModifiedAt\": \"2024-08-28T15:22:34.159Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ffb818ef-57fc-4b2e-bc3e-fe22d45768e9",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "scheduledQueryRules",
+                    ":ruleName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-08-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleName",
+                      "description": "(Required) The name of the rule."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tags\": {\n    \"key_0\": \"<string>\"\n  },\n  \"properties\": {\n    \"severity\": 0,\n    \"enabled\": true,\n    \"scopes\": [\n      \"string\",\n      \"string\"\n    ],\n    \"evaluationFrequency\": \"string\",\n    \"windowSize\": \"string\",\n    \"criteria\": {\n      \"allOf\": [\n        {\n          \"query\": \"string\",\n          \"timeAggregation\": \"Count\",\n          \"metricMeasureColumn\": \"string\",\n          \"resourceIdColumn\": \"string\",\n          \"dimensions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"operator\": \"LessThan\",\n          \"threshold\": 1160.5333039177856,\n          \"failingPeriods\": {\n            \"numberOfEvaluationPeriods\": 1,\n            \"minFailingPeriodsToAlert\": 1\n          },\n          \"metricName\": \"string\"\n        },\n        {\n          \"query\": \"string\",\n          \"timeAggregation\": \"Count\",\n          \"metricMeasureColumn\": \"string\",\n          \"resourceIdColumn\": \"string\",\n          \"dimensions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"operator\": \"LessThanOrEqual\",\n          \"threshold\": 8001.334069398714,\n          \"failingPeriods\": {\n            \"numberOfEvaluationPeriods\": 1,\n            \"minFailingPeriodsToAlert\": 1\n          },\n          \"metricName\": \"string\"\n        }\n      ]\n    },\n    \"description\": \"string\",\n    \"displayName\": \"string\",\n    \"overrideQueryTimeRange\": \"string\",\n    \"targetResourceTypes\": [\n      \"string\",\n      \"string\"\n    ],\n    \"muteActionsDuration\": \"string\",\n    \"actions\": {\n      \"actionGroups\": [\n        \"string\",\n        \"string\"\n      ],\n      \"customProperties\": {\n        \"key_0\": \"string\"\n      }\n    },\n    \"checkWorkspaceAlertsStorageConfigured\": true,\n    \"skipQueryValidation\": true,\n    \"autoMitigate\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2c03bcd9-b106-4db5-bdbd-4c487c411315",
+          "name": "Azure Monitor Delete a scheduled query rule",
+          "request": {
+            "name": "Azure Monitor Delete a scheduled query rule",
+            "description": {
+              "content": "Deletes a scheduled query rule from a resource group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourceGroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Insights",
+                "scheduledQueryRules",
+                ":ruleName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2021-08-01",
+                  "description": "(Required) Client API version."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ruleName",
+                  "description": "(Required) The name of the rule."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f610f194-f597-4931-90cf-ebb5f4ac4979",
+              "name": "Successful request to delete a scheduled query rule.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "scheduledQueryRules",
+                    ":ruleName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-08-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleName",
+                      "description": "(Required) The name of the rule."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "12ead239-28ca-4e9a-a288-5e109e75601e",
+              "name": "Resource does not exist. The request was still successful.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "scheduledQueryRules",
+                    ":ruleName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-08-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleName",
+                      "description": "(Required) The name of the rule."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "45997103-e97d-4995-b3ac-d3db088c7b37",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "scheduledQueryRules",
+                    ":ruleName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-08-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleName",
+                      "description": "(Required) The name of the rule."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://management.azure.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://management.azure.com/.default"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e05113b4-f109-4c45-a013-4d4e5a1ee62b",
+    "name": "Azure Monitor Scheduled Query Rules API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Create and manage log search alert rules that automatically evaluate log queries at regular intervals and fire alerts when conditions are met.\n\nContact Support:\n Name: Microsoft Azure Support",
+      "type": "text/plain"
+    }
+  }
+}

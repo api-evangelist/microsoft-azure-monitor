@@ -1,0 +1,1048 @@
+{
+  "info": {
+    "_postman_id": "1501f885-24df-475a-bdb4-e06f116b32b4",
+    "name": "Azure Monitor Metrics API",
+    "description": "Provides access to Azure Monitor platform metric definitions and values for Azure resources, including performance counters, custom metrics, and time-series data.\n\nContact Support:\n Name: Microsoft Azure Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:11:24.000Z",
+    "updatedAt": "2026-06-05T15:11:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1501f885-24df-475a-bdb4-e06f116b32b4"
+  },
+  "item": [
+    {
+      "name": "subscriptions",
+      "item": [
+        {
+          "name": "{subscriptionId}",
+          "item": [
+            {
+              "name": "providers",
+              "item": [
+                {
+                  "name": "Microsoft.Insights",
+                  "item": [
+                    {
+                      "name": "metrics",
+                      "item": [
+                        {
+                          "name": "Azure Monitor List metrics at subscription scope",
+                          "id": "207522c8-246a-4cff-a035-c9fe2d2741c3",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/subscriptions/:subscriptionId/providers/Microsoft.Insights/metrics?api-version=2023-10-01&region=<string>&timespan=<string>&interval=PT1M&metricnames=<string>&aggregation=<string>&$filter=<string>&top=10&orderBy=<string>&resultType=Metadata&metricNamespace=<string>&AutoAdjustTimegrain=<boolean>&ValidateDimensions=<boolean>&rollUpBy=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "subscriptions",
+                                ":subscriptionId",
+                                "providers",
+                                "Microsoft.Insights",
+                                "metrics"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) Client API version.",
+                                  "key": "api-version",
+                                  "value": "2023-10-01"
+                                },
+                                {
+                                  "description": "The region where the metrics you want reside.",
+                                  "key": "region",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The timespan of the query in ISO 8601 duration format (startDateTime_ISO/endDateTime_ISO).",
+                                  "key": "timespan",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The interval (window size) of the query in ISO 8601 duration format.",
+                                  "key": "interval",
+                                  "value": "PT1M"
+                                },
+                                {
+                                  "description": "The names of the metrics (comma-separated) to retrieve. Maximum of 20.",
+                                  "key": "metricnames",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The list of aggregation types (comma-separated) to retrieve.",
+                                  "key": "aggregation",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The $filter is used to reduce the set of metric data returned. Uses OData filter expressions.",
+                                  "key": "$filter",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The maximum number of records to retrieve. Defaults to 10.",
+                                  "key": "top",
+                                  "value": "10"
+                                },
+                                {
+                                  "description": "The aggregation to use for sorting results and the direction of the sort.",
+                                  "key": "orderBy",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Reduces the set of data collected. Data or Metadata.",
+                                  "key": "resultType",
+                                  "value": "Metadata"
+                                },
+                                {
+                                  "description": "Metric namespace to query metric definitions for.",
+                                  "key": "metricNamespace",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "If set to true, the time grain is automatically adjusted based on the timespan.",
+                                  "key": "AutoAdjustTimegrain",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "If set to false, invalid filter parameter values will be ignored.",
+                                  "key": "ValidateDimensions",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Dimension name(s) to rollup results by.",
+                                  "key": "rollUpBy",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "8e1b638e-1442-418f-a0e5-b7c47630890a",
+                                  "key": "subscriptionId",
+                                  "value": "<string>",
+                                  "description": "(Required) The ID of the target subscription."
+                                }
+                              ]
+                            },
+                            "description": "Lists the metric values for a subscription. The $filter parameter is used to reduce the set of metric data returned. Only some dimensions are available for subscriptions."
+                          },
+                          "response": [
+                            {
+                              "id": "e49390f8-d00e-4dcf-ae1c-43e9bace54db",
+                              "name": "Successful request to get the list of metric values.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/subscriptions/:subscriptionId/providers/Microsoft.Insights/metrics?api-version=2023-10-01&region=<string>&timespan=<string>&interval=PT1M&metricnames=<string>&aggregation=<string>&$filter=<string>&top=10&orderBy=<string>&resultType=Metadata&metricNamespace=<string>&AutoAdjustTimegrain=<boolean>&ValidateDimensions=<boolean>&rollUpBy=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "subscriptions",
+                                    ":subscriptionId",
+                                    "providers",
+                                    "Microsoft.Insights",
+                                    "metrics"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) Client API version.",
+                                      "key": "api-version",
+                                      "value": "2023-10-01"
+                                    },
+                                    {
+                                      "description": "The region where the metrics you want reside.",
+                                      "key": "region",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "The timespan of the query in ISO 8601 duration format (startDateTime_ISO/endDateTime_ISO).",
+                                      "key": "timespan",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "The interval (window size) of the query in ISO 8601 duration format.",
+                                      "key": "interval",
+                                      "value": "PT1M"
+                                    },
+                                    {
+                                      "description": "The names of the metrics (comma-separated) to retrieve. Maximum of 20.",
+                                      "key": "metricnames",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "The list of aggregation types (comma-separated) to retrieve.",
+                                      "key": "aggregation",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "The $filter is used to reduce the set of metric data returned. Uses OData filter expressions.",
+                                      "key": "$filter",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "The maximum number of records to retrieve. Defaults to 10.",
+                                      "key": "top",
+                                      "value": "10"
+                                    },
+                                    {
+                                      "description": "The aggregation to use for sorting results and the direction of the sort.",
+                                      "key": "orderBy",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Reduces the set of data collected. Data or Metadata.",
+                                      "key": "resultType",
+                                      "value": "Metadata"
+                                    },
+                                    {
+                                      "description": "Metric namespace to query metric definitions for.",
+                                      "key": "metricNamespace",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "If set to true, the time grain is automatically adjusted based on the timespan.",
+                                      "key": "AutoAdjustTimegrain",
+                                      "value": "<boolean>"
+                                    },
+                                    {
+                                      "description": "If set to false, invalid filter parameter values will be ignored.",
+                                      "key": "ValidateDimensions",
+                                      "value": "<boolean>"
+                                    },
+                                    {
+                                      "description": "Dimension name(s) to rollup results by.",
+                                      "key": "rollUpBy",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "subscriptionId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"timespan\": \"<string>\",\n  \"value\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": {\n        \"value\": \"<string>\",\n        \"localizedValue\": \"<string>\"\n      },\n      \"unit\": \"Unspecified\",\n      \"timeseries\": [\n        {\n          \"metadatavalues\": [\n            {\n              \"name\": {\n                \"value\": \"<string>\",\n                \"localizedValue\": \"<string>\"\n              },\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": {\n                \"value\": \"<string>\",\n                \"localizedValue\": \"<string>\"\n              },\n              \"value\": \"<string>\"\n            }\n          ],\n          \"data\": [\n            {\n              \"timeStamp\": \"<dateTime>\",\n              \"average\": \"<double>\",\n              \"minimum\": \"<double>\",\n              \"maximum\": \"<double>\",\n              \"total\": \"<double>\",\n              \"count\": \"<double>\"\n            },\n            {\n              \"timeStamp\": \"<dateTime>\",\n              \"average\": \"<double>\",\n              \"minimum\": \"<double>\",\n              \"maximum\": \"<double>\",\n              \"total\": \"<double>\",\n              \"count\": \"<double>\"\n            }\n          ]\n        },\n        {\n          \"metadatavalues\": [\n            {\n              \"name\": {\n                \"value\": \"<string>\",\n                \"localizedValue\": \"<string>\"\n              },\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": {\n                \"value\": \"<string>\",\n                \"localizedValue\": \"<string>\"\n              },\n              \"value\": \"<string>\"\n            }\n          ],\n          \"data\": [\n            {\n              \"timeStamp\": \"<dateTime>\",\n              \"average\": \"<double>\",\n              \"minimum\": \"<double>\",\n              \"maximum\": \"<double>\",\n              \"total\": \"<double>\",\n              \"count\": \"<double>\"\n            },\n            {\n              \"timeStamp\": \"<dateTime>\",\n              \"average\": \"<double>\",\n              \"minimum\": \"<double>\",\n              \"maximum\": \"<double>\",\n              \"total\": \"<double>\",\n              \"count\": \"<double>\"\n            }\n          ]\n        }\n      ],\n      \"displayDescription\": \"<string>\",\n      \"errorCode\": \"<string>\",\n      \"errorMessage\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": {\n        \"value\": \"<string>\",\n        \"localizedValue\": \"<string>\"\n      },\n      \"unit\": \"ByteSeconds\",\n      \"timeseries\": [\n        {\n          \"metadatavalues\": [\n            {\n              \"name\": {\n                \"value\": \"<string>\",\n                \"localizedValue\": \"<string>\"\n              },\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": {\n                \"value\": \"<string>\",\n                \"localizedValue\": \"<string>\"\n              },\n              \"value\": \"<string>\"\n            }\n          ],\n          \"data\": [\n            {\n              \"timeStamp\": \"<dateTime>\",\n              \"average\": \"<double>\",\n              \"minimum\": \"<double>\",\n              \"maximum\": \"<double>\",\n              \"total\": \"<double>\",\n              \"count\": \"<double>\"\n            },\n            {\n              \"timeStamp\": \"<dateTime>\",\n              \"average\": \"<double>\",\n              \"minimum\": \"<double>\",\n              \"maximum\": \"<double>\",\n              \"total\": \"<double>\",\n              \"count\": \"<double>\"\n            }\n          ]\n        },\n        {\n          \"metadatavalues\": [\n            {\n              \"name\": {\n                \"value\": \"<string>\",\n                \"localizedValue\": \"<string>\"\n              },\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": {\n                \"value\": \"<string>\",\n                \"localizedValue\": \"<string>\"\n              },\n              \"value\": \"<string>\"\n            }\n          ],\n          \"data\": [\n            {\n              \"timeStamp\": \"<dateTime>\",\n              \"average\": \"<double>\",\n              \"minimum\": \"<double>\",\n              \"maximum\": \"<double>\",\n              \"total\": \"<double>\",\n              \"count\": \"<double>\"\n            },\n            {\n              \"timeStamp\": \"<dateTime>\",\n              \"average\": \"<double>\",\n              \"minimum\": \"<double>\",\n              \"maximum\": \"<double>\",\n              \"total\": \"<double>\",\n              \"count\": \"<double>\"\n            }\n          ]\n        }\n      ],\n      \"displayDescription\": \"<string>\",\n      \"errorCode\": \"<string>\",\n      \"errorMessage\": \"<string>\"\n    }\n  ],\n  \"cost\": \"<integer>\",\n  \"interval\": \"<string>\",\n  \"namespace\": \"<string>\",\n  \"resourceregion\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:11:25.000Z",
+                              "updatedAt": "2026-06-05T15:11:25.000Z",
+                              "uid": "35240-e49390f8-d00e-4dcf-ae1c-43e9bace54db"
+                            },
+                            {
+                              "id": "a7492b7a-7f16-44fb-ba9b-8e10b20b0463",
+                              "name": "Error response describing why the operation failed.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/subscriptions/:subscriptionId/providers/Microsoft.Insights/metrics?api-version=2023-10-01&region=<string>&timespan=<string>&interval=PT1M&metricnames=<string>&aggregation=<string>&$filter=<string>&top=10&orderBy=<string>&resultType=Metadata&metricNamespace=<string>&AutoAdjustTimegrain=<boolean>&ValidateDimensions=<boolean>&rollUpBy=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "subscriptions",
+                                    ":subscriptionId",
+                                    "providers",
+                                    "Microsoft.Insights",
+                                    "metrics"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) Client API version.",
+                                      "key": "api-version",
+                                      "value": "2023-10-01"
+                                    },
+                                    {
+                                      "description": "The region where the metrics you want reside.",
+                                      "key": "region",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "The timespan of the query in ISO 8601 duration format (startDateTime_ISO/endDateTime_ISO).",
+                                      "key": "timespan",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "The interval (window size) of the query in ISO 8601 duration format.",
+                                      "key": "interval",
+                                      "value": "PT1M"
+                                    },
+                                    {
+                                      "description": "The names of the metrics (comma-separated) to retrieve. Maximum of 20.",
+                                      "key": "metricnames",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "The list of aggregation types (comma-separated) to retrieve.",
+                                      "key": "aggregation",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "The $filter is used to reduce the set of metric data returned. Uses OData filter expressions.",
+                                      "key": "$filter",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "The maximum number of records to retrieve. Defaults to 10.",
+                                      "key": "top",
+                                      "value": "10"
+                                    },
+                                    {
+                                      "description": "The aggregation to use for sorting results and the direction of the sort.",
+                                      "key": "orderBy",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Reduces the set of data collected. Data or Metadata.",
+                                      "key": "resultType",
+                                      "value": "Metadata"
+                                    },
+                                    {
+                                      "description": "Metric namespace to query metric definitions for.",
+                                      "key": "metricNamespace",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "If set to true, the time grain is automatically adjusted based on the timespan.",
+                                      "key": "AutoAdjustTimegrain",
+                                      "value": "<boolean>"
+                                    },
+                                    {
+                                      "description": "If set to false, invalid filter parameter values will be ignored.",
+                                      "key": "ValidateDimensions",
+                                      "value": "<boolean>"
+                                    },
+                                    {
+                                      "description": "Dimension name(s) to rollup results by.",
+                                      "key": "rollUpBy",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "subscriptionId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:11:25.000Z",
+                              "updatedAt": "2026-06-05T15:11:25.000Z",
+                              "uid": "35240-a7492b7a-7f16-44fb-ba9b-8e10b20b0463"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:11:25.000Z",
+                          "updatedAt": "2026-06-05T15:11:25.000Z",
+                          "uid": "35240-207522c8-246a-4cff-a035-c9fe2d2741c3"
+                        },
+                        {
+                          "name": "Azure Monitor List metrics at subscription scope via POST",
+                          "id": "cfc26ea8-626d-44c4-b130-92b4418fcc83",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"timespan\": \"<string>\",\n  \"interval\": \"<string>\",\n  \"metricNames\": \"<string>\",\n  \"aggregation\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"top\": \"<integer>\",\n  \"orderBy\": \"<string>\",\n  \"rollUpBy\": \"<string>\",\n  \"resultType\": \"Data\",\n  \"metricNamespace\": \"<string>\",\n  \"autoAdjustTimegrain\": \"<boolean>\",\n  \"validateDimensions\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/subscriptions/:subscriptionId/providers/Microsoft.Insights/metrics?api-version=2023-10-01&region=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "subscriptions",
+                                ":subscriptionId",
+                                "providers",
+                                "Microsoft.Insights",
+                                "metrics"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) Client API version.",
+                                  "key": "api-version",
+                                  "value": "2023-10-01"
+                                },
+                                {
+                                  "description": "The region where the metrics you want reside.",
+                                  "key": "region",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "bd4aa88b-ed4e-4180-8d85-43321cb10e3b",
+                                  "key": "subscriptionId",
+                                  "value": "<string>",
+                                  "description": "(Required) The ID of the target subscription."
+                                }
+                              ]
+                            },
+                            "description": "Lists the metric values for a subscription using a POST request. Allows the same filtering as the GET variant but with a request body for complex queries."
+                          },
+                          "response": [
+                            {
+                              "id": "39baf913-cd7a-41bf-a46f-82dd15fec206",
+                              "name": "Successful request to get the list of metric values.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"timespan\": \"<string>\",\n  \"interval\": \"<string>\",\n  \"metricNames\": \"<string>\",\n  \"aggregation\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"top\": \"<integer>\",\n  \"orderBy\": \"<string>\",\n  \"rollUpBy\": \"<string>\",\n  \"resultType\": \"Data\",\n  \"metricNamespace\": \"<string>\",\n  \"autoAdjustTimegrain\": \"<boolean>\",\n  \"validateDimensions\": \"<boolean>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/subscriptions/:subscriptionId/providers/Microsoft.Insights/metrics?api-version=2023-10-01&region=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "subscriptions",
+                                    ":subscriptionId",
+                                    "providers",
+                                    "Microsoft.Insights",
+                                    "metrics"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) Client API version.",
+                                      "key": "api-version",
+                                      "value": "2023-10-01"
+                                    },
+                                    {
+                                      "description": "The region where the metrics you want reside.",
+                                      "key": "region",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "subscriptionId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"timespan\": \"<string>\",\n  \"value\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": {\n        \"value\": \"<string>\",\n        \"localizedValue\": \"<string>\"\n      },\n      \"unit\": \"Unspecified\",\n      \"timeseries\": [\n        {\n          \"metadatavalues\": [\n            {\n              \"name\": {\n                \"value\": \"<string>\",\n                \"localizedValue\": \"<string>\"\n              },\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": {\n                \"value\": \"<string>\",\n                \"localizedValue\": \"<string>\"\n              },\n              \"value\": \"<string>\"\n            }\n          ],\n          \"data\": [\n            {\n              \"timeStamp\": \"<dateTime>\",\n              \"average\": \"<double>\",\n              \"minimum\": \"<double>\",\n              \"maximum\": \"<double>\",\n              \"total\": \"<double>\",\n              \"count\": \"<double>\"\n            },\n            {\n              \"timeStamp\": \"<dateTime>\",\n              \"average\": \"<double>\",\n              \"minimum\": \"<double>\",\n              \"maximum\": \"<double>\",\n              \"total\": \"<double>\",\n              \"count\": \"<double>\"\n            }\n          ]\n        },\n        {\n          \"metadatavalues\": [\n            {\n              \"name\": {\n                \"value\": \"<string>\",\n                \"localizedValue\": \"<string>\"\n              },\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": {\n                \"value\": \"<string>\",\n                \"localizedValue\": \"<string>\"\n              },\n              \"value\": \"<string>\"\n            }\n          ],\n          \"data\": [\n            {\n              \"timeStamp\": \"<dateTime>\",\n              \"average\": \"<double>\",\n              \"minimum\": \"<double>\",\n              \"maximum\": \"<double>\",\n              \"total\": \"<double>\",\n              \"count\": \"<double>\"\n            },\n            {\n              \"timeStamp\": \"<dateTime>\",\n              \"average\": \"<double>\",\n              \"minimum\": \"<double>\",\n              \"maximum\": \"<double>\",\n              \"total\": \"<double>\",\n              \"count\": \"<double>\"\n            }\n          ]\n        }\n      ],\n      \"displayDescription\": \"<string>\",\n      \"errorCode\": \"<string>\",\n      \"errorMessage\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": {\n        \"value\": \"<string>\",\n        \"localizedValue\": \"<string>\"\n      },\n      \"unit\": \"ByteSeconds\",\n      \"timeseries\": [\n        {\n          \"metadatavalues\": [\n            {\n              \"name\": {\n                \"value\": \"<string>\",\n                \"localizedValue\": \"<string>\"\n              },\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": {\n                \"value\": \"<string>\",\n                \"localizedValue\": \"<string>\"\n              },\n              \"value\": \"<string>\"\n            }\n          ],\n          \"data\": [\n            {\n              \"timeStamp\": \"<dateTime>\",\n              \"average\": \"<double>\",\n              \"minimum\": \"<double>\",\n              \"maximum\": \"<double>\",\n              \"total\": \"<double>\",\n              \"count\": \"<double>\"\n            },\n            {\n              \"timeStamp\": \"<dateTime>\",\n              \"average\": \"<double>\",\n              \"minimum\": \"<double>\",\n              \"maximum\": \"<double>\",\n              \"total\": \"<double>\",\n              \"count\": \"<double>\"\n            }\n          ]\n        },\n        {\n          \"metadatavalues\": [\n            {\n              \"name\": {\n                \"value\": \"<string>\",\n                \"localizedValue\": \"<string>\"\n              },\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": {\n                \"value\": \"<string>\",\n                \"localizedValue\": \"<string>\"\n              },\n              \"value\": \"<string>\"\n            }\n          ],\n          \"data\": [\n            {\n              \"timeStamp\": \"<dateTime>\",\n              \"average\": \"<double>\",\n              \"minimum\": \"<double>\",\n              \"maximum\": \"<double>\",\n              \"total\": \"<double>\",\n              \"count\": \"<double>\"\n            },\n            {\n              \"timeStamp\": \"<dateTime>\",\n              \"average\": \"<double>\",\n              \"minimum\": \"<double>\",\n              \"maximum\": \"<double>\",\n              \"total\": \"<double>\",\n              \"count\": \"<double>\"\n            }\n          ]\n        }\n      ],\n      \"displayDescription\": \"<string>\",\n      \"errorCode\": \"<string>\",\n      \"errorMessage\": \"<string>\"\n    }\n  ],\n  \"cost\": \"<integer>\",\n  \"interval\": \"<string>\",\n  \"namespace\": \"<string>\",\n  \"resourceregion\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:11:25.000Z",
+                              "updatedAt": "2026-06-05T15:11:25.000Z",
+                              "uid": "35240-39baf913-cd7a-41bf-a46f-82dd15fec206"
+                            },
+                            {
+                              "id": "fcf3a4f1-0473-467d-8d47-8861870b02cd",
+                              "name": "Error response describing why the operation failed.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"timespan\": \"<string>\",\n  \"interval\": \"<string>\",\n  \"metricNames\": \"<string>\",\n  \"aggregation\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"top\": \"<integer>\",\n  \"orderBy\": \"<string>\",\n  \"rollUpBy\": \"<string>\",\n  \"resultType\": \"Data\",\n  \"metricNamespace\": \"<string>\",\n  \"autoAdjustTimegrain\": \"<boolean>\",\n  \"validateDimensions\": \"<boolean>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/subscriptions/:subscriptionId/providers/Microsoft.Insights/metrics?api-version=2023-10-01&region=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "subscriptions",
+                                    ":subscriptionId",
+                                    "providers",
+                                    "Microsoft.Insights",
+                                    "metrics"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) Client API version.",
+                                      "key": "api-version",
+                                      "value": "2023-10-01"
+                                    },
+                                    {
+                                      "description": "The region where the metrics you want reside.",
+                                      "key": "region",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "subscriptionId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:11:25.000Z",
+                              "updatedAt": "2026-06-05T15:11:25.000Z",
+                              "uid": "35240-fcf3a4f1-0473-467d-8d47-8861870b02cd"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:11:25.000Z",
+                          "updatedAt": "2026-06-05T15:11:25.000Z",
+                          "uid": "35240-cfc26ea8-626d-44c4-b130-92b4418fcc83"
+                        }
+                      ],
+                      "id": "66172764-ba44-425e-91e4-56fe011706f1",
+                      "createdAt": "2026-06-05T15:11:25.000Z",
+                      "updatedAt": "2026-06-05T15:11:25.000Z",
+                      "uid": "35240-66172764-ba44-425e-91e4-56fe011706f1"
+                    }
+                  ],
+                  "id": "c14a604b-5f00-43cc-b270-737f48661377",
+                  "createdAt": "2026-06-05T15:11:25.000Z",
+                  "updatedAt": "2026-06-05T15:11:25.000Z",
+                  "uid": "35240-c14a604b-5f00-43cc-b270-737f48661377"
+                }
+              ],
+              "id": "b9378b88-8022-4256-a6f1-7cabeb5cfaa5",
+              "createdAt": "2026-06-05T15:11:25.000Z",
+              "updatedAt": "2026-06-05T15:11:25.000Z",
+              "uid": "35240-b9378b88-8022-4256-a6f1-7cabeb5cfaa5"
+            }
+          ],
+          "id": "224db66c-ef3c-40bb-823e-c89ea60479bd",
+          "createdAt": "2026-06-05T15:11:25.000Z",
+          "updatedAt": "2026-06-05T15:11:25.000Z",
+          "uid": "35240-224db66c-ef3c-40bb-823e-c89ea60479bd"
+        }
+      ],
+      "id": "c9535a74-6d24-48d7-8738-0d70c42056a5",
+      "createdAt": "2026-06-05T15:11:25.000Z",
+      "updatedAt": "2026-06-05T15:11:25.000Z",
+      "uid": "35240-c9535a74-6d24-48d7-8738-0d70c42056a5"
+    },
+    {
+      "name": "{resourceUri}",
+      "item": [
+        {
+          "name": "providers",
+          "item": [
+            {
+              "name": "Microsoft.Insights",
+              "item": [
+                {
+                  "name": "metrics",
+                  "item": [
+                    {
+                      "name": "Azure Monitor List metrics for a resource",
+                      "id": "ed019927-1205-4466-8b2e-baba68a3c60d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/:resourceUri/providers/Microsoft.Insights/metrics?api-version=2023-10-01&timespan=<string>&interval=PT1M&metricnames=<string>&aggregation=<string>&$filter=<string>&top=10&orderBy=<string>&resultType=Metadata&metricNamespace=<string>&AutoAdjustTimegrain=<boolean>&ValidateDimensions=<boolean>&rollUpBy=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            ":resourceUri",
+                            "providers",
+                            "Microsoft.Insights",
+                            "metrics"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Client API version.",
+                              "key": "api-version",
+                              "value": "2023-10-01"
+                            },
+                            {
+                              "description": "The timespan of the query in ISO 8601 duration format (startDateTime_ISO/endDateTime_ISO).",
+                              "key": "timespan",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The interval (window size) of the query in ISO 8601 duration format.",
+                              "key": "interval",
+                              "value": "PT1M"
+                            },
+                            {
+                              "description": "The names of the metrics (comma-separated) to retrieve. Maximum of 20.",
+                              "key": "metricnames",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The list of aggregation types (comma-separated) to retrieve.",
+                              "key": "aggregation",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The $filter is used to reduce the set of metric data returned. Uses OData filter expressions.",
+                              "key": "$filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The maximum number of records to retrieve. Defaults to 10.",
+                              "key": "top",
+                              "value": "10"
+                            },
+                            {
+                              "description": "The aggregation to use for sorting results and the direction of the sort.",
+                              "key": "orderBy",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Reduces the set of data collected. Data or Metadata.",
+                              "key": "resultType",
+                              "value": "Metadata"
+                            },
+                            {
+                              "description": "Metric namespace to query metric definitions for.",
+                              "key": "metricNamespace",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "If set to true, the time grain is automatically adjusted based on the timespan.",
+                              "key": "AutoAdjustTimegrain",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "If set to false, invalid filter parameter values will be ignored.",
+                              "key": "ValidateDimensions",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Dimension name(s) to rollup results by.",
+                              "key": "rollUpBy",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "197b4aef-1699-47a9-ac83-abd3384641eb",
+                              "key": "resourceUri",
+                              "value": "<string>",
+                              "description": "(Required) The identifier of the resource."
+                            }
+                          ]
+                        },
+                        "description": "Lists the metric values for a resource. The $filter parameter is used to reduce the set of metric data returned."
+                      },
+                      "response": [
+                        {
+                          "id": "0898de50-b8e8-4420-8bcb-f35e3120f960",
+                          "name": "Successful request to get the list of metric values.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/:resourceUri/providers/Microsoft.Insights/metrics?api-version=2023-10-01&timespan=<string>&interval=PT1M&metricnames=<string>&aggregation=<string>&$filter=<string>&top=10&orderBy=<string>&resultType=Metadata&metricNamespace=<string>&AutoAdjustTimegrain=<boolean>&ValidateDimensions=<boolean>&rollUpBy=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":resourceUri",
+                                "providers",
+                                "Microsoft.Insights",
+                                "metrics"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) Client API version.",
+                                  "key": "api-version",
+                                  "value": "2023-10-01"
+                                },
+                                {
+                                  "description": "The timespan of the query in ISO 8601 duration format (startDateTime_ISO/endDateTime_ISO).",
+                                  "key": "timespan",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The interval (window size) of the query in ISO 8601 duration format.",
+                                  "key": "interval",
+                                  "value": "PT1M"
+                                },
+                                {
+                                  "description": "The names of the metrics (comma-separated) to retrieve. Maximum of 20.",
+                                  "key": "metricnames",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The list of aggregation types (comma-separated) to retrieve.",
+                                  "key": "aggregation",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The $filter is used to reduce the set of metric data returned. Uses OData filter expressions.",
+                                  "key": "$filter",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The maximum number of records to retrieve. Defaults to 10.",
+                                  "key": "top",
+                                  "value": "10"
+                                },
+                                {
+                                  "description": "The aggregation to use for sorting results and the direction of the sort.",
+                                  "key": "orderBy",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Reduces the set of data collected. Data or Metadata.",
+                                  "key": "resultType",
+                                  "value": "Metadata"
+                                },
+                                {
+                                  "description": "Metric namespace to query metric definitions for.",
+                                  "key": "metricNamespace",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "If set to true, the time grain is automatically adjusted based on the timespan.",
+                                  "key": "AutoAdjustTimegrain",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "If set to false, invalid filter parameter values will be ignored.",
+                                  "key": "ValidateDimensions",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Dimension name(s) to rollup results by.",
+                                  "key": "rollUpBy",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "resourceUri"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"timespan\": \"<string>\",\n  \"value\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": {\n        \"value\": \"<string>\",\n        \"localizedValue\": \"<string>\"\n      },\n      \"unit\": \"Unspecified\",\n      \"timeseries\": [\n        {\n          \"metadatavalues\": [\n            {\n              \"name\": {\n                \"value\": \"<string>\",\n                \"localizedValue\": \"<string>\"\n              },\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": {\n                \"value\": \"<string>\",\n                \"localizedValue\": \"<string>\"\n              },\n              \"value\": \"<string>\"\n            }\n          ],\n          \"data\": [\n            {\n              \"timeStamp\": \"<dateTime>\",\n              \"average\": \"<double>\",\n              \"minimum\": \"<double>\",\n              \"maximum\": \"<double>\",\n              \"total\": \"<double>\",\n              \"count\": \"<double>\"\n            },\n            {\n              \"timeStamp\": \"<dateTime>\",\n              \"average\": \"<double>\",\n              \"minimum\": \"<double>\",\n              \"maximum\": \"<double>\",\n              \"total\": \"<double>\",\n              \"count\": \"<double>\"\n            }\n          ]\n        },\n        {\n          \"metadatavalues\": [\n            {\n              \"name\": {\n                \"value\": \"<string>\",\n                \"localizedValue\": \"<string>\"\n              },\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": {\n                \"value\": \"<string>\",\n                \"localizedValue\": \"<string>\"\n              },\n              \"value\": \"<string>\"\n            }\n          ],\n          \"data\": [\n            {\n              \"timeStamp\": \"<dateTime>\",\n              \"average\": \"<double>\",\n              \"minimum\": \"<double>\",\n              \"maximum\": \"<double>\",\n              \"total\": \"<double>\",\n              \"count\": \"<double>\"\n            },\n            {\n              \"timeStamp\": \"<dateTime>\",\n              \"average\": \"<double>\",\n              \"minimum\": \"<double>\",\n              \"maximum\": \"<double>\",\n              \"total\": \"<double>\",\n              \"count\": \"<double>\"\n            }\n          ]\n        }\n      ],\n      \"displayDescription\": \"<string>\",\n      \"errorCode\": \"<string>\",\n      \"errorMessage\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": {\n        \"value\": \"<string>\",\n        \"localizedValue\": \"<string>\"\n      },\n      \"unit\": \"ByteSeconds\",\n      \"timeseries\": [\n        {\n          \"metadatavalues\": [\n            {\n              \"name\": {\n                \"value\": \"<string>\",\n                \"localizedValue\": \"<string>\"\n              },\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": {\n                \"value\": \"<string>\",\n                \"localizedValue\": \"<string>\"\n              },\n              \"value\": \"<string>\"\n            }\n          ],\n          \"data\": [\n            {\n              \"timeStamp\": \"<dateTime>\",\n              \"average\": \"<double>\",\n              \"minimum\": \"<double>\",\n              \"maximum\": \"<double>\",\n              \"total\": \"<double>\",\n              \"count\": \"<double>\"\n            },\n            {\n              \"timeStamp\": \"<dateTime>\",\n              \"average\": \"<double>\",\n              \"minimum\": \"<double>\",\n              \"maximum\": \"<double>\",\n              \"total\": \"<double>\",\n              \"count\": \"<double>\"\n            }\n          ]\n        },\n        {\n          \"metadatavalues\": [\n            {\n              \"name\": {\n                \"value\": \"<string>\",\n                \"localizedValue\": \"<string>\"\n              },\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": {\n                \"value\": \"<string>\",\n                \"localizedValue\": \"<string>\"\n              },\n              \"value\": \"<string>\"\n            }\n          ],\n          \"data\": [\n            {\n              \"timeStamp\": \"<dateTime>\",\n              \"average\": \"<double>\",\n              \"minimum\": \"<double>\",\n              \"maximum\": \"<double>\",\n              \"total\": \"<double>\",\n              \"count\": \"<double>\"\n            },\n            {\n              \"timeStamp\": \"<dateTime>\",\n              \"average\": \"<double>\",\n              \"minimum\": \"<double>\",\n              \"maximum\": \"<double>\",\n              \"total\": \"<double>\",\n              \"count\": \"<double>\"\n            }\n          ]\n        }\n      ],\n      \"displayDescription\": \"<string>\",\n      \"errorCode\": \"<string>\",\n      \"errorMessage\": \"<string>\"\n    }\n  ],\n  \"cost\": \"<integer>\",\n  \"interval\": \"<string>\",\n  \"namespace\": \"<string>\",\n  \"resourceregion\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:11:25.000Z",
+                          "updatedAt": "2026-06-05T15:11:25.000Z",
+                          "uid": "35240-0898de50-b8e8-4420-8bcb-f35e3120f960"
+                        },
+                        {
+                          "id": "18da5fe6-700b-4440-884f-6890cc9d6910",
+                          "name": "Error response describing why the operation failed.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/:resourceUri/providers/Microsoft.Insights/metrics?api-version=2023-10-01&timespan=<string>&interval=PT1M&metricnames=<string>&aggregation=<string>&$filter=<string>&top=10&orderBy=<string>&resultType=Metadata&metricNamespace=<string>&AutoAdjustTimegrain=<boolean>&ValidateDimensions=<boolean>&rollUpBy=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":resourceUri",
+                                "providers",
+                                "Microsoft.Insights",
+                                "metrics"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) Client API version.",
+                                  "key": "api-version",
+                                  "value": "2023-10-01"
+                                },
+                                {
+                                  "description": "The timespan of the query in ISO 8601 duration format (startDateTime_ISO/endDateTime_ISO).",
+                                  "key": "timespan",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The interval (window size) of the query in ISO 8601 duration format.",
+                                  "key": "interval",
+                                  "value": "PT1M"
+                                },
+                                {
+                                  "description": "The names of the metrics (comma-separated) to retrieve. Maximum of 20.",
+                                  "key": "metricnames",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The list of aggregation types (comma-separated) to retrieve.",
+                                  "key": "aggregation",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The $filter is used to reduce the set of metric data returned. Uses OData filter expressions.",
+                                  "key": "$filter",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The maximum number of records to retrieve. Defaults to 10.",
+                                  "key": "top",
+                                  "value": "10"
+                                },
+                                {
+                                  "description": "The aggregation to use for sorting results and the direction of the sort.",
+                                  "key": "orderBy",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Reduces the set of data collected. Data or Metadata.",
+                                  "key": "resultType",
+                                  "value": "Metadata"
+                                },
+                                {
+                                  "description": "Metric namespace to query metric definitions for.",
+                                  "key": "metricNamespace",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "If set to true, the time grain is automatically adjusted based on the timespan.",
+                                  "key": "AutoAdjustTimegrain",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "If set to false, invalid filter parameter values will be ignored.",
+                                  "key": "ValidateDimensions",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Dimension name(s) to rollup results by.",
+                                  "key": "rollUpBy",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "resourceUri"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:11:25.000Z",
+                          "updatedAt": "2026-06-05T15:11:25.000Z",
+                          "uid": "35240-18da5fe6-700b-4440-884f-6890cc9d6910"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:11:25.000Z",
+                      "updatedAt": "2026-06-05T15:11:25.000Z",
+                      "uid": "35240-ed019927-1205-4466-8b2e-baba68a3c60d"
+                    }
+                  ],
+                  "id": "e4c2ba2a-ffbd-48a7-a096-8f13e1768614",
+                  "createdAt": "2026-06-05T15:11:25.000Z",
+                  "updatedAt": "2026-06-05T15:11:25.000Z",
+                  "uid": "35240-e4c2ba2a-ffbd-48a7-a096-8f13e1768614"
+                }
+              ],
+              "id": "e75bc9b7-41b1-4e57-a759-e19eedacca56",
+              "createdAt": "2026-06-05T15:11:25.000Z",
+              "updatedAt": "2026-06-05T15:11:25.000Z",
+              "uid": "35240-e75bc9b7-41b1-4e57-a759-e19eedacca56"
+            }
+          ],
+          "id": "4971f034-5a83-4680-86bb-2233e42b711e",
+          "createdAt": "2026-06-05T15:11:25.000Z",
+          "updatedAt": "2026-06-05T15:11:25.000Z",
+          "uid": "35240-4971f034-5a83-4680-86bb-2233e42b711e"
+        }
+      ],
+      "id": "02151fe8-3281-42c4-88a1-63f11e9c80b6",
+      "createdAt": "2026-06-05T15:11:25.000Z",
+      "updatedAt": "2026-06-05T15:11:25.000Z",
+      "uid": "35240-02151fe8-3281-42c4-88a1-63f11e9c80b6"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://management.azure.com/.default",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://management.azure.com"
+    }
+  ]
+}

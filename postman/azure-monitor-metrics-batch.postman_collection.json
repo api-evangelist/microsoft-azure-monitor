@@ -1,0 +1,423 @@
+{
+  "info": {
+    "_postman_id": "63b8148f-6c1a-4db3-9b10-8b528563cb13",
+    "name": "Azure Monitor Metrics Batch API",
+    "description": "A high-volume API designed for retrieving metric values across multiple Azure resources in a single request. All resources in a batch must be in the same subscription and region.\n\nContact Support:\n Name: Microsoft Azure Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:11:27.000Z",
+    "updatedAt": "2026-06-05T15:11:27.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-63b8148f-6c1a-4db3-9b10-8b528563cb13"
+  },
+  "item": [
+    {
+      "name": "subscriptions",
+      "item": [
+        {
+          "name": "{subscriptionId}",
+          "item": [
+            {
+              "name": "metrics:batchGet",
+              "item": [
+                {
+                  "name": "Azure Monitor Batch query metrics for multiple resources",
+                  "id": "008b2f2d-40f6-48b6-b491-c6950bd80ae1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"resourceids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/subscriptions/:subscriptionId/metrics:batchGet?api-version=2024-02-01&starttime=<dateTime>&endtime=<dateTime>&interval=PT1M&metricnames=<string>&metricNamespace=<string>&aggregation=<string>&top=<integer>&orderBy=<string>&$filter=<string>&rollUpBy=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "subscriptions",
+                        ":subscriptionId",
+                        "metrics:batchGet"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Client API version.",
+                          "key": "api-version",
+                          "value": "2024-02-01"
+                        },
+                        {
+                          "description": "(Required) The start time of the query in ISO 8601 format.",
+                          "key": "starttime",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "(Required) The end time of the query in ISO 8601 format.",
+                          "key": "endtime",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "The interval (window size) of the query in ISO 8601 duration format.",
+                          "key": "interval",
+                          "value": "PT1M"
+                        },
+                        {
+                          "description": "(Required) The names of the metrics (comma-separated) to retrieve.",
+                          "key": "metricnames",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Metric namespace that contains the requested metric names.",
+                          "key": "metricNamespace",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The list of aggregation types (comma-separated) to retrieve.",
+                          "key": "aggregation",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The maximum number of records to retrieve per resource.",
+                          "key": "top",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The aggregation to use for sorting results and the direction of the sort.",
+                          "key": "orderBy",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The $filter used to reduce the set of metric data returned.",
+                          "key": "$filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Dimension name(s) to rollup results by.",
+                          "key": "rollUpBy",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "6be1d359-aec5-49e2-a02c-1ffe44997ed9",
+                          "key": "subscriptionId",
+                          "value": "<string>",
+                          "description": "(Required) The ID of the target subscription."
+                        }
+                      ]
+                    },
+                    "description": "Lists the metric values for multiple resources in a single batch request. All resources must be in the same subscription, region, and resource type. Allows for efficient retrieval of metric data at scale."
+                  },
+                  "response": [
+                    {
+                      "id": "02701ee2-7bd2-4f25-93a2-04dcdd1fdfd6",
+                      "name": "Successful batch request to get metrics for multiple resources.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"resourceids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:subscriptionId/metrics:batchGet?api-version=2024-02-01&starttime=<dateTime>&endtime=<dateTime>&interval=PT1M&metricnames=<string>&metricNamespace=<string>&aggregation=<string>&top=<integer>&orderBy=<string>&$filter=<string>&rollUpBy=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":subscriptionId",
+                            "metrics:batchGet"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Client API version.",
+                              "key": "api-version",
+                              "value": "2024-02-01"
+                            },
+                            {
+                              "description": "(Required) The start time of the query in ISO 8601 format.",
+                              "key": "starttime",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "(Required) The end time of the query in ISO 8601 format.",
+                              "key": "endtime",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "The interval (window size) of the query in ISO 8601 duration format.",
+                              "key": "interval",
+                              "value": "PT1M"
+                            },
+                            {
+                              "description": "(Required) The names of the metrics (comma-separated) to retrieve.",
+                              "key": "metricnames",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) Metric namespace that contains the requested metric names.",
+                              "key": "metricNamespace",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The list of aggregation types (comma-separated) to retrieve.",
+                              "key": "aggregation",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The maximum number of records to retrieve per resource.",
+                              "key": "top",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The aggregation to use for sorting results and the direction of the sort.",
+                              "key": "orderBy",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The $filter used to reduce the set of metric data returned.",
+                              "key": "$filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Dimension name(s) to rollup results by.",
+                              "key": "rollUpBy",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "subscriptionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"values\": [\n    {\n      \"starttime\": \"<string>\",\n      \"endtime\": \"<string>\",\n      \"interval\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"resourceregion\": \"<string>\",\n      \"resourceid\": \"<string>\",\n      \"value\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"name\": {\n            \"value\": \"<string>\",\n            \"localizedValue\": \"<string>\"\n          },\n          \"unit\": \"CountPerSecond\",\n          \"timeseries\": [\n            {\n              \"metadatavalues\": [\n                {\n                  \"name\": {\n                    \"value\": \"<string>\",\n                    \"localizedValue\": \"<string>\"\n                  },\n                  \"value\": \"<string>\"\n                },\n                {\n                  \"name\": {\n                    \"value\": \"<string>\",\n                    \"localizedValue\": \"<string>\"\n                  },\n                  \"value\": \"<string>\"\n                }\n              ],\n              \"data\": [\n                {\n                  \"timeStamp\": \"<dateTime>\",\n                  \"average\": \"<double>\",\n                  \"minimum\": \"<double>\",\n                  \"maximum\": \"<double>\",\n                  \"total\": \"<double>\",\n                  \"count\": \"<double>\"\n                },\n                {\n                  \"timeStamp\": \"<dateTime>\",\n                  \"average\": \"<double>\",\n                  \"minimum\": \"<double>\",\n                  \"maximum\": \"<double>\",\n                  \"total\": \"<double>\",\n                  \"count\": \"<double>\"\n                }\n              ]\n            },\n            {\n              \"metadatavalues\": [\n                {\n                  \"name\": {\n                    \"value\": \"<string>\",\n                    \"localizedValue\": \"<string>\"\n                  },\n                  \"value\": \"<string>\"\n                },\n                {\n                  \"name\": {\n                    \"value\": \"<string>\",\n                    \"localizedValue\": \"<string>\"\n                  },\n                  \"value\": \"<string>\"\n                }\n              ],\n              \"data\": [\n                {\n                  \"timeStamp\": \"<dateTime>\",\n                  \"average\": \"<double>\",\n                  \"minimum\": \"<double>\",\n                  \"maximum\": \"<double>\",\n                  \"total\": \"<double>\",\n                  \"count\": \"<double>\"\n                },\n                {\n                  \"timeStamp\": \"<dateTime>\",\n                  \"average\": \"<double>\",\n                  \"minimum\": \"<double>\",\n                  \"maximum\": \"<double>\",\n                  \"total\": \"<double>\",\n                  \"count\": \"<double>\"\n                }\n              ]\n            }\n          ],\n          \"displayDescription\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"name\": {\n            \"value\": \"<string>\",\n            \"localizedValue\": \"<string>\"\n          },\n          \"unit\": \"Percent\",\n          \"timeseries\": [\n            {\n              \"metadatavalues\": [\n                {\n                  \"name\": {\n                    \"value\": \"<string>\",\n                    \"localizedValue\": \"<string>\"\n                  },\n                  \"value\": \"<string>\"\n                },\n                {\n                  \"name\": {\n                    \"value\": \"<string>\",\n                    \"localizedValue\": \"<string>\"\n                  },\n                  \"value\": \"<string>\"\n                }\n              ],\n              \"data\": [\n                {\n                  \"timeStamp\": \"<dateTime>\",\n                  \"average\": \"<double>\",\n                  \"minimum\": \"<double>\",\n                  \"maximum\": \"<double>\",\n                  \"total\": \"<double>\",\n                  \"count\": \"<double>\"\n                },\n                {\n                  \"timeStamp\": \"<dateTime>\",\n                  \"average\": \"<double>\",\n                  \"minimum\": \"<double>\",\n                  \"maximum\": \"<double>\",\n                  \"total\": \"<double>\",\n                  \"count\": \"<double>\"\n                }\n              ]\n            },\n            {\n              \"metadatavalues\": [\n                {\n                  \"name\": {\n                    \"value\": \"<string>\",\n                    \"localizedValue\": \"<string>\"\n                  },\n                  \"value\": \"<string>\"\n                },\n                {\n                  \"name\": {\n                    \"value\": \"<string>\",\n                    \"localizedValue\": \"<string>\"\n                  },\n                  \"value\": \"<string>\"\n                }\n              ],\n              \"data\": [\n                {\n                  \"timeStamp\": \"<dateTime>\",\n                  \"average\": \"<double>\",\n                  \"minimum\": \"<double>\",\n                  \"maximum\": \"<double>\",\n                  \"total\": \"<double>\",\n                  \"count\": \"<double>\"\n                },\n                {\n                  \"timeStamp\": \"<dateTime>\",\n                  \"average\": \"<double>\",\n                  \"minimum\": \"<double>\",\n                  \"maximum\": \"<double>\",\n                  \"total\": \"<double>\",\n                  \"count\": \"<double>\"\n                }\n              ]\n            }\n          ],\n          \"displayDescription\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"starttime\": \"<string>\",\n      \"endtime\": \"<string>\",\n      \"interval\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"resourceregion\": \"<string>\",\n      \"resourceid\": \"<string>\",\n      \"value\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"name\": {\n            \"value\": \"<string>\",\n            \"localizedValue\": \"<string>\"\n          },\n          \"unit\": \"MilliSeconds\",\n          \"timeseries\": [\n            {\n              \"metadatavalues\": [\n                {\n                  \"name\": {\n                    \"value\": \"<string>\",\n                    \"localizedValue\": \"<string>\"\n                  },\n                  \"value\": \"<string>\"\n                },\n                {\n                  \"name\": {\n                    \"value\": \"<string>\",\n                    \"localizedValue\": \"<string>\"\n                  },\n                  \"value\": \"<string>\"\n                }\n              ],\n              \"data\": [\n                {\n                  \"timeStamp\": \"<dateTime>\",\n                  \"average\": \"<double>\",\n                  \"minimum\": \"<double>\",\n                  \"maximum\": \"<double>\",\n                  \"total\": \"<double>\",\n                  \"count\": \"<double>\"\n                },\n                {\n                  \"timeStamp\": \"<dateTime>\",\n                  \"average\": \"<double>\",\n                  \"minimum\": \"<double>\",\n                  \"maximum\": \"<double>\",\n                  \"total\": \"<double>\",\n                  \"count\": \"<double>\"\n                }\n              ]\n            },\n            {\n              \"metadatavalues\": [\n                {\n                  \"name\": {\n                    \"value\": \"<string>\",\n                    \"localizedValue\": \"<string>\"\n                  },\n                  \"value\": \"<string>\"\n                },\n                {\n                  \"name\": {\n                    \"value\": \"<string>\",\n                    \"localizedValue\": \"<string>\"\n                  },\n                  \"value\": \"<string>\"\n                }\n              ],\n              \"data\": [\n                {\n                  \"timeStamp\": \"<dateTime>\",\n                  \"average\": \"<double>\",\n                  \"minimum\": \"<double>\",\n                  \"maximum\": \"<double>\",\n                  \"total\": \"<double>\",\n                  \"count\": \"<double>\"\n                },\n                {\n                  \"timeStamp\": \"<dateTime>\",\n                  \"average\": \"<double>\",\n                  \"minimum\": \"<double>\",\n                  \"maximum\": \"<double>\",\n                  \"total\": \"<double>\",\n                  \"count\": \"<double>\"\n                }\n              ]\n            }\n          ],\n          \"displayDescription\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"name\": {\n            \"value\": \"<string>\",\n            \"localizedValue\": \"<string>\"\n          },\n          \"unit\": \"Bytes\",\n          \"timeseries\": [\n            {\n              \"metadatavalues\": [\n                {\n                  \"name\": {\n                    \"value\": \"<string>\",\n                    \"localizedValue\": \"<string>\"\n                  },\n                  \"value\": \"<string>\"\n                },\n                {\n                  \"name\": {\n                    \"value\": \"<string>\",\n                    \"localizedValue\": \"<string>\"\n                  },\n                  \"value\": \"<string>\"\n                }\n              ],\n              \"data\": [\n                {\n                  \"timeStamp\": \"<dateTime>\",\n                  \"average\": \"<double>\",\n                  \"minimum\": \"<double>\",\n                  \"maximum\": \"<double>\",\n                  \"total\": \"<double>\",\n                  \"count\": \"<double>\"\n                },\n                {\n                  \"timeStamp\": \"<dateTime>\",\n                  \"average\": \"<double>\",\n                  \"minimum\": \"<double>\",\n                  \"maximum\": \"<double>\",\n                  \"total\": \"<double>\",\n                  \"count\": \"<double>\"\n                }\n              ]\n            },\n            {\n              \"metadatavalues\": [\n                {\n                  \"name\": {\n                    \"value\": \"<string>\",\n                    \"localizedValue\": \"<string>\"\n                  },\n                  \"value\": \"<string>\"\n                },\n                {\n                  \"name\": {\n                    \"value\": \"<string>\",\n                    \"localizedValue\": \"<string>\"\n                  },\n                  \"value\": \"<string>\"\n                }\n              ],\n              \"data\": [\n                {\n                  \"timeStamp\": \"<dateTime>\",\n                  \"average\": \"<double>\",\n                  \"minimum\": \"<double>\",\n                  \"maximum\": \"<double>\",\n                  \"total\": \"<double>\",\n                  \"count\": \"<double>\"\n                },\n                {\n                  \"timeStamp\": \"<dateTime>\",\n                  \"average\": \"<double>\",\n                  \"minimum\": \"<double>\",\n                  \"maximum\": \"<double>\",\n                  \"total\": \"<double>\",\n                  \"count\": \"<double>\"\n                }\n              ]\n            }\n          ],\n          \"displayDescription\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:11:27.000Z",
+                      "updatedAt": "2026-06-05T15:11:27.000Z",
+                      "uid": "35240-02701ee2-7bd2-4f25-93a2-04dcdd1fdfd6"
+                    },
+                    {
+                      "id": "e1e10e91-5e6b-488f-b616-3a0bd982c684",
+                      "name": "Error response describing why the operation failed.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"resourceids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/subscriptions/:subscriptionId/metrics:batchGet?api-version=2024-02-01&starttime=<dateTime>&endtime=<dateTime>&interval=PT1M&metricnames=<string>&metricNamespace=<string>&aggregation=<string>&top=<integer>&orderBy=<string>&$filter=<string>&rollUpBy=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "subscriptions",
+                            ":subscriptionId",
+                            "metrics:batchGet"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Client API version.",
+                              "key": "api-version",
+                              "value": "2024-02-01"
+                            },
+                            {
+                              "description": "(Required) The start time of the query in ISO 8601 format.",
+                              "key": "starttime",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "(Required) The end time of the query in ISO 8601 format.",
+                              "key": "endtime",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "The interval (window size) of the query in ISO 8601 duration format.",
+                              "key": "interval",
+                              "value": "PT1M"
+                            },
+                            {
+                              "description": "(Required) The names of the metrics (comma-separated) to retrieve.",
+                              "key": "metricnames",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) Metric namespace that contains the requested metric names.",
+                              "key": "metricNamespace",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The list of aggregation types (comma-separated) to retrieve.",
+                              "key": "aggregation",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The maximum number of records to retrieve per resource.",
+                              "key": "top",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The aggregation to use for sorting results and the direction of the sort.",
+                              "key": "orderBy",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The $filter used to reduce the set of metric data returned.",
+                              "key": "$filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Dimension name(s) to rollup results by.",
+                              "key": "rollUpBy",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "subscriptionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:11:27.000Z",
+                      "updatedAt": "2026-06-05T15:11:27.000Z",
+                      "uid": "35240-e1e10e91-5e6b-488f-b616-3a0bd982c684"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:11:27.000Z",
+                  "updatedAt": "2026-06-05T15:11:27.000Z",
+                  "uid": "35240-008b2f2d-40f6-48b6-b491-c6950bd80ae1"
+                }
+              ],
+              "id": "1285e99b-c2ac-471c-ad7b-01fc09b65095",
+              "createdAt": "2026-06-05T15:11:27.000Z",
+              "updatedAt": "2026-06-05T15:11:27.000Z",
+              "uid": "35240-1285e99b-c2ac-471c-ad7b-01fc09b65095"
+            }
+          ],
+          "id": "22b3a633-a30e-4765-bbd2-80b809a3d71a",
+          "createdAt": "2026-06-05T15:11:27.000Z",
+          "updatedAt": "2026-06-05T15:11:27.000Z",
+          "uid": "35240-22b3a633-a30e-4765-bbd2-80b809a3d71a"
+        }
+      ],
+      "id": "7a9e4b37-725f-46cf-a918-3c88c4b7f00c",
+      "createdAt": "2026-06-05T15:11:27.000Z",
+      "updatedAt": "2026-06-05T15:11:27.000Z",
+      "uid": "35240-7a9e4b37-725f-46cf-a918-3c88c4b7f00c"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://management.azure.com/.default",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "eastus"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{region}}.metrics.monitor.azure.com"
+    }
+  ]
+}

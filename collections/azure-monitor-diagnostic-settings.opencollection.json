@@ -1,0 +1,151 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Azure Monitor Diagnostic Settings API",
+    "version": "2021-05-01-preview"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Diagnostic Settings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Azure Monitor List diagnostic settings for a resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://management.azure.com/:resourceUri/providers/Microsoft.Insights/diagnosticSettings",
+            "params": [
+              {
+                "name": "resourceUri",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the resource."
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "Client API version."
+              }
+            ]
+          },
+          "docs": "Gets the active diagnostic settings list for the specified resource. Returns all diagnostic settings configured for the resource."
+        },
+        {
+          "info": {
+            "name": "Azure Monitor Get a diagnostic setting",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://management.azure.com/:resourceUri/providers/Microsoft.Insights/diagnosticSettings/:name",
+            "params": [
+              {
+                "name": "resourceUri",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the resource."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the diagnostic setting."
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "Client API version."
+              }
+            ]
+          },
+          "docs": "Gets the active diagnostic settings for the specified resource by name."
+        },
+        {
+          "info": {
+            "name": "Azure Monitor Create or update a diagnostic setting",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://management.azure.com/:resourceUri/providers/Microsoft.Insights/diagnosticSettings/:name",
+            "params": [
+              {
+                "name": "resourceUri",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the resource."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the diagnostic setting."
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "Client API version."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates or updates diagnostic settings for the specified resource. Diagnostic settings determine where platform logs and metrics are routed."
+        },
+        {
+          "info": {
+            "name": "Azure Monitor Delete a diagnostic setting",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://management.azure.com/:resourceUri/providers/Microsoft.Insights/diagnosticSettings/:name",
+            "params": [
+              {
+                "name": "resourceUri",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the resource."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the diagnostic setting."
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "Client API version."
+              }
+            ]
+          },
+          "docs": "Deletes existing diagnostic settings for the specified resource."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

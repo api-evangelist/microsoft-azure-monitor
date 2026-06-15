@@ -1,0 +1,97 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Azure Monitor Metric Definitions API",
+    "version": "2023-10-01"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Metric Definitions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Azure Monitor List metric definitions at subscription scope",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://management.azure.com/subscriptions/:subscriptionId/providers/Microsoft.Insights/metricDefinitions",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the target subscription."
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "Client API version."
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query",
+                "description": "The region where the metrics you want reside."
+              },
+              {
+                "name": "metricNamespace",
+                "value": "",
+                "type": "query",
+                "description": "Metric namespace to query metric definitions for."
+              }
+            ]
+          },
+          "docs": "Lists the metric definitions for the subscription. Returns the available metric definitions that can be queried at the subscription level."
+        },
+        {
+          "info": {
+            "name": "Azure Monitor List metric definitions for a resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://management.azure.com/:resourceUri/providers/Microsoft.Insights/metricDefinitions",
+            "params": [
+              {
+                "name": "resourceUri",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the resource."
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "Client API version."
+              },
+              {
+                "name": "metricNamespace",
+                "value": "",
+                "type": "query",
+                "description": "Metric namespace to query metric definitions for."
+              }
+            ]
+          },
+          "docs": "Lists the metric definitions for the resource. Returns the available metric definitions and their properties for the specified resource."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,118 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Azure Monitor Metrics Batch API",
+    "version": "2024-02-01"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Metrics Batch",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Azure Monitor Batch query metrics for multiple resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.metrics.monitor.azure.com/subscriptions/:subscriptionId/metrics:batchGet",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the target subscription."
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "Client API version."
+              },
+              {
+                "name": "starttime",
+                "value": "",
+                "type": "query",
+                "description": "The start time of the query in ISO 8601 format."
+              },
+              {
+                "name": "endtime",
+                "value": "",
+                "type": "query",
+                "description": "The end time of the query in ISO 8601 format."
+              },
+              {
+                "name": "interval",
+                "value": "",
+                "type": "query",
+                "description": "The interval (window size) of the query in ISO 8601 duration format."
+              },
+              {
+                "name": "metricnames",
+                "value": "",
+                "type": "query",
+                "description": "The names of the metrics (comma-separated) to retrieve."
+              },
+              {
+                "name": "metricNamespace",
+                "value": "",
+                "type": "query",
+                "description": "Metric namespace that contains the requested metric names."
+              },
+              {
+                "name": "aggregation",
+                "value": "",
+                "type": "query",
+                "description": "The list of aggregation types (comma-separated) to retrieve."
+              },
+              {
+                "name": "top",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of records to retrieve per resource."
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query",
+                "description": "The aggregation to use for sorting results and the direction of the sort."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "The $filter used to reduce the set of metric data returned."
+              },
+              {
+                "name": "rollUpBy",
+                "value": "",
+                "type": "query",
+                "description": "Dimension name(s) to rollup results by."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Lists the metric values for multiple resources in a single batch request. All resources must be in the same subscription, region, and resource type. Allows for efficient retrieval of metric data at scale."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

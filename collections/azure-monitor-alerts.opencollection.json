@@ -1,0 +1,241 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Azure Monitor Alerts API",
+    "version": "2016-03-01"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Alert Rules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Azure Monitor Get a classic metric alert rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://management.azure.com/subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Insights/alertrules/:ruleName",
+            "params": [
+              {
+                "name": "resourceGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the resource group."
+              },
+              {
+                "name": "ruleName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the rule."
+              },
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the target subscription."
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "Client API version."
+              }
+            ]
+          },
+          "docs": "Gets a classic metric alert rule by name from a specified resource group."
+        },
+        {
+          "info": {
+            "name": "Azure Monitor Create or update a classic metric alert rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://management.azure.com/subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Insights/alertrules/:ruleName",
+            "params": [
+              {
+                "name": "resourceGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the resource group."
+              },
+              {
+                "name": "ruleName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the rule."
+              },
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the target subscription."
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "Client API version."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates or updates a classic metric alert rule. Classic alert rules evaluate metrics at regular intervals and trigger actions when conditions are met."
+        },
+        {
+          "info": {
+            "name": "Azure Monitor Update a classic metric alert rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://management.azure.com/subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Insights/alertrules/:ruleName",
+            "params": [
+              {
+                "name": "resourceGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the resource group."
+              },
+              {
+                "name": "ruleName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the rule."
+              },
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the target subscription."
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "Client API version."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing classic metric alert rule. This can be used to update tags on the rule resource."
+        },
+        {
+          "info": {
+            "name": "Azure Monitor Delete a classic metric alert rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://management.azure.com/subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Insights/alertrules/:ruleName",
+            "params": [
+              {
+                "name": "resourceGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the resource group."
+              },
+              {
+                "name": "ruleName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the rule."
+              },
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the target subscription."
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "Client API version."
+              }
+            ]
+          },
+          "docs": "Deletes a classic metric alert rule from a specified resource group."
+        },
+        {
+          "info": {
+            "name": "Azure Monitor List classic alert rules in a resource group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://management.azure.com/subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Insights/alertrules",
+            "params": [
+              {
+                "name": "resourceGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the resource group."
+              },
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the target subscription."
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "Client API version."
+              }
+            ]
+          },
+          "docs": "Lists the classic metric alert rules within a resource group."
+        },
+        {
+          "info": {
+            "name": "Azure Monitor List classic alert rules in a subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://management.azure.com/subscriptions/:subscriptionId/providers/Microsoft.Insights/alertrules",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the target subscription."
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "Client API version."
+              }
+            ]
+          },
+          "docs": "Lists the classic metric alert rules within a subscription."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

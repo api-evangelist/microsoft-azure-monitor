@@ -1,0 +1,573 @@
+{
+  "item": [
+    {
+      "id": "5fd683d8-88aa-40cd-b1cd-34eaa1153245",
+      "name": "Metadata",
+      "description": {
+        "content": "Operations for retrieving workspace and table metadata",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "806625d6-7ff5-467f-a29e-2b6a3ec62c04",
+          "name": "Azure Monitor Get workspace metadata",
+          "request": {
+            "name": "Azure Monitor Get workspace metadata",
+            "description": {
+              "content": "Gets metadata information about the Log Analytics workspace including available tables, functions, and schemas.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "workspaces",
+                ":workspaceId",
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "workspaceId",
+                  "description": "(Required) ID of the workspace. This is the Workspace ID from the Properties blade in the Azure portal."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "29de9e6b-ef9a-47d7-a6a9-aaeb7800414d",
+              "name": "Successful request to get workspace metadata.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspaces",
+                    ":workspaceId",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspaceId",
+                      "description": "(Required) ID of the workspace. This is the Workspace ID from the Properties blade in the Azure portal."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tables\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"columns\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"bool\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"guid\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"columns\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"timespan\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"timespan\"\n        }\n      ]\n    }\n  ],\n  \"functions\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"body\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"body\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "be4f9d19-e80f-4b03-bfc1-c481fe9c168f",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspaces",
+                    ":workspaceId",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspaceId",
+                      "description": "(Required) ID of the workspace. This is the Workspace ID from the Properties blade in the Azure portal."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "23493b1d-f353-455f-8d5d-ebcee061892b",
+      "name": "Query",
+      "description": {
+        "content": "Operations for querying log data using KQL",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "32a5a288-4662-408b-9572-0a25433b4f44",
+          "name": "Azure Monitor Execute a Log Analytics query via GET",
+          "request": {
+            "name": "Azure Monitor Execute a Log Analytics query via GET",
+            "description": {
+              "content": "Executes an Analytics query for data from a Log Analytics workspace using Kusto Query Language (KQL). The query is provided as a query parameter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "workspaces",
+                ":workspaceId",
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) The Analytics query in KQL format."
+                },
+                {
+                  "disabled": false,
+                  "key": "timespan",
+                  "value": "<string>",
+                  "description": "The timespan over which to query data in ISO 8601 duration format."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "workspaceId",
+                  "description": "(Required) ID of the workspace. This is the Workspace ID from the Properties blade in the Azure portal."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a3a7e814-ef71-4f2c-805f-af890cffef6b",
+              "name": "Successful query response containing table results.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspaces",
+                    ":workspaceId",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timespan",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspaceId",
+                      "description": "(Required) ID of the workspace. This is the Workspace ID from the Properties blade in the Azure portal."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tables\": [\n    {\n      \"name\": \"string\",\n      \"columns\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"dynamic\"\n        }\n      ],\n      \"rows\": [\n        [],\n        []\n      ]\n    },\n    {\n      \"name\": \"string\",\n      \"columns\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"int\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"decimal\"\n        }\n      ],\n      \"rows\": [\n        [],\n        []\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1bddb1a9-d582-4c91-9120-78f44ddd20b5",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspaces",
+                    ":workspaceId",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timespan",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspaceId",
+                      "description": "(Required) ID of the workspace. This is the Workspace ID from the Properties blade in the Azure portal."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2c43c807-fc65-4e9c-962a-f94c02549632",
+          "name": "Azure Monitor Execute a Log Analytics query via POST",
+          "request": {
+            "name": "Azure Monitor Execute a Log Analytics query via POST",
+            "description": {
+              "content": "Executes an Analytics query for data from a Log Analytics workspace using Kusto Query Language (KQL). The query is provided in the request body along with optional parameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "workspaces",
+                ":workspaceId",
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "workspaceId",
+                  "description": "(Required) ID of the workspace. This is the Workspace ID from the Properties blade in the Azure portal."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"<string>\",\n  \"timespan\": \"<string>\",\n  \"workspaces\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"applications\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ca3f97e1-935e-4faa-b92e-a8eb9047bf16",
+              "name": "Successful query response containing table results.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspaces",
+                    ":workspaceId",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspaceId",
+                      "description": "(Required) ID of the workspace. This is the Workspace ID from the Properties blade in the Azure portal."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"timespan\": \"<string>\",\n  \"workspaces\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"applications\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tables\": [\n    {\n      \"name\": \"string\",\n      \"columns\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"dynamic\"\n        }\n      ],\n      \"rows\": [\n        [],\n        []\n      ]\n    },\n    {\n      \"name\": \"string\",\n      \"columns\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"int\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"decimal\"\n        }\n      ],\n      \"rows\": [\n        [],\n        []\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3196cf52-79b0-4708-a658-68f03c2ae7d6",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspaces",
+                    ":workspaceId",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspaceId",
+                      "description": "(Required) ID of the workspace. This is the Workspace ID from the Properties blade in the Azure portal."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"timespan\": \"<string>\",\n  \"workspaces\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"applications\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.loganalytics.io/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://api.loganalytics.io/.default"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9f198838-edc1-4fc7-a631-02179bc6a97e",
+    "name": "Azure Monitor Logs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Query and retrieve log data from Azure Monitor Logs and Application Insights using the Kusto Query Language (KQL). Provides access to Log Analytics workspace data and Application Insights telemetry.\n\nContact Support:\n Name: Microsoft Azure Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,1499 @@
+{
+  "info": {
+    "_postman_id": "b775151c-079e-467a-ba27-d8a9d5905d6c",
+    "name": "Azure Monitor Data Collection Rules API",
+    "description": "Create and manage data collection rules that define how data is collected, transformed, and routed to destinations within Azure Monitor.\n\nContact Support:\n Name: Microsoft Azure Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:11:42.000Z",
+    "updatedAt": "2026-06-05T15:11:43.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b775151c-079e-467a-ba27-d8a9d5905d6c"
+  },
+  "item": [
+    {
+      "name": "subscriptions",
+      "item": [
+        {
+          "name": "{subscriptionId}",
+          "item": [
+            {
+              "name": "providers",
+              "item": [
+                {
+                  "name": "Microsoft.Insights",
+                  "item": [
+                    {
+                      "name": "dataCollectionRules",
+                      "item": [
+                        {
+                          "name": "Azure Monitor List data collection rules in a subscription",
+                          "id": "348beeb5-a1bd-4d61-bd85-f51ec5d8011b",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/subscriptions/:subscriptionId/providers/Microsoft.Insights/dataCollectionRules?api-version=2023-03-11",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "subscriptions",
+                                ":subscriptionId",
+                                "providers",
+                                "Microsoft.Insights",
+                                "dataCollectionRules"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The API version to use for this operation.",
+                                  "key": "api-version",
+                                  "value": "2023-03-11"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "6503c083-76f0-47ad-b0cc-fc5782890a6c",
+                                  "key": "subscriptionId",
+                                  "value": "<string>",
+                                  "description": "(Required) The ID of the target subscription."
+                                }
+                              ]
+                            },
+                            "description": "Lists all data collection rules in the specified subscription."
+                          },
+                          "response": [
+                            {
+                              "id": "83a55b73-8a1f-474b-8c29-63e614db9c1b",
+                              "name": "Successful request to list data collection rules.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/subscriptions/:subscriptionId/providers/Microsoft.Insights/dataCollectionRules?api-version=2023-03-11",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "subscriptions",
+                                    ":subscriptionId",
+                                    "providers",
+                                    "Microsoft.Insights",
+                                    "dataCollectionRules"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) The API version to use for this operation.",
+                                      "key": "api-version",
+                                      "value": "2023-03-11"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "subscriptionId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"value\": [\n    {\n      \"location\": \"<string>\",\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"tags\": {\n        \"aliquip21c\": \"<string>\",\n        \"Lorem_a46\": \"<string>\",\n        \"magna_1\": \"<string>\",\n        \"ut__\": \"<string>\"\n      },\n      \"kind\": \"Linux\",\n      \"identity\": {\n        \"type\": \"None\",\n        \"principalId\": \"<string>\",\n        \"tenantId\": \"<string>\",\n        \"userAssignedIdentities\": {\n          \"occaecat_cc8\": {\n            \"principalId\": \"<string>\",\n            \"clientId\": \"<string>\"\n          }\n        }\n      },\n      \"properties\": {\n        \"description\": \"<string>\",\n        \"immutableId\": \"<string>\",\n        \"dataCollectionEndpointId\": \"<string>\",\n        \"streamDeclarations\": {\n          \"dob4\": {\n            \"columns\": [\n              {\n                \"name\": \"<string>\",\n                \"type\": \"long\"\n              },\n              {\n                \"name\": \"<string>\",\n                \"type\": \"real\"\n              }\n            ]\n          },\n          \"nisid\": {\n            \"columns\": [\n              {\n                \"name\": \"<string>\",\n                \"type\": \"datetime\"\n              },\n              {\n                \"name\": \"<string>\",\n                \"type\": \"long\"\n              }\n            ]\n          },\n          \"officia_6b\": {\n            \"columns\": [\n              {\n                \"name\": \"<string>\",\n                \"type\": \"boolean\"\n              },\n              {\n                \"name\": \"<string>\",\n                \"type\": \"long\"\n              }\n            ]\n          }\n        },\n        \"dataSources\": {\n          \"performanceCounters\": [\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"samplingFrequencyInSeconds\": \"<integer>\",\n              \"counterSpecifiers\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"samplingFrequencyInSeconds\": \"<integer>\",\n              \"counterSpecifiers\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ],\n          \"windowsEventLogs\": [\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"xPathQueries\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"xPathQueries\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ],\n          \"syslog\": [\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"facilityNames\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"logLevels\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"facilityNames\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"logLevels\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ],\n          \"extensions\": [\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"extensionName\": \"<string>\",\n              \"extensionSettings\": {\n                \"tempor_c\": 24273403.63628687\n              },\n              \"inputDataSources\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"extensionName\": \"<string>\",\n              \"extensionSettings\": {\n                \"dolor927\": 47378806.23234147,\n                \"aute_e0b\": -44037711\n              },\n              \"inputDataSources\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ],\n          \"logFiles\": [\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"filePatterns\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"format\": \"text\",\n              \"settings\": {\n                \"text\": {\n                  \"recordStartTimestampFormat\": \"<string>\"\n                }\n              }\n            },\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"filePatterns\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"format\": \"text\",\n              \"settings\": {\n                \"text\": {\n                  \"recordStartTimestampFormat\": \"<string>\"\n                }\n              }\n            }\n          ]\n        },\n        \"destinations\": {\n          \"logAnalytics\": [\n            {\n              \"workspaceResourceId\": \"<string>\",\n              \"workspaceId\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            {\n              \"workspaceResourceId\": \"<string>\",\n              \"workspaceId\": \"<string>\",\n              \"name\": \"<string>\"\n            }\n          ],\n          \"monitoringAccounts\": [\n            {\n              \"accountResourceId\": \"<string>\",\n              \"accountId\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            {\n              \"accountResourceId\": \"<string>\",\n              \"accountId\": \"<string>\",\n              \"name\": \"<string>\"\n            }\n          ],\n          \"azureMonitorMetrics\": {\n            \"name\": \"<string>\"\n          },\n          \"eventHubs\": [\n            {\n              \"eventHubResourceId\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            {\n              \"eventHubResourceId\": \"<string>\",\n              \"name\": \"<string>\"\n            }\n          ],\n          \"eventHubsDirect\": [\n            {\n              \"eventHubResourceId\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            {\n              \"eventHubResourceId\": \"<string>\",\n              \"name\": \"<string>\"\n            }\n          ],\n          \"storageBlobsDirect\": [\n            {\n              \"storageAccountResourceId\": \"<string>\",\n              \"containerName\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            {\n              \"storageAccountResourceId\": \"<string>\",\n              \"containerName\": \"<string>\",\n              \"name\": \"<string>\"\n            }\n          ],\n          \"storageTablesDirect\": [\n            {\n              \"storageAccountResourceId\": \"<string>\",\n              \"tableName\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            {\n              \"storageAccountResourceId\": \"<string>\",\n              \"tableName\": \"<string>\",\n              \"name\": \"<string>\"\n            }\n          ]\n        },\n        \"dataFlows\": [\n          {\n            \"streams\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"destinations\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"transformKql\": \"<string>\",\n            \"outputStream\": \"<string>\",\n            \"builtInTransform\": \"<string>\"\n          },\n          {\n            \"streams\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"destinations\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"transformKql\": \"<string>\",\n            \"outputStream\": \"<string>\",\n            \"builtInTransform\": \"<string>\"\n          }\n        ],\n        \"provisioningState\": \"Failed\"\n      },\n      \"systemData\": {\n        \"createdBy\": \"<string>\",\n        \"createdByType\": \"User\",\n        \"createdAt\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedByType\": \"Application\",\n        \"lastModifiedAt\": \"<dateTime>\"\n      }\n    },\n    {\n      \"location\": \"<string>\",\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"tags\": {\n        \"ina\": \"<string>\"\n      },\n      \"kind\": \"Windows\",\n      \"identity\": {\n        \"type\": \"None\",\n        \"principalId\": \"<string>\",\n        \"tenantId\": \"<string>\",\n        \"userAssignedIdentities\": {\n          \"proident_d4a\": {\n            \"principalId\": \"<string>\",\n            \"clientId\": \"<string>\"\n          },\n          \"eu_e\": {\n            \"principalId\": \"<string>\",\n            \"clientId\": \"<string>\"\n          }\n        }\n      },\n      \"properties\": {\n        \"description\": \"<string>\",\n        \"immutableId\": \"<string>\",\n        \"dataCollectionEndpointId\": \"<string>\",\n        \"streamDeclarations\": {\n          \"cupidatat6\": {\n            \"columns\": [\n              {\n                \"name\": \"<string>\",\n                \"type\": \"datetime\"\n              },\n              {\n                \"name\": \"<string>\",\n                \"type\": \"datetime\"\n              }\n            ]\n          },\n          \"sint_d\": {\n            \"columns\": [\n              {\n                \"name\": \"<string>\",\n                \"type\": \"int\"\n              },\n              {\n                \"name\": \"<string>\",\n                \"type\": \"string\"\n              }\n            ]\n          },\n          \"pariatur69\": {\n            \"columns\": [\n              {\n                \"name\": \"<string>\",\n                \"type\": \"string\"\n              },\n              {\n                \"name\": \"<string>\",\n                \"type\": \"string\"\n              }\n            ]\n          }\n        },\n        \"dataSources\": {\n          \"performanceCounters\": [\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"samplingFrequencyInSeconds\": \"<integer>\",\n              \"counterSpecifiers\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"samplingFrequencyInSeconds\": \"<integer>\",\n              \"counterSpecifiers\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ],\n          \"windowsEventLogs\": [\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"xPathQueries\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"xPathQueries\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ],\n          \"syslog\": [\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"facilityNames\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"logLevels\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"facilityNames\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"logLevels\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ],\n          \"extensions\": [\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"extensionName\": \"<string>\",\n              \"extensionSettings\": {\n                \"dolor_55\": 91379227\n              },\n              \"inputDataSources\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"extensionName\": \"<string>\",\n              \"extensionSettings\": {\n                \"commodo9_4\": true,\n                \"culpa_be\": \"eiusmod sunt ea\"\n              },\n              \"inputDataSources\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ],\n          \"logFiles\": [\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"filePatterns\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"format\": \"text\",\n              \"settings\": {\n                \"text\": {\n                  \"recordStartTimestampFormat\": \"<string>\"\n                }\n              }\n            },\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"filePatterns\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"format\": \"text\",\n              \"settings\": {\n                \"text\": {\n                  \"recordStartTimestampFormat\": \"<string>\"\n                }\n              }\n            }\n          ]\n        },\n        \"destinations\": {\n          \"logAnalytics\": [\n            {\n              \"workspaceResourceId\": \"<string>\",\n              \"workspaceId\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            {\n              \"workspaceResourceId\": \"<string>\",\n              \"workspaceId\": \"<string>\",\n              \"name\": \"<string>\"\n            }\n          ],\n          \"monitoringAccounts\": [\n            {\n              \"accountResourceId\": \"<string>\",\n              \"accountId\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            {\n              \"accountResourceId\": \"<string>\",\n              \"accountId\": \"<string>\",\n              \"name\": \"<string>\"\n            }\n          ],\n          \"azureMonitorMetrics\": {\n            \"name\": \"<string>\"\n          },\n          \"eventHubs\": [\n            {\n              \"eventHubResourceId\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            {\n              \"eventHubResourceId\": \"<string>\",\n              \"name\": \"<string>\"\n            }\n          ],\n          \"eventHubsDirect\": [\n            {\n              \"eventHubResourceId\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            {\n              \"eventHubResourceId\": \"<string>\",\n              \"name\": \"<string>\"\n            }\n          ],\n          \"storageBlobsDirect\": [\n            {\n              \"storageAccountResourceId\": \"<string>\",\n              \"containerName\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            {\n              \"storageAccountResourceId\": \"<string>\",\n              \"containerName\": \"<string>\",\n              \"name\": \"<string>\"\n            }\n          ],\n          \"storageTablesDirect\": [\n            {\n              \"storageAccountResourceId\": \"<string>\",\n              \"tableName\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            {\n              \"storageAccountResourceId\": \"<string>\",\n              \"tableName\": \"<string>\",\n              \"name\": \"<string>\"\n            }\n          ]\n        },\n        \"dataFlows\": [\n          {\n            \"streams\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"destinations\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"transformKql\": \"<string>\",\n            \"outputStream\": \"<string>\",\n            \"builtInTransform\": \"<string>\"\n          },\n          {\n            \"streams\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"destinations\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"transformKql\": \"<string>\",\n            \"outputStream\": \"<string>\",\n            \"builtInTransform\": \"<string>\"\n          }\n        ],\n        \"provisioningState\": \"Canceled\"\n      },\n      \"systemData\": {\n        \"createdBy\": \"<string>\",\n        \"createdByType\": \"User\",\n        \"createdAt\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedByType\": \"Key\",\n        \"lastModifiedAt\": \"<dateTime>\"\n      }\n    }\n  ],\n  \"nextLink\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:11:43.000Z",
+                              "updatedAt": "2026-06-05T15:11:43.000Z",
+                              "uid": "35240-83a55b73-8a1f-474b-8c29-63e614db9c1b"
+                            },
+                            {
+                              "id": "064417ea-7bec-4c87-bad5-90c70668f885",
+                              "name": "Error response describing why the operation failed.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/subscriptions/:subscriptionId/providers/Microsoft.Insights/dataCollectionRules?api-version=2023-03-11",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "subscriptions",
+                                    ":subscriptionId",
+                                    "providers",
+                                    "Microsoft.Insights",
+                                    "dataCollectionRules"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) The API version to use for this operation.",
+                                      "key": "api-version",
+                                      "value": "2023-03-11"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "subscriptionId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"target\": \"<string>\",\n    \"details\": [\n      {\n        \"code\": \"<string>\",\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"code\": \"<string>\",\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                              "createdAt": "2026-06-05T15:11:43.000Z",
+                              "updatedAt": "2026-06-05T15:11:43.000Z",
+                              "uid": "35240-064417ea-7bec-4c87-bad5-90c70668f885"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:11:43.000Z",
+                          "updatedAt": "2026-06-05T15:11:43.000Z",
+                          "uid": "35240-348beeb5-a1bd-4d61-bd85-f51ec5d8011b"
+                        }
+                      ],
+                      "id": "6ac904f9-7e80-448d-a55f-b39f6076415d",
+                      "createdAt": "2026-06-05T15:11:43.000Z",
+                      "updatedAt": "2026-06-05T15:11:43.000Z",
+                      "uid": "35240-6ac904f9-7e80-448d-a55f-b39f6076415d"
+                    }
+                  ],
+                  "id": "4afa2e33-d3c2-4cbf-8168-70c88e873678",
+                  "createdAt": "2026-06-05T15:11:43.000Z",
+                  "updatedAt": "2026-06-05T15:11:43.000Z",
+                  "uid": "35240-4afa2e33-d3c2-4cbf-8168-70c88e873678"
+                }
+              ],
+              "id": "9d6ec499-405a-4e3f-ba45-973d76f0243f",
+              "createdAt": "2026-06-05T15:11:43.000Z",
+              "updatedAt": "2026-06-05T15:11:43.000Z",
+              "uid": "35240-9d6ec499-405a-4e3f-ba45-973d76f0243f"
+            },
+            {
+              "name": "resourceGroups",
+              "item": [
+                {
+                  "name": "{resourceGroupName}",
+                  "item": [
+                    {
+                      "name": "providers",
+                      "item": [
+                        {
+                          "name": "Microsoft.Insights",
+                          "item": [
+                            {
+                              "name": "dataCollectionRules",
+                              "item": [
+                                {
+                                  "name": "{dataCollectionRuleName}",
+                                  "item": [
+                                    {
+                                      "name": "Azure Monitor Get a data collection rule",
+                                      "id": "f8c02f59-0759-4072-ba28-1813f12477eb",
+                                      "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                      },
+                                      "request": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Insights/dataCollectionRules/:dataCollectionRuleName?api-version=2023-03-11",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "subscriptions",
+                                            ":subscriptionId",
+                                            "resourceGroups",
+                                            ":resourceGroupName",
+                                            "providers",
+                                            "Microsoft.Insights",
+                                            "dataCollectionRules",
+                                            ":dataCollectionRuleName"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "(Required) The API version to use for this operation.",
+                                              "key": "api-version",
+                                              "value": "2023-03-11"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "id": "482a3660-efe0-40c6-b693-d480c34dc08d",
+                                              "key": "subscriptionId",
+                                              "value": "<string>",
+                                              "description": "(Required) The ID of the target subscription."
+                                            },
+                                            {
+                                              "id": "5ca1df29-3940-4bdf-af21-85a2bf9c02f2",
+                                              "key": "resourceGroupName",
+                                              "value": "<string>",
+                                              "description": "(Required) The name of the resource group."
+                                            },
+                                            {
+                                              "id": "367142e2-ab03-4c90-ada4-fb4181bd9086",
+                                              "key": "dataCollectionRuleName",
+                                              "value": "<string>",
+                                              "description": "(Required) The name of the data collection rule."
+                                            }
+                                          ]
+                                        },
+                                        "description": "Returns the specified data collection rule."
+                                      },
+                                      "response": [
+                                        {
+                                          "id": "99b38081-6fd9-4a5a-ab55-32348ac39cab",
+                                          "name": "Successful request to get a data collection rule.",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: oauth2",
+                                                "key": "Authorization",
+                                                "value": "<token>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Insights/dataCollectionRules/:dataCollectionRuleName?api-version=2023-03-11",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "subscriptions",
+                                                ":subscriptionId",
+                                                "resourceGroups",
+                                                ":resourceGroupName",
+                                                "providers",
+                                                "Microsoft.Insights",
+                                                "dataCollectionRules",
+                                                ":dataCollectionRuleName"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "(Required) The API version to use for this operation.",
+                                                  "key": "api-version",
+                                                  "value": "2023-03-11"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "subscriptionId"
+                                                },
+                                                {
+                                                  "key": "resourceGroupName"
+                                                },
+                                                {
+                                                  "key": "dataCollectionRuleName"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "OK",
+                                          "code": 200,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"location\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"tags\": {\n    \"occaecat_76\": \"<string>\",\n    \"deserunt_72\": \"<string>\",\n    \"adipisicingc9b\": \"<string>\"\n  },\n  \"kind\": \"Linux\",\n  \"identity\": {\n    \"type\": \"SystemAssigned,UserAssigned\",\n    \"principalId\": \"<string>\",\n    \"tenantId\": \"<string>\",\n    \"userAssignedIdentities\": {\n      \"deserunt_0\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      },\n      \"reprehenderit2\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      },\n      \"non_4d\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      },\n      \"do_3\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      }\n    }\n  },\n  \"properties\": {\n    \"description\": \"<string>\",\n    \"immutableId\": \"<string>\",\n    \"dataCollectionEndpointId\": \"<string>\",\n    \"streamDeclarations\": {\n      \"dolord4\": {\n        \"columns\": [\n          {\n            \"name\": \"<string>\",\n            \"type\": \"dynamic\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"type\": \"string\"\n          }\n        ]\n      }\n    },\n    \"dataSources\": {\n      \"performanceCounters\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"samplingFrequencyInSeconds\": \"<integer>\",\n          \"counterSpecifiers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"samplingFrequencyInSeconds\": \"<integer>\",\n          \"counterSpecifiers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"windowsEventLogs\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"xPathQueries\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"xPathQueries\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"syslog\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"facilityNames\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"logLevels\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"facilityNames\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"logLevels\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"extensions\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"extensionName\": \"<string>\",\n          \"extensionSettings\": {\n            \"laborumd8\": -58007566.54039532\n          },\n          \"inputDataSources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"extensionName\": \"<string>\",\n          \"extensionSettings\": {\n            \"dolore65_\": \"nostrud in\",\n            \"laborum410\": \"labore culpa exercitation esse\",\n            \"ut51d\": -88115982\n          },\n          \"inputDataSources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"logFiles\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"filePatterns\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"format\": \"text\",\n          \"settings\": {\n            \"text\": {\n              \"recordStartTimestampFormat\": \"<string>\"\n            }\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"filePatterns\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"format\": \"text\",\n          \"settings\": {\n            \"text\": {\n              \"recordStartTimestampFormat\": \"<string>\"\n            }\n          }\n        }\n      ]\n    },\n    \"destinations\": {\n      \"logAnalytics\": [\n        {\n          \"workspaceResourceId\": \"<string>\",\n          \"workspaceId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"workspaceResourceId\": \"<string>\",\n          \"workspaceId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"monitoringAccounts\": [\n        {\n          \"accountResourceId\": \"<string>\",\n          \"accountId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"accountResourceId\": \"<string>\",\n          \"accountId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"azureMonitorMetrics\": {\n        \"name\": \"<string>\"\n      },\n      \"eventHubs\": [\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"eventHubsDirect\": [\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"storageBlobsDirect\": [\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"containerName\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"containerName\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"storageTablesDirect\": [\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"tableName\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"tableName\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    },\n    \"dataFlows\": [\n      {\n        \"streams\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"destinations\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"transformKql\": \"<string>\",\n        \"outputStream\": \"<string>\",\n        \"builtInTransform\": \"<string>\"\n      },\n      {\n        \"streams\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"destinations\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"transformKql\": \"<string>\",\n        \"outputStream\": \"<string>\",\n        \"builtInTransform\": \"<string>\"\n      }\n    ],\n    \"provisioningState\": \"Creating\"\n  },\n  \"systemData\": {\n    \"createdBy\": \"<string>\",\n    \"createdByType\": \"Application\",\n    \"createdAt\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByType\": \"Key\",\n    \"lastModifiedAt\": \"<dateTime>\"\n  }\n}",
+                                          "createdAt": "2026-06-05T15:11:43.000Z",
+                                          "updatedAt": "2026-06-05T15:11:43.000Z",
+                                          "uid": "35240-99b38081-6fd9-4a5a-ab55-32348ac39cab"
+                                        },
+                                        {
+                                          "id": "d1fbc8eb-cd1e-464d-90fa-daa49c6647b4",
+                                          "name": "Error response describing why the operation failed.",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: oauth2",
+                                                "key": "Authorization",
+                                                "value": "<token>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Insights/dataCollectionRules/:dataCollectionRuleName?api-version=2023-03-11",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "subscriptions",
+                                                ":subscriptionId",
+                                                "resourceGroups",
+                                                ":resourceGroupName",
+                                                "providers",
+                                                "Microsoft.Insights",
+                                                "dataCollectionRules",
+                                                ":dataCollectionRuleName"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "(Required) The API version to use for this operation.",
+                                                  "key": "api-version",
+                                                  "value": "2023-03-11"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "subscriptionId"
+                                                },
+                                                {
+                                                  "key": "resourceGroupName"
+                                                },
+                                                {
+                                                  "key": "dataCollectionRuleName"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Internal Server Error",
+                                          "code": 500,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"target\": \"<string>\",\n    \"details\": [\n      {\n        \"code\": \"<string>\",\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"code\": \"<string>\",\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                                          "createdAt": "2026-06-05T15:11:43.000Z",
+                                          "updatedAt": "2026-06-05T15:11:43.000Z",
+                                          "uid": "35240-d1fbc8eb-cd1e-464d-90fa-daa49c6647b4"
+                                        }
+                                      ],
+                                      "createdAt": "2026-06-05T15:11:43.000Z",
+                                      "updatedAt": "2026-06-05T15:11:43.000Z",
+                                      "uid": "35240-f8c02f59-0759-4072-ba28-1813f12477eb"
+                                    },
+                                    {
+                                      "name": "Azure Monitor Create or update a data collection rule",
+                                      "id": "be22618e-bbbd-4381-8a4f-3f946ba47a01",
+                                      "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                      },
+                                      "request": {
+                                        "method": "PUT",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"location\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"tags\": {\n    \"occaecat_76\": \"<string>\",\n    \"deserunt_72\": \"<string>\",\n    \"adipisicingc9b\": \"<string>\"\n  },\n  \"kind\": \"Linux\",\n  \"identity\": {\n    \"type\": \"SystemAssigned,UserAssigned\",\n    \"principalId\": \"<string>\",\n    \"tenantId\": \"<string>\",\n    \"userAssignedIdentities\": {\n      \"deserunt_0\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      },\n      \"reprehenderit2\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      },\n      \"non_4d\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      },\n      \"do_3\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      }\n    }\n  },\n  \"properties\": {\n    \"description\": \"<string>\",\n    \"immutableId\": \"<string>\",\n    \"dataCollectionEndpointId\": \"<string>\",\n    \"streamDeclarations\": {\n      \"dolord4\": {\n        \"columns\": [\n          {\n            \"name\": \"<string>\",\n            \"type\": \"dynamic\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"type\": \"string\"\n          }\n        ]\n      }\n    },\n    \"dataSources\": {\n      \"performanceCounters\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"samplingFrequencyInSeconds\": \"<integer>\",\n          \"counterSpecifiers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"samplingFrequencyInSeconds\": \"<integer>\",\n          \"counterSpecifiers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"windowsEventLogs\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"xPathQueries\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"xPathQueries\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"syslog\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"facilityNames\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"logLevels\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"facilityNames\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"logLevels\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"extensions\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"extensionName\": \"<string>\",\n          \"extensionSettings\": {\n            \"laborumd8\": -58007566.54039532\n          },\n          \"inputDataSources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"extensionName\": \"<string>\",\n          \"extensionSettings\": {\n            \"dolore65_\": \"nostrud in\",\n            \"laborum410\": \"labore culpa exercitation esse\",\n            \"ut51d\": -88115982\n          },\n          \"inputDataSources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"logFiles\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"filePatterns\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"format\": \"text\",\n          \"settings\": {\n            \"text\": {\n              \"recordStartTimestampFormat\": \"<string>\"\n            }\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"filePatterns\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"format\": \"text\",\n          \"settings\": {\n            \"text\": {\n              \"recordStartTimestampFormat\": \"<string>\"\n            }\n          }\n        }\n      ]\n    },\n    \"destinations\": {\n      \"logAnalytics\": [\n        {\n          \"workspaceResourceId\": \"<string>\",\n          \"workspaceId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"workspaceResourceId\": \"<string>\",\n          \"workspaceId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"monitoringAccounts\": [\n        {\n          \"accountResourceId\": \"<string>\",\n          \"accountId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"accountResourceId\": \"<string>\",\n          \"accountId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"azureMonitorMetrics\": {\n        \"name\": \"<string>\"\n      },\n      \"eventHubs\": [\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"eventHubsDirect\": [\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"storageBlobsDirect\": [\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"containerName\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"containerName\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"storageTablesDirect\": [\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"tableName\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"tableName\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    },\n    \"dataFlows\": [\n      {\n        \"streams\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"destinations\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"transformKql\": \"<string>\",\n        \"outputStream\": \"<string>\",\n        \"builtInTransform\": \"<string>\"\n      },\n      {\n        \"streams\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"destinations\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"transformKql\": \"<string>\",\n        \"outputStream\": \"<string>\",\n        \"builtInTransform\": \"<string>\"\n      }\n    ],\n    \"provisioningState\": \"Creating\"\n  },\n  \"systemData\": {\n    \"createdBy\": \"<string>\",\n    \"createdByType\": \"Application\",\n    \"createdAt\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByType\": \"Key\",\n    \"lastModifiedAt\": \"<dateTime>\"\n  }\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Insights/dataCollectionRules/:dataCollectionRuleName?api-version=2023-03-11",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "subscriptions",
+                                            ":subscriptionId",
+                                            "resourceGroups",
+                                            ":resourceGroupName",
+                                            "providers",
+                                            "Microsoft.Insights",
+                                            "dataCollectionRules",
+                                            ":dataCollectionRuleName"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "(Required) The API version to use for this operation.",
+                                              "key": "api-version",
+                                              "value": "2023-03-11"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "id": "441c533c-5ff6-4d03-8838-8644e9ee9aa2",
+                                              "key": "subscriptionId",
+                                              "value": "<string>",
+                                              "description": "(Required) The ID of the target subscription."
+                                            },
+                                            {
+                                              "id": "cabeca3f-ddf2-4d37-8563-601244b74481",
+                                              "key": "resourceGroupName",
+                                              "value": "<string>",
+                                              "description": "(Required) The name of the resource group."
+                                            },
+                                            {
+                                              "id": "56636a2e-b742-489d-92b7-cc6a91b42098",
+                                              "key": "dataCollectionRuleName",
+                                              "value": "<string>",
+                                              "description": "(Required) The name of the data collection rule."
+                                            }
+                                          ]
+                                        },
+                                        "description": "Creates or updates a data collection rule. Data collection rules define the data sources, transformations, and destinations for data collection in Azure Monitor."
+                                      },
+                                      "response": [
+                                        {
+                                          "id": "ebddaa6b-2e84-4128-b7f5-f1492940756c",
+                                          "name": "Successfully updated the data collection rule.",
+                                          "originalRequest": {
+                                            "method": "PUT",
+                                            "header": [
+                                              {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: oauth2",
+                                                "key": "Authorization",
+                                                "value": "<token>"
+                                              }
+                                            ],
+                                            "body": {
+                                              "mode": "raw",
+                                              "raw": "{\n  \"location\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"tags\": {\n    \"occaecat_76\": \"<string>\",\n    \"deserunt_72\": \"<string>\",\n    \"adipisicingc9b\": \"<string>\"\n  },\n  \"kind\": \"Linux\",\n  \"identity\": {\n    \"type\": \"SystemAssigned,UserAssigned\",\n    \"principalId\": \"<string>\",\n    \"tenantId\": \"<string>\",\n    \"userAssignedIdentities\": {\n      \"deserunt_0\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      },\n      \"reprehenderit2\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      },\n      \"non_4d\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      },\n      \"do_3\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      }\n    }\n  },\n  \"properties\": {\n    \"description\": \"<string>\",\n    \"immutableId\": \"<string>\",\n    \"dataCollectionEndpointId\": \"<string>\",\n    \"streamDeclarations\": {\n      \"dolord4\": {\n        \"columns\": [\n          {\n            \"name\": \"<string>\",\n            \"type\": \"dynamic\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"type\": \"string\"\n          }\n        ]\n      }\n    },\n    \"dataSources\": {\n      \"performanceCounters\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"samplingFrequencyInSeconds\": \"<integer>\",\n          \"counterSpecifiers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"samplingFrequencyInSeconds\": \"<integer>\",\n          \"counterSpecifiers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"windowsEventLogs\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"xPathQueries\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"xPathQueries\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"syslog\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"facilityNames\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"logLevels\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"facilityNames\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"logLevels\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"extensions\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"extensionName\": \"<string>\",\n          \"extensionSettings\": {\n            \"laborumd8\": -58007566.54039532\n          },\n          \"inputDataSources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"extensionName\": \"<string>\",\n          \"extensionSettings\": {\n            \"dolore65_\": \"nostrud in\",\n            \"laborum410\": \"labore culpa exercitation esse\",\n            \"ut51d\": -88115982\n          },\n          \"inputDataSources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"logFiles\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"filePatterns\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"format\": \"text\",\n          \"settings\": {\n            \"text\": {\n              \"recordStartTimestampFormat\": \"<string>\"\n            }\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"filePatterns\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"format\": \"text\",\n          \"settings\": {\n            \"text\": {\n              \"recordStartTimestampFormat\": \"<string>\"\n            }\n          }\n        }\n      ]\n    },\n    \"destinations\": {\n      \"logAnalytics\": [\n        {\n          \"workspaceResourceId\": \"<string>\",\n          \"workspaceId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"workspaceResourceId\": \"<string>\",\n          \"workspaceId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"monitoringAccounts\": [\n        {\n          \"accountResourceId\": \"<string>\",\n          \"accountId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"accountResourceId\": \"<string>\",\n          \"accountId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"azureMonitorMetrics\": {\n        \"name\": \"<string>\"\n      },\n      \"eventHubs\": [\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"eventHubsDirect\": [\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"storageBlobsDirect\": [\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"containerName\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"containerName\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"storageTablesDirect\": [\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"tableName\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"tableName\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    },\n    \"dataFlows\": [\n      {\n        \"streams\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"destinations\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"transformKql\": \"<string>\",\n        \"outputStream\": \"<string>\",\n        \"builtInTransform\": \"<string>\"\n      },\n      {\n        \"streams\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"destinations\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"transformKql\": \"<string>\",\n        \"outputStream\": \"<string>\",\n        \"builtInTransform\": \"<string>\"\n      }\n    ],\n    \"provisioningState\": \"Creating\"\n  },\n  \"systemData\": {\n    \"createdBy\": \"<string>\",\n    \"createdByType\": \"Application\",\n    \"createdAt\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByType\": \"Key\",\n    \"lastModifiedAt\": \"<dateTime>\"\n  }\n}",
+                                              "options": {
+                                                "raw": {
+                                                  "headerFamily": "json",
+                                                  "language": "json"
+                                                }
+                                              }
+                                            },
+                                            "url": {
+                                              "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Insights/dataCollectionRules/:dataCollectionRuleName?api-version=2023-03-11",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "subscriptions",
+                                                ":subscriptionId",
+                                                "resourceGroups",
+                                                ":resourceGroupName",
+                                                "providers",
+                                                "Microsoft.Insights",
+                                                "dataCollectionRules",
+                                                ":dataCollectionRuleName"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "(Required) The API version to use for this operation.",
+                                                  "key": "api-version",
+                                                  "value": "2023-03-11"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "subscriptionId"
+                                                },
+                                                {
+                                                  "key": "resourceGroupName"
+                                                },
+                                                {
+                                                  "key": "dataCollectionRuleName"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "OK",
+                                          "code": 200,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"location\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"tags\": {\n    \"occaecat_76\": \"<string>\",\n    \"deserunt_72\": \"<string>\",\n    \"adipisicingc9b\": \"<string>\"\n  },\n  \"kind\": \"Linux\",\n  \"identity\": {\n    \"type\": \"SystemAssigned,UserAssigned\",\n    \"principalId\": \"<string>\",\n    \"tenantId\": \"<string>\",\n    \"userAssignedIdentities\": {\n      \"deserunt_0\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      },\n      \"reprehenderit2\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      },\n      \"non_4d\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      },\n      \"do_3\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      }\n    }\n  },\n  \"properties\": {\n    \"description\": \"<string>\",\n    \"immutableId\": \"<string>\",\n    \"dataCollectionEndpointId\": \"<string>\",\n    \"streamDeclarations\": {\n      \"dolord4\": {\n        \"columns\": [\n          {\n            \"name\": \"<string>\",\n            \"type\": \"dynamic\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"type\": \"string\"\n          }\n        ]\n      }\n    },\n    \"dataSources\": {\n      \"performanceCounters\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"samplingFrequencyInSeconds\": \"<integer>\",\n          \"counterSpecifiers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"samplingFrequencyInSeconds\": \"<integer>\",\n          \"counterSpecifiers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"windowsEventLogs\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"xPathQueries\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"xPathQueries\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"syslog\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"facilityNames\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"logLevels\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"facilityNames\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"logLevels\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"extensions\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"extensionName\": \"<string>\",\n          \"extensionSettings\": {\n            \"laborumd8\": -58007566.54039532\n          },\n          \"inputDataSources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"extensionName\": \"<string>\",\n          \"extensionSettings\": {\n            \"dolore65_\": \"nostrud in\",\n            \"laborum410\": \"labore culpa exercitation esse\",\n            \"ut51d\": -88115982\n          },\n          \"inputDataSources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"logFiles\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"filePatterns\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"format\": \"text\",\n          \"settings\": {\n            \"text\": {\n              \"recordStartTimestampFormat\": \"<string>\"\n            }\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"filePatterns\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"format\": \"text\",\n          \"settings\": {\n            \"text\": {\n              \"recordStartTimestampFormat\": \"<string>\"\n            }\n          }\n        }\n      ]\n    },\n    \"destinations\": {\n      \"logAnalytics\": [\n        {\n          \"workspaceResourceId\": \"<string>\",\n          \"workspaceId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"workspaceResourceId\": \"<string>\",\n          \"workspaceId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"monitoringAccounts\": [\n        {\n          \"accountResourceId\": \"<string>\",\n          \"accountId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"accountResourceId\": \"<string>\",\n          \"accountId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"azureMonitorMetrics\": {\n        \"name\": \"<string>\"\n      },\n      \"eventHubs\": [\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"eventHubsDirect\": [\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"storageBlobsDirect\": [\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"containerName\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"containerName\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"storageTablesDirect\": [\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"tableName\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"tableName\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    },\n    \"dataFlows\": [\n      {\n        \"streams\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"destinations\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"transformKql\": \"<string>\",\n        \"outputStream\": \"<string>\",\n        \"builtInTransform\": \"<string>\"\n      },\n      {\n        \"streams\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"destinations\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"transformKql\": \"<string>\",\n        \"outputStream\": \"<string>\",\n        \"builtInTransform\": \"<string>\"\n      }\n    ],\n    \"provisioningState\": \"Creating\"\n  },\n  \"systemData\": {\n    \"createdBy\": \"<string>\",\n    \"createdByType\": \"Application\",\n    \"createdAt\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByType\": \"Key\",\n    \"lastModifiedAt\": \"<dateTime>\"\n  }\n}",
+                                          "createdAt": "2026-06-05T15:11:43.000Z",
+                                          "updatedAt": "2026-06-05T15:11:43.000Z",
+                                          "uid": "35240-ebddaa6b-2e84-4128-b7f5-f1492940756c"
+                                        },
+                                        {
+                                          "id": "8d955172-a7ff-461b-b81b-ba8d88f8b906",
+                                          "name": "Successfully created the data collection rule.",
+                                          "originalRequest": {
+                                            "method": "PUT",
+                                            "header": [
+                                              {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: oauth2",
+                                                "key": "Authorization",
+                                                "value": "<token>"
+                                              }
+                                            ],
+                                            "body": {
+                                              "mode": "raw",
+                                              "raw": "{\n  \"location\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"tags\": {\n    \"occaecat_76\": \"<string>\",\n    \"deserunt_72\": \"<string>\",\n    \"adipisicingc9b\": \"<string>\"\n  },\n  \"kind\": \"Linux\",\n  \"identity\": {\n    \"type\": \"SystemAssigned,UserAssigned\",\n    \"principalId\": \"<string>\",\n    \"tenantId\": \"<string>\",\n    \"userAssignedIdentities\": {\n      \"deserunt_0\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      },\n      \"reprehenderit2\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      },\n      \"non_4d\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      },\n      \"do_3\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      }\n    }\n  },\n  \"properties\": {\n    \"description\": \"<string>\",\n    \"immutableId\": \"<string>\",\n    \"dataCollectionEndpointId\": \"<string>\",\n    \"streamDeclarations\": {\n      \"dolord4\": {\n        \"columns\": [\n          {\n            \"name\": \"<string>\",\n            \"type\": \"dynamic\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"type\": \"string\"\n          }\n        ]\n      }\n    },\n    \"dataSources\": {\n      \"performanceCounters\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"samplingFrequencyInSeconds\": \"<integer>\",\n          \"counterSpecifiers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"samplingFrequencyInSeconds\": \"<integer>\",\n          \"counterSpecifiers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"windowsEventLogs\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"xPathQueries\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"xPathQueries\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"syslog\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"facilityNames\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"logLevels\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"facilityNames\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"logLevels\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"extensions\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"extensionName\": \"<string>\",\n          \"extensionSettings\": {\n            \"laborumd8\": -58007566.54039532\n          },\n          \"inputDataSources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"extensionName\": \"<string>\",\n          \"extensionSettings\": {\n            \"dolore65_\": \"nostrud in\",\n            \"laborum410\": \"labore culpa exercitation esse\",\n            \"ut51d\": -88115982\n          },\n          \"inputDataSources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"logFiles\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"filePatterns\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"format\": \"text\",\n          \"settings\": {\n            \"text\": {\n              \"recordStartTimestampFormat\": \"<string>\"\n            }\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"filePatterns\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"format\": \"text\",\n          \"settings\": {\n            \"text\": {\n              \"recordStartTimestampFormat\": \"<string>\"\n            }\n          }\n        }\n      ]\n    },\n    \"destinations\": {\n      \"logAnalytics\": [\n        {\n          \"workspaceResourceId\": \"<string>\",\n          \"workspaceId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"workspaceResourceId\": \"<string>\",\n          \"workspaceId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"monitoringAccounts\": [\n        {\n          \"accountResourceId\": \"<string>\",\n          \"accountId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"accountResourceId\": \"<string>\",\n          \"accountId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"azureMonitorMetrics\": {\n        \"name\": \"<string>\"\n      },\n      \"eventHubs\": [\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"eventHubsDirect\": [\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"storageBlobsDirect\": [\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"containerName\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"containerName\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"storageTablesDirect\": [\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"tableName\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"tableName\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    },\n    \"dataFlows\": [\n      {\n        \"streams\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"destinations\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"transformKql\": \"<string>\",\n        \"outputStream\": \"<string>\",\n        \"builtInTransform\": \"<string>\"\n      },\n      {\n        \"streams\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"destinations\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"transformKql\": \"<string>\",\n        \"outputStream\": \"<string>\",\n        \"builtInTransform\": \"<string>\"\n      }\n    ],\n    \"provisioningState\": \"Creating\"\n  },\n  \"systemData\": {\n    \"createdBy\": \"<string>\",\n    \"createdByType\": \"Application\",\n    \"createdAt\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByType\": \"Key\",\n    \"lastModifiedAt\": \"<dateTime>\"\n  }\n}",
+                                              "options": {
+                                                "raw": {
+                                                  "headerFamily": "json",
+                                                  "language": "json"
+                                                }
+                                              }
+                                            },
+                                            "url": {
+                                              "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Insights/dataCollectionRules/:dataCollectionRuleName?api-version=2023-03-11",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "subscriptions",
+                                                ":subscriptionId",
+                                                "resourceGroups",
+                                                ":resourceGroupName",
+                                                "providers",
+                                                "Microsoft.Insights",
+                                                "dataCollectionRules",
+                                                ":dataCollectionRuleName"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "(Required) The API version to use for this operation.",
+                                                  "key": "api-version",
+                                                  "value": "2023-03-11"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "subscriptionId"
+                                                },
+                                                {
+                                                  "key": "resourceGroupName"
+                                                },
+                                                {
+                                                  "key": "dataCollectionRuleName"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Created",
+                                          "code": 201,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"location\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"tags\": {\n    \"occaecat_76\": \"<string>\",\n    \"deserunt_72\": \"<string>\",\n    \"adipisicingc9b\": \"<string>\"\n  },\n  \"kind\": \"Linux\",\n  \"identity\": {\n    \"type\": \"SystemAssigned,UserAssigned\",\n    \"principalId\": \"<string>\",\n    \"tenantId\": \"<string>\",\n    \"userAssignedIdentities\": {\n      \"deserunt_0\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      },\n      \"reprehenderit2\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      },\n      \"non_4d\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      },\n      \"do_3\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      }\n    }\n  },\n  \"properties\": {\n    \"description\": \"<string>\",\n    \"immutableId\": \"<string>\",\n    \"dataCollectionEndpointId\": \"<string>\",\n    \"streamDeclarations\": {\n      \"dolord4\": {\n        \"columns\": [\n          {\n            \"name\": \"<string>\",\n            \"type\": \"dynamic\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"type\": \"string\"\n          }\n        ]\n      }\n    },\n    \"dataSources\": {\n      \"performanceCounters\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"samplingFrequencyInSeconds\": \"<integer>\",\n          \"counterSpecifiers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"samplingFrequencyInSeconds\": \"<integer>\",\n          \"counterSpecifiers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"windowsEventLogs\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"xPathQueries\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"xPathQueries\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"syslog\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"facilityNames\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"logLevels\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"facilityNames\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"logLevels\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"extensions\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"extensionName\": \"<string>\",\n          \"extensionSettings\": {\n            \"laborumd8\": -58007566.54039532\n          },\n          \"inputDataSources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"extensionName\": \"<string>\",\n          \"extensionSettings\": {\n            \"dolore65_\": \"nostrud in\",\n            \"laborum410\": \"labore culpa exercitation esse\",\n            \"ut51d\": -88115982\n          },\n          \"inputDataSources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"logFiles\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"filePatterns\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"format\": \"text\",\n          \"settings\": {\n            \"text\": {\n              \"recordStartTimestampFormat\": \"<string>\"\n            }\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"filePatterns\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"format\": \"text\",\n          \"settings\": {\n            \"text\": {\n              \"recordStartTimestampFormat\": \"<string>\"\n            }\n          }\n        }\n      ]\n    },\n    \"destinations\": {\n      \"logAnalytics\": [\n        {\n          \"workspaceResourceId\": \"<string>\",\n          \"workspaceId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"workspaceResourceId\": \"<string>\",\n          \"workspaceId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"monitoringAccounts\": [\n        {\n          \"accountResourceId\": \"<string>\",\n          \"accountId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"accountResourceId\": \"<string>\",\n          \"accountId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"azureMonitorMetrics\": {\n        \"name\": \"<string>\"\n      },\n      \"eventHubs\": [\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"eventHubsDirect\": [\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"storageBlobsDirect\": [\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"containerName\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"containerName\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"storageTablesDirect\": [\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"tableName\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"tableName\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    },\n    \"dataFlows\": [\n      {\n        \"streams\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"destinations\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"transformKql\": \"<string>\",\n        \"outputStream\": \"<string>\",\n        \"builtInTransform\": \"<string>\"\n      },\n      {\n        \"streams\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"destinations\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"transformKql\": \"<string>\",\n        \"outputStream\": \"<string>\",\n        \"builtInTransform\": \"<string>\"\n      }\n    ],\n    \"provisioningState\": \"Creating\"\n  },\n  \"systemData\": {\n    \"createdBy\": \"<string>\",\n    \"createdByType\": \"Application\",\n    \"createdAt\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByType\": \"Key\",\n    \"lastModifiedAt\": \"<dateTime>\"\n  }\n}",
+                                          "createdAt": "2026-06-05T15:11:43.000Z",
+                                          "updatedAt": "2026-06-05T15:11:43.000Z",
+                                          "uid": "35240-8d955172-a7ff-461b-b81b-ba8d88f8b906"
+                                        },
+                                        {
+                                          "id": "63d1f9a2-3f92-48f7-949e-a767e798b987",
+                                          "name": "Error response describing why the operation failed.",
+                                          "originalRequest": {
+                                            "method": "PUT",
+                                            "header": [
+                                              {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: oauth2",
+                                                "key": "Authorization",
+                                                "value": "<token>"
+                                              }
+                                            ],
+                                            "body": {
+                                              "mode": "raw",
+                                              "raw": "{\n  \"location\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"tags\": {\n    \"occaecat_76\": \"<string>\",\n    \"deserunt_72\": \"<string>\",\n    \"adipisicingc9b\": \"<string>\"\n  },\n  \"kind\": \"Linux\",\n  \"identity\": {\n    \"type\": \"SystemAssigned,UserAssigned\",\n    \"principalId\": \"<string>\",\n    \"tenantId\": \"<string>\",\n    \"userAssignedIdentities\": {\n      \"deserunt_0\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      },\n      \"reprehenderit2\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      },\n      \"non_4d\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      },\n      \"do_3\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      }\n    }\n  },\n  \"properties\": {\n    \"description\": \"<string>\",\n    \"immutableId\": \"<string>\",\n    \"dataCollectionEndpointId\": \"<string>\",\n    \"streamDeclarations\": {\n      \"dolord4\": {\n        \"columns\": [\n          {\n            \"name\": \"<string>\",\n            \"type\": \"dynamic\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"type\": \"string\"\n          }\n        ]\n      }\n    },\n    \"dataSources\": {\n      \"performanceCounters\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"samplingFrequencyInSeconds\": \"<integer>\",\n          \"counterSpecifiers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"samplingFrequencyInSeconds\": \"<integer>\",\n          \"counterSpecifiers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"windowsEventLogs\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"xPathQueries\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"xPathQueries\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"syslog\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"facilityNames\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"logLevels\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"facilityNames\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"logLevels\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"extensions\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"extensionName\": \"<string>\",\n          \"extensionSettings\": {\n            \"laborumd8\": -58007566.54039532\n          },\n          \"inputDataSources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"extensionName\": \"<string>\",\n          \"extensionSettings\": {\n            \"dolore65_\": \"nostrud in\",\n            \"laborum410\": \"labore culpa exercitation esse\",\n            \"ut51d\": -88115982\n          },\n          \"inputDataSources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"logFiles\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"filePatterns\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"format\": \"text\",\n          \"settings\": {\n            \"text\": {\n              \"recordStartTimestampFormat\": \"<string>\"\n            }\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"filePatterns\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"format\": \"text\",\n          \"settings\": {\n            \"text\": {\n              \"recordStartTimestampFormat\": \"<string>\"\n            }\n          }\n        }\n      ]\n    },\n    \"destinations\": {\n      \"logAnalytics\": [\n        {\n          \"workspaceResourceId\": \"<string>\",\n          \"workspaceId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"workspaceResourceId\": \"<string>\",\n          \"workspaceId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"monitoringAccounts\": [\n        {\n          \"accountResourceId\": \"<string>\",\n          \"accountId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"accountResourceId\": \"<string>\",\n          \"accountId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"azureMonitorMetrics\": {\n        \"name\": \"<string>\"\n      },\n      \"eventHubs\": [\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"eventHubsDirect\": [\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"storageBlobsDirect\": [\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"containerName\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"containerName\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"storageTablesDirect\": [\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"tableName\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"tableName\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    },\n    \"dataFlows\": [\n      {\n        \"streams\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"destinations\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"transformKql\": \"<string>\",\n        \"outputStream\": \"<string>\",\n        \"builtInTransform\": \"<string>\"\n      },\n      {\n        \"streams\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"destinations\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"transformKql\": \"<string>\",\n        \"outputStream\": \"<string>\",\n        \"builtInTransform\": \"<string>\"\n      }\n    ],\n    \"provisioningState\": \"Creating\"\n  },\n  \"systemData\": {\n    \"createdBy\": \"<string>\",\n    \"createdByType\": \"Application\",\n    \"createdAt\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByType\": \"Key\",\n    \"lastModifiedAt\": \"<dateTime>\"\n  }\n}",
+                                              "options": {
+                                                "raw": {
+                                                  "headerFamily": "json",
+                                                  "language": "json"
+                                                }
+                                              }
+                                            },
+                                            "url": {
+                                              "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Insights/dataCollectionRules/:dataCollectionRuleName?api-version=2023-03-11",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "subscriptions",
+                                                ":subscriptionId",
+                                                "resourceGroups",
+                                                ":resourceGroupName",
+                                                "providers",
+                                                "Microsoft.Insights",
+                                                "dataCollectionRules",
+                                                ":dataCollectionRuleName"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "(Required) The API version to use for this operation.",
+                                                  "key": "api-version",
+                                                  "value": "2023-03-11"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "subscriptionId"
+                                                },
+                                                {
+                                                  "key": "resourceGroupName"
+                                                },
+                                                {
+                                                  "key": "dataCollectionRuleName"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Internal Server Error",
+                                          "code": 500,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"target\": \"<string>\",\n    \"details\": [\n      {\n        \"code\": \"<string>\",\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"code\": \"<string>\",\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                                          "createdAt": "2026-06-05T15:11:43.000Z",
+                                          "updatedAt": "2026-06-05T15:11:43.000Z",
+                                          "uid": "35240-63d1f9a2-3f92-48f7-949e-a767e798b987"
+                                        }
+                                      ],
+                                      "createdAt": "2026-06-05T15:11:43.000Z",
+                                      "updatedAt": "2026-06-05T15:11:43.000Z",
+                                      "uid": "35240-be22618e-bbbd-4381-8a4f-3f946ba47a01"
+                                    },
+                                    {
+                                      "name": "Azure Monitor Update a data collection rule",
+                                      "id": "d3cb1b20-da24-4975-ba4c-1c566f55e9f7",
+                                      "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                      },
+                                      "request": {
+                                        "method": "PATCH",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"tags\": {\n    \"cillum_b\": \"<string>\"\n  },\n  \"identity\": {\n    \"type\": \"UserAssigned\",\n    \"principalId\": \"<string>\",\n    \"tenantId\": \"<string>\",\n    \"userAssignedIdentities\": {\n      \"ex4f\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      },\n      \"proidente9d\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      },\n      \"laborum__0\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      }\n    }\n  }\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Insights/dataCollectionRules/:dataCollectionRuleName?api-version=2023-03-11",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "subscriptions",
+                                            ":subscriptionId",
+                                            "resourceGroups",
+                                            ":resourceGroupName",
+                                            "providers",
+                                            "Microsoft.Insights",
+                                            "dataCollectionRules",
+                                            ":dataCollectionRuleName"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "(Required) The API version to use for this operation.",
+                                              "key": "api-version",
+                                              "value": "2023-03-11"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "id": "3856415f-404c-4f46-87cb-06fd1e8857f1",
+                                              "key": "subscriptionId",
+                                              "value": "<string>",
+                                              "description": "(Required) The ID of the target subscription."
+                                            },
+                                            {
+                                              "id": "442e4d65-b4f5-473d-82c3-89af40b6f656",
+                                              "key": "resourceGroupName",
+                                              "value": "<string>",
+                                              "description": "(Required) The name of the resource group."
+                                            },
+                                            {
+                                              "id": "91dd1345-5160-4c64-b4c1-bcf2b5da855d",
+                                              "key": "dataCollectionRuleName",
+                                              "value": "<string>",
+                                              "description": "(Required) The name of the data collection rule."
+                                            }
+                                          ]
+                                        },
+                                        "description": "Updates part of a data collection rule. Only tags and identity can be updated via PATCH."
+                                      },
+                                      "response": [
+                                        {
+                                          "id": "566548f6-5f09-43de-8ee1-695872602674",
+                                          "name": "Successfully updated the data collection rule.",
+                                          "originalRequest": {
+                                            "method": "PATCH",
+                                            "header": [
+                                              {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: oauth2",
+                                                "key": "Authorization",
+                                                "value": "<token>"
+                                              }
+                                            ],
+                                            "body": {
+                                              "mode": "raw",
+                                              "raw": "{\n  \"tags\": {\n    \"cillum_b\": \"<string>\"\n  },\n  \"identity\": {\n    \"type\": \"UserAssigned\",\n    \"principalId\": \"<string>\",\n    \"tenantId\": \"<string>\",\n    \"userAssignedIdentities\": {\n      \"ex4f\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      },\n      \"proidente9d\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      },\n      \"laborum__0\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      }\n    }\n  }\n}",
+                                              "options": {
+                                                "raw": {
+                                                  "headerFamily": "json",
+                                                  "language": "json"
+                                                }
+                                              }
+                                            },
+                                            "url": {
+                                              "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Insights/dataCollectionRules/:dataCollectionRuleName?api-version=2023-03-11",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "subscriptions",
+                                                ":subscriptionId",
+                                                "resourceGroups",
+                                                ":resourceGroupName",
+                                                "providers",
+                                                "Microsoft.Insights",
+                                                "dataCollectionRules",
+                                                ":dataCollectionRuleName"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "(Required) The API version to use for this operation.",
+                                                  "key": "api-version",
+                                                  "value": "2023-03-11"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "subscriptionId"
+                                                },
+                                                {
+                                                  "key": "resourceGroupName"
+                                                },
+                                                {
+                                                  "key": "dataCollectionRuleName"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "OK",
+                                          "code": 200,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"location\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"tags\": {\n    \"occaecat_76\": \"<string>\",\n    \"deserunt_72\": \"<string>\",\n    \"adipisicingc9b\": \"<string>\"\n  },\n  \"kind\": \"Linux\",\n  \"identity\": {\n    \"type\": \"SystemAssigned,UserAssigned\",\n    \"principalId\": \"<string>\",\n    \"tenantId\": \"<string>\",\n    \"userAssignedIdentities\": {\n      \"deserunt_0\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      },\n      \"reprehenderit2\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      },\n      \"non_4d\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      },\n      \"do_3\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      }\n    }\n  },\n  \"properties\": {\n    \"description\": \"<string>\",\n    \"immutableId\": \"<string>\",\n    \"dataCollectionEndpointId\": \"<string>\",\n    \"streamDeclarations\": {\n      \"dolord4\": {\n        \"columns\": [\n          {\n            \"name\": \"<string>\",\n            \"type\": \"dynamic\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"type\": \"string\"\n          }\n        ]\n      }\n    },\n    \"dataSources\": {\n      \"performanceCounters\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"samplingFrequencyInSeconds\": \"<integer>\",\n          \"counterSpecifiers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"samplingFrequencyInSeconds\": \"<integer>\",\n          \"counterSpecifiers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"windowsEventLogs\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"xPathQueries\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"xPathQueries\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"syslog\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"facilityNames\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"logLevels\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"facilityNames\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"logLevels\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"extensions\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"extensionName\": \"<string>\",\n          \"extensionSettings\": {\n            \"laborumd8\": -58007566.54039532\n          },\n          \"inputDataSources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"extensionName\": \"<string>\",\n          \"extensionSettings\": {\n            \"dolore65_\": \"nostrud in\",\n            \"laborum410\": \"labore culpa exercitation esse\",\n            \"ut51d\": -88115982\n          },\n          \"inputDataSources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"logFiles\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"filePatterns\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"format\": \"text\",\n          \"settings\": {\n            \"text\": {\n              \"recordStartTimestampFormat\": \"<string>\"\n            }\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"filePatterns\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"format\": \"text\",\n          \"settings\": {\n            \"text\": {\n              \"recordStartTimestampFormat\": \"<string>\"\n            }\n          }\n        }\n      ]\n    },\n    \"destinations\": {\n      \"logAnalytics\": [\n        {\n          \"workspaceResourceId\": \"<string>\",\n          \"workspaceId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"workspaceResourceId\": \"<string>\",\n          \"workspaceId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"monitoringAccounts\": [\n        {\n          \"accountResourceId\": \"<string>\",\n          \"accountId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"accountResourceId\": \"<string>\",\n          \"accountId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"azureMonitorMetrics\": {\n        \"name\": \"<string>\"\n      },\n      \"eventHubs\": [\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"eventHubsDirect\": [\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"storageBlobsDirect\": [\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"containerName\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"containerName\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"storageTablesDirect\": [\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"tableName\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"tableName\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    },\n    \"dataFlows\": [\n      {\n        \"streams\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"destinations\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"transformKql\": \"<string>\",\n        \"outputStream\": \"<string>\",\n        \"builtInTransform\": \"<string>\"\n      },\n      {\n        \"streams\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"destinations\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"transformKql\": \"<string>\",\n        \"outputStream\": \"<string>\",\n        \"builtInTransform\": \"<string>\"\n      }\n    ],\n    \"provisioningState\": \"Creating\"\n  },\n  \"systemData\": {\n    \"createdBy\": \"<string>\",\n    \"createdByType\": \"Application\",\n    \"createdAt\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByType\": \"Key\",\n    \"lastModifiedAt\": \"<dateTime>\"\n  }\n}",
+                                          "createdAt": "2026-06-05T15:11:43.000Z",
+                                          "updatedAt": "2026-06-05T15:11:43.000Z",
+                                          "uid": "35240-566548f6-5f09-43de-8ee1-695872602674"
+                                        },
+                                        {
+                                          "id": "c20c6b12-f7d7-4d96-8fc0-e81af121b630",
+                                          "name": "Error response describing why the operation failed.",
+                                          "originalRequest": {
+                                            "method": "PATCH",
+                                            "header": [
+                                              {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: oauth2",
+                                                "key": "Authorization",
+                                                "value": "<token>"
+                                              }
+                                            ],
+                                            "body": {
+                                              "mode": "raw",
+                                              "raw": "{\n  \"tags\": {\n    \"cillum_b\": \"<string>\"\n  },\n  \"identity\": {\n    \"type\": \"UserAssigned\",\n    \"principalId\": \"<string>\",\n    \"tenantId\": \"<string>\",\n    \"userAssignedIdentities\": {\n      \"ex4f\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      },\n      \"proidente9d\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      },\n      \"laborum__0\": {\n        \"principalId\": \"<string>\",\n        \"clientId\": \"<string>\"\n      }\n    }\n  }\n}",
+                                              "options": {
+                                                "raw": {
+                                                  "headerFamily": "json",
+                                                  "language": "json"
+                                                }
+                                              }
+                                            },
+                                            "url": {
+                                              "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Insights/dataCollectionRules/:dataCollectionRuleName?api-version=2023-03-11",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "subscriptions",
+                                                ":subscriptionId",
+                                                "resourceGroups",
+                                                ":resourceGroupName",
+                                                "providers",
+                                                "Microsoft.Insights",
+                                                "dataCollectionRules",
+                                                ":dataCollectionRuleName"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "(Required) The API version to use for this operation.",
+                                                  "key": "api-version",
+                                                  "value": "2023-03-11"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "subscriptionId"
+                                                },
+                                                {
+                                                  "key": "resourceGroupName"
+                                                },
+                                                {
+                                                  "key": "dataCollectionRuleName"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Internal Server Error",
+                                          "code": 500,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"target\": \"<string>\",\n    \"details\": [\n      {\n        \"code\": \"<string>\",\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"code\": \"<string>\",\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                                          "createdAt": "2026-06-05T15:11:43.000Z",
+                                          "updatedAt": "2026-06-05T15:11:43.000Z",
+                                          "uid": "35240-c20c6b12-f7d7-4d96-8fc0-e81af121b630"
+                                        }
+                                      ],
+                                      "createdAt": "2026-06-05T15:11:43.000Z",
+                                      "updatedAt": "2026-06-05T15:11:43.000Z",
+                                      "uid": "35240-d3cb1b20-da24-4975-ba4c-1c566f55e9f7"
+                                    },
+                                    {
+                                      "name": "Azure Monitor Delete a data collection rule",
+                                      "id": "e29feaa6-61f2-4c87-82e8-00c74e2ef188",
+                                      "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                      },
+                                      "request": {
+                                        "method": "DELETE",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Insights/dataCollectionRules/:dataCollectionRuleName?api-version=2023-03-11",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "subscriptions",
+                                            ":subscriptionId",
+                                            "resourceGroups",
+                                            ":resourceGroupName",
+                                            "providers",
+                                            "Microsoft.Insights",
+                                            "dataCollectionRules",
+                                            ":dataCollectionRuleName"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "(Required) The API version to use for this operation.",
+                                              "key": "api-version",
+                                              "value": "2023-03-11"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "id": "6912f63c-9bbb-4ceb-8892-873814f49123",
+                                              "key": "subscriptionId",
+                                              "value": "<string>",
+                                              "description": "(Required) The ID of the target subscription."
+                                            },
+                                            {
+                                              "id": "7af8ebfa-b7f3-4e0a-8336-d70eb6ee9d83",
+                                              "key": "resourceGroupName",
+                                              "value": "<string>",
+                                              "description": "(Required) The name of the resource group."
+                                            },
+                                            {
+                                              "id": "4c3a893c-6cb2-4102-9d2d-ecd95a93e11f",
+                                              "key": "dataCollectionRuleName",
+                                              "value": "<string>",
+                                              "description": "(Required) The name of the data collection rule."
+                                            }
+                                          ]
+                                        },
+                                        "description": "Deletes a data collection rule."
+                                      },
+                                      "response": [
+                                        {
+                                          "id": "d7d29c22-255e-4f8f-8829-cfe8ce1bd770",
+                                          "name": "Successfully deleted the data collection rule.",
+                                          "originalRequest": {
+                                            "method": "DELETE",
+                                            "header": [
+                                              {
+                                                "description": "Added as a part of security scheme: oauth2",
+                                                "key": "Authorization",
+                                                "value": "<token>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Insights/dataCollectionRules/:dataCollectionRuleName?api-version=2023-03-11",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "subscriptions",
+                                                ":subscriptionId",
+                                                "resourceGroups",
+                                                ":resourceGroupName",
+                                                "providers",
+                                                "Microsoft.Insights",
+                                                "dataCollectionRules",
+                                                ":dataCollectionRuleName"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "(Required) The API version to use for this operation.",
+                                                  "key": "api-version",
+                                                  "value": "2023-03-11"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "subscriptionId"
+                                                },
+                                                {
+                                                  "key": "resourceGroupName"
+                                                },
+                                                {
+                                                  "key": "dataCollectionRuleName"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "OK",
+                                          "code": 200,
+                                          "_postman_previewlanguage": "text",
+                                          "header": [],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": null,
+                                          "createdAt": "2026-06-05T15:11:43.000Z",
+                                          "updatedAt": "2026-06-05T15:11:43.000Z",
+                                          "uid": "35240-d7d29c22-255e-4f8f-8829-cfe8ce1bd770"
+                                        },
+                                        {
+                                          "id": "f51d5578-7fd0-4296-b54b-79cb93feba87",
+                                          "name": "The data collection rule did not exist.",
+                                          "originalRequest": {
+                                            "method": "DELETE",
+                                            "header": [
+                                              {
+                                                "description": "Added as a part of security scheme: oauth2",
+                                                "key": "Authorization",
+                                                "value": "<token>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Insights/dataCollectionRules/:dataCollectionRuleName?api-version=2023-03-11",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "subscriptions",
+                                                ":subscriptionId",
+                                                "resourceGroups",
+                                                ":resourceGroupName",
+                                                "providers",
+                                                "Microsoft.Insights",
+                                                "dataCollectionRules",
+                                                ":dataCollectionRuleName"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "(Required) The API version to use for this operation.",
+                                                  "key": "api-version",
+                                                  "value": "2023-03-11"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "subscriptionId"
+                                                },
+                                                {
+                                                  "key": "resourceGroupName"
+                                                },
+                                                {
+                                                  "key": "dataCollectionRuleName"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "No Content",
+                                          "code": 204,
+                                          "_postman_previewlanguage": "text",
+                                          "header": [],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": null,
+                                          "createdAt": "2026-06-05T15:11:43.000Z",
+                                          "updatedAt": "2026-06-05T15:11:43.000Z",
+                                          "uid": "35240-f51d5578-7fd0-4296-b54b-79cb93feba87"
+                                        },
+                                        {
+                                          "id": "237d27b0-6807-4e0a-b7be-8ea28acd85c3",
+                                          "name": "Error response describing why the operation failed.",
+                                          "originalRequest": {
+                                            "method": "DELETE",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: oauth2",
+                                                "key": "Authorization",
+                                                "value": "<token>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Insights/dataCollectionRules/:dataCollectionRuleName?api-version=2023-03-11",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "subscriptions",
+                                                ":subscriptionId",
+                                                "resourceGroups",
+                                                ":resourceGroupName",
+                                                "providers",
+                                                "Microsoft.Insights",
+                                                "dataCollectionRules",
+                                                ":dataCollectionRuleName"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "(Required) The API version to use for this operation.",
+                                                  "key": "api-version",
+                                                  "value": "2023-03-11"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "subscriptionId"
+                                                },
+                                                {
+                                                  "key": "resourceGroupName"
+                                                },
+                                                {
+                                                  "key": "dataCollectionRuleName"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Internal Server Error",
+                                          "code": 500,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"target\": \"<string>\",\n    \"details\": [\n      {\n        \"code\": \"<string>\",\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"code\": \"<string>\",\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                                          "createdAt": "2026-06-05T15:11:43.000Z",
+                                          "updatedAt": "2026-06-05T15:11:43.000Z",
+                                          "uid": "35240-237d27b0-6807-4e0a-b7be-8ea28acd85c3"
+                                        }
+                                      ],
+                                      "createdAt": "2026-06-05T15:11:43.000Z",
+                                      "updatedAt": "2026-06-05T15:11:43.000Z",
+                                      "uid": "35240-e29feaa6-61f2-4c87-82e8-00c74e2ef188"
+                                    }
+                                  ],
+                                  "id": "a6aecccf-56ca-4bc7-8a48-f4e3e0b8e334",
+                                  "createdAt": "2026-06-05T15:11:43.000Z",
+                                  "updatedAt": "2026-06-05T15:11:43.000Z",
+                                  "uid": "35240-a6aecccf-56ca-4bc7-8a48-f4e3e0b8e334"
+                                },
+                                {
+                                  "name": "Azure Monitor List data collection rules in a resource group",
+                                  "id": "916d24ae-bdf3-4832-b747-ddbdee9a80af",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Insights/dataCollectionRules?api-version=2023-03-11",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "subscriptions",
+                                        ":subscriptionId",
+                                        "resourceGroups",
+                                        ":resourceGroupName",
+                                        "providers",
+                                        "Microsoft.Insights",
+                                        "dataCollectionRules"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) The API version to use for this operation.",
+                                          "key": "api-version",
+                                          "value": "2023-03-11"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "7d5928d0-3549-4a06-872a-65ada87f785b",
+                                          "key": "subscriptionId",
+                                          "value": "<string>",
+                                          "description": "(Required) The ID of the target subscription."
+                                        },
+                                        {
+                                          "id": "7ac01522-1972-48da-8852-7f4a7244140c",
+                                          "key": "resourceGroupName",
+                                          "value": "<string>",
+                                          "description": "(Required) The name of the resource group."
+                                        }
+                                      ]
+                                    },
+                                    "description": "Lists all data collection rules in the specified resource group."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "31ee4456-656d-4703-bf5c-c845a0dcaa1c",
+                                      "name": "Successful request to list data collection rules.",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Insights/dataCollectionRules?api-version=2023-03-11",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "subscriptions",
+                                            ":subscriptionId",
+                                            "resourceGroups",
+                                            ":resourceGroupName",
+                                            "providers",
+                                            "Microsoft.Insights",
+                                            "dataCollectionRules"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "(Required) The API version to use for this operation.",
+                                              "key": "api-version",
+                                              "value": "2023-03-11"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "subscriptionId"
+                                            },
+                                            {
+                                              "key": "resourceGroupName"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"value\": [\n    {\n      \"location\": \"<string>\",\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"tags\": {\n        \"aliquip21c\": \"<string>\",\n        \"Lorem_a46\": \"<string>\",\n        \"magna_1\": \"<string>\",\n        \"ut__\": \"<string>\"\n      },\n      \"kind\": \"Linux\",\n      \"identity\": {\n        \"type\": \"None\",\n        \"principalId\": \"<string>\",\n        \"tenantId\": \"<string>\",\n        \"userAssignedIdentities\": {\n          \"occaecat_cc8\": {\n            \"principalId\": \"<string>\",\n            \"clientId\": \"<string>\"\n          }\n        }\n      },\n      \"properties\": {\n        \"description\": \"<string>\",\n        \"immutableId\": \"<string>\",\n        \"dataCollectionEndpointId\": \"<string>\",\n        \"streamDeclarations\": {\n          \"dob4\": {\n            \"columns\": [\n              {\n                \"name\": \"<string>\",\n                \"type\": \"long\"\n              },\n              {\n                \"name\": \"<string>\",\n                \"type\": \"real\"\n              }\n            ]\n          },\n          \"nisid\": {\n            \"columns\": [\n              {\n                \"name\": \"<string>\",\n                \"type\": \"datetime\"\n              },\n              {\n                \"name\": \"<string>\",\n                \"type\": \"long\"\n              }\n            ]\n          },\n          \"officia_6b\": {\n            \"columns\": [\n              {\n                \"name\": \"<string>\",\n                \"type\": \"boolean\"\n              },\n              {\n                \"name\": \"<string>\",\n                \"type\": \"long\"\n              }\n            ]\n          }\n        },\n        \"dataSources\": {\n          \"performanceCounters\": [\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"samplingFrequencyInSeconds\": \"<integer>\",\n              \"counterSpecifiers\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"samplingFrequencyInSeconds\": \"<integer>\",\n              \"counterSpecifiers\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ],\n          \"windowsEventLogs\": [\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"xPathQueries\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"xPathQueries\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ],\n          \"syslog\": [\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"facilityNames\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"logLevels\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"facilityNames\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"logLevels\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ],\n          \"extensions\": [\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"extensionName\": \"<string>\",\n              \"extensionSettings\": {\n                \"tempor_c\": 24273403.63628687\n              },\n              \"inputDataSources\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"extensionName\": \"<string>\",\n              \"extensionSettings\": {\n                \"dolor927\": 47378806.23234147,\n                \"aute_e0b\": -44037711\n              },\n              \"inputDataSources\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ],\n          \"logFiles\": [\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"filePatterns\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"format\": \"text\",\n              \"settings\": {\n                \"text\": {\n                  \"recordStartTimestampFormat\": \"<string>\"\n                }\n              }\n            },\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"filePatterns\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"format\": \"text\",\n              \"settings\": {\n                \"text\": {\n                  \"recordStartTimestampFormat\": \"<string>\"\n                }\n              }\n            }\n          ]\n        },\n        \"destinations\": {\n          \"logAnalytics\": [\n            {\n              \"workspaceResourceId\": \"<string>\",\n              \"workspaceId\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            {\n              \"workspaceResourceId\": \"<string>\",\n              \"workspaceId\": \"<string>\",\n              \"name\": \"<string>\"\n            }\n          ],\n          \"monitoringAccounts\": [\n            {\n              \"accountResourceId\": \"<string>\",\n              \"accountId\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            {\n              \"accountResourceId\": \"<string>\",\n              \"accountId\": \"<string>\",\n              \"name\": \"<string>\"\n            }\n          ],\n          \"azureMonitorMetrics\": {\n            \"name\": \"<string>\"\n          },\n          \"eventHubs\": [\n            {\n              \"eventHubResourceId\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            {\n              \"eventHubResourceId\": \"<string>\",\n              \"name\": \"<string>\"\n            }\n          ],\n          \"eventHubsDirect\": [\n            {\n              \"eventHubResourceId\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            {\n              \"eventHubResourceId\": \"<string>\",\n              \"name\": \"<string>\"\n            }\n          ],\n          \"storageBlobsDirect\": [\n            {\n              \"storageAccountResourceId\": \"<string>\",\n              \"containerName\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            {\n              \"storageAccountResourceId\": \"<string>\",\n              \"containerName\": \"<string>\",\n              \"name\": \"<string>\"\n            }\n          ],\n          \"storageTablesDirect\": [\n            {\n              \"storageAccountResourceId\": \"<string>\",\n              \"tableName\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            {\n              \"storageAccountResourceId\": \"<string>\",\n              \"tableName\": \"<string>\",\n              \"name\": \"<string>\"\n            }\n          ]\n        },\n        \"dataFlows\": [\n          {\n            \"streams\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"destinations\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"transformKql\": \"<string>\",\n            \"outputStream\": \"<string>\",\n            \"builtInTransform\": \"<string>\"\n          },\n          {\n            \"streams\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"destinations\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"transformKql\": \"<string>\",\n            \"outputStream\": \"<string>\",\n            \"builtInTransform\": \"<string>\"\n          }\n        ],\n        \"provisioningState\": \"Failed\"\n      },\n      \"systemData\": {\n        \"createdBy\": \"<string>\",\n        \"createdByType\": \"User\",\n        \"createdAt\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedByType\": \"Application\",\n        \"lastModifiedAt\": \"<dateTime>\"\n      }\n    },\n    {\n      \"location\": \"<string>\",\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"tags\": {\n        \"ina\": \"<string>\"\n      },\n      \"kind\": \"Windows\",\n      \"identity\": {\n        \"type\": \"None\",\n        \"principalId\": \"<string>\",\n        \"tenantId\": \"<string>\",\n        \"userAssignedIdentities\": {\n          \"proident_d4a\": {\n            \"principalId\": \"<string>\",\n            \"clientId\": \"<string>\"\n          },\n          \"eu_e\": {\n            \"principalId\": \"<string>\",\n            \"clientId\": \"<string>\"\n          }\n        }\n      },\n      \"properties\": {\n        \"description\": \"<string>\",\n        \"immutableId\": \"<string>\",\n        \"dataCollectionEndpointId\": \"<string>\",\n        \"streamDeclarations\": {\n          \"cupidatat6\": {\n            \"columns\": [\n              {\n                \"name\": \"<string>\",\n                \"type\": \"datetime\"\n              },\n              {\n                \"name\": \"<string>\",\n                \"type\": \"datetime\"\n              }\n            ]\n          },\n          \"sint_d\": {\n            \"columns\": [\n              {\n                \"name\": \"<string>\",\n                \"type\": \"int\"\n              },\n              {\n                \"name\": \"<string>\",\n                \"type\": \"string\"\n              }\n            ]\n          },\n          \"pariatur69\": {\n            \"columns\": [\n              {\n                \"name\": \"<string>\",\n                \"type\": \"string\"\n              },\n              {\n                \"name\": \"<string>\",\n                \"type\": \"string\"\n              }\n            ]\n          }\n        },\n        \"dataSources\": {\n          \"performanceCounters\": [\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"samplingFrequencyInSeconds\": \"<integer>\",\n              \"counterSpecifiers\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"samplingFrequencyInSeconds\": \"<integer>\",\n              \"counterSpecifiers\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ],\n          \"windowsEventLogs\": [\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"xPathQueries\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"xPathQueries\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ],\n          \"syslog\": [\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"facilityNames\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"logLevels\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"facilityNames\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"logLevels\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ],\n          \"extensions\": [\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"extensionName\": \"<string>\",\n              \"extensionSettings\": {\n                \"dolor_55\": 91379227\n              },\n              \"inputDataSources\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"extensionName\": \"<string>\",\n              \"extensionSettings\": {\n                \"commodo9_4\": true,\n                \"culpa_be\": \"eiusmod sunt ea\"\n              },\n              \"inputDataSources\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ],\n          \"logFiles\": [\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"filePatterns\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"format\": \"text\",\n              \"settings\": {\n                \"text\": {\n                  \"recordStartTimestampFormat\": \"<string>\"\n                }\n              }\n            },\n            {\n              \"name\": \"<string>\",\n              \"streams\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"filePatterns\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"format\": \"text\",\n              \"settings\": {\n                \"text\": {\n                  \"recordStartTimestampFormat\": \"<string>\"\n                }\n              }\n            }\n          ]\n        },\n        \"destinations\": {\n          \"logAnalytics\": [\n            {\n              \"workspaceResourceId\": \"<string>\",\n              \"workspaceId\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            {\n              \"workspaceResourceId\": \"<string>\",\n              \"workspaceId\": \"<string>\",\n              \"name\": \"<string>\"\n            }\n          ],\n          \"monitoringAccounts\": [\n            {\n              \"accountResourceId\": \"<string>\",\n              \"accountId\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            {\n              \"accountResourceId\": \"<string>\",\n              \"accountId\": \"<string>\",\n              \"name\": \"<string>\"\n            }\n          ],\n          \"azureMonitorMetrics\": {\n            \"name\": \"<string>\"\n          },\n          \"eventHubs\": [\n            {\n              \"eventHubResourceId\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            {\n              \"eventHubResourceId\": \"<string>\",\n              \"name\": \"<string>\"\n            }\n          ],\n          \"eventHubsDirect\": [\n            {\n              \"eventHubResourceId\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            {\n              \"eventHubResourceId\": \"<string>\",\n              \"name\": \"<string>\"\n            }\n          ],\n          \"storageBlobsDirect\": [\n            {\n              \"storageAccountResourceId\": \"<string>\",\n              \"containerName\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            {\n              \"storageAccountResourceId\": \"<string>\",\n              \"containerName\": \"<string>\",\n              \"name\": \"<string>\"\n            }\n          ],\n          \"storageTablesDirect\": [\n            {\n              \"storageAccountResourceId\": \"<string>\",\n              \"tableName\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            {\n              \"storageAccountResourceId\": \"<string>\",\n              \"tableName\": \"<string>\",\n              \"name\": \"<string>\"\n            }\n          ]\n        },\n        \"dataFlows\": [\n          {\n            \"streams\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"destinations\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"transformKql\": \"<string>\",\n            \"outputStream\": \"<string>\",\n            \"builtInTransform\": \"<string>\"\n          },\n          {\n            \"streams\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"destinations\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"transformKql\": \"<string>\",\n            \"outputStream\": \"<string>\",\n            \"builtInTransform\": \"<string>\"\n          }\n        ],\n        \"provisioningState\": \"Canceled\"\n      },\n      \"systemData\": {\n        \"createdBy\": \"<string>\",\n        \"createdByType\": \"User\",\n        \"createdAt\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedByType\": \"Key\",\n        \"lastModifiedAt\": \"<dateTime>\"\n      }\n    }\n  ],\n  \"nextLink\": \"<string>\"\n}",
+                                      "createdAt": "2026-06-05T15:11:43.000Z",
+                                      "updatedAt": "2026-06-05T15:11:43.000Z",
+                                      "uid": "35240-31ee4456-656d-4703-bf5c-c845a0dcaa1c"
+                                    },
+                                    {
+                                      "id": "37ff79b7-14d3-4b5e-bf20-0e5faaacd34f",
+                                      "name": "Error response describing why the operation failed.",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Insights/dataCollectionRules?api-version=2023-03-11",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "subscriptions",
+                                            ":subscriptionId",
+                                            "resourceGroups",
+                                            ":resourceGroupName",
+                                            "providers",
+                                            "Microsoft.Insights",
+                                            "dataCollectionRules"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "(Required) The API version to use for this operation.",
+                                              "key": "api-version",
+                                              "value": "2023-03-11"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "subscriptionId"
+                                            },
+                                            {
+                                              "key": "resourceGroupName"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Internal Server Error",
+                                      "code": 500,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"target\": \"<string>\",\n    \"details\": [\n      {\n        \"code\": \"<string>\",\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"code\": \"<string>\",\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                                      "createdAt": "2026-06-05T15:11:43.000Z",
+                                      "updatedAt": "2026-06-05T15:11:43.000Z",
+                                      "uid": "35240-37ff79b7-14d3-4b5e-bf20-0e5faaacd34f"
+                                    }
+                                  ],
+                                  "createdAt": "2026-06-05T15:11:43.000Z",
+                                  "updatedAt": "2026-06-05T15:11:43.000Z",
+                                  "uid": "35240-916d24ae-bdf3-4832-b747-ddbdee9a80af"
+                                }
+                              ],
+                              "id": "9e0bf483-4535-4bbb-83da-473d686949aa",
+                              "createdAt": "2026-06-05T15:11:43.000Z",
+                              "updatedAt": "2026-06-05T15:11:43.000Z",
+                              "uid": "35240-9e0bf483-4535-4bbb-83da-473d686949aa"
+                            }
+                          ],
+                          "id": "32e48ad5-1b99-4832-8419-c3d6c94b45d7",
+                          "createdAt": "2026-06-05T15:11:43.000Z",
+                          "updatedAt": "2026-06-05T15:11:43.000Z",
+                          "uid": "35240-32e48ad5-1b99-4832-8419-c3d6c94b45d7"
+                        }
+                      ],
+                      "id": "2b6cc7f9-e2ec-4cf8-9066-793e13416c09",
+                      "createdAt": "2026-06-05T15:11:43.000Z",
+                      "updatedAt": "2026-06-05T15:11:43.000Z",
+                      "uid": "35240-2b6cc7f9-e2ec-4cf8-9066-793e13416c09"
+                    }
+                  ],
+                  "id": "d7ffb77c-3e19-4af9-af89-43093ab2448f",
+                  "createdAt": "2026-06-05T15:11:43.000Z",
+                  "updatedAt": "2026-06-05T15:11:43.000Z",
+                  "uid": "35240-d7ffb77c-3e19-4af9-af89-43093ab2448f"
+                }
+              ],
+              "id": "7534568b-eddf-4186-93bb-ea32b05ffb72",
+              "createdAt": "2026-06-05T15:11:43.000Z",
+              "updatedAt": "2026-06-05T15:11:43.000Z",
+              "uid": "35240-7534568b-eddf-4186-93bb-ea32b05ffb72"
+            }
+          ],
+          "id": "31b4d0c2-39a3-4d3e-9a00-edc4b3f6106d",
+          "createdAt": "2026-06-05T15:11:43.000Z",
+          "updatedAt": "2026-06-05T15:11:43.000Z",
+          "uid": "35240-31b4d0c2-39a3-4d3e-9a00-edc4b3f6106d"
+        }
+      ],
+      "id": "41537bd7-cc37-4be2-8091-fa079d0d50cb",
+      "createdAt": "2026-06-05T15:11:43.000Z",
+      "updatedAt": "2026-06-05T15:11:43.000Z",
+      "uid": "35240-41537bd7-cc37-4be2-8091-fa079d0d50cb"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://management.azure.com/.default",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://management.azure.com"
+    }
+  ]
+}

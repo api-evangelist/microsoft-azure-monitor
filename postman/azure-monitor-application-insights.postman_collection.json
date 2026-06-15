@@ -1,0 +1,1575 @@
+{
+  "info": {
+    "_postman_id": "4707b5cd-6b4d-48e8-b804-575d92b9e98f",
+    "name": "Azure Monitor Azure Application Insights API",
+    "description": "Access Application Insights telemetry data including requests, dependencies, exceptions, traces, and custom events for application performance monitoring. Query data using Kusto Query Language (KQL).\n\nContact Support:\n Name: Microsoft Azure Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:11:37.000Z",
+    "updatedAt": "2026-06-05T15:11:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4707b5cd-6b4d-48e8-b804-575d92b9e98f"
+  },
+  "item": [
+    {
+      "name": "apps",
+      "item": [
+        {
+          "name": "{appId}",
+          "item": [
+            {
+              "name": "query",
+              "item": [
+                {
+                  "name": "Azure Monitor Execute an Application Insights query via GET",
+                  "id": "6eccfbab-8614-4507-98bf-54d67e402ff6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/apps/:appId/query?query=<string>&timespan=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apps",
+                        ":appId",
+                        "query"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The Analytics query in KQL format.",
+                          "key": "query",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The timespan over which to query data in ISO 8601 duration format.",
+                          "key": "timespan",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "e02d58da-a17d-484a-b219-5471d4d83824",
+                          "key": "appId",
+                          "value": "<string>",
+                          "description": "(Required) ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal."
+                        }
+                      ]
+                    },
+                    "description": "Executes an Analytics query against Application Insights data using Kusto Query Language (KQL). The query is provided as a query parameter."
+                  },
+                  "response": [
+                    {
+                      "id": "b8d36922-49a4-46cd-ae0e-d51d16f78576",
+                      "name": "Successful query response.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/apps/:appId/query?query=<string>&timespan=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "apps",
+                            ":appId",
+                            "query"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The Analytics query in KQL format.",
+                              "key": "query",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The timespan over which to query data in ISO 8601 duration format.",
+                              "key": "timespan",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "appId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"tables\": [\n    {\n      \"name\": \"<string>\",\n      \"columns\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"rows\": [\n        [],\n        []\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"columns\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"rows\": [\n        [],\n        []\n      ]\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:11:38.000Z",
+                      "updatedAt": "2026-06-05T15:11:38.000Z",
+                      "uid": "35240-b8d36922-49a4-46cd-ae0e-d51d16f78576"
+                    },
+                    {
+                      "id": "b6c5befc-6592-4335-820f-8198e70c87cb",
+                      "name": "Error response describing why the operation failed.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/apps/:appId/query?query=<string>&timespan=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "apps",
+                            ":appId",
+                            "query"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The Analytics query in KQL format.",
+                              "key": "query",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The timespan over which to query data in ISO 8601 duration format.",
+                              "key": "timespan",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "appId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:11:38.000Z",
+                      "updatedAt": "2026-06-05T15:11:38.000Z",
+                      "uid": "35240-b6c5befc-6592-4335-820f-8198e70c87cb"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:11:38.000Z",
+                  "updatedAt": "2026-06-05T15:11:38.000Z",
+                  "uid": "35240-6eccfbab-8614-4507-98bf-54d67e402ff6"
+                },
+                {
+                  "name": "Azure Monitor Execute an Application Insights query via POST",
+                  "id": "9c75f3da-dc9b-465d-8dc8-3a0a0915a793",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"query\": \"<string>\",\n  \"timespan\": \"<string>\",\n  \"applications\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/apps/:appId/query",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apps",
+                        ":appId",
+                        "query"
+                      ],
+                      "variable": [
+                        {
+                          "id": "53544373-7c7b-407f-a76f-6e4363914d3b",
+                          "key": "appId",
+                          "value": "<string>",
+                          "description": "(Required) ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal."
+                        }
+                      ]
+                    },
+                    "description": "Executes an Analytics query against Application Insights data using Kusto Query Language (KQL). The query is provided in the request body."
+                  },
+                  "response": [
+                    {
+                      "id": "4ad72b0a-88ed-46bf-bb5a-f4e7bf5fe2ee",
+                      "name": "Successful query response.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"query\": \"<string>\",\n  \"timespan\": \"<string>\",\n  \"applications\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/apps/:appId/query",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "apps",
+                            ":appId",
+                            "query"
+                          ],
+                          "variable": [
+                            {
+                              "key": "appId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"tables\": [\n    {\n      \"name\": \"<string>\",\n      \"columns\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"rows\": [\n        [],\n        []\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"columns\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"rows\": [\n        [],\n        []\n      ]\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:11:38.000Z",
+                      "updatedAt": "2026-06-05T15:11:38.000Z",
+                      "uid": "35240-4ad72b0a-88ed-46bf-bb5a-f4e7bf5fe2ee"
+                    },
+                    {
+                      "id": "d877134a-bcd2-494d-aeaa-0c706760f82f",
+                      "name": "Error response describing why the operation failed.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"query\": \"<string>\",\n  \"timespan\": \"<string>\",\n  \"applications\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/apps/:appId/query",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "apps",
+                            ":appId",
+                            "query"
+                          ],
+                          "variable": [
+                            {
+                              "key": "appId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:11:38.000Z",
+                      "updatedAt": "2026-06-05T15:11:38.000Z",
+                      "uid": "35240-d877134a-bcd2-494d-aeaa-0c706760f82f"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:11:38.000Z",
+                  "updatedAt": "2026-06-05T15:11:38.000Z",
+                  "uid": "35240-9c75f3da-dc9b-465d-8dc8-3a0a0915a793"
+                }
+              ],
+              "id": "07fb3d1c-a7d6-4e5d-ad5e-fc469a316c53",
+              "createdAt": "2026-06-05T15:11:38.000Z",
+              "updatedAt": "2026-06-05T15:11:38.000Z",
+              "uid": "35240-07fb3d1c-a7d6-4e5d-ad5e-fc469a316c53"
+            },
+            {
+              "name": "metrics",
+              "item": [
+                {
+                  "name": "{metricId}",
+                  "item": [
+                    {
+                      "name": "Azure Monitor Get an Application Insights metric",
+                      "id": "05e141ca-1dcb-4ce7-9d84-54ca04430368",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/apps/:appId/metrics/:metricId?timespan=<string>&interval=<string>&aggregation=max&aggregation=sum&segment=<string>&segment=<string>&top=<integer>&orderby=<string>&filter=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "apps",
+                            ":appId",
+                            "metrics",
+                            ":metricId"
+                          ],
+                          "query": [
+                            {
+                              "description": "The timespan over which to query in ISO 8601 duration format.",
+                              "key": "timespan",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The time interval to use when retrieving metric values.",
+                              "key": "interval",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The aggregation to use when computing the metric values.",
+                              "key": "aggregation",
+                              "value": "max"
+                            },
+                            {
+                              "description": "The aggregation to use when computing the metric values.",
+                              "key": "aggregation",
+                              "value": "sum"
+                            },
+                            {
+                              "description": "The name of the dimension to segment the metric values by.",
+                              "key": "segment",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The name of the dimension to segment the metric values by.",
+                              "key": "segment",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The number of segments to return.",
+                              "key": "top",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The aggregation function and direction to sort the segments by.",
+                              "key": "orderby",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "An expression to filter the results.",
+                              "key": "filter",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "1153e87a-65b1-449f-9da0-5b4941100343",
+                              "key": "appId",
+                              "value": "<string>",
+                              "description": "(Required) ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal."
+                            },
+                            {
+                              "id": "b8cbc6ae-9ad7-43c7-af0a-dc793e5858ea",
+                              "key": "metricId",
+                              "value": "<string>",
+                              "description": "(Required) ID of the metric. Standard metrics include requests/count, requests/duration, dependencies/count, exceptions/count, etc."
+                            }
+                          ]
+                        },
+                        "description": "Gets metric values for a single Application Insights metric. Returns aggregated metric data for the specified timespan and interval."
+                      },
+                      "response": [
+                        {
+                          "id": "c1121ebd-6624-45d1-ab63-b579cd8a0fe3",
+                          "name": "Successful request to get metric values.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/apps/:appId/metrics/:metricId?timespan=<string>&interval=<string>&aggregation=sum&segment=<string>&top=<integer>&orderby=<string>&filter=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "apps",
+                                ":appId",
+                                "metrics",
+                                ":metricId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The timespan over which to query in ISO 8601 duration format.",
+                                  "key": "timespan",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The time interval to use when retrieving metric values.",
+                                  "key": "interval",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The aggregation to use when computing the metric values.",
+                                  "key": "aggregation",
+                                  "value": "sum"
+                                },
+                                {
+                                  "description": "The name of the dimension to segment the metric values by.",
+                                  "key": "segment",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The number of segments to return.",
+                                  "key": "top",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The aggregation function and direction to sort the segments by.",
+                                  "key": "orderby",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "An expression to filter the results.",
+                                  "key": "filter",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "appId"
+                                },
+                                {
+                                  "key": "metricId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": {\n    \"start\": \"<dateTime>\",\n    \"end\": \"<dateTime>\",\n    \"interval\": \"<string>\",\n    \"segments\": [\n      {\n        \"pariatur_6e2\": -93958782.61419584,\n        \"fugiat_ae\": 23916477\n      },\n      {\n        \"occaecat_33a\": false,\n        \"est_5f\": true\n      }\n    ]\n  }\n}",
+                          "createdAt": "2026-06-05T15:11:38.000Z",
+                          "updatedAt": "2026-06-05T15:11:38.000Z",
+                          "uid": "35240-c1121ebd-6624-45d1-ab63-b579cd8a0fe3"
+                        },
+                        {
+                          "id": "382645f3-55dc-43b4-86c1-5ef7659c3a04",
+                          "name": "Error response describing why the operation failed.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/apps/:appId/metrics/:metricId?timespan=<string>&interval=<string>&aggregation=sum&segment=<string>&top=<integer>&orderby=<string>&filter=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "apps",
+                                ":appId",
+                                "metrics",
+                                ":metricId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The timespan over which to query in ISO 8601 duration format.",
+                                  "key": "timespan",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The time interval to use when retrieving metric values.",
+                                  "key": "interval",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The aggregation to use when computing the metric values.",
+                                  "key": "aggregation",
+                                  "value": "sum"
+                                },
+                                {
+                                  "description": "The name of the dimension to segment the metric values by.",
+                                  "key": "segment",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The number of segments to return.",
+                                  "key": "top",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The aggregation function and direction to sort the segments by.",
+                                  "key": "orderby",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "An expression to filter the results.",
+                                  "key": "filter",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "appId"
+                                },
+                                {
+                                  "key": "metricId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:11:38.000Z",
+                          "updatedAt": "2026-06-05T15:11:38.000Z",
+                          "uid": "35240-382645f3-55dc-43b4-86c1-5ef7659c3a04"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:11:38.000Z",
+                      "updatedAt": "2026-06-05T15:11:38.000Z",
+                      "uid": "35240-05e141ca-1dcb-4ce7-9d84-54ca04430368"
+                    }
+                  ],
+                  "id": "61584986-cc18-4206-ac97-e4b74fac2597",
+                  "createdAt": "2026-06-05T15:11:38.000Z",
+                  "updatedAt": "2026-06-05T15:11:38.000Z",
+                  "uid": "35240-61584986-cc18-4206-ac97-e4b74fac2597"
+                },
+                {
+                  "name": "metadata",
+                  "item": [
+                    {
+                      "name": "Azure Monitor Get metric metadata",
+                      "id": "47ead4d1-daaa-4466-8331-7724c51e3566",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/apps/:appId/metrics/metadata",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "apps",
+                            ":appId",
+                            "metrics",
+                            "metadata"
+                          ],
+                          "variable": [
+                            {
+                              "id": "9721a7cd-e94e-4f36-bbcb-b077eb4090ad",
+                              "key": "appId",
+                              "value": "<string>",
+                              "description": "(Required) ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal."
+                            }
+                          ]
+                        },
+                        "description": "Gets metadata describing the available metrics for the Application Insights component."
+                      },
+                      "response": [
+                        {
+                          "id": "485fd2b2-9d81-4e5a-acba-d8e56920c396",
+                          "name": "Successful request to get metrics metadata.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/apps/:appId/metrics/metadata",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "apps",
+                                ":appId",
+                                "metrics",
+                                "metadata"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "appId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"sit_7bd\": 89001248\n}",
+                          "createdAt": "2026-06-05T15:11:38.000Z",
+                          "updatedAt": "2026-06-05T15:11:38.000Z",
+                          "uid": "35240-485fd2b2-9d81-4e5a-acba-d8e56920c396"
+                        },
+                        {
+                          "id": "c37ad376-f721-478c-84b8-6fb6a5da6861",
+                          "name": "Error response describing why the operation failed.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/apps/:appId/metrics/metadata",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "apps",
+                                ":appId",
+                                "metrics",
+                                "metadata"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "appId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:11:38.000Z",
+                          "updatedAt": "2026-06-05T15:11:38.000Z",
+                          "uid": "35240-c37ad376-f721-478c-84b8-6fb6a5da6861"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:11:38.000Z",
+                      "updatedAt": "2026-06-05T15:11:38.000Z",
+                      "uid": "35240-47ead4d1-daaa-4466-8331-7724c51e3566"
+                    }
+                  ],
+                  "id": "66875539-3d67-4bca-aaf4-2848c9e1e61d",
+                  "createdAt": "2026-06-05T15:11:38.000Z",
+                  "updatedAt": "2026-06-05T15:11:38.000Z",
+                  "uid": "35240-66875539-3d67-4bca-aaf4-2848c9e1e61d"
+                },
+                {
+                  "name": "Azure Monitor Get multiple Application Insights metrics",
+                  "id": "36349a3f-d58d-4cfa-b6b6-4b3af457661a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "[\n  {\n    \"id\": \"<string>\",\n    \"parameters\": {\n      \"metricId\": \"<string>\",\n      \"timespan\": \"<string>\",\n      \"aggregation\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"segment\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"top\": \"<integer>\",\n      \"orderby\": \"<string>\",\n      \"filter\": \"<string>\",\n      \"interval\": \"<string>\"\n    }\n  },\n  {\n    \"id\": \"<string>\",\n    \"parameters\": {\n      \"metricId\": \"<string>\",\n      \"timespan\": \"<string>\",\n      \"aggregation\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"segment\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"top\": \"<integer>\",\n      \"orderby\": \"<string>\",\n      \"filter\": \"<string>\",\n      \"interval\": \"<string>\"\n    }\n  }\n]",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/apps/:appId/metrics",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apps",
+                        ":appId",
+                        "metrics"
+                      ],
+                      "variable": [
+                        {
+                          "id": "8cddbad3-78e7-4c94-ac34-47ced022a06c",
+                          "key": "appId",
+                          "value": "<string>",
+                          "description": "(Required) ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal."
+                        }
+                      ]
+                    },
+                    "description": "Gets metric values for multiple Application Insights metrics in a single request."
+                  },
+                  "response": [
+                    {
+                      "id": "32a9bf49-c9f2-4aad-a99f-ba767bf94438",
+                      "name": "Successful request to get multiple metric values.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "[\n  {\n    \"id\": \"<string>\",\n    \"parameters\": {\n      \"metricId\": \"<string>\",\n      \"timespan\": \"<string>\",\n      \"aggregation\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"segment\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"top\": \"<integer>\",\n      \"orderby\": \"<string>\",\n      \"filter\": \"<string>\",\n      \"interval\": \"<string>\"\n    }\n  },\n  {\n    \"id\": \"<string>\",\n    \"parameters\": {\n      \"metricId\": \"<string>\",\n      \"timespan\": \"<string>\",\n      \"aggregation\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"segment\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"top\": \"<integer>\",\n      \"orderby\": \"<string>\",\n      \"filter\": \"<string>\",\n      \"interval\": \"<string>\"\n    }\n  }\n]",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/apps/:appId/metrics",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "apps",
+                            ":appId",
+                            "metrics"
+                          ],
+                          "variable": [
+                            {
+                              "key": "appId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"value\": {\n      \"start\": \"<dateTime>\",\n      \"end\": \"<dateTime>\",\n      \"interval\": \"<string>\",\n      \"segments\": [\n        {\n          \"aliquip_1a4\": false,\n          \"cupidatat858\": false,\n          \"ipsume0\": -27329399.428153962\n        },\n        {\n          \"elit_2\": \"ut est minim\",\n          \"consectetur2\": 8566542.497377053,\n          \"occaecatc48\": false\n        }\n      ]\n    }\n  },\n  {\n    \"value\": {\n      \"start\": \"<dateTime>\",\n      \"end\": \"<dateTime>\",\n      \"interval\": \"<string>\",\n      \"segments\": [\n        {\n          \"cupidatatf3f\": 45990012\n        },\n        {\n          \"utc\": \"consequat quis non irure\"\n        }\n      ]\n    }\n  }\n]",
+                      "createdAt": "2026-06-05T15:11:38.000Z",
+                      "updatedAt": "2026-06-05T15:11:38.000Z",
+                      "uid": "35240-32a9bf49-c9f2-4aad-a99f-ba767bf94438"
+                    },
+                    {
+                      "id": "fea5d0f2-baf9-4666-8298-ea568a54294b",
+                      "name": "Error response describing why the operation failed.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "[\n  {\n    \"id\": \"<string>\",\n    \"parameters\": {\n      \"metricId\": \"<string>\",\n      \"timespan\": \"<string>\",\n      \"aggregation\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"segment\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"top\": \"<integer>\",\n      \"orderby\": \"<string>\",\n      \"filter\": \"<string>\",\n      \"interval\": \"<string>\"\n    }\n  },\n  {\n    \"id\": \"<string>\",\n    \"parameters\": {\n      \"metricId\": \"<string>\",\n      \"timespan\": \"<string>\",\n      \"aggregation\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"segment\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"top\": \"<integer>\",\n      \"orderby\": \"<string>\",\n      \"filter\": \"<string>\",\n      \"interval\": \"<string>\"\n    }\n  }\n]",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/apps/:appId/metrics",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "apps",
+                            ":appId",
+                            "metrics"
+                          ],
+                          "variable": [
+                            {
+                              "key": "appId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:11:38.000Z",
+                      "updatedAt": "2026-06-05T15:11:38.000Z",
+                      "uid": "35240-fea5d0f2-baf9-4666-8298-ea568a54294b"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:11:38.000Z",
+                  "updatedAt": "2026-06-05T15:11:38.000Z",
+                  "uid": "35240-36349a3f-d58d-4cfa-b6b6-4b3af457661a"
+                }
+              ],
+              "id": "639ca0b0-0448-4bb4-8548-ebfe20e08fdd",
+              "createdAt": "2026-06-05T15:11:38.000Z",
+              "updatedAt": "2026-06-05T15:11:38.000Z",
+              "uid": "35240-639ca0b0-0448-4bb4-8548-ebfe20e08fdd"
+            },
+            {
+              "name": "events",
+              "item": [
+                {
+                  "name": "{eventType}",
+                  "item": [
+                    {
+                      "name": "{eventId}",
+                      "item": [
+                        {
+                          "name": "Azure Monitor Get a single event",
+                          "id": "6acef522-7259-4376-b97d-935c1685a585",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/apps/:appId/events/:eventType/:eventId?timespan=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "apps",
+                                ":appId",
+                                "events",
+                                ":eventType",
+                                ":eventId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The timespan over which to query.",
+                                  "key": "timespan",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "2aa7815f-bb2f-4b53-8812-c12bff83ef22",
+                                  "key": "appId",
+                                  "value": "<string>",
+                                  "description": "(Required) ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal."
+                                },
+                                {
+                                  "id": "43693377-5aa0-48a9-a2ff-90a0fbe77b66",
+                                  "key": "eventType",
+                                  "value": "exceptions",
+                                  "description": "(Required) The type of events to query."
+                                },
+                                {
+                                  "id": "7f787fcf-2e8c-4a1a-a05b-44dfe53e7e97",
+                                  "key": "eventId",
+                                  "value": "<string>",
+                                  "description": "(Required) The ID of the event."
+                                }
+                              ]
+                            },
+                            "description": "Gets the data for a single event from Application Insights telemetry."
+                          },
+                          "response": [
+                            {
+                              "id": "3925d9c9-590d-4dc0-8f81-1761de5d2ed7",
+                              "name": "Successful request to get an event.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/apps/:appId/events/:eventType/:eventId?timespan=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "apps",
+                                    ":appId",
+                                    "events",
+                                    ":eventType",
+                                    ":eventId"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "The timespan over which to query.",
+                                      "key": "timespan",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "appId"
+                                    },
+                                    {
+                                      "key": "eventType"
+                                    },
+                                    {
+                                      "key": "eventId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"@ai.messages\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ],\n  \"@odata.context\": \"<string>\",\n  \"@odata.count\": \"<integer>\",\n  \"value\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"customDimensions\": {\n        \"sunt_a92\": \"<string>\"\n      },\n      \"customMeasurements\": {\n        \"exercitation_0\": \"<number>\",\n        \"in_e7\": \"<number>\"\n      },\n      \"operation\": {\n        \"name\": \"<string>\",\n        \"id\": \"<string>\",\n        \"parentId\": \"<string>\",\n        \"syntheticSource\": \"<string>\"\n      },\n      \"session\": {\n        \"id\": \"<string>\"\n      },\n      \"user\": {\n        \"id\": \"<string>\",\n        \"authenticatedId\": \"<string>\",\n        \"accountId\": \"<string>\"\n      },\n      \"cloud\": {\n        \"roleName\": \"<string>\",\n        \"roleInstance\": \"<string>\"\n      },\n      \"ai\": {\n        \"iKey\": \"<string>\",\n        \"appName\": \"<string>\",\n        \"appId\": \"<string>\",\n        \"sdkVersion\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"customDimensions\": {\n        \"dolorea8a\": \"<string>\",\n        \"non37c\": \"<string>\",\n        \"adipisicing4\": \"<string>\"\n      },\n      \"customMeasurements\": {\n        \"est38\": \"<number>\"\n      },\n      \"operation\": {\n        \"name\": \"<string>\",\n        \"id\": \"<string>\",\n        \"parentId\": \"<string>\",\n        \"syntheticSource\": \"<string>\"\n      },\n      \"session\": {\n        \"id\": \"<string>\"\n      },\n      \"user\": {\n        \"id\": \"<string>\",\n        \"authenticatedId\": \"<string>\",\n        \"accountId\": \"<string>\"\n      },\n      \"cloud\": {\n        \"roleName\": \"<string>\",\n        \"roleInstance\": \"<string>\"\n      },\n      \"ai\": {\n        \"iKey\": \"<string>\",\n        \"appName\": \"<string>\",\n        \"appId\": \"<string>\",\n        \"sdkVersion\": \"<string>\"\n      }\n    }\n  ]\n}",
+                              "createdAt": "2026-06-05T15:11:38.000Z",
+                              "updatedAt": "2026-06-05T15:11:38.000Z",
+                              "uid": "35240-3925d9c9-590d-4dc0-8f81-1761de5d2ed7"
+                            },
+                            {
+                              "id": "b064c2d4-1e78-49d6-9b27-d1404a215a00",
+                              "name": "Error response describing why the operation failed.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/apps/:appId/events/:eventType/:eventId?timespan=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "apps",
+                                    ":appId",
+                                    "events",
+                                    ":eventType",
+                                    ":eventId"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "The timespan over which to query.",
+                                      "key": "timespan",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "appId"
+                                    },
+                                    {
+                                      "key": "eventType"
+                                    },
+                                    {
+                                      "key": "eventId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                              "createdAt": "2026-06-05T15:11:38.000Z",
+                              "updatedAt": "2026-06-05T15:11:38.000Z",
+                              "uid": "35240-b064c2d4-1e78-49d6-9b27-d1404a215a00"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:11:38.000Z",
+                          "updatedAt": "2026-06-05T15:11:38.000Z",
+                          "uid": "35240-6acef522-7259-4376-b97d-935c1685a585"
+                        }
+                      ],
+                      "id": "13784d40-6dbf-4a49-ab4d-fe93fc7211f7",
+                      "createdAt": "2026-06-05T15:11:38.000Z",
+                      "updatedAt": "2026-06-05T15:11:38.000Z",
+                      "uid": "35240-13784d40-6dbf-4a49-ab4d-fe93fc7211f7"
+                    },
+                    {
+                      "name": "Azure Monitor Get events by type",
+                      "id": "634c037e-dde1-4ef3-8cc7-ad512d52dfa4",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/apps/:appId/events/:eventType?timespan=<string>&$filter=<string>&$search=<string>&$orderby=<string>&$select=<string>&$skip=<integer>&$top=<integer>&$format=<string>&$count=<boolean>&$apply=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "apps",
+                            ":appId",
+                            "events",
+                            ":eventType"
+                          ],
+                          "query": [
+                            {
+                              "description": "The timespan over which to query in ISO 8601 duration format.",
+                              "key": "timespan",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "An expression used to filter the returned events.",
+                              "key": "$filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A free-text search expression to match for whether a particular event should be returned.",
+                              "key": "$search",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A comma-separated list of properties with asc or desc to sort on.",
+                              "key": "$orderby",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limits the properties returned for each event.",
+                              "key": "$select",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The number of items to skip over before returning events.",
+                              "key": "$skip",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The number of events to return.",
+                              "key": "$top",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Format for the returned events.",
+                              "key": "$format",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Request a count of matching items included with the returned events.",
+                              "key": "$count",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "An expression used for aggregation over returned events.",
+                              "key": "$apply",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "4dcb270e-3cef-4f05-890f-a4f54ad2ea39",
+                              "key": "appId",
+                              "value": "<string>",
+                              "description": "(Required) ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal."
+                            },
+                            {
+                              "id": "76b66392-65e9-4209-be53-94d150ff0033",
+                              "key": "eventType",
+                              "value": "exceptions",
+                              "description": "(Required) The type of events to query."
+                            }
+                          ]
+                        },
+                        "description": "Gets the results of an OData query for events of a specific type from Application Insights telemetry."
+                      },
+                      "response": [
+                        {
+                          "id": "78599ad1-c245-4320-849b-d9e28ce3b325",
+                          "name": "Successful request to get events.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/apps/:appId/events/:eventType?timespan=<string>&$filter=<string>&$search=<string>&$orderby=<string>&$select=<string>&$skip=<integer>&$top=<integer>&$format=<string>&$count=<boolean>&$apply=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "apps",
+                                ":appId",
+                                "events",
+                                ":eventType"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The timespan over which to query in ISO 8601 duration format.",
+                                  "key": "timespan",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "An expression used to filter the returned events.",
+                                  "key": "$filter",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "A free-text search expression to match for whether a particular event should be returned.",
+                                  "key": "$search",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "A comma-separated list of properties with asc or desc to sort on.",
+                                  "key": "$orderby",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Limits the properties returned for each event.",
+                                  "key": "$select",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The number of items to skip over before returning events.",
+                                  "key": "$skip",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The number of events to return.",
+                                  "key": "$top",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Format for the returned events.",
+                                  "key": "$format",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Request a count of matching items included with the returned events.",
+                                  "key": "$count",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "An expression used for aggregation over returned events.",
+                                  "key": "$apply",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "appId"
+                                },
+                                {
+                                  "key": "eventType"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"@ai.messages\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ],\n  \"@odata.context\": \"<string>\",\n  \"@odata.count\": \"<integer>\",\n  \"value\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"customDimensions\": {\n        \"sunt_a92\": \"<string>\"\n      },\n      \"customMeasurements\": {\n        \"exercitation_0\": \"<number>\",\n        \"in_e7\": \"<number>\"\n      },\n      \"operation\": {\n        \"name\": \"<string>\",\n        \"id\": \"<string>\",\n        \"parentId\": \"<string>\",\n        \"syntheticSource\": \"<string>\"\n      },\n      \"session\": {\n        \"id\": \"<string>\"\n      },\n      \"user\": {\n        \"id\": \"<string>\",\n        \"authenticatedId\": \"<string>\",\n        \"accountId\": \"<string>\"\n      },\n      \"cloud\": {\n        \"roleName\": \"<string>\",\n        \"roleInstance\": \"<string>\"\n      },\n      \"ai\": {\n        \"iKey\": \"<string>\",\n        \"appName\": \"<string>\",\n        \"appId\": \"<string>\",\n        \"sdkVersion\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"customDimensions\": {\n        \"dolorea8a\": \"<string>\",\n        \"non37c\": \"<string>\",\n        \"adipisicing4\": \"<string>\"\n      },\n      \"customMeasurements\": {\n        \"est38\": \"<number>\"\n      },\n      \"operation\": {\n        \"name\": \"<string>\",\n        \"id\": \"<string>\",\n        \"parentId\": \"<string>\",\n        \"syntheticSource\": \"<string>\"\n      },\n      \"session\": {\n        \"id\": \"<string>\"\n      },\n      \"user\": {\n        \"id\": \"<string>\",\n        \"authenticatedId\": \"<string>\",\n        \"accountId\": \"<string>\"\n      },\n      \"cloud\": {\n        \"roleName\": \"<string>\",\n        \"roleInstance\": \"<string>\"\n      },\n      \"ai\": {\n        \"iKey\": \"<string>\",\n        \"appName\": \"<string>\",\n        \"appId\": \"<string>\",\n        \"sdkVersion\": \"<string>\"\n      }\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:11:38.000Z",
+                          "updatedAt": "2026-06-05T15:11:38.000Z",
+                          "uid": "35240-78599ad1-c245-4320-849b-d9e28ce3b325"
+                        },
+                        {
+                          "id": "c1522fab-6e5b-4991-a5b4-18cf630f7457",
+                          "name": "Error response describing why the operation failed.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/apps/:appId/events/:eventType?timespan=<string>&$filter=<string>&$search=<string>&$orderby=<string>&$select=<string>&$skip=<integer>&$top=<integer>&$format=<string>&$count=<boolean>&$apply=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "apps",
+                                ":appId",
+                                "events",
+                                ":eventType"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The timespan over which to query in ISO 8601 duration format.",
+                                  "key": "timespan",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "An expression used to filter the returned events.",
+                                  "key": "$filter",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "A free-text search expression to match for whether a particular event should be returned.",
+                                  "key": "$search",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "A comma-separated list of properties with asc or desc to sort on.",
+                                  "key": "$orderby",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Limits the properties returned for each event.",
+                                  "key": "$select",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The number of items to skip over before returning events.",
+                                  "key": "$skip",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The number of events to return.",
+                                  "key": "$top",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Format for the returned events.",
+                                  "key": "$format",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Request a count of matching items included with the returned events.",
+                                  "key": "$count",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "An expression used for aggregation over returned events.",
+                                  "key": "$apply",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "appId"
+                                },
+                                {
+                                  "key": "eventType"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:11:38.000Z",
+                          "updatedAt": "2026-06-05T15:11:38.000Z",
+                          "uid": "35240-c1522fab-6e5b-4991-a5b4-18cf630f7457"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:11:38.000Z",
+                      "updatedAt": "2026-06-05T15:11:38.000Z",
+                      "uid": "35240-634c037e-dde1-4ef3-8cc7-ad512d52dfa4"
+                    }
+                  ],
+                  "id": "063e6e57-81a7-4476-bfac-3c735ec20fca",
+                  "createdAt": "2026-06-05T15:11:38.000Z",
+                  "updatedAt": "2026-06-05T15:11:38.000Z",
+                  "uid": "35240-063e6e57-81a7-4476-bfac-3c735ec20fca"
+                }
+              ],
+              "id": "7a7c30e7-8517-4b33-9dad-76e635a78a92",
+              "createdAt": "2026-06-05T15:11:38.000Z",
+              "updatedAt": "2026-06-05T15:11:38.000Z",
+              "uid": "35240-7a7c30e7-8517-4b33-9dad-76e635a78a92"
+            }
+          ],
+          "id": "3711aedb-7267-48e2-a474-13750542d1af",
+          "createdAt": "2026-06-05T15:11:38.000Z",
+          "updatedAt": "2026-06-05T15:11:38.000Z",
+          "uid": "35240-3711aedb-7267-48e2-a474-13750542d1af"
+        }
+      ],
+      "id": "f4fa680a-154f-4335-af63-f0aad03f14dd",
+      "createdAt": "2026-06-05T15:11:38.000Z",
+      "updatedAt": "2026-06-05T15:11:38.000Z",
+      "uid": "35240-f4fa680a-154f-4335-af63-f0aad03f14dd"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://api.applicationinsights.io/.default",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.applicationinsights.io/v1"
+    }
+  ]
+}

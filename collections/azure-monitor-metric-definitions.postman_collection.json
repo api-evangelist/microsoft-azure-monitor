@@ -1,0 +1,436 @@
+{
+  "item": [
+    {
+      "id": "4290a3ed-e9fb-41e1-8ba8-2c80be283e70",
+      "name": "Metric Definitions",
+      "description": {
+        "content": "Operations for listing metric definitions",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e21f5321-62f6-4871-af22-18520362a6ca",
+          "name": "Azure Monitor List metric definitions at subscription scope",
+          "request": {
+            "name": "Azure Monitor List metric definitions at subscription scope",
+            "description": {
+              "content": "Lists the metric definitions for the subscription. Returns the available metric definitions that can be queried at the subscription level.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "providers",
+                "Microsoft.Insights",
+                "metricDefinitions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2023-10-01",
+                  "description": "(Required) Client API version."
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "<string>",
+                  "description": "The region where the metrics you want reside."
+                },
+                {
+                  "disabled": false,
+                  "key": "metricNamespace",
+                  "value": "<string>",
+                  "description": "Metric namespace to query metric definitions for."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fbd805ad-8827-4074-97b2-764ebc6ec17e",
+              "name": "Successful request to get the list of metric definitions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "providers",
+                    "Microsoft.Insights",
+                    "metricDefinitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-10-01"
+                    },
+                    {
+                      "key": "region",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metricNamespace",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"isDimensionRequired\": true,\n      \"resourceId\": \"string\",\n      \"namespace\": \"string\",\n      \"name\": {\n        \"value\": \"string\",\n        \"localizedValue\": \"string\"\n      },\n      \"displayDescription\": \"string\",\n      \"category\": \"string\",\n      \"metricClass\": \"Transactions\",\n      \"unit\": \"NanoCores\",\n      \"primaryAggregationType\": \"Total\",\n      \"supportedAggregationTypes\": [\n        \"Average\",\n        \"None\"\n      ],\n      \"metricAvailabilities\": [\n        {\n          \"timeGrain\": \"string\",\n          \"retention\": \"string\"\n        },\n        {\n          \"timeGrain\": \"string\",\n          \"retention\": \"string\"\n        }\n      ],\n      \"id\": \"string\",\n      \"dimensions\": [\n        {\n          \"value\": \"string\",\n          \"localizedValue\": \"string\"\n        },\n        {\n          \"value\": \"string\",\n          \"localizedValue\": \"string\"\n        }\n      ]\n    },\n    {\n      \"isDimensionRequired\": true,\n      \"resourceId\": \"string\",\n      \"namespace\": \"string\",\n      \"name\": {\n        \"value\": \"string\",\n        \"localizedValue\": \"string\"\n      },\n      \"displayDescription\": \"string\",\n      \"category\": \"string\",\n      \"metricClass\": \"Latency\",\n      \"unit\": \"Percent\",\n      \"primaryAggregationType\": \"Minimum\",\n      \"supportedAggregationTypes\": [\n        \"Average\",\n        \"Average\"\n      ],\n      \"metricAvailabilities\": [\n        {\n          \"timeGrain\": \"string\",\n          \"retention\": \"string\"\n        },\n        {\n          \"timeGrain\": \"string\",\n          \"retention\": \"string\"\n        }\n      ],\n      \"id\": \"string\",\n      \"dimensions\": [\n        {\n          \"value\": \"string\",\n          \"localizedValue\": \"string\"\n        },\n        {\n          \"value\": \"string\",\n          \"localizedValue\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0bc0fe4c-1c4b-4c28-90b2-a3bdb0a33c46",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "providers",
+                    "Microsoft.Insights",
+                    "metricDefinitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-10-01"
+                    },
+                    {
+                      "key": "region",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metricNamespace",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e11e5c7d-4ce4-4e4b-8004-ad8e83485a70",
+          "name": "Azure Monitor List metric definitions for a resource",
+          "request": {
+            "name": "Azure Monitor List metric definitions for a resource",
+            "description": {
+              "content": "Lists the metric definitions for the resource. Returns the available metric definitions and their properties for the specified resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":resourceUri",
+                "providers",
+                "Microsoft.Insights",
+                "metricDefinitions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2023-10-01",
+                  "description": "(Required) Client API version."
+                },
+                {
+                  "disabled": false,
+                  "key": "metricNamespace",
+                  "value": "<string>",
+                  "description": "Metric namespace to query metric definitions for."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceUri",
+                  "description": "(Required) The identifier of the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bc2fcfec-d2ec-4051-9b13-53c37992ec4a",
+              "name": "Successful request to get the list of metric definitions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":resourceUri",
+                    "providers",
+                    "Microsoft.Insights",
+                    "metricDefinitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-10-01"
+                    },
+                    {
+                      "key": "metricNamespace",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceUri",
+                      "description": "(Required) The identifier of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"isDimensionRequired\": true,\n      \"resourceId\": \"string\",\n      \"namespace\": \"string\",\n      \"name\": {\n        \"value\": \"string\",\n        \"localizedValue\": \"string\"\n      },\n      \"displayDescription\": \"string\",\n      \"category\": \"string\",\n      \"metricClass\": \"Transactions\",\n      \"unit\": \"NanoCores\",\n      \"primaryAggregationType\": \"Total\",\n      \"supportedAggregationTypes\": [\n        \"Average\",\n        \"None\"\n      ],\n      \"metricAvailabilities\": [\n        {\n          \"timeGrain\": \"string\",\n          \"retention\": \"string\"\n        },\n        {\n          \"timeGrain\": \"string\",\n          \"retention\": \"string\"\n        }\n      ],\n      \"id\": \"string\",\n      \"dimensions\": [\n        {\n          \"value\": \"string\",\n          \"localizedValue\": \"string\"\n        },\n        {\n          \"value\": \"string\",\n          \"localizedValue\": \"string\"\n        }\n      ]\n    },\n    {\n      \"isDimensionRequired\": true,\n      \"resourceId\": \"string\",\n      \"namespace\": \"string\",\n      \"name\": {\n        \"value\": \"string\",\n        \"localizedValue\": \"string\"\n      },\n      \"displayDescription\": \"string\",\n      \"category\": \"string\",\n      \"metricClass\": \"Latency\",\n      \"unit\": \"Percent\",\n      \"primaryAggregationType\": \"Minimum\",\n      \"supportedAggregationTypes\": [\n        \"Average\",\n        \"Average\"\n      ],\n      \"metricAvailabilities\": [\n        {\n          \"timeGrain\": \"string\",\n          \"retention\": \"string\"\n        },\n        {\n          \"timeGrain\": \"string\",\n          \"retention\": \"string\"\n        }\n      ],\n      \"id\": \"string\",\n      \"dimensions\": [\n        {\n          \"value\": \"string\",\n          \"localizedValue\": \"string\"\n        },\n        {\n          \"value\": \"string\",\n          \"localizedValue\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "311184cc-e098-4398-bb55-1207a23950e8",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":resourceUri",
+                    "providers",
+                    "Microsoft.Insights",
+                    "metricDefinitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-10-01"
+                    },
+                    {
+                      "key": "metricNamespace",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceUri",
+                      "description": "(Required) The identifier of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://management.azure.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://management.azure.com/.default"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7e4990e6-a2ea-49f4-9dfd-2cb8025f221d",
+    "name": "Azure Monitor Metric Definitions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Retrieves the list of available metric definitions for a given Azure resource, including metric names, units, aggregation types, and dimensions.\n\nContact Support:\n Name: Microsoft Azure Support",
+      "type": "text/plain"
+    }
+  }
+}

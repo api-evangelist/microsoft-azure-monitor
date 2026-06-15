@@ -1,0 +1,1499 @@
+{
+  "info": {
+    "_postman_id": "9c16b0d9-21c0-46f9-9d9c-bbc42ed994da",
+    "name": "Azure Monitor Alerts API",
+    "description": "Create, update, and manage classic metric alert rules for monitoring Azure resources. Supports threshold-based alerts on resource metrics with configurable conditions and actions.\n\nContact Support:\n Name: Microsoft Azure Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:11:32.000Z",
+    "updatedAt": "2026-06-05T15:11:33.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9c16b0d9-21c0-46f9-9d9c-bbc42ed994da"
+  },
+  "item": [
+    {
+      "name": "subscriptions",
+      "item": [
+        {
+          "name": "{subscriptionId}",
+          "item": [
+            {
+              "name": "resourcegroups",
+              "item": [
+                {
+                  "name": "{resourceGroupName}",
+                  "item": [
+                    {
+                      "name": "providers",
+                      "item": [
+                        {
+                          "name": "Microsoft.Insights",
+                          "item": [
+                            {
+                              "name": "alertrules",
+                              "item": [
+                                {
+                                  "name": "{ruleName}",
+                                  "item": [
+                                    {
+                                      "name": "Azure Monitor Create or update a classic metric alert rule",
+                                      "id": "16ffbb20-75a4-468c-bded-d0e51cbef38b",
+                                      "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                      },
+                                      "request": {
+                                        "method": "PUT",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"location\": \"<string>\",\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"isEnabled\": \"<boolean>\",\n    \"condition\": {\n      \"odata.type\": \"<string>\",\n      \"dataSource\": {\n        \"odata.type\": \"<string>\",\n        \"resourceUri\": \"<string>\",\n        \"legacyResourceId\": \"<string>\",\n        \"resourceLocation\": \"<string>\",\n        \"metricNamespace\": \"<string>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"lastUpdatedTime\": \"<dateTime>\",\n    \"actions\": [\n      {\n        \"odata.type\": \"<string>\"\n      },\n      {\n        \"odata.type\": \"<string>\"\n      }\n    ]\n  },\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"tags\": {\n    \"cupidatat_8_6\": \"<string>\"\n  }\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Insights/alertrules/:ruleName?api-version=2016-03-01",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "subscriptions",
+                                            ":subscriptionId",
+                                            "resourcegroups",
+                                            ":resourceGroupName",
+                                            "providers",
+                                            "Microsoft.Insights",
+                                            "alertrules",
+                                            ":ruleName"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "(Required) Client API version.",
+                                              "key": "api-version",
+                                              "value": "2016-03-01"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "id": "2a914f6f-5c39-4d3b-a56a-da4980956cf2",
+                                              "key": "subscriptionId",
+                                              "value": "<string>",
+                                              "description": "(Required) The ID of the target subscription."
+                                            },
+                                            {
+                                              "id": "577b063c-4de4-4ffa-856e-7f95dadf448f",
+                                              "key": "resourceGroupName",
+                                              "value": "<string>",
+                                              "description": "(Required) The name of the resource group."
+                                            },
+                                            {
+                                              "id": "c974f4be-2bd7-4536-9a8c-8dd398ebf786",
+                                              "key": "ruleName",
+                                              "value": "<string>",
+                                              "description": "(Required) The name of the rule."
+                                            }
+                                          ]
+                                        },
+                                        "description": "Creates or updates a classic metric alert rule. Classic alert rules evaluate metrics at regular intervals and trigger actions when conditions are met."
+                                      },
+                                      "response": [
+                                        {
+                                          "id": "6939f4c1-9c9f-4b74-80e4-1d57dd153ad1",
+                                          "name": "Successful request to update an alert rule.",
+                                          "originalRequest": {
+                                            "method": "PUT",
+                                            "header": [
+                                              {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: oauth2",
+                                                "key": "Authorization",
+                                                "value": "<token>"
+                                              }
+                                            ],
+                                            "body": {
+                                              "mode": "raw",
+                                              "raw": "{\n  \"location\": \"<string>\",\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"isEnabled\": \"<boolean>\",\n    \"condition\": {\n      \"odata.type\": \"<string>\",\n      \"dataSource\": {\n        \"odata.type\": \"<string>\",\n        \"resourceUri\": \"<string>\",\n        \"legacyResourceId\": \"<string>\",\n        \"resourceLocation\": \"<string>\",\n        \"metricNamespace\": \"<string>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"lastUpdatedTime\": \"<dateTime>\",\n    \"actions\": [\n      {\n        \"odata.type\": \"<string>\"\n      },\n      {\n        \"odata.type\": \"<string>\"\n      }\n    ]\n  },\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"tags\": {\n    \"cupidatat_8_6\": \"<string>\"\n  }\n}",
+                                              "options": {
+                                                "raw": {
+                                                  "headerFamily": "json",
+                                                  "language": "json"
+                                                }
+                                              }
+                                            },
+                                            "url": {
+                                              "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Insights/alertrules/:ruleName?api-version=2016-03-01",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "subscriptions",
+                                                ":subscriptionId",
+                                                "resourcegroups",
+                                                ":resourceGroupName",
+                                                "providers",
+                                                "Microsoft.Insights",
+                                                "alertrules",
+                                                ":ruleName"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "(Required) Client API version.",
+                                                  "key": "api-version",
+                                                  "value": "2016-03-01"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "subscriptionId"
+                                                },
+                                                {
+                                                  "key": "resourceGroupName"
+                                                },
+                                                {
+                                                  "key": "ruleName"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "OK",
+                                          "code": 200,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"location\": \"<string>\",\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"isEnabled\": \"<boolean>\",\n    \"condition\": {\n      \"odata.type\": \"<string>\",\n      \"dataSource\": {\n        \"odata.type\": \"<string>\",\n        \"resourceUri\": \"<string>\",\n        \"legacyResourceId\": \"<string>\",\n        \"resourceLocation\": \"<string>\",\n        \"metricNamespace\": \"<string>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"lastUpdatedTime\": \"<dateTime>\",\n    \"actions\": [\n      {\n        \"odata.type\": \"<string>\"\n      },\n      {\n        \"odata.type\": \"<string>\"\n      }\n    ]\n  },\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"tags\": {\n    \"cupidatat_8_6\": \"<string>\"\n  }\n}",
+                                          "createdAt": "2026-06-05T15:11:33.000Z",
+                                          "updatedAt": "2026-06-05T15:11:33.000Z",
+                                          "uid": "35240-6939f4c1-9c9f-4b74-80e4-1d57dd153ad1"
+                                        },
+                                        {
+                                          "id": "46f65e4a-b35b-452d-b546-f921fae39c8b",
+                                          "name": "Created new alert rule successfully.",
+                                          "originalRequest": {
+                                            "method": "PUT",
+                                            "header": [
+                                              {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: oauth2",
+                                                "key": "Authorization",
+                                                "value": "<token>"
+                                              }
+                                            ],
+                                            "body": {
+                                              "mode": "raw",
+                                              "raw": "{\n  \"location\": \"<string>\",\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"isEnabled\": \"<boolean>\",\n    \"condition\": {\n      \"odata.type\": \"<string>\",\n      \"dataSource\": {\n        \"odata.type\": \"<string>\",\n        \"resourceUri\": \"<string>\",\n        \"legacyResourceId\": \"<string>\",\n        \"resourceLocation\": \"<string>\",\n        \"metricNamespace\": \"<string>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"lastUpdatedTime\": \"<dateTime>\",\n    \"actions\": [\n      {\n        \"odata.type\": \"<string>\"\n      },\n      {\n        \"odata.type\": \"<string>\"\n      }\n    ]\n  },\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"tags\": {\n    \"cupidatat_8_6\": \"<string>\"\n  }\n}",
+                                              "options": {
+                                                "raw": {
+                                                  "headerFamily": "json",
+                                                  "language": "json"
+                                                }
+                                              }
+                                            },
+                                            "url": {
+                                              "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Insights/alertrules/:ruleName?api-version=2016-03-01",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "subscriptions",
+                                                ":subscriptionId",
+                                                "resourcegroups",
+                                                ":resourceGroupName",
+                                                "providers",
+                                                "Microsoft.Insights",
+                                                "alertrules",
+                                                ":ruleName"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "(Required) Client API version.",
+                                                  "key": "api-version",
+                                                  "value": "2016-03-01"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "subscriptionId"
+                                                },
+                                                {
+                                                  "key": "resourceGroupName"
+                                                },
+                                                {
+                                                  "key": "ruleName"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Created",
+                                          "code": 201,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"location\": \"<string>\",\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"isEnabled\": \"<boolean>\",\n    \"condition\": {\n      \"odata.type\": \"<string>\",\n      \"dataSource\": {\n        \"odata.type\": \"<string>\",\n        \"resourceUri\": \"<string>\",\n        \"legacyResourceId\": \"<string>\",\n        \"resourceLocation\": \"<string>\",\n        \"metricNamespace\": \"<string>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"lastUpdatedTime\": \"<dateTime>\",\n    \"actions\": [\n      {\n        \"odata.type\": \"<string>\"\n      },\n      {\n        \"odata.type\": \"<string>\"\n      }\n    ]\n  },\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"tags\": {\n    \"cupidatat_8_6\": \"<string>\"\n  }\n}",
+                                          "createdAt": "2026-06-05T15:11:33.000Z",
+                                          "updatedAt": "2026-06-05T15:11:33.000Z",
+                                          "uid": "35240-46f65e4a-b35b-452d-b546-f921fae39c8b"
+                                        },
+                                        {
+                                          "id": "1aafbb92-191f-4102-8723-0228aaf2b28d",
+                                          "name": "Error response describing why the operation failed.",
+                                          "originalRequest": {
+                                            "method": "PUT",
+                                            "header": [
+                                              {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: oauth2",
+                                                "key": "Authorization",
+                                                "value": "<token>"
+                                              }
+                                            ],
+                                            "body": {
+                                              "mode": "raw",
+                                              "raw": "{\n  \"location\": \"<string>\",\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"isEnabled\": \"<boolean>\",\n    \"condition\": {\n      \"odata.type\": \"<string>\",\n      \"dataSource\": {\n        \"odata.type\": \"<string>\",\n        \"resourceUri\": \"<string>\",\n        \"legacyResourceId\": \"<string>\",\n        \"resourceLocation\": \"<string>\",\n        \"metricNamespace\": \"<string>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"lastUpdatedTime\": \"<dateTime>\",\n    \"actions\": [\n      {\n        \"odata.type\": \"<string>\"\n      },\n      {\n        \"odata.type\": \"<string>\"\n      }\n    ]\n  },\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"tags\": {\n    \"cupidatat_8_6\": \"<string>\"\n  }\n}",
+                                              "options": {
+                                                "raw": {
+                                                  "headerFamily": "json",
+                                                  "language": "json"
+                                                }
+                                              }
+                                            },
+                                            "url": {
+                                              "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Insights/alertrules/:ruleName?api-version=2016-03-01",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "subscriptions",
+                                                ":subscriptionId",
+                                                "resourcegroups",
+                                                ":resourceGroupName",
+                                                "providers",
+                                                "Microsoft.Insights",
+                                                "alertrules",
+                                                ":ruleName"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "(Required) Client API version.",
+                                                  "key": "api-version",
+                                                  "value": "2016-03-01"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "subscriptionId"
+                                                },
+                                                {
+                                                  "key": "resourceGroupName"
+                                                },
+                                                {
+                                                  "key": "ruleName"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Internal Server Error",
+                                          "code": 500,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                                          "createdAt": "2026-06-05T15:11:33.000Z",
+                                          "updatedAt": "2026-06-05T15:11:33.000Z",
+                                          "uid": "35240-1aafbb92-191f-4102-8723-0228aaf2b28d"
+                                        }
+                                      ],
+                                      "createdAt": "2026-06-05T15:11:33.000Z",
+                                      "updatedAt": "2026-06-05T15:11:33.000Z",
+                                      "uid": "35240-16ffbb20-75a4-468c-bded-d0e51cbef38b"
+                                    },
+                                    {
+                                      "name": "Azure Monitor Get a classic metric alert rule",
+                                      "id": "67334180-6ad6-40c1-9681-e39d83bfc57f",
+                                      "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                      },
+                                      "request": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Insights/alertrules/:ruleName?api-version=2016-03-01",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "subscriptions",
+                                            ":subscriptionId",
+                                            "resourcegroups",
+                                            ":resourceGroupName",
+                                            "providers",
+                                            "Microsoft.Insights",
+                                            "alertrules",
+                                            ":ruleName"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "(Required) Client API version.",
+                                              "key": "api-version",
+                                              "value": "2016-03-01"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "id": "0708b082-0704-43a8-85fb-59dab44f03e9",
+                                              "key": "subscriptionId",
+                                              "value": "<string>",
+                                              "description": "(Required) The ID of the target subscription."
+                                            },
+                                            {
+                                              "id": "cc21812a-8b5f-4b1d-b886-cda964e14f0f",
+                                              "key": "resourceGroupName",
+                                              "value": "<string>",
+                                              "description": "(Required) The name of the resource group."
+                                            },
+                                            {
+                                              "id": "1e64e6be-db9e-4202-aab0-24bc3fb14e76",
+                                              "key": "ruleName",
+                                              "value": "<string>",
+                                              "description": "(Required) The name of the rule."
+                                            }
+                                          ]
+                                        },
+                                        "description": "Gets a classic metric alert rule by name from a specified resource group."
+                                      },
+                                      "response": [
+                                        {
+                                          "id": "70dd14e5-3574-4c8d-9abe-6d85a4d83901",
+                                          "name": "Successful request to get an alert rule.",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: oauth2",
+                                                "key": "Authorization",
+                                                "value": "<token>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Insights/alertrules/:ruleName?api-version=2016-03-01",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "subscriptions",
+                                                ":subscriptionId",
+                                                "resourcegroups",
+                                                ":resourceGroupName",
+                                                "providers",
+                                                "Microsoft.Insights",
+                                                "alertrules",
+                                                ":ruleName"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "(Required) Client API version.",
+                                                  "key": "api-version",
+                                                  "value": "2016-03-01"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "subscriptionId"
+                                                },
+                                                {
+                                                  "key": "resourceGroupName"
+                                                },
+                                                {
+                                                  "key": "ruleName"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "OK",
+                                          "code": 200,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"location\": \"<string>\",\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"isEnabled\": \"<boolean>\",\n    \"condition\": {\n      \"odata.type\": \"<string>\",\n      \"dataSource\": {\n        \"odata.type\": \"<string>\",\n        \"resourceUri\": \"<string>\",\n        \"legacyResourceId\": \"<string>\",\n        \"resourceLocation\": \"<string>\",\n        \"metricNamespace\": \"<string>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"lastUpdatedTime\": \"<dateTime>\",\n    \"actions\": [\n      {\n        \"odata.type\": \"<string>\"\n      },\n      {\n        \"odata.type\": \"<string>\"\n      }\n    ]\n  },\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"tags\": {\n    \"cupidatat_8_6\": \"<string>\"\n  }\n}",
+                                          "createdAt": "2026-06-05T15:11:33.000Z",
+                                          "updatedAt": "2026-06-05T15:11:33.000Z",
+                                          "uid": "35240-70dd14e5-3574-4c8d-9abe-6d85a4d83901"
+                                        },
+                                        {
+                                          "id": "de897f55-074d-489b-b92b-e30c81356981",
+                                          "name": "Error response describing why the operation failed.",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: oauth2",
+                                                "key": "Authorization",
+                                                "value": "<token>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Insights/alertrules/:ruleName?api-version=2016-03-01",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "subscriptions",
+                                                ":subscriptionId",
+                                                "resourcegroups",
+                                                ":resourceGroupName",
+                                                "providers",
+                                                "Microsoft.Insights",
+                                                "alertrules",
+                                                ":ruleName"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "(Required) Client API version.",
+                                                  "key": "api-version",
+                                                  "value": "2016-03-01"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "subscriptionId"
+                                                },
+                                                {
+                                                  "key": "resourceGroupName"
+                                                },
+                                                {
+                                                  "key": "ruleName"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Internal Server Error",
+                                          "code": 500,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                                          "createdAt": "2026-06-05T15:11:33.000Z",
+                                          "updatedAt": "2026-06-05T15:11:33.000Z",
+                                          "uid": "35240-de897f55-074d-489b-b92b-e30c81356981"
+                                        }
+                                      ],
+                                      "createdAt": "2026-06-05T15:11:33.000Z",
+                                      "updatedAt": "2026-06-05T15:11:33.000Z",
+                                      "uid": "35240-67334180-6ad6-40c1-9681-e39d83bfc57f"
+                                    },
+                                    {
+                                      "name": "Azure Monitor Delete a classic metric alert rule",
+                                      "id": "b8b7350c-3c39-44f6-acb3-a3240b6bf391",
+                                      "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                      },
+                                      "request": {
+                                        "method": "DELETE",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Insights/alertrules/:ruleName?api-version=2016-03-01",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "subscriptions",
+                                            ":subscriptionId",
+                                            "resourcegroups",
+                                            ":resourceGroupName",
+                                            "providers",
+                                            "Microsoft.Insights",
+                                            "alertrules",
+                                            ":ruleName"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "(Required) Client API version.",
+                                              "key": "api-version",
+                                              "value": "2016-03-01"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "id": "9d1b0640-d249-4965-9e89-2f84f9bb6883",
+                                              "key": "subscriptionId",
+                                              "value": "<string>",
+                                              "description": "(Required) The ID of the target subscription."
+                                            },
+                                            {
+                                              "id": "e6b01745-c6e3-4b80-b03a-5b919ea82d51",
+                                              "key": "resourceGroupName",
+                                              "value": "<string>",
+                                              "description": "(Required) The name of the resource group."
+                                            },
+                                            {
+                                              "id": "baa85834-e93f-4756-8f13-f18e6fa88740",
+                                              "key": "ruleName",
+                                              "value": "<string>",
+                                              "description": "(Required) The name of the rule."
+                                            }
+                                          ]
+                                        },
+                                        "description": "Deletes a classic metric alert rule from a specified resource group."
+                                      },
+                                      "response": [
+                                        {
+                                          "id": "669878fd-cab2-4a1f-827b-8542fed892a7",
+                                          "name": "Successful request to delete an alert rule.",
+                                          "originalRequest": {
+                                            "method": "DELETE",
+                                            "header": [
+                                              {
+                                                "description": "Added as a part of security scheme: oauth2",
+                                                "key": "Authorization",
+                                                "value": "<token>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Insights/alertrules/:ruleName?api-version=2016-03-01",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "subscriptions",
+                                                ":subscriptionId",
+                                                "resourcegroups",
+                                                ":resourceGroupName",
+                                                "providers",
+                                                "Microsoft.Insights",
+                                                "alertrules",
+                                                ":ruleName"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "(Required) Client API version.",
+                                                  "key": "api-version",
+                                                  "value": "2016-03-01"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "subscriptionId"
+                                                },
+                                                {
+                                                  "key": "resourceGroupName"
+                                                },
+                                                {
+                                                  "key": "ruleName"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "OK",
+                                          "code": 200,
+                                          "_postman_previewlanguage": "text",
+                                          "header": [],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": null,
+                                          "createdAt": "2026-06-05T15:11:33.000Z",
+                                          "updatedAt": "2026-06-05T15:11:33.000Z",
+                                          "uid": "35240-669878fd-cab2-4a1f-827b-8542fed892a7"
+                                        },
+                                        {
+                                          "id": "9a66eaa5-1ff5-427d-9350-9e5af6a150bc",
+                                          "name": "Alert rule does not exist. The request was still successful.",
+                                          "originalRequest": {
+                                            "method": "DELETE",
+                                            "header": [
+                                              {
+                                                "description": "Added as a part of security scheme: oauth2",
+                                                "key": "Authorization",
+                                                "value": "<token>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Insights/alertrules/:ruleName?api-version=2016-03-01",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "subscriptions",
+                                                ":subscriptionId",
+                                                "resourcegroups",
+                                                ":resourceGroupName",
+                                                "providers",
+                                                "Microsoft.Insights",
+                                                "alertrules",
+                                                ":ruleName"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "(Required) Client API version.",
+                                                  "key": "api-version",
+                                                  "value": "2016-03-01"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "subscriptionId"
+                                                },
+                                                {
+                                                  "key": "resourceGroupName"
+                                                },
+                                                {
+                                                  "key": "ruleName"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "No Content",
+                                          "code": 204,
+                                          "_postman_previewlanguage": "text",
+                                          "header": [],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": null,
+                                          "createdAt": "2026-06-05T15:11:33.000Z",
+                                          "updatedAt": "2026-06-05T15:11:33.000Z",
+                                          "uid": "35240-9a66eaa5-1ff5-427d-9350-9e5af6a150bc"
+                                        },
+                                        {
+                                          "id": "ff85ba63-b1c8-41e2-b139-31a88c6afa47",
+                                          "name": "Error response describing why the operation failed.",
+                                          "originalRequest": {
+                                            "method": "DELETE",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: oauth2",
+                                                "key": "Authorization",
+                                                "value": "<token>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Insights/alertrules/:ruleName?api-version=2016-03-01",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "subscriptions",
+                                                ":subscriptionId",
+                                                "resourcegroups",
+                                                ":resourceGroupName",
+                                                "providers",
+                                                "Microsoft.Insights",
+                                                "alertrules",
+                                                ":ruleName"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "(Required) Client API version.",
+                                                  "key": "api-version",
+                                                  "value": "2016-03-01"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "subscriptionId"
+                                                },
+                                                {
+                                                  "key": "resourceGroupName"
+                                                },
+                                                {
+                                                  "key": "ruleName"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Internal Server Error",
+                                          "code": 500,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                                          "createdAt": "2026-06-05T15:11:33.000Z",
+                                          "updatedAt": "2026-06-05T15:11:33.000Z",
+                                          "uid": "35240-ff85ba63-b1c8-41e2-b139-31a88c6afa47"
+                                        }
+                                      ],
+                                      "createdAt": "2026-06-05T15:11:33.000Z",
+                                      "updatedAt": "2026-06-05T15:11:33.000Z",
+                                      "uid": "35240-b8b7350c-3c39-44f6-acb3-a3240b6bf391"
+                                    },
+                                    {
+                                      "name": "Azure Monitor Update a classic metric alert rule",
+                                      "id": "80487953-7c33-4fd0-95c7-39c8031e7a49",
+                                      "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                      },
+                                      "request": {
+                                        "method": "PATCH",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"tags\": {\n    \"ipsum918\": \"<string>\",\n    \"consectetur7\": \"<string>\"\n  },\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"isEnabled\": \"<boolean>\",\n    \"condition\": {\n      \"odata.type\": \"<string>\",\n      \"dataSource\": {\n        \"odata.type\": \"<string>\",\n        \"resourceUri\": \"<string>\",\n        \"legacyResourceId\": \"<string>\",\n        \"resourceLocation\": \"<string>\",\n        \"metricNamespace\": \"<string>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"lastUpdatedTime\": \"<dateTime>\",\n    \"actions\": [\n      {\n        \"odata.type\": \"<string>\"\n      },\n      {\n        \"odata.type\": \"<string>\"\n      }\n    ]\n  }\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Insights/alertrules/:ruleName?api-version=2016-03-01",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "subscriptions",
+                                            ":subscriptionId",
+                                            "resourcegroups",
+                                            ":resourceGroupName",
+                                            "providers",
+                                            "Microsoft.Insights",
+                                            "alertrules",
+                                            ":ruleName"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "(Required) Client API version.",
+                                              "key": "api-version",
+                                              "value": "2016-03-01"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "id": "6d621f8f-c13f-40f5-b3da-1bc4e9e57dd1",
+                                              "key": "subscriptionId",
+                                              "value": "<string>",
+                                              "description": "(Required) The ID of the target subscription."
+                                            },
+                                            {
+                                              "id": "6ffb5b9e-d637-43cb-9cad-f9b7178ed3c3",
+                                              "key": "resourceGroupName",
+                                              "value": "<string>",
+                                              "description": "(Required) The name of the resource group."
+                                            },
+                                            {
+                                              "id": "790fcf92-4115-4c81-8411-39b4fa1ec438",
+                                              "key": "ruleName",
+                                              "value": "<string>",
+                                              "description": "(Required) The name of the rule."
+                                            }
+                                          ]
+                                        },
+                                        "description": "Updates an existing classic metric alert rule. This can be used to update tags on the rule resource."
+                                      },
+                                      "response": [
+                                        {
+                                          "id": "b2b91f2a-fbae-44fe-aea7-39c4499c4013",
+                                          "name": "Successful request to update an alert rule.",
+                                          "originalRequest": {
+                                            "method": "PATCH",
+                                            "header": [
+                                              {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: oauth2",
+                                                "key": "Authorization",
+                                                "value": "<token>"
+                                              }
+                                            ],
+                                            "body": {
+                                              "mode": "raw",
+                                              "raw": "{\n  \"tags\": {\n    \"ipsum918\": \"<string>\",\n    \"consectetur7\": \"<string>\"\n  },\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"isEnabled\": \"<boolean>\",\n    \"condition\": {\n      \"odata.type\": \"<string>\",\n      \"dataSource\": {\n        \"odata.type\": \"<string>\",\n        \"resourceUri\": \"<string>\",\n        \"legacyResourceId\": \"<string>\",\n        \"resourceLocation\": \"<string>\",\n        \"metricNamespace\": \"<string>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"lastUpdatedTime\": \"<dateTime>\",\n    \"actions\": [\n      {\n        \"odata.type\": \"<string>\"\n      },\n      {\n        \"odata.type\": \"<string>\"\n      }\n    ]\n  }\n}",
+                                              "options": {
+                                                "raw": {
+                                                  "headerFamily": "json",
+                                                  "language": "json"
+                                                }
+                                              }
+                                            },
+                                            "url": {
+                                              "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Insights/alertrules/:ruleName?api-version=2016-03-01",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "subscriptions",
+                                                ":subscriptionId",
+                                                "resourcegroups",
+                                                ":resourceGroupName",
+                                                "providers",
+                                                "Microsoft.Insights",
+                                                "alertrules",
+                                                ":ruleName"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "(Required) Client API version.",
+                                                  "key": "api-version",
+                                                  "value": "2016-03-01"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "subscriptionId"
+                                                },
+                                                {
+                                                  "key": "resourceGroupName"
+                                                },
+                                                {
+                                                  "key": "ruleName"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "OK",
+                                          "code": 200,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"location\": \"<string>\",\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"isEnabled\": \"<boolean>\",\n    \"condition\": {\n      \"odata.type\": \"<string>\",\n      \"dataSource\": {\n        \"odata.type\": \"<string>\",\n        \"resourceUri\": \"<string>\",\n        \"legacyResourceId\": \"<string>\",\n        \"resourceLocation\": \"<string>\",\n        \"metricNamespace\": \"<string>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"lastUpdatedTime\": \"<dateTime>\",\n    \"actions\": [\n      {\n        \"odata.type\": \"<string>\"\n      },\n      {\n        \"odata.type\": \"<string>\"\n      }\n    ]\n  },\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"tags\": {\n    \"cupidatat_8_6\": \"<string>\"\n  }\n}",
+                                          "createdAt": "2026-06-05T15:11:33.000Z",
+                                          "updatedAt": "2026-06-05T15:11:33.000Z",
+                                          "uid": "35240-b2b91f2a-fbae-44fe-aea7-39c4499c4013"
+                                        },
+                                        {
+                                          "id": "48507cff-40c8-43df-8026-790662922ede",
+                                          "name": "Error response describing why the operation failed.",
+                                          "originalRequest": {
+                                            "method": "PATCH",
+                                            "header": [
+                                              {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: oauth2",
+                                                "key": "Authorization",
+                                                "value": "<token>"
+                                              }
+                                            ],
+                                            "body": {
+                                              "mode": "raw",
+                                              "raw": "{\n  \"tags\": {\n    \"ipsum918\": \"<string>\",\n    \"consectetur7\": \"<string>\"\n  },\n  \"properties\": {\n    \"name\": \"<string>\",\n    \"isEnabled\": \"<boolean>\",\n    \"condition\": {\n      \"odata.type\": \"<string>\",\n      \"dataSource\": {\n        \"odata.type\": \"<string>\",\n        \"resourceUri\": \"<string>\",\n        \"legacyResourceId\": \"<string>\",\n        \"resourceLocation\": \"<string>\",\n        \"metricNamespace\": \"<string>\"\n      }\n    },\n    \"description\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"lastUpdatedTime\": \"<dateTime>\",\n    \"actions\": [\n      {\n        \"odata.type\": \"<string>\"\n      },\n      {\n        \"odata.type\": \"<string>\"\n      }\n    ]\n  }\n}",
+                                              "options": {
+                                                "raw": {
+                                                  "headerFamily": "json",
+                                                  "language": "json"
+                                                }
+                                              }
+                                            },
+                                            "url": {
+                                              "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Insights/alertrules/:ruleName?api-version=2016-03-01",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "subscriptions",
+                                                ":subscriptionId",
+                                                "resourcegroups",
+                                                ":resourceGroupName",
+                                                "providers",
+                                                "Microsoft.Insights",
+                                                "alertrules",
+                                                ":ruleName"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "(Required) Client API version.",
+                                                  "key": "api-version",
+                                                  "value": "2016-03-01"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "subscriptionId"
+                                                },
+                                                {
+                                                  "key": "resourceGroupName"
+                                                },
+                                                {
+                                                  "key": "ruleName"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Internal Server Error",
+                                          "code": 500,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                                          "createdAt": "2026-06-05T15:11:33.000Z",
+                                          "updatedAt": "2026-06-05T15:11:33.000Z",
+                                          "uid": "35240-48507cff-40c8-43df-8026-790662922ede"
+                                        }
+                                      ],
+                                      "createdAt": "2026-06-05T15:11:33.000Z",
+                                      "updatedAt": "2026-06-05T15:11:33.000Z",
+                                      "uid": "35240-80487953-7c33-4fd0-95c7-39c8031e7a49"
+                                    }
+                                  ],
+                                  "id": "6e928acb-d1c9-4d4d-80cd-ff095fdb8c1d",
+                                  "createdAt": "2026-06-05T15:11:33.000Z",
+                                  "updatedAt": "2026-06-05T15:11:33.000Z",
+                                  "uid": "35240-6e928acb-d1c9-4d4d-80cd-ff095fdb8c1d"
+                                },
+                                {
+                                  "name": "Azure Monitor List classic alert rules in a resource group",
+                                  "id": "12189762-a17c-434a-9347-c871b05f21a2",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Insights/alertrules?api-version=2016-03-01",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "subscriptions",
+                                        ":subscriptionId",
+                                        "resourcegroups",
+                                        ":resourceGroupName",
+                                        "providers",
+                                        "Microsoft.Insights",
+                                        "alertrules"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) Client API version.",
+                                          "key": "api-version",
+                                          "value": "2016-03-01"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "89baac94-236a-4a9b-9e94-f94fb3f9ba75",
+                                          "key": "subscriptionId",
+                                          "value": "<string>",
+                                          "description": "(Required) The ID of the target subscription."
+                                        },
+                                        {
+                                          "id": "6dfbf037-42ec-4dd2-b298-f57d7d0c4e76",
+                                          "key": "resourceGroupName",
+                                          "value": "<string>",
+                                          "description": "(Required) The name of the resource group."
+                                        }
+                                      ]
+                                    },
+                                    "description": "Lists the classic metric alert rules within a resource group."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "39115360-7e2c-4bef-bfdf-6d553b1673e5",
+                                      "name": "Successful request for a list of alert rules.",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Insights/alertrules?api-version=2016-03-01",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "subscriptions",
+                                            ":subscriptionId",
+                                            "resourcegroups",
+                                            ":resourceGroupName",
+                                            "providers",
+                                            "Microsoft.Insights",
+                                            "alertrules"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "(Required) Client API version.",
+                                              "key": "api-version",
+                                              "value": "2016-03-01"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "subscriptionId"
+                                            },
+                                            {
+                                              "key": "resourceGroupName"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"value\": [\n    {\n      \"location\": \"<string>\",\n      \"properties\": {\n        \"name\": \"<string>\",\n        \"isEnabled\": \"<boolean>\",\n        \"condition\": {\n          \"odata.type\": \"<string>\",\n          \"dataSource\": {\n            \"odata.type\": \"<string>\",\n            \"resourceUri\": \"<string>\",\n            \"legacyResourceId\": \"<string>\",\n            \"resourceLocation\": \"<string>\",\n            \"metricNamespace\": \"<string>\"\n          }\n        },\n        \"description\": \"<string>\",\n        \"provisioningState\": \"<string>\",\n        \"lastUpdatedTime\": \"<dateTime>\",\n        \"actions\": [\n          {\n            \"odata.type\": \"<string>\"\n          },\n          {\n            \"odata.type\": \"<string>\"\n          }\n        ]\n      },\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"tags\": {\n        \"cupidatat41\": \"<string>\",\n        \"occaecat3cc\": \"<string>\",\n        \"eiusmod74\": \"<string>\"\n      }\n    },\n    {\n      \"location\": \"<string>\",\n      \"properties\": {\n        \"name\": \"<string>\",\n        \"isEnabled\": \"<boolean>\",\n        \"condition\": {\n          \"odata.type\": \"<string>\",\n          \"dataSource\": {\n            \"odata.type\": \"<string>\",\n            \"resourceUri\": \"<string>\",\n            \"legacyResourceId\": \"<string>\",\n            \"resourceLocation\": \"<string>\",\n            \"metricNamespace\": \"<string>\"\n          }\n        },\n        \"description\": \"<string>\",\n        \"provisioningState\": \"<string>\",\n        \"lastUpdatedTime\": \"<dateTime>\",\n        \"actions\": [\n          {\n            \"odata.type\": \"<string>\"\n          },\n          {\n            \"odata.type\": \"<string>\"\n          }\n        ]\n      },\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"tags\": {\n        \"adipisicing7\": \"<string>\",\n        \"commodo1\": \"<string>\",\n        \"ullamco_f22\": \"<string>\"\n      }\n    }\n  ]\n}",
+                                      "createdAt": "2026-06-05T15:11:33.000Z",
+                                      "updatedAt": "2026-06-05T15:11:33.000Z",
+                                      "uid": "35240-39115360-7e2c-4bef-bfdf-6d553b1673e5"
+                                    },
+                                    {
+                                      "id": "b88deaac-9ed0-4f4d-9533-448ab1ddc3b2",
+                                      "name": "Error response describing why the operation failed.",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/subscriptions/:subscriptionId/resourcegroups/:resourceGroupName/providers/Microsoft.Insights/alertrules?api-version=2016-03-01",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "subscriptions",
+                                            ":subscriptionId",
+                                            "resourcegroups",
+                                            ":resourceGroupName",
+                                            "providers",
+                                            "Microsoft.Insights",
+                                            "alertrules"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "(Required) Client API version.",
+                                              "key": "api-version",
+                                              "value": "2016-03-01"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "subscriptionId"
+                                            },
+                                            {
+                                              "key": "resourceGroupName"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Internal Server Error",
+                                      "code": 500,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                                      "createdAt": "2026-06-05T15:11:33.000Z",
+                                      "updatedAt": "2026-06-05T15:11:33.000Z",
+                                      "uid": "35240-b88deaac-9ed0-4f4d-9533-448ab1ddc3b2"
+                                    }
+                                  ],
+                                  "createdAt": "2026-06-05T15:11:33.000Z",
+                                  "updatedAt": "2026-06-05T15:11:33.000Z",
+                                  "uid": "35240-12189762-a17c-434a-9347-c871b05f21a2"
+                                }
+                              ],
+                              "id": "bdd80cae-b91c-4d8c-8763-4565aa8657fa",
+                              "createdAt": "2026-06-05T15:11:33.000Z",
+                              "updatedAt": "2026-06-05T15:11:33.000Z",
+                              "uid": "35240-bdd80cae-b91c-4d8c-8763-4565aa8657fa"
+                            }
+                          ],
+                          "id": "9862d176-e343-4e29-b758-6a94993cd20b",
+                          "createdAt": "2026-06-05T15:11:33.000Z",
+                          "updatedAt": "2026-06-05T15:11:33.000Z",
+                          "uid": "35240-9862d176-e343-4e29-b758-6a94993cd20b"
+                        }
+                      ],
+                      "id": "d2e7a42d-006f-4613-9646-254116d59325",
+                      "createdAt": "2026-06-05T15:11:33.000Z",
+                      "updatedAt": "2026-06-05T15:11:33.000Z",
+                      "uid": "35240-d2e7a42d-006f-4613-9646-254116d59325"
+                    }
+                  ],
+                  "id": "45718568-2e99-4b54-af37-51db7d239314",
+                  "createdAt": "2026-06-05T15:11:33.000Z",
+                  "updatedAt": "2026-06-05T15:11:33.000Z",
+                  "uid": "35240-45718568-2e99-4b54-af37-51db7d239314"
+                }
+              ],
+              "id": "a679ab2a-a871-4de1-8cf2-0ceade518b86",
+              "createdAt": "2026-06-05T15:11:33.000Z",
+              "updatedAt": "2026-06-05T15:11:33.000Z",
+              "uid": "35240-a679ab2a-a871-4de1-8cf2-0ceade518b86"
+            },
+            {
+              "name": "providers",
+              "item": [
+                {
+                  "name": "Microsoft.Insights",
+                  "item": [
+                    {
+                      "name": "alertrules",
+                      "item": [
+                        {
+                          "name": "Azure Monitor List classic alert rules in a subscription",
+                          "id": "fefa028a-0751-4a36-b4da-17f5dd52cb28",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/subscriptions/:subscriptionId/providers/Microsoft.Insights/alertrules?api-version=2016-03-01",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "subscriptions",
+                                ":subscriptionId",
+                                "providers",
+                                "Microsoft.Insights",
+                                "alertrules"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) Client API version.",
+                                  "key": "api-version",
+                                  "value": "2016-03-01"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "f2a8ab0e-4b09-4468-a236-ab488c38088e",
+                                  "key": "subscriptionId",
+                                  "value": "<string>",
+                                  "description": "(Required) The ID of the target subscription."
+                                }
+                              ]
+                            },
+                            "description": "Lists the classic metric alert rules within a subscription."
+                          },
+                          "response": [
+                            {
+                              "id": "65233ceb-77a8-4346-a534-e7104803df60",
+                              "name": "Successful request for a list of alert rules.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/subscriptions/:subscriptionId/providers/Microsoft.Insights/alertrules?api-version=2016-03-01",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "subscriptions",
+                                    ":subscriptionId",
+                                    "providers",
+                                    "Microsoft.Insights",
+                                    "alertrules"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) Client API version.",
+                                      "key": "api-version",
+                                      "value": "2016-03-01"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "subscriptionId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"value\": [\n    {\n      \"location\": \"<string>\",\n      \"properties\": {\n        \"name\": \"<string>\",\n        \"isEnabled\": \"<boolean>\",\n        \"condition\": {\n          \"odata.type\": \"<string>\",\n          \"dataSource\": {\n            \"odata.type\": \"<string>\",\n            \"resourceUri\": \"<string>\",\n            \"legacyResourceId\": \"<string>\",\n            \"resourceLocation\": \"<string>\",\n            \"metricNamespace\": \"<string>\"\n          }\n        },\n        \"description\": \"<string>\",\n        \"provisioningState\": \"<string>\",\n        \"lastUpdatedTime\": \"<dateTime>\",\n        \"actions\": [\n          {\n            \"odata.type\": \"<string>\"\n          },\n          {\n            \"odata.type\": \"<string>\"\n          }\n        ]\n      },\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"tags\": {\n        \"cupidatat41\": \"<string>\",\n        \"occaecat3cc\": \"<string>\",\n        \"eiusmod74\": \"<string>\"\n      }\n    },\n    {\n      \"location\": \"<string>\",\n      \"properties\": {\n        \"name\": \"<string>\",\n        \"isEnabled\": \"<boolean>\",\n        \"condition\": {\n          \"odata.type\": \"<string>\",\n          \"dataSource\": {\n            \"odata.type\": \"<string>\",\n            \"resourceUri\": \"<string>\",\n            \"legacyResourceId\": \"<string>\",\n            \"resourceLocation\": \"<string>\",\n            \"metricNamespace\": \"<string>\"\n          }\n        },\n        \"description\": \"<string>\",\n        \"provisioningState\": \"<string>\",\n        \"lastUpdatedTime\": \"<dateTime>\",\n        \"actions\": [\n          {\n            \"odata.type\": \"<string>\"\n          },\n          {\n            \"odata.type\": \"<string>\"\n          }\n        ]\n      },\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"tags\": {\n        \"adipisicing7\": \"<string>\",\n        \"commodo1\": \"<string>\",\n        \"ullamco_f22\": \"<string>\"\n      }\n    }\n  ]\n}",
+                              "createdAt": "2026-06-05T15:11:33.000Z",
+                              "updatedAt": "2026-06-05T15:11:33.000Z",
+                              "uid": "35240-65233ceb-77a8-4346-a534-e7104803df60"
+                            },
+                            {
+                              "id": "f0480057-8793-4cf3-b0ee-1ebf846f3e32",
+                              "name": "Error response describing why the operation failed.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/subscriptions/:subscriptionId/providers/Microsoft.Insights/alertrules?api-version=2016-03-01",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "subscriptions",
+                                    ":subscriptionId",
+                                    "providers",
+                                    "Microsoft.Insights",
+                                    "alertrules"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) Client API version.",
+                                      "key": "api-version",
+                                      "value": "2016-03-01"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "subscriptionId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:11:33.000Z",
+                              "updatedAt": "2026-06-05T15:11:33.000Z",
+                              "uid": "35240-f0480057-8793-4cf3-b0ee-1ebf846f3e32"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:11:33.000Z",
+                          "updatedAt": "2026-06-05T15:11:33.000Z",
+                          "uid": "35240-fefa028a-0751-4a36-b4da-17f5dd52cb28"
+                        }
+                      ],
+                      "id": "c9b59ba3-24eb-4761-8085-de51da1a1045",
+                      "createdAt": "2026-06-05T15:11:33.000Z",
+                      "updatedAt": "2026-06-05T15:11:33.000Z",
+                      "uid": "35240-c9b59ba3-24eb-4761-8085-de51da1a1045"
+                    }
+                  ],
+                  "id": "42958095-ea24-4c67-8705-5c7cb8b1e983",
+                  "createdAt": "2026-06-05T15:11:33.000Z",
+                  "updatedAt": "2026-06-05T15:11:33.000Z",
+                  "uid": "35240-42958095-ea24-4c67-8705-5c7cb8b1e983"
+                }
+              ],
+              "id": "1fa83ab5-a97a-4cac-98de-d3c8224a370d",
+              "createdAt": "2026-06-05T15:11:33.000Z",
+              "updatedAt": "2026-06-05T15:11:33.000Z",
+              "uid": "35240-1fa83ab5-a97a-4cac-98de-d3c8224a370d"
+            }
+          ],
+          "id": "d4f3e570-ed8f-43c6-b0c0-aad2c02dfa1f",
+          "createdAt": "2026-06-05T15:11:33.000Z",
+          "updatedAt": "2026-06-05T15:11:33.000Z",
+          "uid": "35240-d4f3e570-ed8f-43c6-b0c0-aad2c02dfa1f"
+        }
+      ],
+      "id": "d5104a2b-0c9b-410d-bacd-6eec23459978",
+      "createdAt": "2026-06-05T15:11:33.000Z",
+      "updatedAt": "2026-06-05T15:11:33.000Z",
+      "uid": "35240-d5104a2b-0c9b-410d-bacd-6eec23459978"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://management.azure.com/.default",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://management.azure.com"
+    }
+  ]
+}

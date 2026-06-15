@@ -1,0 +1,893 @@
+{
+  "item": [
+    {
+      "id": "29946547-8704-406e-8013-9d7b10d09136",
+      "name": "Diagnostic Settings",
+      "description": {
+        "content": "Operations for managing diagnostic settings on Azure resources",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "85c323f4-c40a-4450-be09-54ae0d403396",
+          "name": "Azure Monitor List diagnostic settings for a resource",
+          "request": {
+            "name": "Azure Monitor List diagnostic settings for a resource",
+            "description": {
+              "content": "Gets the active diagnostic settings list for the specified resource. Returns all diagnostic settings configured for the resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":resourceUri",
+                "providers",
+                "Microsoft.Insights",
+                "diagnosticSettings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2021-05-01-preview",
+                  "description": "(Required) Client API version."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceUri",
+                  "description": "(Required) The identifier of the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "93c63d2c-122c-44a0-b4a6-8d38dfc48e8b",
+              "name": "Successful request to get the list of diagnostic settings.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":resourceUri",
+                    "providers",
+                    "Microsoft.Insights",
+                    "diagnosticSettings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-05-01-preview"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceUri",
+                      "description": "(Required) The identifier of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"properties\": {\n        \"storageAccountId\": \"string\",\n        \"serviceBusRuleId\": \"string\",\n        \"eventHubAuthorizationRuleId\": \"string\",\n        \"eventHubName\": \"string\",\n        \"metrics\": [\n          {\n            \"enabled\": true,\n            \"timeGrain\": \"string\",\n            \"category\": \"string\",\n            \"retentionPolicy\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"enabled\": false,\n            \"timeGrain\": \"string\",\n            \"category\": \"string\",\n            \"retentionPolicy\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"logs\": [\n          {\n            \"enabled\": false,\n            \"category\": \"string\",\n            \"categoryGroup\": \"string\",\n            \"retentionPolicy\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"enabled\": true,\n            \"category\": \"string\",\n            \"categoryGroup\": \"string\",\n            \"retentionPolicy\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"workspaceId\": \"string\",\n        \"marketplacePartnerId\": \"string\",\n        \"logAnalyticsDestinationType\": \"string\"\n      },\n      \"systemData\": {\n        \"createdBy\": \"string\",\n        \"createdByType\": \"User\",\n        \"createdAt\": \"2008-01-01T18:45:42.778Z\",\n        \"lastModifiedBy\": \"string\",\n        \"lastModifiedByType\": \"Key\",\n        \"lastModifiedAt\": \"1994-01-13T22:30:49.834Z\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"properties\": {\n        \"storageAccountId\": \"string\",\n        \"serviceBusRuleId\": \"string\",\n        \"eventHubAuthorizationRuleId\": \"string\",\n        \"eventHubName\": \"string\",\n        \"metrics\": [\n          {\n            \"enabled\": false,\n            \"timeGrain\": \"string\",\n            \"category\": \"string\",\n            \"retentionPolicy\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"enabled\": true,\n            \"timeGrain\": \"string\",\n            \"category\": \"string\",\n            \"retentionPolicy\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"logs\": [\n          {\n            \"enabled\": true,\n            \"category\": \"string\",\n            \"categoryGroup\": \"string\",\n            \"retentionPolicy\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"enabled\": true,\n            \"category\": \"string\",\n            \"categoryGroup\": \"string\",\n            \"retentionPolicy\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"workspaceId\": \"string\",\n        \"marketplacePartnerId\": \"string\",\n        \"logAnalyticsDestinationType\": \"string\"\n      },\n      \"systemData\": {\n        \"createdBy\": \"string\",\n        \"createdByType\": \"Application\",\n        \"createdAt\": \"1963-09-09T17:20:34.240Z\",\n        \"lastModifiedBy\": \"string\",\n        \"lastModifiedByType\": \"Key\",\n        \"lastModifiedAt\": \"2018-11-21T20:30:10.081Z\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2c9bfb53-21b5-4f36-8607-4aa7b4e5bdc8",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":resourceUri",
+                    "providers",
+                    "Microsoft.Insights",
+                    "diagnosticSettings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-05-01-preview"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceUri",
+                      "description": "(Required) The identifier of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7984125a-82c6-4254-9775-bbd398f665cb",
+          "name": "Azure Monitor Get a diagnostic setting",
+          "request": {
+            "name": "Azure Monitor Get a diagnostic setting",
+            "description": {
+              "content": "Gets the active diagnostic settings for the specified resource by name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":resourceUri",
+                "providers",
+                "Microsoft.Insights",
+                "diagnosticSettings",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2021-05-01-preview",
+                  "description": "(Required) Client API version."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceUri",
+                  "description": "(Required) The identifier of the resource."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) The name of the diagnostic setting."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "61c360d9-246a-4869-9414-8800cf41ddf9",
+              "name": "Successful request to get a diagnostic setting.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":resourceUri",
+                    "providers",
+                    "Microsoft.Insights",
+                    "diagnosticSettings",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-05-01-preview"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceUri",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) The name of the diagnostic setting."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"properties\": {\n    \"storageAccountId\": \"string\",\n    \"serviceBusRuleId\": \"string\",\n    \"eventHubAuthorizationRuleId\": \"string\",\n    \"eventHubName\": \"string\",\n    \"metrics\": [\n      {\n        \"enabled\": false,\n        \"timeGrain\": \"string\",\n        \"category\": \"string\",\n        \"retentionPolicy\": {\n          \"enabled\": true,\n          \"days\": 3381\n        }\n      },\n      {\n        \"enabled\": false,\n        \"timeGrain\": \"string\",\n        \"category\": \"string\",\n        \"retentionPolicy\": {\n          \"enabled\": false,\n          \"days\": 9054\n        }\n      }\n    ],\n    \"logs\": [\n      {\n        \"enabled\": false,\n        \"category\": \"string\",\n        \"categoryGroup\": \"string\",\n        \"retentionPolicy\": {\n          \"enabled\": true,\n          \"days\": 3922\n        }\n      },\n      {\n        \"enabled\": true,\n        \"category\": \"string\",\n        \"categoryGroup\": \"string\",\n        \"retentionPolicy\": {\n          \"enabled\": true,\n          \"days\": 2972\n        }\n      }\n    ],\n    \"workspaceId\": \"string\",\n    \"marketplacePartnerId\": \"string\",\n    \"logAnalyticsDestinationType\": \"string\"\n  },\n  \"systemData\": {\n    \"createdBy\": \"string\",\n    \"createdByType\": \"User\",\n    \"createdAt\": \"2017-08-08T16:53:14.607Z\",\n    \"lastModifiedBy\": \"string\",\n    \"lastModifiedByType\": \"Application\",\n    \"lastModifiedAt\": \"1963-04-02T19:43:01.764Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5ec8c9d0-6dfc-49c6-bb0c-33fc4375e0a9",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":resourceUri",
+                    "providers",
+                    "Microsoft.Insights",
+                    "diagnosticSettings",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-05-01-preview"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceUri",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) The name of the diagnostic setting."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7872a00a-505b-40c4-82e4-e255a20161b0",
+          "name": "Azure Monitor Create or update a diagnostic setting",
+          "request": {
+            "name": "Azure Monitor Create or update a diagnostic setting",
+            "description": {
+              "content": "Creates or updates diagnostic settings for the specified resource. Diagnostic settings determine where platform logs and metrics are routed.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":resourceUri",
+                "providers",
+                "Microsoft.Insights",
+                "diagnosticSettings",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2021-05-01-preview",
+                  "description": "(Required) Client API version."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceUri",
+                  "description": "(Required) The identifier of the resource."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) The name of the diagnostic setting."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"properties\": {\n    \"storageAccountId\": \"<string>\",\n    \"serviceBusRuleId\": \"<string>\",\n    \"eventHubAuthorizationRuleId\": \"<string>\",\n    \"eventHubName\": \"<string>\",\n    \"metrics\": [\n      {\n        \"enabled\": \"<boolean>\",\n        \"timeGrain\": \"<string>\",\n        \"category\": \"<string>\",\n        \"retentionPolicy\": {\n          \"enabled\": \"<boolean>\",\n          \"days\": \"<integer>\"\n        }\n      },\n      {\n        \"enabled\": \"<boolean>\",\n        \"timeGrain\": \"<string>\",\n        \"category\": \"<string>\",\n        \"retentionPolicy\": {\n          \"enabled\": \"<boolean>\",\n          \"days\": \"<integer>\"\n        }\n      }\n    ],\n    \"logs\": [\n      {\n        \"enabled\": \"<boolean>\",\n        \"category\": \"<string>\",\n        \"categoryGroup\": \"<string>\",\n        \"retentionPolicy\": {\n          \"enabled\": \"<boolean>\",\n          \"days\": \"<integer>\"\n        }\n      },\n      {\n        \"enabled\": \"<boolean>\",\n        \"category\": \"<string>\",\n        \"categoryGroup\": \"<string>\",\n        \"retentionPolicy\": {\n          \"enabled\": \"<boolean>\",\n          \"days\": \"<integer>\"\n        }\n      }\n    ],\n    \"workspaceId\": \"<string>\",\n    \"marketplacePartnerId\": \"<string>\",\n    \"logAnalyticsDestinationType\": \"<string>\"\n  },\n  \"systemData\": {\n    \"createdBy\": \"<string>\",\n    \"createdByType\": \"<string>\",\n    \"createdAt\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByType\": \"<string>\",\n    \"lastModifiedAt\": \"<dateTime>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c6237193-9d1f-4a68-91c5-bd8d608a6c2f",
+              "name": "Successful request to create or update a diagnostic setting.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":resourceUri",
+                    "providers",
+                    "Microsoft.Insights",
+                    "diagnosticSettings",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-05-01-preview"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceUri",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) The name of the diagnostic setting."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": {\n    \"storageAccountId\": \"string\",\n    \"serviceBusRuleId\": \"string\",\n    \"eventHubAuthorizationRuleId\": \"string\",\n    \"eventHubName\": \"string\",\n    \"metrics\": [\n      {\n        \"enabled\": false,\n        \"timeGrain\": \"string\",\n        \"category\": \"string\",\n        \"retentionPolicy\": {\n          \"enabled\": false,\n          \"days\": 3381\n        }\n      },\n      {\n        \"enabled\": true,\n        \"timeGrain\": \"string\",\n        \"category\": \"string\",\n        \"retentionPolicy\": {\n          \"enabled\": false,\n          \"days\": 3961\n        }\n      }\n    ],\n    \"logs\": [\n      {\n        \"enabled\": true,\n        \"category\": \"string\",\n        \"categoryGroup\": \"string\",\n        \"retentionPolicy\": {\n          \"enabled\": false,\n          \"days\": 7741\n        }\n      },\n      {\n        \"enabled\": false,\n        \"category\": \"string\",\n        \"categoryGroup\": \"string\",\n        \"retentionPolicy\": {\n          \"enabled\": false,\n          \"days\": 3430\n        }\n      }\n    ],\n    \"workspaceId\": \"string\",\n    \"marketplacePartnerId\": \"string\",\n    \"logAnalyticsDestinationType\": \"string\"\n  },\n  \"systemData\": {\n    \"createdBy\": \"string\",\n    \"createdByType\": \"Key\",\n    \"createdAt\": \"1992-05-26T06:38:15.769Z\",\n    \"lastModifiedBy\": \"string\",\n    \"lastModifiedByType\": \"ManagedIdentity\",\n    \"lastModifiedAt\": \"2000-09-15T14:11:44.501Z\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"properties\": {\n    \"storageAccountId\": \"string\",\n    \"serviceBusRuleId\": \"string\",\n    \"eventHubAuthorizationRuleId\": \"string\",\n    \"eventHubName\": \"string\",\n    \"metrics\": [\n      {\n        \"enabled\": false,\n        \"timeGrain\": \"string\",\n        \"category\": \"string\",\n        \"retentionPolicy\": {\n          \"enabled\": true,\n          \"days\": 3381\n        }\n      },\n      {\n        \"enabled\": false,\n        \"timeGrain\": \"string\",\n        \"category\": \"string\",\n        \"retentionPolicy\": {\n          \"enabled\": false,\n          \"days\": 9054\n        }\n      }\n    ],\n    \"logs\": [\n      {\n        \"enabled\": false,\n        \"category\": \"string\",\n        \"categoryGroup\": \"string\",\n        \"retentionPolicy\": {\n          \"enabled\": true,\n          \"days\": 3922\n        }\n      },\n      {\n        \"enabled\": true,\n        \"category\": \"string\",\n        \"categoryGroup\": \"string\",\n        \"retentionPolicy\": {\n          \"enabled\": true,\n          \"days\": 2972\n        }\n      }\n    ],\n    \"workspaceId\": \"string\",\n    \"marketplacePartnerId\": \"string\",\n    \"logAnalyticsDestinationType\": \"string\"\n  },\n  \"systemData\": {\n    \"createdBy\": \"string\",\n    \"createdByType\": \"User\",\n    \"createdAt\": \"2017-08-08T16:53:14.607Z\",\n    \"lastModifiedBy\": \"string\",\n    \"lastModifiedByType\": \"Application\",\n    \"lastModifiedAt\": \"1963-04-02T19:43:01.764Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93ae5813-60ab-4b4c-938d-e2f808169e3e",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":resourceUri",
+                    "providers",
+                    "Microsoft.Insights",
+                    "diagnosticSettings",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-05-01-preview"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceUri",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) The name of the diagnostic setting."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": {\n    \"storageAccountId\": \"string\",\n    \"serviceBusRuleId\": \"string\",\n    \"eventHubAuthorizationRuleId\": \"string\",\n    \"eventHubName\": \"string\",\n    \"metrics\": [\n      {\n        \"enabled\": false,\n        \"timeGrain\": \"string\",\n        \"category\": \"string\",\n        \"retentionPolicy\": {\n          \"enabled\": false,\n          \"days\": 3381\n        }\n      },\n      {\n        \"enabled\": true,\n        \"timeGrain\": \"string\",\n        \"category\": \"string\",\n        \"retentionPolicy\": {\n          \"enabled\": false,\n          \"days\": 3961\n        }\n      }\n    ],\n    \"logs\": [\n      {\n        \"enabled\": true,\n        \"category\": \"string\",\n        \"categoryGroup\": \"string\",\n        \"retentionPolicy\": {\n          \"enabled\": false,\n          \"days\": 7741\n        }\n      },\n      {\n        \"enabled\": false,\n        \"category\": \"string\",\n        \"categoryGroup\": \"string\",\n        \"retentionPolicy\": {\n          \"enabled\": false,\n          \"days\": 3430\n        }\n      }\n    ],\n    \"workspaceId\": \"string\",\n    \"marketplacePartnerId\": \"string\",\n    \"logAnalyticsDestinationType\": \"string\"\n  },\n  \"systemData\": {\n    \"createdBy\": \"string\",\n    \"createdByType\": \"Key\",\n    \"createdAt\": \"1992-05-26T06:38:15.769Z\",\n    \"lastModifiedBy\": \"string\",\n    \"lastModifiedByType\": \"ManagedIdentity\",\n    \"lastModifiedAt\": \"2000-09-15T14:11:44.501Z\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2355d099-e7b0-4a75-8c23-9aa05ad38a50",
+          "name": "Azure Monitor Delete a diagnostic setting",
+          "request": {
+            "name": "Azure Monitor Delete a diagnostic setting",
+            "description": {
+              "content": "Deletes existing diagnostic settings for the specified resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":resourceUri",
+                "providers",
+                "Microsoft.Insights",
+                "diagnosticSettings",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2021-05-01-preview",
+                  "description": "(Required) Client API version."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceUri",
+                  "description": "(Required) The identifier of the resource."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) The name of the diagnostic setting."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "77301ae5-7883-4f65-bc67-6817a05980b9",
+              "name": "Successful request to delete a diagnostic setting.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":resourceUri",
+                    "providers",
+                    "Microsoft.Insights",
+                    "diagnosticSettings",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-05-01-preview"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceUri",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) The name of the diagnostic setting."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "76bd42fe-a1dd-4983-9f45-28f5c0b11186",
+              "name": "Diagnostic setting does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":resourceUri",
+                    "providers",
+                    "Microsoft.Insights",
+                    "diagnosticSettings",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-05-01-preview"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceUri",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) The name of the diagnostic setting."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "87dcbf72-2d40-4f3c-989d-b8370c826edc",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":resourceUri",
+                    "providers",
+                    "Microsoft.Insights",
+                    "diagnosticSettings",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-05-01-preview"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceUri",
+                      "description": "(Required) The identifier of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) The name of the diagnostic setting."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://management.azure.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://management.azure.com/.default"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0c6d02ec-6065-43a1-8717-4949da804f1b",
+    "name": "Azure Monitor Diagnostic Settings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Configure diagnostic settings to route platform logs and metrics from Azure resources to destinations such as Log Analytics workspaces, Storage Accounts, and Event Hubs.\n\nContact Support:\n Name: Microsoft Azure Support",
+      "type": "text/plain"
+    }
+  }
+}

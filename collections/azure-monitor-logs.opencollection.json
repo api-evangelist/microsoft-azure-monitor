@@ -1,0 +1,110 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Azure Monitor Logs API",
+    "version": "2022-10-27"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Query",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Azure Monitor Execute a Log Analytics query via GET",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.loganalytics.io/v1/workspaces/:workspaceId/query",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the workspace. This is the Workspace ID from the Properties blade in the Azure portal."
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "The Analytics query in KQL format."
+              },
+              {
+                "name": "timespan",
+                "value": "",
+                "type": "query",
+                "description": "The timespan over which to query data in ISO 8601 duration format."
+              }
+            ]
+          },
+          "docs": "Executes an Analytics query for data from a Log Analytics workspace using Kusto Query Language (KQL). The query is provided as a query parameter."
+        },
+        {
+          "info": {
+            "name": "Azure Monitor Execute a Log Analytics query via POST",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.loganalytics.io/v1/workspaces/:workspaceId/query",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the workspace. This is the Workspace ID from the Properties blade in the Azure portal."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Executes an Analytics query for data from a Log Analytics workspace using Kusto Query Language (KQL). The query is provided in the request body along with optional parameters."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Metadata",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Azure Monitor Get workspace metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.loganalytics.io/v1/workspaces/:workspaceId/metadata",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the workspace. This is the Workspace ID from the Properties blade in the Azure portal."
+              }
+            ]
+          },
+          "docs": "Gets metadata information about the Log Analytics workspace including available tables, functions, and schemas."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

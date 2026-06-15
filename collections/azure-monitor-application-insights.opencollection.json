@@ -1,0 +1,338 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Azure Monitor Azure Application Insights API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Query",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Azure Monitor Execute an Application Insights query via GET",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.applicationinsights.io/v1/apps/:appId/query",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal."
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "The Analytics query in KQL format."
+              },
+              {
+                "name": "timespan",
+                "value": "",
+                "type": "query",
+                "description": "The timespan over which to query data in ISO 8601 duration format."
+              }
+            ]
+          },
+          "docs": "Executes an Analytics query against Application Insights data using Kusto Query Language (KQL). The query is provided as a query parameter."
+        },
+        {
+          "info": {
+            "name": "Azure Monitor Execute an Application Insights query via POST",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.applicationinsights.io/v1/apps/:appId/query",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Executes an Analytics query against Application Insights data using Kusto Query Language (KQL). The query is provided in the request body."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Metrics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Azure Monitor Get an Application Insights metric",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.applicationinsights.io/v1/apps/:appId/metrics/:metricId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal."
+              },
+              {
+                "name": "metricId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the metric. Standard metrics include requests/count, requests/duration, dependencies/count, exceptions/count, etc."
+              },
+              {
+                "name": "timespan",
+                "value": "",
+                "type": "query",
+                "description": "The timespan over which to query in ISO 8601 duration format."
+              },
+              {
+                "name": "interval",
+                "value": "",
+                "type": "query",
+                "description": "The time interval to use when retrieving metric values."
+              },
+              {
+                "name": "aggregation",
+                "value": "",
+                "type": "query",
+                "description": "The aggregation to use when computing the metric values."
+              },
+              {
+                "name": "segment",
+                "value": "",
+                "type": "query",
+                "description": "The name of the dimension to segment the metric values by."
+              },
+              {
+                "name": "top",
+                "value": "",
+                "type": "query",
+                "description": "The number of segments to return."
+              },
+              {
+                "name": "orderby",
+                "value": "",
+                "type": "query",
+                "description": "The aggregation function and direction to sort the segments by."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "An expression to filter the results."
+              }
+            ]
+          },
+          "docs": "Gets metric values for a single Application Insights metric. Returns aggregated metric data for the specified timespan and interval."
+        },
+        {
+          "info": {
+            "name": "Azure Monitor Get multiple Application Insights metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.applicationinsights.io/v1/apps/:appId/metrics",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Gets metric values for multiple Application Insights metrics in a single request."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Metadata",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Azure Monitor Get metric metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.applicationinsights.io/v1/apps/:appId/metrics/metadata",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal."
+              }
+            ]
+          },
+          "docs": "Gets metadata describing the available metrics for the Application Insights component."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Azure Monitor Get events by type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.applicationinsights.io/v1/apps/:appId/events/:eventType",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal."
+              },
+              {
+                "name": "eventType",
+                "value": "",
+                "type": "path",
+                "description": "The type of events to query."
+              },
+              {
+                "name": "timespan",
+                "value": "",
+                "type": "query",
+                "description": "The timespan over which to query in ISO 8601 duration format."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "An expression used to filter the returned events."
+              },
+              {
+                "name": "$search",
+                "value": "",
+                "type": "query",
+                "description": "A free-text search expression to match for whether a particular event should be returned."
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated list of properties with asc or desc to sort on."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Limits the properties returned for each event."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to skip over before returning events."
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "The number of events to return."
+              },
+              {
+                "name": "$format",
+                "value": "",
+                "type": "query",
+                "description": "Format for the returned events."
+              },
+              {
+                "name": "$count",
+                "value": "",
+                "type": "query",
+                "description": "Request a count of matching items included with the returned events."
+              },
+              {
+                "name": "$apply",
+                "value": "",
+                "type": "query",
+                "description": "An expression used for aggregation over returned events."
+              }
+            ]
+          },
+          "docs": "Gets the results of an OData query for events of a specific type from Application Insights telemetry."
+        },
+        {
+          "info": {
+            "name": "Azure Monitor Get a single event",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.applicationinsights.io/v1/apps/:appId/events/:eventType/:eventId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal."
+              },
+              {
+                "name": "eventType",
+                "value": "",
+                "type": "path",
+                "description": "The type of events to query."
+              },
+              {
+                "name": "eventId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the event."
+              },
+              {
+                "name": "timespan",
+                "value": "",
+                "type": "query",
+                "description": "The timespan over which to query."
+              }
+            ]
+          },
+          "docs": "Gets the data for a single event from Application Insights telemetry."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1845 @@
+{
+  "item": [
+    {
+      "id": "0c0f7fa5-d8aa-49da-8b4a-d68615b90390",
+      "name": "Autoscale Settings",
+      "description": {
+        "content": "Operations for managing autoscale settings",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "82ee38b0-8f15-49fd-b82d-9a793976ae73",
+          "name": "Azure Monitor List autoscale settings in a resource group",
+          "request": {
+            "name": "Azure Monitor List autoscale settings in a resource group",
+            "description": {
+              "content": "Lists the autoscale settings for a resource group. Returns all configured autoscale settings within the specified resource group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourcegroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Insights",
+                "autoscalesettings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2022-10-01",
+                  "description": "(Required) Client API version."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d166014f-33ec-4109-ac08-8176daf80d74",
+              "name": "Successful request for a list of autoscale settings.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourcegroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "autoscalesettings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2022-10-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"location\": \"string\",\n      \"properties\": {\n        \"profiles\": [\n          {\n            \"name\": \"string\",\n            \"capacity\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"fixedDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"recurrence\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": \"string\",\n            \"capacity\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"fixedDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"recurrence\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"notifications\": [\n          {\n            \"operation\": \"Scale\",\n            \"email\": {\n              \"sendToSubscriptionAdministrator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sendToSubscriptionCoAdministrators\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"customEmails\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"webhooks\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"operation\": \"Scale\",\n            \"email\": {\n              \"sendToSubscriptionAdministrator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sendToSubscriptionCoAdministrators\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"customEmails\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"webhooks\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"enabled\": false,\n        \"predictiveAutoscalePolicy\": {\n          \"scaleMode\": \"Disabled\",\n          \"scaleLookAheadTime\": \"string\"\n        },\n        \"name\": \"string\",\n        \"targetResourceUri\": \"string\",\n        \"targetResourceLocation\": \"string\"\n      },\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"tags\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      }\n    },\n    {\n      \"location\": \"string\",\n      \"properties\": {\n        \"profiles\": [\n          {\n            \"name\": \"string\",\n            \"capacity\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"fixedDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"recurrence\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": \"string\",\n            \"capacity\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"fixedDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"recurrence\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"notifications\": [\n          {\n            \"operation\": \"Scale\",\n            \"email\": {\n              \"sendToSubscriptionAdministrator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sendToSubscriptionCoAdministrators\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"customEmails\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"webhooks\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"operation\": \"Scale\",\n            \"email\": {\n              \"sendToSubscriptionAdministrator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sendToSubscriptionCoAdministrators\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"customEmails\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"webhooks\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"enabled\": false,\n        \"predictiveAutoscalePolicy\": {\n          \"scaleMode\": \"Disabled\",\n          \"scaleLookAheadTime\": \"string\"\n        },\n        \"name\": \"string\",\n        \"targetResourceUri\": \"string\",\n        \"targetResourceLocation\": \"string\"\n      },\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"tags\": {\n        \"key_0\": \"string\"\n      }\n    }\n  ],\n  \"nextLink\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b67813fc-3907-4e78-bd15-17ddf5d79df1",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourcegroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "autoscalesettings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2022-10-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2c1d8944-12d8-4bdf-8d6d-c89444a5b8bd",
+          "name": "Azure Monitor List autoscale settings in a subscription",
+          "request": {
+            "name": "Azure Monitor List autoscale settings in a subscription",
+            "description": {
+              "content": "Lists the autoscale settings for a subscription. Returns all configured autoscale settings within the specified subscription.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "providers",
+                "Microsoft.Insights",
+                "autoscalesettings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2022-10-01",
+                  "description": "(Required) Client API version."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "73317023-774c-4520-85b2-d675e80191a4",
+              "name": "Successful request for a list of autoscale settings.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "providers",
+                    "Microsoft.Insights",
+                    "autoscalesettings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2022-10-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"location\": \"string\",\n      \"properties\": {\n        \"profiles\": [\n          {\n            \"name\": \"string\",\n            \"capacity\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"fixedDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"recurrence\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": \"string\",\n            \"capacity\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"fixedDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"recurrence\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"notifications\": [\n          {\n            \"operation\": \"Scale\",\n            \"email\": {\n              \"sendToSubscriptionAdministrator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sendToSubscriptionCoAdministrators\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"customEmails\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"webhooks\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"operation\": \"Scale\",\n            \"email\": {\n              \"sendToSubscriptionAdministrator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sendToSubscriptionCoAdministrators\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"customEmails\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"webhooks\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"enabled\": false,\n        \"predictiveAutoscalePolicy\": {\n          \"scaleMode\": \"Disabled\",\n          \"scaleLookAheadTime\": \"string\"\n        },\n        \"name\": \"string\",\n        \"targetResourceUri\": \"string\",\n        \"targetResourceLocation\": \"string\"\n      },\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"tags\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      }\n    },\n    {\n      \"location\": \"string\",\n      \"properties\": {\n        \"profiles\": [\n          {\n            \"name\": \"string\",\n            \"capacity\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"fixedDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"recurrence\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": \"string\",\n            \"capacity\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rules\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"fixedDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"recurrence\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"notifications\": [\n          {\n            \"operation\": \"Scale\",\n            \"email\": {\n              \"sendToSubscriptionAdministrator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sendToSubscriptionCoAdministrators\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"customEmails\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"webhooks\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"operation\": \"Scale\",\n            \"email\": {\n              \"sendToSubscriptionAdministrator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sendToSubscriptionCoAdministrators\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"customEmails\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"webhooks\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"enabled\": false,\n        \"predictiveAutoscalePolicy\": {\n          \"scaleMode\": \"Disabled\",\n          \"scaleLookAheadTime\": \"string\"\n        },\n        \"name\": \"string\",\n        \"targetResourceUri\": \"string\",\n        \"targetResourceLocation\": \"string\"\n      },\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"tags\": {\n        \"key_0\": \"string\"\n      }\n    }\n  ],\n  \"nextLink\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9fa9246e-512e-483f-b009-344d8d1a7fc6",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "providers",
+                    "Microsoft.Insights",
+                    "autoscalesettings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2022-10-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c23e69be-538e-412c-9b85-c047d6a7860f",
+          "name": "Azure Monitor Create or update an autoscale setting",
+          "request": {
+            "name": "Azure Monitor Create or update an autoscale setting",
+            "description": {
+              "content": "Creates or updates an autoscale setting. Autoscale settings define the rules and profiles for automatically scaling Azure resources.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourcegroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Insights",
+                "autoscalesettings",
+                ":autoscaleSettingName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2022-10-01",
+                  "description": "(Required) Client API version."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "autoscaleSettingName",
+                  "description": "(Required) The autoscale setting name."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"location\": \"<string>\",\n  \"properties\": {\n    \"profiles\": [\n      {\n        \"name\": \"<string>\",\n        \"capacity\": {\n          \"minimum\": \"<string>\",\n          \"maximum\": \"<string>\",\n          \"default\": \"<string>\"\n        },\n        \"rules\": [\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"fixedDate\": {\n          \"start\": \"<dateTime>\",\n          \"end\": \"<dateTime>\",\n          \"timeZone\": \"<string>\"\n        },\n        \"recurrence\": {\n          \"frequency\": \"<string>\",\n          \"schedule\": {\n            \"timeZone\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"days\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hours\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"minutes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"capacity\": {\n          \"minimum\": \"<string>\",\n          \"maximum\": \"<string>\",\n          \"default\": \"<string>\"\n        },\n        \"rules\": [\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"fixedDate\": {\n          \"start\": \"<dateTime>\",\n          \"end\": \"<dateTime>\",\n          \"timeZone\": \"<string>\"\n        },\n        \"recurrence\": {\n          \"frequency\": \"<string>\",\n          \"schedule\": {\n            \"timeZone\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"days\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hours\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"minutes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ],\n    \"notifications\": [\n      {\n        \"operation\": \"<string>\",\n        \"email\": {\n          \"sendToSubscriptionAdministrator\": \"<boolean>\",\n          \"sendToSubscriptionCoAdministrators\": \"<boolean>\",\n          \"customEmails\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        \"webhooks\": [\n          {\n            \"serviceUri\": \"<uri>\",\n            \"properties\": {\n              \"key_0\": \"<string>\"\n            }\n          },\n          {\n            \"serviceUri\": \"<uri>\",\n            \"properties\": {\n              \"key_0\": \"<string>\",\n              \"key_1\": \"<string>\"\n            }\n          }\n        ]\n      },\n      {\n        \"operation\": \"<string>\",\n        \"email\": {\n          \"sendToSubscriptionAdministrator\": \"<boolean>\",\n          \"sendToSubscriptionCoAdministrators\": \"<boolean>\",\n          \"customEmails\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        \"webhooks\": [\n          {\n            \"serviceUri\": \"<uri>\",\n            \"properties\": {\n              \"key_0\": \"<string>\"\n            }\n          },\n          {\n            \"serviceUri\": \"<uri>\",\n            \"properties\": {\n              \"key_0\": \"<string>\"\n            }\n          }\n        ]\n      }\n    ],\n    \"enabled\": false,\n    \"predictiveAutoscalePolicy\": {\n      \"scaleMode\": \"<string>\",\n      \"scaleLookAheadTime\": \"<string>\"\n    },\n    \"name\": \"<string>\",\n    \"targetResourceUri\": \"<string>\",\n    \"targetResourceLocation\": \"<string>\"\n  },\n  \"tags\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1bf5c1f6-e06b-493e-b16a-eab33021d10d",
+              "name": "Successful request to update an autoscale setting.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourcegroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "autoscalesettings",
+                    ":autoscaleSettingName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2022-10-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "autoscaleSettingName",
+                      "description": "(Required) The autoscale setting name."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"location\": \"<string>\",\n  \"properties\": {\n    \"profiles\": [\n      {\n        \"name\": \"string\",\n        \"capacity\": {\n          \"minimum\": \"string\",\n          \"maximum\": \"string\",\n          \"default\": \"string\"\n        },\n        \"rules\": [\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"fixedDate\": {\n          \"start\": \"1994-02-26T19:35:44.410Z\",\n          \"end\": \"1992-12-08T00:33:28.440Z\",\n          \"timeZone\": \"string\"\n        },\n        \"recurrence\": {\n          \"frequency\": \"None\",\n          \"schedule\": {\n            \"timeZone\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"days\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hours\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"minutes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"name\": \"string\",\n        \"capacity\": {\n          \"minimum\": \"string\",\n          \"maximum\": \"string\",\n          \"default\": \"string\"\n        },\n        \"rules\": [\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"fixedDate\": {\n          \"start\": \"1998-01-25T08:54:46.614Z\",\n          \"end\": \"1980-08-14T11:37:18.881Z\",\n          \"timeZone\": \"string\"\n        },\n        \"recurrence\": {\n          \"frequency\": \"Second\",\n          \"schedule\": {\n            \"timeZone\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"days\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hours\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"minutes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ],\n    \"notifications\": [\n      {\n        \"operation\": \"Scale\",\n        \"email\": {\n          \"sendToSubscriptionAdministrator\": true,\n          \"sendToSubscriptionCoAdministrators\": false,\n          \"customEmails\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"webhooks\": [\n          {\n            \"serviceUri\": \"https://rbbNuBvORuAUhEDbugauqfLAVrXLN.wzvpo7y1iYGrDv7hwaK4qmEMN38TDavqZ\",\n            \"properties\": {\n              \"key_0\": \"string\"\n            }\n          },\n          {\n            \"serviceUri\": \"http://FRkGlXCrSnMzaQXDUSEUfgVYNPrLvJ.jph3ipPvppQ,EzQKlA9L7.STMEJf-VD+V\",\n            \"properties\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\",\n              \"key_2\": \"string\"\n            }\n          }\n        ]\n      },\n      {\n        \"operation\": \"Scale\",\n        \"email\": {\n          \"sendToSubscriptionAdministrator\": true,\n          \"sendToSubscriptionCoAdministrators\": true,\n          \"customEmails\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"webhooks\": [\n          {\n            \"serviceUri\": \"https://jCNqcfyyuQSlpDYPyTRkPFaPp.csjs-HpXHlUcJy+JFXXrXyrwUS\",\n            \"properties\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\",\n              \"key_2\": \"string\"\n            }\n          },\n          {\n            \"serviceUri\": \"http://aURQyiCAuHujh.rjblqFDqvuoXIDexm.DUIeSCKgomvZgRi+FKxTWDgQxsLWLIzKBj4VJ\",\n            \"properties\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\",\n              \"key_2\": \"string\"\n            }\n          }\n        ]\n      }\n    ],\n    \"enabled\": false,\n    \"predictiveAutoscalePolicy\": {\n      \"scaleMode\": \"Enabled\",\n      \"scaleLookAheadTime\": \"string\"\n    },\n    \"name\": \"string\",\n    \"targetResourceUri\": \"string\",\n    \"targetResourceLocation\": \"string\"\n  },\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"location\": \"string\",\n  \"properties\": {\n    \"profiles\": [\n      {\n        \"name\": \"string\",\n        \"capacity\": {\n          \"minimum\": \"string\",\n          \"maximum\": \"string\",\n          \"default\": \"string\"\n        },\n        \"rules\": [\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"fixedDate\": {\n          \"start\": \"1949-05-10T19:35:41.046Z\",\n          \"end\": \"1953-03-11T17:56:23.950Z\",\n          \"timeZone\": \"string\"\n        },\n        \"recurrence\": {\n          \"frequency\": \"Year\",\n          \"schedule\": {\n            \"timeZone\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"days\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hours\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"minutes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"name\": \"string\",\n        \"capacity\": {\n          \"minimum\": \"string\",\n          \"maximum\": \"string\",\n          \"default\": \"string\"\n        },\n        \"rules\": [\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"fixedDate\": {\n          \"start\": \"2002-06-13T01:12:15.192Z\",\n          \"end\": \"1951-02-19T22:42:51.930Z\",\n          \"timeZone\": \"string\"\n        },\n        \"recurrence\": {\n          \"frequency\": \"Second\",\n          \"schedule\": {\n            \"timeZone\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"days\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hours\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"minutes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ],\n    \"notifications\": [\n      {\n        \"operation\": \"Scale\",\n        \"email\": {\n          \"sendToSubscriptionAdministrator\": false,\n          \"sendToSubscriptionCoAdministrators\": true,\n          \"customEmails\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"webhooks\": [\n          {\n            \"serviceUri\": \"http://SIyHJodIH.lyqaK8mR3Ta0bN4o,i5\",\n            \"properties\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\"\n            }\n          },\n          {\n            \"serviceUri\": \"http://MUzn.tnpgEoQrlFVjcR+HQRnFkg7ApjiiQ40ef9FzqA9Jvtvu,C0O\",\n            \"properties\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\"\n            }\n          }\n        ]\n      },\n      {\n        \"operation\": \"Scale\",\n        \"email\": {\n          \"sendToSubscriptionAdministrator\": false,\n          \"sendToSubscriptionCoAdministrators\": false,\n          \"customEmails\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"webhooks\": [\n          {\n            \"serviceUri\": \"http://JMqykoOdAxODWosAujfujtBdwYJMx.loiU2YexqTGBPX5QioT-RzXLBLEwV,wDtwCiJpjOotg1lnXvSgM+,duw\",\n            \"properties\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\"\n            }\n          },\n          {\n            \"serviceUri\": \"http://MYcLPeZpBcfwmkwaspUPZyCYgTrsW.rphaRhNhpeMDLBAkCVhptl2wlwHADUKcZ0pMTbIf+y7xko4fnDNS4TRS,NHGwD\",\n            \"properties\": {\n              \"key_0\": \"string\"\n            }\n          }\n        ]\n      }\n    ],\n    \"enabled\": false,\n    \"predictiveAutoscalePolicy\": {\n      \"scaleMode\": \"Disabled\",\n      \"scaleLookAheadTime\": \"string\"\n    },\n    \"name\": \"string\",\n    \"targetResourceUri\": \"string\",\n    \"targetResourceLocation\": \"string\"\n  },\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"tags\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "10e0bace-14a8-4d63-baa5-408fa03999f9",
+              "name": "Successfully created an autoscale setting.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourcegroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "autoscalesettings",
+                    ":autoscaleSettingName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2022-10-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "autoscaleSettingName",
+                      "description": "(Required) The autoscale setting name."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"location\": \"<string>\",\n  \"properties\": {\n    \"profiles\": [\n      {\n        \"name\": \"string\",\n        \"capacity\": {\n          \"minimum\": \"string\",\n          \"maximum\": \"string\",\n          \"default\": \"string\"\n        },\n        \"rules\": [\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"fixedDate\": {\n          \"start\": \"1994-02-26T19:35:44.410Z\",\n          \"end\": \"1992-12-08T00:33:28.440Z\",\n          \"timeZone\": \"string\"\n        },\n        \"recurrence\": {\n          \"frequency\": \"None\",\n          \"schedule\": {\n            \"timeZone\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"days\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hours\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"minutes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"name\": \"string\",\n        \"capacity\": {\n          \"minimum\": \"string\",\n          \"maximum\": \"string\",\n          \"default\": \"string\"\n        },\n        \"rules\": [\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"fixedDate\": {\n          \"start\": \"1998-01-25T08:54:46.614Z\",\n          \"end\": \"1980-08-14T11:37:18.881Z\",\n          \"timeZone\": \"string\"\n        },\n        \"recurrence\": {\n          \"frequency\": \"Second\",\n          \"schedule\": {\n            \"timeZone\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"days\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hours\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"minutes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ],\n    \"notifications\": [\n      {\n        \"operation\": \"Scale\",\n        \"email\": {\n          \"sendToSubscriptionAdministrator\": true,\n          \"sendToSubscriptionCoAdministrators\": false,\n          \"customEmails\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"webhooks\": [\n          {\n            \"serviceUri\": \"https://rbbNuBvORuAUhEDbugauqfLAVrXLN.wzvpo7y1iYGrDv7hwaK4qmEMN38TDavqZ\",\n            \"properties\": {\n              \"key_0\": \"string\"\n            }\n          },\n          {\n            \"serviceUri\": \"http://FRkGlXCrSnMzaQXDUSEUfgVYNPrLvJ.jph3ipPvppQ,EzQKlA9L7.STMEJf-VD+V\",\n            \"properties\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\",\n              \"key_2\": \"string\"\n            }\n          }\n        ]\n      },\n      {\n        \"operation\": \"Scale\",\n        \"email\": {\n          \"sendToSubscriptionAdministrator\": true,\n          \"sendToSubscriptionCoAdministrators\": true,\n          \"customEmails\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"webhooks\": [\n          {\n            \"serviceUri\": \"https://jCNqcfyyuQSlpDYPyTRkPFaPp.csjs-HpXHlUcJy+JFXXrXyrwUS\",\n            \"properties\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\",\n              \"key_2\": \"string\"\n            }\n          },\n          {\n            \"serviceUri\": \"http://aURQyiCAuHujh.rjblqFDqvuoXIDexm.DUIeSCKgomvZgRi+FKxTWDgQxsLWLIzKBj4VJ\",\n            \"properties\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\",\n              \"key_2\": \"string\"\n            }\n          }\n        ]\n      }\n    ],\n    \"enabled\": false,\n    \"predictiveAutoscalePolicy\": {\n      \"scaleMode\": \"Enabled\",\n      \"scaleLookAheadTime\": \"string\"\n    },\n    \"name\": \"string\",\n    \"targetResourceUri\": \"string\",\n    \"targetResourceLocation\": \"string\"\n  },\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"location\": \"string\",\n  \"properties\": {\n    \"profiles\": [\n      {\n        \"name\": \"string\",\n        \"capacity\": {\n          \"minimum\": \"string\",\n          \"maximum\": \"string\",\n          \"default\": \"string\"\n        },\n        \"rules\": [\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"fixedDate\": {\n          \"start\": \"1949-05-10T19:35:41.046Z\",\n          \"end\": \"1953-03-11T17:56:23.950Z\",\n          \"timeZone\": \"string\"\n        },\n        \"recurrence\": {\n          \"frequency\": \"Year\",\n          \"schedule\": {\n            \"timeZone\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"days\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hours\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"minutes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"name\": \"string\",\n        \"capacity\": {\n          \"minimum\": \"string\",\n          \"maximum\": \"string\",\n          \"default\": \"string\"\n        },\n        \"rules\": [\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"fixedDate\": {\n          \"start\": \"2002-06-13T01:12:15.192Z\",\n          \"end\": \"1951-02-19T22:42:51.930Z\",\n          \"timeZone\": \"string\"\n        },\n        \"recurrence\": {\n          \"frequency\": \"Second\",\n          \"schedule\": {\n            \"timeZone\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"days\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hours\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"minutes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ],\n    \"notifications\": [\n      {\n        \"operation\": \"Scale\",\n        \"email\": {\n          \"sendToSubscriptionAdministrator\": false,\n          \"sendToSubscriptionCoAdministrators\": true,\n          \"customEmails\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"webhooks\": [\n          {\n            \"serviceUri\": \"http://SIyHJodIH.lyqaK8mR3Ta0bN4o,i5\",\n            \"properties\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\"\n            }\n          },\n          {\n            \"serviceUri\": \"http://MUzn.tnpgEoQrlFVjcR+HQRnFkg7ApjiiQ40ef9FzqA9Jvtvu,C0O\",\n            \"properties\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\"\n            }\n          }\n        ]\n      },\n      {\n        \"operation\": \"Scale\",\n        \"email\": {\n          \"sendToSubscriptionAdministrator\": false,\n          \"sendToSubscriptionCoAdministrators\": false,\n          \"customEmails\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"webhooks\": [\n          {\n            \"serviceUri\": \"http://JMqykoOdAxODWosAujfujtBdwYJMx.loiU2YexqTGBPX5QioT-RzXLBLEwV,wDtwCiJpjOotg1lnXvSgM+,duw\",\n            \"properties\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\"\n            }\n          },\n          {\n            \"serviceUri\": \"http://MYcLPeZpBcfwmkwaspUPZyCYgTrsW.rphaRhNhpeMDLBAkCVhptl2wlwHADUKcZ0pMTbIf+y7xko4fnDNS4TRS,NHGwD\",\n            \"properties\": {\n              \"key_0\": \"string\"\n            }\n          }\n        ]\n      }\n    ],\n    \"enabled\": false,\n    \"predictiveAutoscalePolicy\": {\n      \"scaleMode\": \"Disabled\",\n      \"scaleLookAheadTime\": \"string\"\n    },\n    \"name\": \"string\",\n    \"targetResourceUri\": \"string\",\n    \"targetResourceLocation\": \"string\"\n  },\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"tags\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "28547e7b-01c9-4685-90f8-365d4a4152b4",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourcegroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "autoscalesettings",
+                    ":autoscaleSettingName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2022-10-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "autoscaleSettingName",
+                      "description": "(Required) The autoscale setting name."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"location\": \"<string>\",\n  \"properties\": {\n    \"profiles\": [\n      {\n        \"name\": \"string\",\n        \"capacity\": {\n          \"minimum\": \"string\",\n          \"maximum\": \"string\",\n          \"default\": \"string\"\n        },\n        \"rules\": [\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"fixedDate\": {\n          \"start\": \"1994-02-26T19:35:44.410Z\",\n          \"end\": \"1992-12-08T00:33:28.440Z\",\n          \"timeZone\": \"string\"\n        },\n        \"recurrence\": {\n          \"frequency\": \"None\",\n          \"schedule\": {\n            \"timeZone\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"days\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hours\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"minutes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"name\": \"string\",\n        \"capacity\": {\n          \"minimum\": \"string\",\n          \"maximum\": \"string\",\n          \"default\": \"string\"\n        },\n        \"rules\": [\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"fixedDate\": {\n          \"start\": \"1998-01-25T08:54:46.614Z\",\n          \"end\": \"1980-08-14T11:37:18.881Z\",\n          \"timeZone\": \"string\"\n        },\n        \"recurrence\": {\n          \"frequency\": \"Second\",\n          \"schedule\": {\n            \"timeZone\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"days\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hours\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"minutes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ],\n    \"notifications\": [\n      {\n        \"operation\": \"Scale\",\n        \"email\": {\n          \"sendToSubscriptionAdministrator\": true,\n          \"sendToSubscriptionCoAdministrators\": false,\n          \"customEmails\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"webhooks\": [\n          {\n            \"serviceUri\": \"https://rbbNuBvORuAUhEDbugauqfLAVrXLN.wzvpo7y1iYGrDv7hwaK4qmEMN38TDavqZ\",\n            \"properties\": {\n              \"key_0\": \"string\"\n            }\n          },\n          {\n            \"serviceUri\": \"http://FRkGlXCrSnMzaQXDUSEUfgVYNPrLvJ.jph3ipPvppQ,EzQKlA9L7.STMEJf-VD+V\",\n            \"properties\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\",\n              \"key_2\": \"string\"\n            }\n          }\n        ]\n      },\n      {\n        \"operation\": \"Scale\",\n        \"email\": {\n          \"sendToSubscriptionAdministrator\": true,\n          \"sendToSubscriptionCoAdministrators\": true,\n          \"customEmails\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"webhooks\": [\n          {\n            \"serviceUri\": \"https://jCNqcfyyuQSlpDYPyTRkPFaPp.csjs-HpXHlUcJy+JFXXrXyrwUS\",\n            \"properties\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\",\n              \"key_2\": \"string\"\n            }\n          },\n          {\n            \"serviceUri\": \"http://aURQyiCAuHujh.rjblqFDqvuoXIDexm.DUIeSCKgomvZgRi+FKxTWDgQxsLWLIzKBj4VJ\",\n            \"properties\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\",\n              \"key_2\": \"string\"\n            }\n          }\n        ]\n      }\n    ],\n    \"enabled\": false,\n    \"predictiveAutoscalePolicy\": {\n      \"scaleMode\": \"Enabled\",\n      \"scaleLookAheadTime\": \"string\"\n    },\n    \"name\": \"string\",\n    \"targetResourceUri\": \"string\",\n    \"targetResourceLocation\": \"string\"\n  },\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "291a5f1f-539e-460a-bda6-51b1abd0e051",
+          "name": "Azure Monitor Get an autoscale setting",
+          "request": {
+            "name": "Azure Monitor Get an autoscale setting",
+            "description": {
+              "content": "Gets an autoscale setting by name from a resource group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourcegroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Insights",
+                "autoscalesettings",
+                ":autoscaleSettingName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2022-10-01",
+                  "description": "(Required) Client API version."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "autoscaleSettingName",
+                  "description": "(Required) The autoscale setting name."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "15e67af0-aaec-4ea1-9691-cd850fc645bb",
+              "name": "Successful request to get an autoscale setting.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourcegroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "autoscalesettings",
+                    ":autoscaleSettingName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2022-10-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "autoscaleSettingName",
+                      "description": "(Required) The autoscale setting name."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"location\": \"string\",\n  \"properties\": {\n    \"profiles\": [\n      {\n        \"name\": \"string\",\n        \"capacity\": {\n          \"minimum\": \"string\",\n          \"maximum\": \"string\",\n          \"default\": \"string\"\n        },\n        \"rules\": [\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"fixedDate\": {\n          \"start\": \"1949-05-10T19:35:41.046Z\",\n          \"end\": \"1953-03-11T17:56:23.950Z\",\n          \"timeZone\": \"string\"\n        },\n        \"recurrence\": {\n          \"frequency\": \"Year\",\n          \"schedule\": {\n            \"timeZone\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"days\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hours\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"minutes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"name\": \"string\",\n        \"capacity\": {\n          \"minimum\": \"string\",\n          \"maximum\": \"string\",\n          \"default\": \"string\"\n        },\n        \"rules\": [\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"fixedDate\": {\n          \"start\": \"2002-06-13T01:12:15.192Z\",\n          \"end\": \"1951-02-19T22:42:51.930Z\",\n          \"timeZone\": \"string\"\n        },\n        \"recurrence\": {\n          \"frequency\": \"Second\",\n          \"schedule\": {\n            \"timeZone\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"days\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hours\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"minutes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ],\n    \"notifications\": [\n      {\n        \"operation\": \"Scale\",\n        \"email\": {\n          \"sendToSubscriptionAdministrator\": false,\n          \"sendToSubscriptionCoAdministrators\": true,\n          \"customEmails\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"webhooks\": [\n          {\n            \"serviceUri\": \"http://SIyHJodIH.lyqaK8mR3Ta0bN4o,i5\",\n            \"properties\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\"\n            }\n          },\n          {\n            \"serviceUri\": \"http://MUzn.tnpgEoQrlFVjcR+HQRnFkg7ApjiiQ40ef9FzqA9Jvtvu,C0O\",\n            \"properties\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\"\n            }\n          }\n        ]\n      },\n      {\n        \"operation\": \"Scale\",\n        \"email\": {\n          \"sendToSubscriptionAdministrator\": false,\n          \"sendToSubscriptionCoAdministrators\": false,\n          \"customEmails\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"webhooks\": [\n          {\n            \"serviceUri\": \"http://JMqykoOdAxODWosAujfujtBdwYJMx.loiU2YexqTGBPX5QioT-RzXLBLEwV,wDtwCiJpjOotg1lnXvSgM+,duw\",\n            \"properties\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\"\n            }\n          },\n          {\n            \"serviceUri\": \"http://MYcLPeZpBcfwmkwaspUPZyCYgTrsW.rphaRhNhpeMDLBAkCVhptl2wlwHADUKcZ0pMTbIf+y7xko4fnDNS4TRS,NHGwD\",\n            \"properties\": {\n              \"key_0\": \"string\"\n            }\n          }\n        ]\n      }\n    ],\n    \"enabled\": false,\n    \"predictiveAutoscalePolicy\": {\n      \"scaleMode\": \"Disabled\",\n      \"scaleLookAheadTime\": \"string\"\n    },\n    \"name\": \"string\",\n    \"targetResourceUri\": \"string\",\n    \"targetResourceLocation\": \"string\"\n  },\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"tags\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "55a4adee-571c-4f1a-a961-9e6320876f1a",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourcegroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "autoscalesettings",
+                    ":autoscaleSettingName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2022-10-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "autoscaleSettingName",
+                      "description": "(Required) The autoscale setting name."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "70137207-4145-441e-a6f7-3755e600e3f1",
+          "name": "Azure Monitor Update an autoscale setting",
+          "request": {
+            "name": "Azure Monitor Update an autoscale setting",
+            "description": {
+              "content": "Updates an existing autoscale setting resource. Only tag and property changes are supported.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourcegroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Insights",
+                "autoscalesettings",
+                ":autoscaleSettingName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2022-10-01",
+                  "description": "(Required) Client API version."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "autoscaleSettingName",
+                  "description": "(Required) The autoscale setting name."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tags\": {\n    \"key_0\": \"<string>\"\n  },\n  \"properties\": {\n    \"profiles\": [\n      {\n        \"name\": \"<string>\",\n        \"capacity\": {\n          \"minimum\": \"<string>\",\n          \"maximum\": \"<string>\",\n          \"default\": \"<string>\"\n        },\n        \"rules\": [\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"fixedDate\": {\n          \"start\": \"<dateTime>\",\n          \"end\": \"<dateTime>\",\n          \"timeZone\": \"<string>\"\n        },\n        \"recurrence\": {\n          \"frequency\": \"<string>\",\n          \"schedule\": {\n            \"timeZone\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"days\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hours\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"minutes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"capacity\": {\n          \"minimum\": \"<string>\",\n          \"maximum\": \"<string>\",\n          \"default\": \"<string>\"\n        },\n        \"rules\": [\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"fixedDate\": {\n          \"start\": \"<dateTime>\",\n          \"end\": \"<dateTime>\",\n          \"timeZone\": \"<string>\"\n        },\n        \"recurrence\": {\n          \"frequency\": \"<string>\",\n          \"schedule\": {\n            \"timeZone\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"days\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hours\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"minutes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ],\n    \"notifications\": [\n      {\n        \"operation\": \"<string>\",\n        \"email\": {\n          \"sendToSubscriptionAdministrator\": \"<boolean>\",\n          \"sendToSubscriptionCoAdministrators\": \"<boolean>\",\n          \"customEmails\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        \"webhooks\": [\n          {\n            \"serviceUri\": \"<uri>\",\n            \"properties\": {\n              \"key_0\": \"<string>\",\n              \"key_1\": \"<string>\"\n            }\n          },\n          {\n            \"serviceUri\": \"<uri>\",\n            \"properties\": {\n              \"key_0\": \"<string>\",\n              \"key_1\": \"<string>\"\n            }\n          }\n        ]\n      },\n      {\n        \"operation\": \"<string>\",\n        \"email\": {\n          \"sendToSubscriptionAdministrator\": \"<boolean>\",\n          \"sendToSubscriptionCoAdministrators\": \"<boolean>\",\n          \"customEmails\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        \"webhooks\": [\n          {\n            \"serviceUri\": \"<uri>\",\n            \"properties\": {\n              \"key_0\": \"<string>\",\n              \"key_1\": \"<string>\"\n            }\n          },\n          {\n            \"serviceUri\": \"<uri>\",\n            \"properties\": {\n              \"key_0\": \"<string>\",\n              \"key_1\": \"<string>\"\n            }\n          }\n        ]\n      }\n    ],\n    \"enabled\": false,\n    \"predictiveAutoscalePolicy\": {\n      \"scaleMode\": \"<string>\",\n      \"scaleLookAheadTime\": \"<string>\"\n    },\n    \"name\": \"<string>\",\n    \"targetResourceUri\": \"<string>\",\n    \"targetResourceLocation\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ca77b826-50e7-42a9-a96e-e1ddece4baa8",
+              "name": "Successful request to update an autoscale setting.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourcegroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "autoscalesettings",
+                    ":autoscaleSettingName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2022-10-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "autoscaleSettingName",
+                      "description": "(Required) The autoscale setting name."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"properties\": {\n    \"profiles\": [\n      {\n        \"name\": \"string\",\n        \"capacity\": {\n          \"minimum\": \"string\",\n          \"maximum\": \"string\",\n          \"default\": \"string\"\n        },\n        \"rules\": [\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"fixedDate\": {\n          \"start\": \"1955-08-15T20:25:48.325Z\",\n          \"end\": \"2006-11-26T23:48:40.442Z\",\n          \"timeZone\": \"string\"\n        },\n        \"recurrence\": {\n          \"frequency\": \"Minute\",\n          \"schedule\": {\n            \"timeZone\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"days\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hours\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"minutes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"name\": \"string\",\n        \"capacity\": {\n          \"minimum\": \"string\",\n          \"maximum\": \"string\",\n          \"default\": \"string\"\n        },\n        \"rules\": [\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"fixedDate\": {\n          \"start\": \"1964-10-19T05:13:22.184Z\",\n          \"end\": \"1975-09-08T04:54:47.331Z\",\n          \"timeZone\": \"string\"\n        },\n        \"recurrence\": {\n          \"frequency\": \"Hour\",\n          \"schedule\": {\n            \"timeZone\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"days\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hours\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"minutes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ],\n    \"notifications\": [\n      {\n        \"operation\": \"Scale\",\n        \"email\": {\n          \"sendToSubscriptionAdministrator\": true,\n          \"sendToSubscriptionCoAdministrators\": true,\n          \"customEmails\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"webhooks\": [\n          {\n            \"serviceUri\": \"http://FyjHJVsWdeqjCaEEuQjxhY.gylEKdplV66.sSHw.atJHhH56AVSXcstXpMhF8TfAFUk9cQHhO\",\n            \"properties\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\"\n            }\n          },\n          {\n            \"serviceUri\": \"http://w.aeDKN8wNT6X0.rt7zumqgF93xV6m0tRQzXMBQ82CjNA+BT.bunkTvBeCsnzzCcj\",\n            \"properties\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\",\n              \"key_2\": \"string\"\n            }\n          }\n        ]\n      },\n      {\n        \"operation\": \"Scale\",\n        \"email\": {\n          \"sendToSubscriptionAdministrator\": false,\n          \"sendToSubscriptionCoAdministrators\": false,\n          \"customEmails\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"webhooks\": [\n          {\n            \"serviceUri\": \"http://UsPTKUFnkEvWUwHBt.wjKwiwXi5EQFZo7zLQQ4G-GZub7Kl0g5rLiTxE7S\",\n            \"properties\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\"\n            }\n          },\n          {\n            \"serviceUri\": \"https://hhreNDXrHqETfU.jvxfTZUdxBCLVJktNrccjC76tQldyTPdKFg,wQMz7TM.Ur3cafpZVCWAQZ\",\n            \"properties\": {\n              \"key_0\": \"string\"\n            }\n          }\n        ]\n      }\n    ],\n    \"enabled\": false,\n    \"predictiveAutoscalePolicy\": {\n      \"scaleMode\": \"ForecastOnly\",\n      \"scaleLookAheadTime\": \"string\"\n    },\n    \"name\": \"string\",\n    \"targetResourceUri\": \"string\",\n    \"targetResourceLocation\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"location\": \"string\",\n  \"properties\": {\n    \"profiles\": [\n      {\n        \"name\": \"string\",\n        \"capacity\": {\n          \"minimum\": \"string\",\n          \"maximum\": \"string\",\n          \"default\": \"string\"\n        },\n        \"rules\": [\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"fixedDate\": {\n          \"start\": \"1949-05-10T19:35:41.046Z\",\n          \"end\": \"1953-03-11T17:56:23.950Z\",\n          \"timeZone\": \"string\"\n        },\n        \"recurrence\": {\n          \"frequency\": \"Year\",\n          \"schedule\": {\n            \"timeZone\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"days\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hours\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"minutes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"name\": \"string\",\n        \"capacity\": {\n          \"minimum\": \"string\",\n          \"maximum\": \"string\",\n          \"default\": \"string\"\n        },\n        \"rules\": [\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"fixedDate\": {\n          \"start\": \"2002-06-13T01:12:15.192Z\",\n          \"end\": \"1951-02-19T22:42:51.930Z\",\n          \"timeZone\": \"string\"\n        },\n        \"recurrence\": {\n          \"frequency\": \"Second\",\n          \"schedule\": {\n            \"timeZone\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"days\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hours\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"minutes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ],\n    \"notifications\": [\n      {\n        \"operation\": \"Scale\",\n        \"email\": {\n          \"sendToSubscriptionAdministrator\": false,\n          \"sendToSubscriptionCoAdministrators\": true,\n          \"customEmails\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"webhooks\": [\n          {\n            \"serviceUri\": \"http://SIyHJodIH.lyqaK8mR3Ta0bN4o,i5\",\n            \"properties\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\"\n            }\n          },\n          {\n            \"serviceUri\": \"http://MUzn.tnpgEoQrlFVjcR+HQRnFkg7ApjiiQ40ef9FzqA9Jvtvu,C0O\",\n            \"properties\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\"\n            }\n          }\n        ]\n      },\n      {\n        \"operation\": \"Scale\",\n        \"email\": {\n          \"sendToSubscriptionAdministrator\": false,\n          \"sendToSubscriptionCoAdministrators\": false,\n          \"customEmails\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"webhooks\": [\n          {\n            \"serviceUri\": \"http://JMqykoOdAxODWosAujfujtBdwYJMx.loiU2YexqTGBPX5QioT-RzXLBLEwV,wDtwCiJpjOotg1lnXvSgM+,duw\",\n            \"properties\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\"\n            }\n          },\n          {\n            \"serviceUri\": \"http://MYcLPeZpBcfwmkwaspUPZyCYgTrsW.rphaRhNhpeMDLBAkCVhptl2wlwHADUKcZ0pMTbIf+y7xko4fnDNS4TRS,NHGwD\",\n            \"properties\": {\n              \"key_0\": \"string\"\n            }\n          }\n        ]\n      }\n    ],\n    \"enabled\": false,\n    \"predictiveAutoscalePolicy\": {\n      \"scaleMode\": \"Disabled\",\n      \"scaleLookAheadTime\": \"string\"\n    },\n    \"name\": \"string\",\n    \"targetResourceUri\": \"string\",\n    \"targetResourceLocation\": \"string\"\n  },\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"tags\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0d68fd13-e85d-438d-9271-4bf518724ebf",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourcegroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "autoscalesettings",
+                    ":autoscaleSettingName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2022-10-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "autoscaleSettingName",
+                      "description": "(Required) The autoscale setting name."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"properties\": {\n    \"profiles\": [\n      {\n        \"name\": \"string\",\n        \"capacity\": {\n          \"minimum\": \"string\",\n          \"maximum\": \"string\",\n          \"default\": \"string\"\n        },\n        \"rules\": [\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"fixedDate\": {\n          \"start\": \"1955-08-15T20:25:48.325Z\",\n          \"end\": \"2006-11-26T23:48:40.442Z\",\n          \"timeZone\": \"string\"\n        },\n        \"recurrence\": {\n          \"frequency\": \"Minute\",\n          \"schedule\": {\n            \"timeZone\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"days\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hours\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"minutes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      {\n        \"name\": \"string\",\n        \"capacity\": {\n          \"minimum\": \"string\",\n          \"maximum\": \"string\",\n          \"default\": \"string\"\n        },\n        \"rules\": [\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"metricTrigger\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scaleAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"fixedDate\": {\n          \"start\": \"1964-10-19T05:13:22.184Z\",\n          \"end\": \"1975-09-08T04:54:47.331Z\",\n          \"timeZone\": \"string\"\n        },\n        \"recurrence\": {\n          \"frequency\": \"Hour\",\n          \"schedule\": {\n            \"timeZone\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"days\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hours\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"minutes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    ],\n    \"notifications\": [\n      {\n        \"operation\": \"Scale\",\n        \"email\": {\n          \"sendToSubscriptionAdministrator\": true,\n          \"sendToSubscriptionCoAdministrators\": true,\n          \"customEmails\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"webhooks\": [\n          {\n            \"serviceUri\": \"http://FyjHJVsWdeqjCaEEuQjxhY.gylEKdplV66.sSHw.atJHhH56AVSXcstXpMhF8TfAFUk9cQHhO\",\n            \"properties\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\"\n            }\n          },\n          {\n            \"serviceUri\": \"http://w.aeDKN8wNT6X0.rt7zumqgF93xV6m0tRQzXMBQ82CjNA+BT.bunkTvBeCsnzzCcj\",\n            \"properties\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\",\n              \"key_2\": \"string\"\n            }\n          }\n        ]\n      },\n      {\n        \"operation\": \"Scale\",\n        \"email\": {\n          \"sendToSubscriptionAdministrator\": false,\n          \"sendToSubscriptionCoAdministrators\": false,\n          \"customEmails\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"webhooks\": [\n          {\n            \"serviceUri\": \"http://UsPTKUFnkEvWUwHBt.wjKwiwXi5EQFZo7zLQQ4G-GZub7Kl0g5rLiTxE7S\",\n            \"properties\": {\n              \"key_0\": \"string\",\n              \"key_1\": \"string\"\n            }\n          },\n          {\n            \"serviceUri\": \"https://hhreNDXrHqETfU.jvxfTZUdxBCLVJktNrccjC76tQldyTPdKFg,wQMz7TM.Ur3cafpZVCWAQZ\",\n            \"properties\": {\n              \"key_0\": \"string\"\n            }\n          }\n        ]\n      }\n    ],\n    \"enabled\": false,\n    \"predictiveAutoscalePolicy\": {\n      \"scaleMode\": \"ForecastOnly\",\n      \"scaleLookAheadTime\": \"string\"\n    },\n    \"name\": \"string\",\n    \"targetResourceUri\": \"string\",\n    \"targetResourceLocation\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "65205ca1-4ff7-43e0-a324-d25f98db4d5a",
+          "name": "Azure Monitor Delete an autoscale setting",
+          "request": {
+            "name": "Azure Monitor Delete an autoscale setting",
+            "description": {
+              "content": "Deletes an autoscale setting from a resource group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourcegroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Insights",
+                "autoscalesettings",
+                ":autoscaleSettingName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2022-10-01",
+                  "description": "(Required) Client API version."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "autoscaleSettingName",
+                  "description": "(Required) The autoscale setting name."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "01cfc1f9-8e08-4fb1-b920-953c9bb22f62",
+              "name": "Successful request to delete an autoscale setting.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourcegroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "autoscalesettings",
+                    ":autoscaleSettingName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2022-10-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "autoscaleSettingName",
+                      "description": "(Required) The autoscale setting name."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8d50956e-0ebc-4b82-8933-047b476b374c",
+              "name": "Autoscale setting does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourcegroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "autoscalesettings",
+                    ":autoscaleSettingName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2022-10-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "autoscaleSettingName",
+                      "description": "(Required) The autoscale setting name."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d4e26122-1613-448c-95ad-99b9ca5823ef",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourcegroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "autoscalesettings",
+                    ":autoscaleSettingName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2022-10-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "autoscaleSettingName",
+                      "description": "(Required) The autoscale setting name."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "50b02bab-e66c-4077-95fe-3ff2b4a84e48",
+      "name": "Predictive Metrics",
+      "description": {
+        "content": "Operations for getting predictive autoscale metrics",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8ecf76d4-679f-43fb-b655-5a785664b1f5",
+          "name": "Azure Monitor Get predictive autoscale metrics",
+          "request": {
+            "name": "Azure Monitor Get predictive autoscale metrics",
+            "description": {
+              "content": "Get predictive autoscale metric data for an autoscale setting. Returns predicted values based on the autoscale setting's predictive policy.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourcegroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Insights",
+                "autoscalesettings",
+                ":autoscaleSettingName",
+                "predictiveMetrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2022-10-01",
+                  "description": "(Required) Client API version."
+                },
+                {
+                  "disabled": false,
+                  "key": "timespan",
+                  "value": "<string>",
+                  "description": "(Required) The timespan of the query in ISO 8601 format."
+                },
+                {
+                  "disabled": false,
+                  "key": "interval",
+                  "value": "<string>",
+                  "description": "(Required) The interval of the query in ISO 8601 duration format."
+                },
+                {
+                  "disabled": false,
+                  "key": "metricNamespace",
+                  "value": "<string>",
+                  "description": "(Required) Metric namespace to query."
+                },
+                {
+                  "disabled": false,
+                  "key": "metricName",
+                  "value": "<string>",
+                  "description": "(Required) The names of the metrics to retrieve."
+                },
+                {
+                  "disabled": false,
+                  "key": "aggregation",
+                  "value": "<string>",
+                  "description": "(Required) The list of aggregation types to retrieve."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "autoscaleSettingName",
+                  "description": "(Required) The autoscale setting name."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3594eac1-94f1-403e-bd66-95477ce489af",
+              "name": "Successful request to get predictive metric data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourcegroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "autoscalesettings",
+                    ":autoscaleSettingName",
+                    "predictiveMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2022-10-01"
+                    },
+                    {
+                      "key": "timespan",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metricNamespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metricName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregation",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "autoscaleSettingName",
+                      "description": "(Required) The autoscale setting name."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"timespan\": \"string\",\n  \"interval\": \"string\",\n  \"metricName\": \"string\",\n  \"targetResourceId\": \"string\",\n  \"data\": [\n    {\n      \"timeStamp\": \"1948-07-26T05:30:00.699Z\",\n      \"value\": 1009.0841321227373\n    },\n    {\n      \"timeStamp\": \"1964-12-26T23:13:37.208Z\",\n      \"value\": 8930.508831442101\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "78998d9a-a5d6-4901-88bb-ae4473edc54d",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourcegroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "autoscalesettings",
+                    ":autoscaleSettingName",
+                    "predictiveMetrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2022-10-01"
+                    },
+                    {
+                      "key": "timespan",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metricNamespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metricName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregation",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "autoscaleSettingName",
+                      "description": "(Required) The autoscale setting name."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://management.azure.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://management.azure.com/.default"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "df7c23b7-7ff1-4631-bc08-71a293cae7d1",
+    "name": "Azure Monitor Autoscale API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Configure autoscale settings for Azure resources based on metric thresholds, schedules, or predictive rules to automatically adjust resource capacity.\n\nContact Support:\n Name: Microsoft Azure Support",
+      "type": "text/plain"
+    }
+  }
+}

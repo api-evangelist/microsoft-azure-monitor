@@ -1,0 +1,856 @@
+{
+  "info": {
+    "_postman_id": "a298cb71-d7dd-4694-a372-c72d71f1915a",
+    "name": "Azure Monitor Logs Ingestion API",
+    "description": "Sends custom log data to a Log Analytics workspace using a REST API call or client libraries. Supports sending data to both supported Azure tables and custom tables via data collection rules and endpoints.\n\nContact Support:\n Name: Microsoft Azure Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:11:30.000Z",
+    "updatedAt": "2026-06-05T15:11:30.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a298cb71-d7dd-4694-a372-c72d71f1915a"
+  },
+  "item": [
+    {
+      "name": "dataCollectionRules",
+      "item": [
+        {
+          "name": "{ruleId}",
+          "item": [
+            {
+              "name": "streams",
+              "item": [
+                {
+                  "name": "{stream}",
+                  "item": [
+                    {
+                      "name": "Azure Monitor Upload logs to a custom table",
+                      "id": "6914c19a-e80e-4d1d-8622-b7b587e9d8ef",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "The content encoding of the request body. Use gzip for compressed payloads.",
+                            "key": "Content-Encoding",
+                            "value": "gzip"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "[\n  {\n    \"voluptate88\": \"exercitation labore in ipsum\"\n  },\n  {\n    \"dolor_7\": \"enim minim dolore veniam eiusmod\",\n    \"ad_f\": 52408598.03751981\n  }\n]",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/dataCollectionRules/:ruleId/streams/:stream?api-version=2023-01-01",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "dataCollectionRules",
+                            ":ruleId",
+                            "streams",
+                            ":stream"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The API version to use for this operation.",
+                              "key": "api-version",
+                              "value": "2023-01-01"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "4d1ca4c1-859a-4ba5-a535-494176b839cc",
+                              "key": "ruleId",
+                              "value": "<string>",
+                              "description": "(Required) The immutable ID of the data collection rule resource."
+                            },
+                            {
+                              "id": "9e951ea1-3bb0-4ad4-b124-0818d7821eef",
+                              "key": "stream",
+                              "value": "<string>",
+                              "description": "(Required) The name of the stream to send data to. For built-in tables, use the stream name format like Custom-TableName. For custom tables, use Custom-TableName_CL."
+                            }
+                          ]
+                        },
+                        "description": "Ingests log data to a Log Analytics workspace via a data collection rule. The data is sent to the specified stream, which is mapped to a table in the workspace by the data collection rule. Supports JSON arrays of log records."
+                      },
+                      "response": [
+                        {
+                          "id": "71d7036d-ea3c-4096-9445-723fd7727593",
+                          "name": "Data was successfully ingested.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "The content encoding of the request body. Use gzip for compressed payloads.",
+                                "key": "Content-Encoding",
+                                "value": "gzip"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "[\n  {\n    \"voluptate88\": \"exercitation labore in ipsum\"\n  },\n  {\n    \"dolor_7\": \"enim minim dolore veniam eiusmod\",\n    \"ad_f\": 52408598.03751981\n  }\n]",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/dataCollectionRules/:ruleId/streams/:stream?api-version=2023-01-01",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "dataCollectionRules",
+                                ":ruleId",
+                                "streams",
+                                ":stream"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The API version to use for this operation.",
+                                  "key": "api-version",
+                                  "value": "2023-01-01"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "ruleId"
+                                },
+                                {
+                                  "key": "stream"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:11:31.000Z",
+                          "updatedAt": "2026-06-05T15:11:31.000Z",
+                          "uid": "35240-71d7036d-ea3c-4096-9445-723fd7727593"
+                        },
+                        {
+                          "id": "b1468016-b889-4890-898f-67190d6b58dc",
+                          "name": "Bad request. The data does not match the expected schema.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "The content encoding of the request body. Use gzip for compressed payloads.",
+                                "key": "Content-Encoding",
+                                "value": "gzip"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "[\n  {\n    \"voluptate88\": \"exercitation labore in ipsum\"\n  },\n  {\n    \"dolor_7\": \"enim minim dolore veniam eiusmod\",\n    \"ad_f\": 52408598.03751981\n  }\n]",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/dataCollectionRules/:ruleId/streams/:stream?api-version=2023-01-01",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "dataCollectionRules",
+                                ":ruleId",
+                                "streams",
+                                ":stream"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The API version to use for this operation.",
+                                  "key": "api-version",
+                                  "value": "2023-01-01"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "ruleId"
+                                },
+                                {
+                                  "key": "stream"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:11:31.000Z",
+                          "updatedAt": "2026-06-05T15:11:31.000Z",
+                          "uid": "35240-b1468016-b889-4890-898f-67190d6b58dc"
+                        },
+                        {
+                          "id": "9ae1d074-4729-4bd2-93fb-24cd6d053c7f",
+                          "name": "Unauthorized. Authentication token is missing or invalid.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "The content encoding of the request body. Use gzip for compressed payloads.",
+                                "key": "Content-Encoding",
+                                "value": "gzip"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "[\n  {\n    \"voluptate88\": \"exercitation labore in ipsum\"\n  },\n  {\n    \"dolor_7\": \"enim minim dolore veniam eiusmod\",\n    \"ad_f\": 52408598.03751981\n  }\n]",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/dataCollectionRules/:ruleId/streams/:stream?api-version=2023-01-01",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "dataCollectionRules",
+                                ":ruleId",
+                                "streams",
+                                ":stream"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The API version to use for this operation.",
+                                  "key": "api-version",
+                                  "value": "2023-01-01"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "ruleId"
+                                },
+                                {
+                                  "key": "stream"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:11:31.000Z",
+                          "updatedAt": "2026-06-05T15:11:31.000Z",
+                          "uid": "35240-9ae1d074-4729-4bd2-93fb-24cd6d053c7f"
+                        },
+                        {
+                          "id": "e3266c88-2fb0-4be4-a3b9-53cc62b1d758",
+                          "name": "Forbidden. Caller does not have permission to upload data.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "The content encoding of the request body. Use gzip for compressed payloads.",
+                                "key": "Content-Encoding",
+                                "value": "gzip"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "[\n  {\n    \"voluptate88\": \"exercitation labore in ipsum\"\n  },\n  {\n    \"dolor_7\": \"enim minim dolore veniam eiusmod\",\n    \"ad_f\": 52408598.03751981\n  }\n]",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/dataCollectionRules/:ruleId/streams/:stream?api-version=2023-01-01",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "dataCollectionRules",
+                                ":ruleId",
+                                "streams",
+                                ":stream"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The API version to use for this operation.",
+                                  "key": "api-version",
+                                  "value": "2023-01-01"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "ruleId"
+                                },
+                                {
+                                  "key": "stream"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:11:31.000Z",
+                          "updatedAt": "2026-06-05T15:11:31.000Z",
+                          "uid": "35240-e3266c88-2fb0-4be4-a3b9-53cc62b1d758"
+                        },
+                        {
+                          "id": "24681755-8323-44d8-ac05-007e4a602d1e",
+                          "name": "Not found. The data collection rule or stream does not exist.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "The content encoding of the request body. Use gzip for compressed payloads.",
+                                "key": "Content-Encoding",
+                                "value": "gzip"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "[\n  {\n    \"voluptate88\": \"exercitation labore in ipsum\"\n  },\n  {\n    \"dolor_7\": \"enim minim dolore veniam eiusmod\",\n    \"ad_f\": 52408598.03751981\n  }\n]",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/dataCollectionRules/:ruleId/streams/:stream?api-version=2023-01-01",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "dataCollectionRules",
+                                ":ruleId",
+                                "streams",
+                                ":stream"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The API version to use for this operation.",
+                                  "key": "api-version",
+                                  "value": "2023-01-01"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "ruleId"
+                                },
+                                {
+                                  "key": "stream"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:11:31.000Z",
+                          "updatedAt": "2026-06-05T15:11:31.000Z",
+                          "uid": "35240-24681755-8323-44d8-ac05-007e4a602d1e"
+                        },
+                        {
+                          "id": "752b33b1-56f7-4c5f-9a53-ca9b23a9a23f",
+                          "name": "Payload too large. Maximum body size is 1MB uncompressed.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "The content encoding of the request body. Use gzip for compressed payloads.",
+                                "key": "Content-Encoding",
+                                "value": "gzip"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "[\n  {\n    \"voluptate88\": \"exercitation labore in ipsum\"\n  },\n  {\n    \"dolor_7\": \"enim minim dolore veniam eiusmod\",\n    \"ad_f\": 52408598.03751981\n  }\n]",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/dataCollectionRules/:ruleId/streams/:stream?api-version=2023-01-01",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "dataCollectionRules",
+                                ":ruleId",
+                                "streams",
+                                ":stream"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The API version to use for this operation.",
+                                  "key": "api-version",
+                                  "value": "2023-01-01"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "ruleId"
+                                },
+                                {
+                                  "key": "stream"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Request Entity Too Large",
+                          "code": 413,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:11:31.000Z",
+                          "updatedAt": "2026-06-05T15:11:31.000Z",
+                          "uid": "35240-752b33b1-56f7-4c5f-9a53-ca9b23a9a23f"
+                        },
+                        {
+                          "id": "b1a2389e-2735-4398-968d-b5a9bd5c8a64",
+                          "name": "Too many requests. Rate limit exceeded.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "The content encoding of the request body. Use gzip for compressed payloads.",
+                                "key": "Content-Encoding",
+                                "value": "gzip"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "[\n  {\n    \"voluptate88\": \"exercitation labore in ipsum\"\n  },\n  {\n    \"dolor_7\": \"enim minim dolore veniam eiusmod\",\n    \"ad_f\": 52408598.03751981\n  }\n]",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/dataCollectionRules/:ruleId/streams/:stream?api-version=2023-01-01",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "dataCollectionRules",
+                                ":ruleId",
+                                "streams",
+                                ":stream"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The API version to use for this operation.",
+                                  "key": "api-version",
+                                  "value": "2023-01-01"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "ruleId"
+                                },
+                                {
+                                  "key": "stream"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:11:31.000Z",
+                          "updatedAt": "2026-06-05T15:11:31.000Z",
+                          "uid": "35240-b1a2389e-2735-4398-968d-b5a9bd5c8a64"
+                        },
+                        {
+                          "id": "6d90c34d-f870-4caa-b730-7110f8b6b56c",
+                          "name": "Internal server error.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "The content encoding of the request body. Use gzip for compressed payloads.",
+                                "key": "Content-Encoding",
+                                "value": "gzip"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "[\n  {\n    \"voluptate88\": \"exercitation labore in ipsum\"\n  },\n  {\n    \"dolor_7\": \"enim minim dolore veniam eiusmod\",\n    \"ad_f\": 52408598.03751981\n  }\n]",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/dataCollectionRules/:ruleId/streams/:stream?api-version=2023-01-01",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "dataCollectionRules",
+                                ":ruleId",
+                                "streams",
+                                ":stream"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The API version to use for this operation.",
+                                  "key": "api-version",
+                                  "value": "2023-01-01"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "ruleId"
+                                },
+                                {
+                                  "key": "stream"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:11:31.000Z",
+                          "updatedAt": "2026-06-05T15:11:31.000Z",
+                          "uid": "35240-6d90c34d-f870-4caa-b730-7110f8b6b56c"
+                        },
+                        {
+                          "id": "1208f786-3396-40ea-8b91-2feeb0c2aea8",
+                          "name": "Service unavailable. The service is temporarily unavailable.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "The content encoding of the request body. Use gzip for compressed payloads.",
+                                "key": "Content-Encoding",
+                                "value": "gzip"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "[\n  {\n    \"voluptate88\": \"exercitation labore in ipsum\"\n  },\n  {\n    \"dolor_7\": \"enim minim dolore veniam eiusmod\",\n    \"ad_f\": 52408598.03751981\n  }\n]",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/dataCollectionRules/:ruleId/streams/:stream?api-version=2023-01-01",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "dataCollectionRules",
+                                ":ruleId",
+                                "streams",
+                                ":stream"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The API version to use for this operation.",
+                                  "key": "api-version",
+                                  "value": "2023-01-01"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "ruleId"
+                                },
+                                {
+                                  "key": "stream"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Service Unavailable",
+                          "code": 503,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-06-05T15:11:31.000Z",
+                          "updatedAt": "2026-06-05T15:11:31.000Z",
+                          "uid": "35240-1208f786-3396-40ea-8b91-2feeb0c2aea8"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:11:31.000Z",
+                      "updatedAt": "2026-06-05T15:11:31.000Z",
+                      "uid": "35240-6914c19a-e80e-4d1d-8622-b7b587e9d8ef"
+                    }
+                  ],
+                  "id": "7bc4b7c4-1e81-4d79-a9df-bb6058e4e3f4",
+                  "createdAt": "2026-06-05T15:11:31.000Z",
+                  "updatedAt": "2026-06-05T15:11:31.000Z",
+                  "uid": "35240-7bc4b7c4-1e81-4d79-a9df-bb6058e4e3f4"
+                }
+              ],
+              "id": "9bf89409-63a2-4817-8474-1111256d2590",
+              "createdAt": "2026-06-05T15:11:31.000Z",
+              "updatedAt": "2026-06-05T15:11:31.000Z",
+              "uid": "35240-9bf89409-63a2-4817-8474-1111256d2590"
+            }
+          ],
+          "id": "53cf684d-3793-48c2-8b67-996a012774e9",
+          "createdAt": "2026-06-05T15:11:31.000Z",
+          "updatedAt": "2026-06-05T15:11:31.000Z",
+          "uid": "35240-53cf684d-3793-48c2-8b67-996a012774e9"
+        }
+      ],
+      "id": "58c09d49-0c87-423b-9fc0-5c1f58b55f7d",
+      "createdAt": "2026-06-05T15:11:31.000Z",
+      "updatedAt": "2026-06-05T15:11:31.000Z",
+      "uid": "35240-58c09d49-0c87-423b-9fc0-5c1f58b55f7d"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://monitor.azure.com/.default",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "dataCollectionEndpoint",
+      "value": "{dce-name}.{region}.ingest.monitor.azure.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{dataCollectionEndpoint}}"
+    }
+  ]
+}

@@ -1,0 +1,264 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Azure Monitor Metrics API",
+    "version": "2023-10-01"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Metrics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Azure Monitor List metrics at subscription scope",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://management.azure.com/subscriptions/:subscriptionId/providers/Microsoft.Insights/metrics",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the target subscription."
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "Client API version."
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query",
+                "description": "The region where the metrics you want reside."
+              },
+              {
+                "name": "timespan",
+                "value": "",
+                "type": "query",
+                "description": "The timespan of the query in ISO 8601 duration format (startDateTime_ISO/endDateTime_ISO)."
+              },
+              {
+                "name": "interval",
+                "value": "",
+                "type": "query",
+                "description": "The interval (window size) of the query in ISO 8601 duration format."
+              },
+              {
+                "name": "metricnames",
+                "value": "",
+                "type": "query",
+                "description": "The names of the metrics (comma-separated) to retrieve. Maximum of 20."
+              },
+              {
+                "name": "aggregation",
+                "value": "",
+                "type": "query",
+                "description": "The list of aggregation types (comma-separated) to retrieve."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "The $filter is used to reduce the set of metric data returned. Uses OData filter expressions."
+              },
+              {
+                "name": "top",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of records to retrieve. Defaults to 10."
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query",
+                "description": "The aggregation to use for sorting results and the direction of the sort."
+              },
+              {
+                "name": "resultType",
+                "value": "",
+                "type": "query",
+                "description": "Reduces the set of data collected. Data or Metadata."
+              },
+              {
+                "name": "metricNamespace",
+                "value": "",
+                "type": "query",
+                "description": "Metric namespace to query metric definitions for."
+              },
+              {
+                "name": "AutoAdjustTimegrain",
+                "value": "",
+                "type": "query",
+                "description": "If set to true, the time grain is automatically adjusted based on the timespan."
+              },
+              {
+                "name": "ValidateDimensions",
+                "value": "",
+                "type": "query",
+                "description": "If set to false, invalid filter parameter values will be ignored."
+              },
+              {
+                "name": "rollUpBy",
+                "value": "",
+                "type": "query",
+                "description": "Dimension name(s) to rollup results by."
+              }
+            ]
+          },
+          "docs": "Lists the metric values for a subscription. The $filter parameter is used to reduce the set of metric data returned. Only some dimensions are available for subscriptions."
+        },
+        {
+          "info": {
+            "name": "Azure Monitor List metrics at subscription scope via POST",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://management.azure.com/subscriptions/:subscriptionId/providers/Microsoft.Insights/metrics",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the target subscription."
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "Client API version."
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query",
+                "description": "The region where the metrics you want reside."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Lists the metric values for a subscription using a POST request. Allows the same filtering as the GET variant but with a request body for complex queries."
+        },
+        {
+          "info": {
+            "name": "Azure Monitor List metrics for a resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://management.azure.com/:resourceUri/providers/Microsoft.Insights/metrics",
+            "params": [
+              {
+                "name": "resourceUri",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the resource."
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "Client API version."
+              },
+              {
+                "name": "timespan",
+                "value": "",
+                "type": "query",
+                "description": "The timespan of the query in ISO 8601 duration format (startDateTime_ISO/endDateTime_ISO)."
+              },
+              {
+                "name": "interval",
+                "value": "",
+                "type": "query",
+                "description": "The interval (window size) of the query in ISO 8601 duration format."
+              },
+              {
+                "name": "metricnames",
+                "value": "",
+                "type": "query",
+                "description": "The names of the metrics (comma-separated) to retrieve. Maximum of 20."
+              },
+              {
+                "name": "aggregation",
+                "value": "",
+                "type": "query",
+                "description": "The list of aggregation types (comma-separated) to retrieve."
+              },
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "The $filter is used to reduce the set of metric data returned. Uses OData filter expressions."
+              },
+              {
+                "name": "top",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of records to retrieve. Defaults to 10."
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query",
+                "description": "The aggregation to use for sorting results and the direction of the sort."
+              },
+              {
+                "name": "resultType",
+                "value": "",
+                "type": "query",
+                "description": "Reduces the set of data collected. Data or Metadata."
+              },
+              {
+                "name": "metricNamespace",
+                "value": "",
+                "type": "query",
+                "description": "Metric namespace to query metric definitions for."
+              },
+              {
+                "name": "AutoAdjustTimegrain",
+                "value": "",
+                "type": "query",
+                "description": "If set to true, the time grain is automatically adjusted based on the timespan."
+              },
+              {
+                "name": "ValidateDimensions",
+                "value": "",
+                "type": "query",
+                "description": "If set to false, invalid filter parameter values will be ignored."
+              },
+              {
+                "name": "rollUpBy",
+                "value": "",
+                "type": "query",
+                "description": "Dimension name(s) to rollup results by."
+              }
+            ]
+          },
+          "docs": "Lists the metric values for a resource. The $filter parameter is used to reduce the set of metric data returned."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

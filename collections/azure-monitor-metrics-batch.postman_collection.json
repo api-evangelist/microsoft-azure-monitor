@@ -1,0 +1,413 @@
+{
+  "item": [
+    {
+      "id": "5e3d5402-400a-47ee-b79c-3db70dcb42fe",
+      "name": "Metrics Batch",
+      "description": {
+        "content": "Operations for batch querying Azure Monitor metrics across multiple resources",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4abf7651-5c38-4bdd-beac-0aa07b4af7d6",
+          "name": "Azure Monitor Batch query metrics for multiple resources",
+          "request": {
+            "name": "Azure Monitor Batch query metrics for multiple resources",
+            "description": {
+              "content": "Lists the metric values for multiple resources in a single batch request. All resources must be in the same subscription, region, and resource type. Allows for efficient retrieval of metric data at scale.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "metrics:batchGet"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2024-02-01",
+                  "description": "(Required) Client API version."
+                },
+                {
+                  "disabled": false,
+                  "key": "starttime",
+                  "value": "<dateTime>",
+                  "description": "(Required) The start time of the query in ISO 8601 format."
+                },
+                {
+                  "disabled": false,
+                  "key": "endtime",
+                  "value": "<dateTime>",
+                  "description": "(Required) The end time of the query in ISO 8601 format."
+                },
+                {
+                  "disabled": false,
+                  "key": "interval",
+                  "value": "PT1M",
+                  "description": "The interval (window size) of the query in ISO 8601 duration format."
+                },
+                {
+                  "disabled": false,
+                  "key": "metricnames",
+                  "value": "<string>",
+                  "description": "(Required) The names of the metrics (comma-separated) to retrieve."
+                },
+                {
+                  "disabled": false,
+                  "key": "metricNamespace",
+                  "value": "<string>",
+                  "description": "(Required) Metric namespace that contains the requested metric names."
+                },
+                {
+                  "disabled": false,
+                  "key": "aggregation",
+                  "value": "<string>",
+                  "description": "The list of aggregation types (comma-separated) to retrieve."
+                },
+                {
+                  "disabled": false,
+                  "key": "top",
+                  "value": "<integer>",
+                  "description": "The maximum number of records to retrieve per resource."
+                },
+                {
+                  "disabled": false,
+                  "key": "orderBy",
+                  "value": "<string>",
+                  "description": "The aggregation to use for sorting results and the direction of the sort."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "The $filter used to reduce the set of metric data returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "rollUpBy",
+                  "value": "<string>",
+                  "description": "Dimension name(s) to rollup results by."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                },
+                {
+                  "description": "The Azure region for the metrics endpoint.",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"resourceids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "434be05f-76dd-4e74-93d2-cbde175a0d1d",
+              "name": "Successful batch request to get metrics for multiple resources.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "metrics:batchGet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2024-02-01"
+                    },
+                    {
+                      "key": "starttime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endtime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "PT1M"
+                    },
+                    {
+                      "key": "metricnames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metricNamespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rollUpBy",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "description": "The Azure region for the metrics endpoint.",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"values\": [\n    {\n      \"starttime\": \"string\",\n      \"endtime\": \"string\",\n      \"interval\": \"string\",\n      \"namespace\": \"string\",\n      \"resourceregion\": \"string\",\n      \"resourceid\": \"string\",\n      \"value\": [\n        {\n          \"id\": \"string\",\n          \"type\": \"string\",\n          \"name\": {\n            \"value\": \"string\",\n            \"localizedValue\": \"string\"\n          },\n          \"unit\": \"MilliSeconds\",\n          \"timeseries\": [\n            {\n              \"metadatavalues\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"data\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"metadatavalues\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"data\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"displayDescription\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"type\": \"string\",\n          \"name\": {\n            \"value\": \"string\",\n            \"localizedValue\": \"string\"\n          },\n          \"unit\": \"Cores\",\n          \"timeseries\": [\n            {\n              \"metadatavalues\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"data\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"metadatavalues\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"data\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"displayDescription\": \"string\"\n        }\n      ]\n    },\n    {\n      \"starttime\": \"string\",\n      \"endtime\": \"string\",\n      \"interval\": \"string\",\n      \"namespace\": \"string\",\n      \"resourceregion\": \"string\",\n      \"resourceid\": \"string\",\n      \"value\": [\n        {\n          \"id\": \"string\",\n          \"type\": \"string\",\n          \"name\": {\n            \"value\": \"string\",\n            \"localizedValue\": \"string\"\n          },\n          \"unit\": \"NanoCores\",\n          \"timeseries\": [\n            {\n              \"metadatavalues\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"data\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"metadatavalues\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"data\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"displayDescription\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"type\": \"string\",\n          \"name\": {\n            \"value\": \"string\",\n            \"localizedValue\": \"string\"\n          },\n          \"unit\": \"Unspecified\",\n          \"timeseries\": [\n            {\n              \"metadatavalues\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"data\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"metadatavalues\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"data\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"displayDescription\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b299e13-3770-417a-92c9-c55a918e64b5",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "metrics:batchGet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2024-02-01"
+                    },
+                    {
+                      "key": "starttime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endtime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "PT1M"
+                    },
+                    {
+                      "key": "metricnames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metricNamespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rollUpBy",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "description": "The Azure region for the metrics endpoint.",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The Azure region for the metrics endpoint.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "eastus",
+      "key": "region"
+    },
+    {
+      "type": "string",
+      "value": "https://{{region}}.metrics.monitor.azure.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://management.azure.com/.default"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "bf2b753d-ed2e-4997-a41f-ca58c53bcf39",
+    "name": "Azure Monitor Metrics Batch API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A high-volume API designed for retrieving metric values across multiple Azure resources in a single request. All resources in a batch must be in the same subscription and region.\n\nContact Support:\n Name: Microsoft Azure Support",
+      "type": "text/plain"
+    }
+  }
+}

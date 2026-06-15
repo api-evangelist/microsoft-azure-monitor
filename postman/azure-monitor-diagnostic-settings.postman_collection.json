@@ -1,0 +1,867 @@
+{
+  "info": {
+    "_postman_id": "e727d0a3-cf6b-4b48-a89b-c976e33db754",
+    "name": "Azure Monitor Diagnostic Settings API",
+    "description": "Configure diagnostic settings to route platform logs and metrics from Azure resources to destinations such as Log Analytics workspaces, Storage Accounts, and Event Hubs.\n\nContact Support:\n Name: Microsoft Azure Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:11:40.000Z",
+    "updatedAt": "2026-06-05T15:11:40.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e727d0a3-cf6b-4b48-a89b-c976e33db754"
+  },
+  "item": [
+    {
+      "name": "{resourceUri}",
+      "item": [
+        {
+          "name": "providers",
+          "item": [
+            {
+              "name": "Microsoft.Insights",
+              "item": [
+                {
+                  "name": "diagnosticSettings",
+                  "item": [
+                    {
+                      "name": "{name}",
+                      "item": [
+                        {
+                          "name": "Azure Monitor Get a diagnostic setting",
+                          "id": "75db7b80-283a-4181-8033-474a9efbbadf",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/:resourceUri/providers/Microsoft.Insights/diagnosticSettings/:name?api-version=2021-05-01-preview",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":resourceUri",
+                                "providers",
+                                "Microsoft.Insights",
+                                "diagnosticSettings",
+                                ":name"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) Client API version.",
+                                  "key": "api-version",
+                                  "value": "2021-05-01-preview"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "bdb64c14-2e1b-4ed3-93f5-33d4e8a7d0b9",
+                                  "key": "resourceUri",
+                                  "value": "<string>",
+                                  "description": "(Required) The identifier of the resource."
+                                },
+                                {
+                                  "id": "46516502-6e7e-415e-bc8d-74614d543553",
+                                  "key": "name",
+                                  "value": "<string>",
+                                  "description": "(Required) The name of the diagnostic setting."
+                                }
+                              ]
+                            },
+                            "description": "Gets the active diagnostic settings for the specified resource by name."
+                          },
+                          "response": [
+                            {
+                              "id": "394e8b2e-8a52-4ab3-ae03-d523aaf44539",
+                              "name": "Successful request to get a diagnostic setting.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/:resourceUri/providers/Microsoft.Insights/diagnosticSettings/:name?api-version=2021-05-01-preview",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":resourceUri",
+                                    "providers",
+                                    "Microsoft.Insights",
+                                    "diagnosticSettings",
+                                    ":name"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) Client API version.",
+                                      "key": "api-version",
+                                      "value": "2021-05-01-preview"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "resourceUri"
+                                    },
+                                    {
+                                      "key": "name"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"properties\": {\n    \"storageAccountId\": \"<string>\",\n    \"serviceBusRuleId\": \"<string>\",\n    \"eventHubAuthorizationRuleId\": \"<string>\",\n    \"eventHubName\": \"<string>\",\n    \"metrics\": [\n      {\n        \"enabled\": \"<boolean>\",\n        \"timeGrain\": \"<string>\",\n        \"category\": \"<string>\",\n        \"retentionPolicy\": {\n          \"enabled\": \"<boolean>\",\n          \"days\": \"<integer>\"\n        }\n      },\n      {\n        \"enabled\": \"<boolean>\",\n        \"timeGrain\": \"<string>\",\n        \"category\": \"<string>\",\n        \"retentionPolicy\": {\n          \"enabled\": \"<boolean>\",\n          \"days\": \"<integer>\"\n        }\n      }\n    ],\n    \"logs\": [\n      {\n        \"enabled\": \"<boolean>\",\n        \"category\": \"<string>\",\n        \"categoryGroup\": \"<string>\",\n        \"retentionPolicy\": {\n          \"enabled\": \"<boolean>\",\n          \"days\": \"<integer>\"\n        }\n      },\n      {\n        \"enabled\": \"<boolean>\",\n        \"category\": \"<string>\",\n        \"categoryGroup\": \"<string>\",\n        \"retentionPolicy\": {\n          \"enabled\": \"<boolean>\",\n          \"days\": \"<integer>\"\n        }\n      }\n    ],\n    \"workspaceId\": \"<string>\",\n    \"marketplacePartnerId\": \"<string>\",\n    \"logAnalyticsDestinationType\": \"<string>\"\n  },\n  \"systemData\": {\n    \"createdBy\": \"<string>\",\n    \"createdByType\": \"Key\",\n    \"createdAt\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByType\": \"Key\",\n    \"lastModifiedAt\": \"<dateTime>\"\n  }\n}",
+                              "createdAt": "2026-06-05T15:11:41.000Z",
+                              "updatedAt": "2026-06-05T15:11:41.000Z",
+                              "uid": "35240-394e8b2e-8a52-4ab3-ae03-d523aaf44539"
+                            },
+                            {
+                              "id": "66e6157c-074d-4136-b022-6a43fe319711",
+                              "name": "Error response describing why the operation failed.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/:resourceUri/providers/Microsoft.Insights/diagnosticSettings/:name?api-version=2021-05-01-preview",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":resourceUri",
+                                    "providers",
+                                    "Microsoft.Insights",
+                                    "diagnosticSettings",
+                                    ":name"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) Client API version.",
+                                      "key": "api-version",
+                                      "value": "2021-05-01-preview"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "resourceUri"
+                                    },
+                                    {
+                                      "key": "name"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:11:41.000Z",
+                              "updatedAt": "2026-06-05T15:11:41.000Z",
+                              "uid": "35240-66e6157c-074d-4136-b022-6a43fe319711"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:11:41.000Z",
+                          "updatedAt": "2026-06-05T15:11:41.000Z",
+                          "uid": "35240-75db7b80-283a-4181-8033-474a9efbbadf"
+                        },
+                        {
+                          "name": "Azure Monitor Create or update a diagnostic setting",
+                          "id": "62f2f53a-711a-44ce-9c47-47367f6c9c70",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"properties\": {\n    \"storageAccountId\": \"<string>\",\n    \"serviceBusRuleId\": \"<string>\",\n    \"eventHubAuthorizationRuleId\": \"<string>\",\n    \"eventHubName\": \"<string>\",\n    \"metrics\": [\n      {\n        \"enabled\": \"<boolean>\",\n        \"timeGrain\": \"<string>\",\n        \"category\": \"<string>\",\n        \"retentionPolicy\": {\n          \"enabled\": \"<boolean>\",\n          \"days\": \"<integer>\"\n        }\n      },\n      {\n        \"enabled\": \"<boolean>\",\n        \"timeGrain\": \"<string>\",\n        \"category\": \"<string>\",\n        \"retentionPolicy\": {\n          \"enabled\": \"<boolean>\",\n          \"days\": \"<integer>\"\n        }\n      }\n    ],\n    \"logs\": [\n      {\n        \"enabled\": \"<boolean>\",\n        \"category\": \"<string>\",\n        \"categoryGroup\": \"<string>\",\n        \"retentionPolicy\": {\n          \"enabled\": \"<boolean>\",\n          \"days\": \"<integer>\"\n        }\n      },\n      {\n        \"enabled\": \"<boolean>\",\n        \"category\": \"<string>\",\n        \"categoryGroup\": \"<string>\",\n        \"retentionPolicy\": {\n          \"enabled\": \"<boolean>\",\n          \"days\": \"<integer>\"\n        }\n      }\n    ],\n    \"workspaceId\": \"<string>\",\n    \"marketplacePartnerId\": \"<string>\",\n    \"logAnalyticsDestinationType\": \"<string>\"\n  },\n  \"systemData\": {\n    \"createdBy\": \"<string>\",\n    \"createdByType\": \"Key\",\n    \"createdAt\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByType\": \"Key\",\n    \"lastModifiedAt\": \"<dateTime>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/:resourceUri/providers/Microsoft.Insights/diagnosticSettings/:name?api-version=2021-05-01-preview",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":resourceUri",
+                                "providers",
+                                "Microsoft.Insights",
+                                "diagnosticSettings",
+                                ":name"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) Client API version.",
+                                  "key": "api-version",
+                                  "value": "2021-05-01-preview"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "eb826d99-d852-41ad-b4b6-9ee4e594abe3",
+                                  "key": "resourceUri",
+                                  "value": "<string>",
+                                  "description": "(Required) The identifier of the resource."
+                                },
+                                {
+                                  "id": "8524962c-8f11-433e-a3f9-f8cfbf735f24",
+                                  "key": "name",
+                                  "value": "<string>",
+                                  "description": "(Required) The name of the diagnostic setting."
+                                }
+                              ]
+                            },
+                            "description": "Creates or updates diagnostic settings for the specified resource. Diagnostic settings determine where platform logs and metrics are routed."
+                          },
+                          "response": [
+                            {
+                              "id": "28487e6f-b6eb-44f3-9a50-ad7b610a9882",
+                              "name": "Successful request to create or update a diagnostic setting.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"properties\": {\n    \"storageAccountId\": \"<string>\",\n    \"serviceBusRuleId\": \"<string>\",\n    \"eventHubAuthorizationRuleId\": \"<string>\",\n    \"eventHubName\": \"<string>\",\n    \"metrics\": [\n      {\n        \"enabled\": \"<boolean>\",\n        \"timeGrain\": \"<string>\",\n        \"category\": \"<string>\",\n        \"retentionPolicy\": {\n          \"enabled\": \"<boolean>\",\n          \"days\": \"<integer>\"\n        }\n      },\n      {\n        \"enabled\": \"<boolean>\",\n        \"timeGrain\": \"<string>\",\n        \"category\": \"<string>\",\n        \"retentionPolicy\": {\n          \"enabled\": \"<boolean>\",\n          \"days\": \"<integer>\"\n        }\n      }\n    ],\n    \"logs\": [\n      {\n        \"enabled\": \"<boolean>\",\n        \"category\": \"<string>\",\n        \"categoryGroup\": \"<string>\",\n        \"retentionPolicy\": {\n          \"enabled\": \"<boolean>\",\n          \"days\": \"<integer>\"\n        }\n      },\n      {\n        \"enabled\": \"<boolean>\",\n        \"category\": \"<string>\",\n        \"categoryGroup\": \"<string>\",\n        \"retentionPolicy\": {\n          \"enabled\": \"<boolean>\",\n          \"days\": \"<integer>\"\n        }\n      }\n    ],\n    \"workspaceId\": \"<string>\",\n    \"marketplacePartnerId\": \"<string>\",\n    \"logAnalyticsDestinationType\": \"<string>\"\n  },\n  \"systemData\": {\n    \"createdBy\": \"<string>\",\n    \"createdByType\": \"Key\",\n    \"createdAt\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByType\": \"Key\",\n    \"lastModifiedAt\": \"<dateTime>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/:resourceUri/providers/Microsoft.Insights/diagnosticSettings/:name?api-version=2021-05-01-preview",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":resourceUri",
+                                    "providers",
+                                    "Microsoft.Insights",
+                                    "diagnosticSettings",
+                                    ":name"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) Client API version.",
+                                      "key": "api-version",
+                                      "value": "2021-05-01-preview"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "resourceUri"
+                                    },
+                                    {
+                                      "key": "name"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"properties\": {\n    \"storageAccountId\": \"<string>\",\n    \"serviceBusRuleId\": \"<string>\",\n    \"eventHubAuthorizationRuleId\": \"<string>\",\n    \"eventHubName\": \"<string>\",\n    \"metrics\": [\n      {\n        \"enabled\": \"<boolean>\",\n        \"timeGrain\": \"<string>\",\n        \"category\": \"<string>\",\n        \"retentionPolicy\": {\n          \"enabled\": \"<boolean>\",\n          \"days\": \"<integer>\"\n        }\n      },\n      {\n        \"enabled\": \"<boolean>\",\n        \"timeGrain\": \"<string>\",\n        \"category\": \"<string>\",\n        \"retentionPolicy\": {\n          \"enabled\": \"<boolean>\",\n          \"days\": \"<integer>\"\n        }\n      }\n    ],\n    \"logs\": [\n      {\n        \"enabled\": \"<boolean>\",\n        \"category\": \"<string>\",\n        \"categoryGroup\": \"<string>\",\n        \"retentionPolicy\": {\n          \"enabled\": \"<boolean>\",\n          \"days\": \"<integer>\"\n        }\n      },\n      {\n        \"enabled\": \"<boolean>\",\n        \"category\": \"<string>\",\n        \"categoryGroup\": \"<string>\",\n        \"retentionPolicy\": {\n          \"enabled\": \"<boolean>\",\n          \"days\": \"<integer>\"\n        }\n      }\n    ],\n    \"workspaceId\": \"<string>\",\n    \"marketplacePartnerId\": \"<string>\",\n    \"logAnalyticsDestinationType\": \"<string>\"\n  },\n  \"systemData\": {\n    \"createdBy\": \"<string>\",\n    \"createdByType\": \"Key\",\n    \"createdAt\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByType\": \"Key\",\n    \"lastModifiedAt\": \"<dateTime>\"\n  }\n}",
+                              "createdAt": "2026-06-05T15:11:41.000Z",
+                              "updatedAt": "2026-06-05T15:11:41.000Z",
+                              "uid": "35240-28487e6f-b6eb-44f3-9a50-ad7b610a9882"
+                            },
+                            {
+                              "id": "95891d5e-3a08-4076-b871-eb7c5e66615f",
+                              "name": "Error response describing why the operation failed.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"properties\": {\n    \"storageAccountId\": \"<string>\",\n    \"serviceBusRuleId\": \"<string>\",\n    \"eventHubAuthorizationRuleId\": \"<string>\",\n    \"eventHubName\": \"<string>\",\n    \"metrics\": [\n      {\n        \"enabled\": \"<boolean>\",\n        \"timeGrain\": \"<string>\",\n        \"category\": \"<string>\",\n        \"retentionPolicy\": {\n          \"enabled\": \"<boolean>\",\n          \"days\": \"<integer>\"\n        }\n      },\n      {\n        \"enabled\": \"<boolean>\",\n        \"timeGrain\": \"<string>\",\n        \"category\": \"<string>\",\n        \"retentionPolicy\": {\n          \"enabled\": \"<boolean>\",\n          \"days\": \"<integer>\"\n        }\n      }\n    ],\n    \"logs\": [\n      {\n        \"enabled\": \"<boolean>\",\n        \"category\": \"<string>\",\n        \"categoryGroup\": \"<string>\",\n        \"retentionPolicy\": {\n          \"enabled\": \"<boolean>\",\n          \"days\": \"<integer>\"\n        }\n      },\n      {\n        \"enabled\": \"<boolean>\",\n        \"category\": \"<string>\",\n        \"categoryGroup\": \"<string>\",\n        \"retentionPolicy\": {\n          \"enabled\": \"<boolean>\",\n          \"days\": \"<integer>\"\n        }\n      }\n    ],\n    \"workspaceId\": \"<string>\",\n    \"marketplacePartnerId\": \"<string>\",\n    \"logAnalyticsDestinationType\": \"<string>\"\n  },\n  \"systemData\": {\n    \"createdBy\": \"<string>\",\n    \"createdByType\": \"Key\",\n    \"createdAt\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByType\": \"Key\",\n    \"lastModifiedAt\": \"<dateTime>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/:resourceUri/providers/Microsoft.Insights/diagnosticSettings/:name?api-version=2021-05-01-preview",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":resourceUri",
+                                    "providers",
+                                    "Microsoft.Insights",
+                                    "diagnosticSettings",
+                                    ":name"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) Client API version.",
+                                      "key": "api-version",
+                                      "value": "2021-05-01-preview"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "resourceUri"
+                                    },
+                                    {
+                                      "key": "name"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:11:41.000Z",
+                              "updatedAt": "2026-06-05T15:11:41.000Z",
+                              "uid": "35240-95891d5e-3a08-4076-b871-eb7c5e66615f"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:11:41.000Z",
+                          "updatedAt": "2026-06-05T15:11:41.000Z",
+                          "uid": "35240-62f2f53a-711a-44ce-9c47-47367f6c9c70"
+                        },
+                        {
+                          "name": "Azure Monitor Delete a diagnostic setting",
+                          "id": "3d40ddf3-8360-4f3c-a4c2-6898e145677e",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/:resourceUri/providers/Microsoft.Insights/diagnosticSettings/:name?api-version=2021-05-01-preview",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":resourceUri",
+                                "providers",
+                                "Microsoft.Insights",
+                                "diagnosticSettings",
+                                ":name"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) Client API version.",
+                                  "key": "api-version",
+                                  "value": "2021-05-01-preview"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "0a43ee03-f594-45d6-9fae-45b3c265aeed",
+                                  "key": "resourceUri",
+                                  "value": "<string>",
+                                  "description": "(Required) The identifier of the resource."
+                                },
+                                {
+                                  "id": "269bb981-a78a-429d-8059-cb2aa7ad3842",
+                                  "key": "name",
+                                  "value": "<string>",
+                                  "description": "(Required) The name of the diagnostic setting."
+                                }
+                              ]
+                            },
+                            "description": "Deletes existing diagnostic settings for the specified resource."
+                          },
+                          "response": [
+                            {
+                              "id": "0ace4021-6bab-49e7-bc2a-950071bfc129",
+                              "name": "Successful request to delete a diagnostic setting.",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/:resourceUri/providers/Microsoft.Insights/diagnosticSettings/:name?api-version=2021-05-01-preview",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":resourceUri",
+                                    "providers",
+                                    "Microsoft.Insights",
+                                    "diagnosticSettings",
+                                    ":name"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) Client API version.",
+                                      "key": "api-version",
+                                      "value": "2021-05-01-preview"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "resourceUri"
+                                    },
+                                    {
+                                      "key": "name"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-06-05T15:11:41.000Z",
+                              "updatedAt": "2026-06-05T15:11:41.000Z",
+                              "uid": "35240-0ace4021-6bab-49e7-bc2a-950071bfc129"
+                            },
+                            {
+                              "id": "6ab82c2c-991b-48f0-8039-43891add5d66",
+                              "name": "Diagnostic setting does not exist.",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/:resourceUri/providers/Microsoft.Insights/diagnosticSettings/:name?api-version=2021-05-01-preview",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":resourceUri",
+                                    "providers",
+                                    "Microsoft.Insights",
+                                    "diagnosticSettings",
+                                    ":name"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) Client API version.",
+                                      "key": "api-version",
+                                      "value": "2021-05-01-preview"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "resourceUri"
+                                    },
+                                    {
+                                      "key": "name"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "No Content",
+                              "code": 204,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-06-05T15:11:41.000Z",
+                              "updatedAt": "2026-06-05T15:11:41.000Z",
+                              "uid": "35240-6ab82c2c-991b-48f0-8039-43891add5d66"
+                            },
+                            {
+                              "id": "195d7f37-8638-452a-b085-b0a977ec4799",
+                              "name": "Error response describing why the operation failed.",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/:resourceUri/providers/Microsoft.Insights/diagnosticSettings/:name?api-version=2021-05-01-preview",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":resourceUri",
+                                    "providers",
+                                    "Microsoft.Insights",
+                                    "diagnosticSettings",
+                                    ":name"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) Client API version.",
+                                      "key": "api-version",
+                                      "value": "2021-05-01-preview"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "resourceUri"
+                                    },
+                                    {
+                                      "key": "name"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-06-05T15:11:41.000Z",
+                              "updatedAt": "2026-06-05T15:11:41.000Z",
+                              "uid": "35240-195d7f37-8638-452a-b085-b0a977ec4799"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:11:41.000Z",
+                          "updatedAt": "2026-06-05T15:11:41.000Z",
+                          "uid": "35240-3d40ddf3-8360-4f3c-a4c2-6898e145677e"
+                        }
+                      ],
+                      "id": "cd284dcb-8d4e-4195-ae5b-7bc8648d13b9",
+                      "createdAt": "2026-06-05T15:11:41.000Z",
+                      "updatedAt": "2026-06-05T15:11:41.000Z",
+                      "uid": "35240-cd284dcb-8d4e-4195-ae5b-7bc8648d13b9"
+                    },
+                    {
+                      "name": "Azure Monitor List diagnostic settings for a resource",
+                      "id": "75384307-ff02-498d-8323-98b660ff68bd",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/:resourceUri/providers/Microsoft.Insights/diagnosticSettings?api-version=2021-05-01-preview",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            ":resourceUri",
+                            "providers",
+                            "Microsoft.Insights",
+                            "diagnosticSettings"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Client API version.",
+                              "key": "api-version",
+                              "value": "2021-05-01-preview"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "7ff20d94-d61d-4ea5-ae3e-271f2e2ea23f",
+                              "key": "resourceUri",
+                              "value": "<string>",
+                              "description": "(Required) The identifier of the resource."
+                            }
+                          ]
+                        },
+                        "description": "Gets the active diagnostic settings list for the specified resource. Returns all diagnostic settings configured for the resource."
+                      },
+                      "response": [
+                        {
+                          "id": "743d1052-cde5-460a-95bf-67d4d2f874d3",
+                          "name": "Successful request to get the list of diagnostic settings.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/:resourceUri/providers/Microsoft.Insights/diagnosticSettings?api-version=2021-05-01-preview",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":resourceUri",
+                                "providers",
+                                "Microsoft.Insights",
+                                "diagnosticSettings"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) Client API version.",
+                                  "key": "api-version",
+                                  "value": "2021-05-01-preview"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "resourceUri"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"properties\": {\n        \"storageAccountId\": \"<string>\",\n        \"serviceBusRuleId\": \"<string>\",\n        \"eventHubAuthorizationRuleId\": \"<string>\",\n        \"eventHubName\": \"<string>\",\n        \"metrics\": [\n          {\n            \"enabled\": \"<boolean>\",\n            \"timeGrain\": \"<string>\",\n            \"category\": \"<string>\",\n            \"retentionPolicy\": {\n              \"enabled\": \"<boolean>\",\n              \"days\": \"<integer>\"\n            }\n          },\n          {\n            \"enabled\": \"<boolean>\",\n            \"timeGrain\": \"<string>\",\n            \"category\": \"<string>\",\n            \"retentionPolicy\": {\n              \"enabled\": \"<boolean>\",\n              \"days\": \"<integer>\"\n            }\n          }\n        ],\n        \"logs\": [\n          {\n            \"enabled\": \"<boolean>\",\n            \"category\": \"<string>\",\n            \"categoryGroup\": \"<string>\",\n            \"retentionPolicy\": {\n              \"enabled\": \"<boolean>\",\n              \"days\": \"<integer>\"\n            }\n          },\n          {\n            \"enabled\": \"<boolean>\",\n            \"category\": \"<string>\",\n            \"categoryGroup\": \"<string>\",\n            \"retentionPolicy\": {\n              \"enabled\": \"<boolean>\",\n              \"days\": \"<integer>\"\n            }\n          }\n        ],\n        \"workspaceId\": \"<string>\",\n        \"marketplacePartnerId\": \"<string>\",\n        \"logAnalyticsDestinationType\": \"<string>\"\n      },\n      \"systemData\": {\n        \"createdBy\": \"<string>\",\n        \"createdByType\": \"User\",\n        \"createdAt\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedByType\": \"User\",\n        \"lastModifiedAt\": \"<dateTime>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"properties\": {\n        \"storageAccountId\": \"<string>\",\n        \"serviceBusRuleId\": \"<string>\",\n        \"eventHubAuthorizationRuleId\": \"<string>\",\n        \"eventHubName\": \"<string>\",\n        \"metrics\": [\n          {\n            \"enabled\": \"<boolean>\",\n            \"timeGrain\": \"<string>\",\n            \"category\": \"<string>\",\n            \"retentionPolicy\": {\n              \"enabled\": \"<boolean>\",\n              \"days\": \"<integer>\"\n            }\n          },\n          {\n            \"enabled\": \"<boolean>\",\n            \"timeGrain\": \"<string>\",\n            \"category\": \"<string>\",\n            \"retentionPolicy\": {\n              \"enabled\": \"<boolean>\",\n              \"days\": \"<integer>\"\n            }\n          }\n        ],\n        \"logs\": [\n          {\n            \"enabled\": \"<boolean>\",\n            \"category\": \"<string>\",\n            \"categoryGroup\": \"<string>\",\n            \"retentionPolicy\": {\n              \"enabled\": \"<boolean>\",\n              \"days\": \"<integer>\"\n            }\n          },\n          {\n            \"enabled\": \"<boolean>\",\n            \"category\": \"<string>\",\n            \"categoryGroup\": \"<string>\",\n            \"retentionPolicy\": {\n              \"enabled\": \"<boolean>\",\n              \"days\": \"<integer>\"\n            }\n          }\n        ],\n        \"workspaceId\": \"<string>\",\n        \"marketplacePartnerId\": \"<string>\",\n        \"logAnalyticsDestinationType\": \"<string>\"\n      },\n      \"systemData\": {\n        \"createdBy\": \"<string>\",\n        \"createdByType\": \"User\",\n        \"createdAt\": \"<dateTime>\",\n        \"lastModifiedBy\": \"<string>\",\n        \"lastModifiedByType\": \"ManagedIdentity\",\n        \"lastModifiedAt\": \"<dateTime>\"\n      }\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:11:41.000Z",
+                          "updatedAt": "2026-06-05T15:11:41.000Z",
+                          "uid": "35240-743d1052-cde5-460a-95bf-67d4d2f874d3"
+                        },
+                        {
+                          "id": "8b4de620-a640-4c99-8d10-4c7f5924eecf",
+                          "name": "Error response describing why the operation failed.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/:resourceUri/providers/Microsoft.Insights/diagnosticSettings?api-version=2021-05-01-preview",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":resourceUri",
+                                "providers",
+                                "Microsoft.Insights",
+                                "diagnosticSettings"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) Client API version.",
+                                  "key": "api-version",
+                                  "value": "2021-05-01-preview"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "resourceUri"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:11:41.000Z",
+                          "updatedAt": "2026-06-05T15:11:41.000Z",
+                          "uid": "35240-8b4de620-a640-4c99-8d10-4c7f5924eecf"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:11:41.000Z",
+                      "updatedAt": "2026-06-05T15:11:41.000Z",
+                      "uid": "35240-75384307-ff02-498d-8323-98b660ff68bd"
+                    }
+                  ],
+                  "id": "5fa6d931-f85b-4513-87fa-8268ff1f0123",
+                  "createdAt": "2026-06-05T15:11:41.000Z",
+                  "updatedAt": "2026-06-05T15:11:41.000Z",
+                  "uid": "35240-5fa6d931-f85b-4513-87fa-8268ff1f0123"
+                }
+              ],
+              "id": "6bdedbe6-8f42-4b31-a087-8b382b92b822",
+              "createdAt": "2026-06-05T15:11:41.000Z",
+              "updatedAt": "2026-06-05T15:11:41.000Z",
+              "uid": "35240-6bdedbe6-8f42-4b31-a087-8b382b92b822"
+            }
+          ],
+          "id": "25b72ec6-1154-4b3c-bb78-fdc98161f489",
+          "createdAt": "2026-06-05T15:11:41.000Z",
+          "updatedAt": "2026-06-05T15:11:41.000Z",
+          "uid": "35240-25b72ec6-1154-4b3c-bb78-fdc98161f489"
+        }
+      ],
+      "id": "00c35e4d-031e-4b08-84ea-7b4cd094b461",
+      "createdAt": "2026-06-05T15:11:41.000Z",
+      "updatedAt": "2026-06-05T15:11:41.000Z",
+      "uid": "35240-00c35e4d-031e-4b08-84ea-7b4cd094b461"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://management.azure.com/.default",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://management.azure.com"
+    }
+  ]
+}

@@ -1,0 +1,257 @@
+{
+  "item": [
+    {
+      "id": "8c221630-0650-413a-9a7b-cad1ba766c44",
+      "name": "Activity Logs",
+      "description": {
+        "content": "Operations for querying Azure Activity Log events",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f876eb8f-f33a-46d7-b61c-17c9d62a6d09",
+          "name": "Azure Monitor List Activity Log events",
+          "request": {
+            "name": "Azure Monitor List Activity Log events",
+            "description": {
+              "content": "Provides the list of records from the Activity Log. The $filter parameter is required and must include a time range. Optionally filter by resource group, resource, resource provider, or event status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "providers",
+                "Microsoft.Insights",
+                "eventtypes",
+                "management",
+                "values"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2015-04-01",
+                  "description": "(Required) Client API version."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "(Required) Reduces the set of data collected. Must include a time range filter using eventTimestamp. Supports filtering by resourceGroupName, resourceUri, resourceProvider, eventChannels, status, subStatus, correlationId, and caller. Example: eventTimestamp ge '2024-01-01' and eventTimestamp le '2024-01-02'."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Used to fetch events with only the given properties. Accepts a comma-separated list of property names."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e47f3a11-f9f1-4eaf-b16c-1e978852140f",
+              "name": "Successful request to list Activity Log events.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "providers",
+                    "Microsoft.Insights",
+                    "eventtypes",
+                    "management",
+                    "values"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2015-04-01"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"authorization\": {\n        \"action\": \"string\",\n        \"role\": \"string\",\n        \"scope\": \"string\"\n      },\n      \"claims\": {\n        \"key_0\": \"string\"\n      },\n      \"caller\": \"string\",\n      \"description\": \"string\",\n      \"id\": \"string\",\n      \"eventDataId\": \"string\",\n      \"correlationId\": \"string\",\n      \"eventName\": {\n        \"value\": \"string\",\n        \"localizedValue\": \"string\"\n      },\n      \"category\": {\n        \"value\": \"string\",\n        \"localizedValue\": \"string\"\n      },\n      \"httpRequest\": {\n        \"clientRequestId\": \"string\",\n        \"clientIpAddress\": \"string\",\n        \"method\": \"string\",\n        \"uri\": \"string\"\n      },\n      \"level\": \"Verbose\",\n      \"resourceGroupName\": \"string\",\n      \"resourceProviderName\": {\n        \"value\": \"string\",\n        \"localizedValue\": \"string\"\n      },\n      \"resourceId\": \"string\",\n      \"resourceType\": {\n        \"value\": \"string\",\n        \"localizedValue\": \"string\"\n      },\n      \"operationId\": \"string\",\n      \"operationName\": {\n        \"value\": \"string\",\n        \"localizedValue\": \"string\"\n      },\n      \"properties\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      },\n      \"status\": {\n        \"value\": \"string\",\n        \"localizedValue\": \"string\"\n      },\n      \"subStatus\": {\n        \"value\": \"string\",\n        \"localizedValue\": \"string\"\n      },\n      \"eventTimestamp\": \"1994-05-14T18:52:49.034Z\",\n      \"submissionTimestamp\": \"1980-03-03T18:42:25.611Z\",\n      \"subscriptionId\": \"string\",\n      \"tenantId\": \"string\"\n    },\n    {\n      \"authorization\": {\n        \"action\": \"string\",\n        \"role\": \"string\",\n        \"scope\": \"string\"\n      },\n      \"claims\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      },\n      \"caller\": \"string\",\n      \"description\": \"string\",\n      \"id\": \"string\",\n      \"eventDataId\": \"string\",\n      \"correlationId\": \"string\",\n      \"eventName\": {\n        \"value\": \"string\",\n        \"localizedValue\": \"string\"\n      },\n      \"category\": {\n        \"value\": \"string\",\n        \"localizedValue\": \"string\"\n      },\n      \"httpRequest\": {\n        \"clientRequestId\": \"string\",\n        \"clientIpAddress\": \"string\",\n        \"method\": \"string\",\n        \"uri\": \"string\"\n      },\n      \"level\": \"Critical\",\n      \"resourceGroupName\": \"string\",\n      \"resourceProviderName\": {\n        \"value\": \"string\",\n        \"localizedValue\": \"string\"\n      },\n      \"resourceId\": \"string\",\n      \"resourceType\": {\n        \"value\": \"string\",\n        \"localizedValue\": \"string\"\n      },\n      \"operationId\": \"string\",\n      \"operationName\": {\n        \"value\": \"string\",\n        \"localizedValue\": \"string\"\n      },\n      \"properties\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": \"string\"\n      },\n      \"status\": {\n        \"value\": \"string\",\n        \"localizedValue\": \"string\"\n      },\n      \"subStatus\": {\n        \"value\": \"string\",\n        \"localizedValue\": \"string\"\n      },\n      \"eventTimestamp\": \"1992-05-07T13:04:22.417Z\",\n      \"submissionTimestamp\": \"1973-11-08T21:48:02.823Z\",\n      \"subscriptionId\": \"string\",\n      \"tenantId\": \"string\"\n    }\n  ],\n  \"nextLink\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a322db67-6446-4778-946b-81a2c990ae05",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "providers",
+                    "Microsoft.Insights",
+                    "eventtypes",
+                    "management",
+                    "values"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2015-04-01"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://management.azure.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://management.azure.com/.default"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "60bc3e70-efe3-4e8e-9302-eab1e7194311",
+    "name": "Azure Monitor Activity Log API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Access Azure Activity Log events for subscription-level operations including resource creation, updates, deletions, and administrative actions.\n\nContact Support:\n Name: Microsoft Azure Support",
+      "type": "text/plain"
+    }
+  }
+}
