@@ -364,47 +364,36 @@ apis:
 common:
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/azure-monitor/overview
-  - type: ArazzoWorkflows
-    url: arazzo/
-    workflows:
-      - url: arazzo/microsoft-azure-monitor-action-group-lifecycle-workflow.yml
-        name: Azure Monitor Action Group Lifecycle
-        summary: Create an action group, read it back, and send a test notification to validate its receivers.
-      - url: arazzo/microsoft-azure-monitor-action-group-receiver-recovery-workflow.yml
-        name: Azure Monitor Action Group Receiver Recovery
-        summary: Read an action group, then re-enable a receiver that had been unsubscribed.
-      - url: arazzo/microsoft-azure-monitor-action-group-with-metric-alert-workflow.yml
-        name: Azure Monitor Action Group With Metric Alert
-        summary: Create an action group, attach it to a new classic metric alert rule, and confirm the rule.
-      - url: arazzo/microsoft-azure-monitor-activity-log-to-metrics-workflow.yml
-        name: Azure Monitor Activity Log To Metrics
-        summary: >-
-          Pull recent Activity Log events for a subscription, then drill into a resource's metric definitions and
-          values.
-      - url: arazzo/microsoft-azure-monitor-alert-rule-audit-workflow.yml
-        name: Azure Monitor Alert Rule Audit
-        summary: >-
-          List classic alert rules in a resource group, branch on whether any exist, then inspect and re-tag the first
-          rule.
-      - url: arazzo/microsoft-azure-monitor-autoscale-inventory-reconfigure-workflow.yml
-        name: Azure Monitor Autoscale Inventory And Reconfigure
-        summary: >-
-          List autoscale settings in a resource group, branch on whether any exist, then inspect and disable a named
-          setting.
-      - url: arazzo/microsoft-azure-monitor-autoscale-setting-provision-workflow.yml
-        name: Azure Monitor Autoscale Setting Provision
-        summary: Create an autoscale setting with a CPU-driven scale rule, confirm it, and pull its predictive metrics.
-      - url: arazzo/microsoft-azure-monitor-batch-metrics-query-workflow.yml
-        name: Azure Monitor Batch Metrics Query
-        summary: Resolve a resource's metric definitions, then batch-query the same metric across many resources at once.
-      - url: arazzo/microsoft-azure-monitor-diagnostic-setting-provision-workflow.yml
-        name: Azure Monitor Diagnostic Setting Provision
-        summary: >-
-          Inventory existing diagnostic settings on a resource, route its logs and metrics to a destination, and
-          confirm.
-      - url: arazzo/microsoft-azure-monitor-resource-metrics-explorer-workflow.yml
-        name: Azure Monitor Resource Metrics Explorer
-        summary: Discover the metric definitions available for a resource and then pull the metric values for them.
+  - type: Arazzo
+    url: arazzo/microsoft-azure-monitor-action-group-lifecycle-workflow.yml
+    name: Azure Monitor Action Group Lifecycle
+  - type: Arazzo
+    url: arazzo/microsoft-azure-monitor-action-group-receiver-recovery-workflow.yml
+    name: Azure Monitor Action Group Receiver Recovery
+  - type: Arazzo
+    url: arazzo/microsoft-azure-monitor-action-group-with-metric-alert-workflow.yml
+    name: Azure Monitor Action Group With Metric Alert
+  - type: Arazzo
+    url: arazzo/microsoft-azure-monitor-activity-log-to-metrics-workflow.yml
+    name: Azure Monitor Activity Log To Metrics
+  - type: Arazzo
+    url: arazzo/microsoft-azure-monitor-alert-rule-audit-workflow.yml
+    name: Azure Monitor Alert Rule Audit
+  - type: Arazzo
+    url: arazzo/microsoft-azure-monitor-autoscale-inventory-reconfigure-workflow.yml
+    name: Azure Monitor Autoscale Inventory And Reconfigure
+  - type: Arazzo
+    url: arazzo/microsoft-azure-monitor-autoscale-setting-provision-workflow.yml
+    name: Azure Monitor Autoscale Setting Provision
+  - type: Arazzo
+    url: arazzo/microsoft-azure-monitor-batch-metrics-query-workflow.yml
+    name: Azure Monitor Batch Metrics Query
+  - type: Arazzo
+    url: arazzo/microsoft-azure-monitor-diagnostic-setting-provision-workflow.yml
+    name: Azure Monitor Diagnostic Setting Provision
+  - type: Arazzo
+    url: arazzo/microsoft-azure-monitor-resource-metrics-explorer-workflow.yml
+    name: Azure Monitor Resource Metrics Explorer
   - type: Portal
     url: https://portal.azure.com
   - type: Documentation
@@ -437,7 +426,7 @@ common:
     url: https://azure.microsoft.com/en-us/products/monitor
   - type: Login
     url: https://portal.azure.com
-  - type: SignUp
+  - type: Signup
     url: https://azure.microsoft.com/en-us/free
   - type: JSONLD
     url: json-ld/azure-monitor-context.jsonld
