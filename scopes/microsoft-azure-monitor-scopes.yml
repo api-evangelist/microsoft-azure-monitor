@@ -1,0 +1,122 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/azure-monitor-action-groups-openapi.yml, openapi/azure-monitor-activity-log-openapi.yml,
+  openapi/azure-monitor-alerts-openapi.yml, openapi/azure-monitor-application-insights-openapi.yml,
+  openapi/azure-monitor-autoscale-openapi.yml, openapi/azure-monitor-data-collection-endpoints-openapi.yml,
+  openapi/azure-monitor-data-collection-rules-openapi.yml, openapi/azure-monitor-diagnostic-settings-openapi.yml,
+  openapi/azure-monitor-logs-ingestion-openapi.yml, openapi/azure-monitor-logs-openapi.yml,
+  openapi/azure-monitor-metric-definitions-openapi.yml, openapi/azure-monitor-metrics-batch-openapi.yml,
+  openapi/azure-monitor-metrics-openapi.yml, openapi/azure-monitor-private-link-scopes-openapi.yml,
+  openapi/azure-monitor-scheduled-query-rules-openapi.yml
+schemes:
+- name: oauth2
+  source: openapi/azure-monitor-action-groups-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+- name: oauth2
+  source: openapi/azure-monitor-activity-log-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+- name: oauth2
+  source: openapi/azure-monitor-alerts-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+- name: oauth2
+  source: openapi/azure-monitor-application-insights-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+- name: oauth2
+  source: openapi/azure-monitor-autoscale-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+- name: oauth2
+  source: openapi/azure-monitor-data-collection-endpoints-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+- name: oauth2
+  source: openapi/azure-monitor-data-collection-rules-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+- name: oauth2
+  source: openapi/azure-monitor-diagnostic-settings-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+- name: oauth2
+  source: openapi/azure-monitor-logs-ingestion-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+- name: oauth2
+  source: openapi/azure-monitor-logs-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+- name: oauth2
+  source: openapi/azure-monitor-metric-definitions-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+- name: oauth2
+  source: openapi/azure-monitor-metrics-batch-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+- name: oauth2
+  source: openapi/azure-monitor-metrics-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+- name: oauth2
+  source: openapi/azure-monitor-private-link-scopes-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+- name: oauth2
+  source: openapi/azure-monitor-scheduled-query-rules-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+scopes:
+- scope: https://api.applicationinsights.io/.default
+  description: Access Application Insights API
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/azure-monitor-application-insights-openapi.yml
+- scope: https://api.loganalytics.io/.default
+  description: Access Log Analytics API
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/azure-monitor-logs-openapi.yml
+- scope: https://management.azure.com/.default
+  description: Access Azure Management API
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/azure-monitor-action-groups-openapi.yml
+  - openapi/azure-monitor-activity-log-openapi.yml
+  - openapi/azure-monitor-alerts-openapi.yml
+  - openapi/azure-monitor-autoscale-openapi.yml
+  - openapi/azure-monitor-data-collection-endpoints-openapi.yml
+  - openapi/azure-monitor-data-collection-rules-openapi.yml
+  - openapi/azure-monitor-diagnostic-settings-openapi.yml
+  - openapi/azure-monitor-metric-definitions-openapi.yml
+  - openapi/azure-monitor-metrics-batch-openapi.yml
+  - openapi/azure-monitor-metrics-openapi.yml
+  - openapi/azure-monitor-private-link-scopes-openapi.yml
+  - openapi/azure-monitor-scheduled-query-rules-openapi.yml
+- scope: https://monitor.azure.com/.default
+  description: Access Azure Monitor ingestion
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/azure-monitor-logs-ingestion-openapi.yml

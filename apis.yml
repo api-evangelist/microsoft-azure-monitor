@@ -362,6 +362,8 @@ apis:
       - type: Reference
         url: https://learn.microsoft.com/en-us/azure/azure-monitor/logs/private-link-design
 common:
+  - type: OAuthScopes
+    url: scopes/microsoft-azure-monitor-scopes.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/azure-monitor/overview
   - type: Arazzo
