@@ -362,6 +362,10 @@ apis:
       - type: Reference
         url: https://learn.microsoft.com/en-us/azure/azure-monitor/logs/private-link-design
 common:
+  - type: DomainSecurity
+    url: security/microsoft-azure-monitor-domain-security.yml
+  - type: Authentication
+    url: authentication/microsoft-azure-monitor-authentication.yml
   - type: OAuthScopes
     url: scopes/microsoft-azure-monitor-scopes.yml
   - type: PostmanWorkspace
