@@ -362,6 +362,8 @@ apis:
       - type: Reference
         url: https://learn.microsoft.com/en-us/azure/azure-monitor/logs/private-link-design
 common:
+  - type: AgenticAccess
+    url: agentic-access/microsoft-azure-monitor-agentic-access.yml
   - type: DomainSecurity
     url: security/microsoft-azure-monitor-domain-security.yml
   - type: Authentication
