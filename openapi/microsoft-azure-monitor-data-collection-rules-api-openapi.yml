@@ -1,10 +1,8 @@
 openapi: 3.1.0
 info:
-  title: Azure Monitor Data Collection Rules API
-  description: >-
-    Create and manage data collection rules that define how data is collected,
-    transformed, and routed to destinations within Azure Monitor.
-  version: '2023-03-11'
+  title: Azure Monitor Action Groups Data Collection Rules API
+  description: Create and manage action groups that define notification and automation actions triggered by Azure Monitor alerts, including email, SMS, webhooks, and Azure Functions.
+  version: '2022-06-01'
   contact:
     name: Microsoft Azure Support
     url: https://azure.microsoft.com/en-us/support/options/
@@ -12,26 +10,25 @@ info:
     name: Microsoft API License
     url: https://azure.microsoft.com/en-us/support/legal/
 servers:
-  - url: https://management.azure.com
-    description: Azure Resource Manager
+- url: https://management.azure.com
+  description: Azure Resource Manager
 security:
-  - oauth2:
-      - https://management.azure.com/.default
+- oauth2:
+  - https://management.azure.com/.default
 tags:
-  - name: Data Collection Rules
-    description: Operations for managing data collection rules
+- name: Data Collection Rules
+  description: Operations for managing data collection rules
 paths:
   /subscriptions/{subscriptionId}/providers/Microsoft.Insights/dataCollectionRules:
     get:
       operationId: DataCollectionRules_ListBySubscription
       summary: Azure Monitor List data collection rules in a subscription
-      description: >-
-        Lists all data collection rules in the specified subscription.
+      description: Lists all data collection rules in the specified subscription.
       tags:
-        - Data Collection Rules
+      - Data Collection Rules
       parameters:
-        - $ref: '#/components/parameters/SubscriptionIdParameter'
-        - $ref: '#/components/parameters/ApiVersionParameter'
+      - $ref: '#/components/parameters/SubscriptionIdParameter'
+      - $ref: '#/components/parameters/ApiVersionParameter'
       responses:
         '200':
           description: Successful request to list data collection rules.
@@ -49,14 +46,13 @@ paths:
     get:
       operationId: DataCollectionRules_ListByResourceGroup
       summary: Azure Monitor List data collection rules in a resource group
-      description: >-
-        Lists all data collection rules in the specified resource group.
+      description: Lists all data collection rules in the specified resource group.
       tags:
-        - Data Collection Rules
+      - Data Collection Rules
       parameters:
-        - $ref: '#/components/parameters/SubscriptionIdParameter'
-        - $ref: '#/components/parameters/ResourceGroupNameParameter'
-        - $ref: '#/components/parameters/ApiVersionParameter'
+      - $ref: '#/components/parameters/SubscriptionIdParameter'
+      - $ref: '#/components/parameters/ResourceGroupNameParameter'
+      - $ref: '#/components/parameters/ApiVersionParameter'
       responses:
         '200':
           description: Successful request to list data collection rules.
@@ -74,15 +70,14 @@ paths:
   : get:
       operationId: DataCollectionRules_Get
       summary: Azure Monitor Get a data collection rule
-      description: >-
-        Returns the specified data collection rule.
+      description: Returns the specified data collection rule.
       tags:
-        - Data Collection Rules
+      - Data Collection Rules
       parameters:
-        - $ref: '#/components/parameters/SubscriptionIdParameter'
-        - $ref: '#/components/parameters/ResourceGroupNameParameter'
-        - $ref: '#/components/parameters/DataCollectionRuleNameParameter'
-        - $ref: '#/components/parameters/ApiVersionParameter'
+      - $ref: '#/components/parameters/SubscriptionIdParameter'
+      - $ref: '#/components/parameters/ResourceGroupNameParameter'
+      - $ref: '#/components/parameters/DataCollectionRuleNameParameter'
+      - $ref: '#/components/parameters/ApiVersionParameter'
       responses:
         '200':
           description: Successful request to get a data collection rule.
@@ -99,17 +94,14 @@ paths:
     put:
       operationId: DataCollectionRules_Create
       summary: Azure Monitor Create or update a data collection rule
-      description: >-
-        Creates or updates a data collection rule. Data collection rules define
-        the data sources, transformations, and destinations for data collection
-        in Azure Monitor.
+      description: Creates or updates a data collection rule. Data collection rules define the data sources, transformations, and destinations for data collection in Azure Monitor.
       tags:
-        - Data Collection Rules
+      - Data Collection Rules
       parameters:
-        - $ref: '#/components/parameters/SubscriptionIdParameter'
-        - $ref: '#/components/parameters/ResourceGroupNameParameter'
-        - $ref: '#/components/parameters/DataCollectionRuleNameParameter'
-        - $ref: '#/components/parameters/ApiVersionParameter'
+      - $ref: '#/components/parameters/SubscriptionIdParameter'
+      - $ref: '#/components/parameters/ResourceGroupNameParameter'
+      - $ref: '#/components/parameters/DataCollectionRuleNameParameter'
+      - $ref: '#/components/parameters/ApiVersionParameter'
       requestBody:
         description: The data collection rule to create or update.
         required: true
@@ -139,16 +131,14 @@ paths:
     patch:
       operationId: DataCollectionRules_Update
       summary: Azure Monitor Update a data collection rule
-      description: >-
-        Updates part of a data collection rule. Only tags and identity can be
-        updated via PATCH.
+      description: Updates part of a data collection rule. Only tags and identity can be updated via PATCH.
       tags:
-        - Data Collection Rules
+      - Data Collection Rules
       parameters:
-        - $ref: '#/components/parameters/SubscriptionIdParameter'
-        - $ref: '#/components/parameters/ResourceGroupNameParameter'
-        - $ref: '#/components/parameters/DataCollectionRuleNameParameter'
-        - $ref: '#/components/parameters/ApiVersionParameter'
+      - $ref: '#/components/parameters/SubscriptionIdParameter'
+      - $ref: '#/components/parameters/ResourceGroupNameParameter'
+      - $ref: '#/components/parameters/DataCollectionRuleNameParameter'
+      - $ref: '#/components/parameters/ApiVersionParameter'
       requestBody:
         description: The data collection rule properties to update.
         required: true
@@ -172,15 +162,14 @@ paths:
     delete:
       operationId: DataCollectionRules_Delete
       summary: Azure Monitor Delete a data collection rule
-      description: >-
-        Deletes a data collection rule.
+      description: Deletes a data collection rule.
       tags:
-        - Data Collection Rules
+      - Data Collection Rules
       parameters:
-        - $ref: '#/components/parameters/SubscriptionIdParameter'
-        - $ref: '#/components/parameters/ResourceGroupNameParameter'
-        - $ref: '#/components/parameters/DataCollectionRuleNameParameter'
-        - $ref: '#/components/parameters/ApiVersionParameter'
+      - $ref: '#/components/parameters/SubscriptionIdParameter'
+      - $ref: '#/components/parameters/ResourceGroupNameParameter'
+      - $ref: '#/components/parameters/DataCollectionRuleNameParameter'
+      - $ref: '#/components/parameters/ApiVersionParameter'
       responses:
         '200':
           description: Successfully deleted the data collection rule.
@@ -193,20 +182,20 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
-  securitySchemes:
-    oauth2:
-      type: oauth2
-      flows:
-        clientCredentials:
-          tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
-          scopes:
-            https://management.azure.com/.default: Access Azure Management API
   parameters:
-    SubscriptionIdParameter:
-      name: subscriptionId
+    ApiVersionParameter:
+      name: api-version
+      in: query
+      required: true
+      description: The API version to use for this operation.
+      schema:
+        type: string
+        default: '2023-03-11'
+    DataCollectionRuleNameParameter:
+      name: dataCollectionRuleName
       in: path
       required: true
-      description: The ID of the target subscription.
+      description: The name of the data collection rule.
       schema:
         type: string
     ResourceGroupNameParameter:
@@ -216,26 +205,18 @@ components:
       description: The name of the resource group.
       schema:
         type: string
-    DataCollectionRuleNameParameter:
-      name: dataCollectionRuleName
+    SubscriptionIdParameter:
+      name: subscriptionId
       in: path
       required: true
-      description: The name of the data collection rule.
+      description: The ID of the target subscription.
       schema:
         type: string
-    ApiVersionParameter:
-      name: api-version
-      in: query
-      required: true
-      description: The API version to use for this operation.
-      schema:
-        type: string
-        default: '2023-03-11'
   schemas:
     DataCollectionRuleResource:
       type: object
       required:
-        - location
+      - location
       properties:
         id:
           type: string
@@ -260,8 +241,8 @@ components:
         kind:
           type: string
           enum:
-            - Linux
-            - Windows
+          - Linux
+          - Windows
           description: The kind of the resource.
         identity:
           $ref: '#/components/schemas/ManagedServiceIdentity'
@@ -269,64 +250,6 @@ components:
           $ref: '#/components/schemas/DataCollectionRule'
         systemData:
           $ref: '#/components/schemas/SystemData'
-    DataCollectionRule:
-      type: object
-      properties:
-        description:
-          type: string
-          description: Description of the data collection rule.
-        immutableId:
-          type: string
-          readOnly: true
-          description: The immutable ID of this data collection rule.
-        dataCollectionEndpointId:
-          type: string
-          description: The resource ID of the data collection endpoint.
-        streamDeclarations:
-          type: object
-          additionalProperties:
-            type: object
-            properties:
-              columns:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                      description: The name of the column.
-                    type:
-                      type: string
-                      enum:
-                        - string
-                        - int
-                        - long
-                        - real
-                        - boolean
-                        - datetime
-                        - dynamic
-                      description: The type of the column data.
-          description: Declaration of custom streams used in this rule.
-        dataSources:
-          $ref: '#/components/schemas/DataSources'
-        destinations:
-          $ref: '#/components/schemas/Destinations'
-        dataFlows:
-          type: array
-          items:
-            $ref: '#/components/schemas/DataFlow'
-          description: The specification of data flows.
-        provisioningState:
-          type: string
-          readOnly: true
-          enum:
-            - Creating
-            - Updating
-            - Deleting
-            - Succeeded
-            - Canceled
-            - Failed
-          description: The resource provisioning state.
     DataSources:
       type: object
       properties:
@@ -426,7 +349,7 @@ components:
               format:
                 type: string
                 enum:
-                  - text
+                - text
               settings:
                 type: object
                 properties:
@@ -436,6 +359,195 @@ components:
                       recordStartTimestampFormat:
                         type: string
           description: The list of Log file data sources.
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+            message:
+              type: string
+              description: Error message.
+            target:
+              type: string
+              description: The target of the error.
+            details:
+              type: array
+              items:
+                type: object
+                properties:
+                  code:
+                    type: string
+                  message:
+                    type: string
+                  target:
+                    type: string
+    DataCollectionRule:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Description of the data collection rule.
+        immutableId:
+          type: string
+          readOnly: true
+          description: The immutable ID of this data collection rule.
+        dataCollectionEndpointId:
+          type: string
+          description: The resource ID of the data collection endpoint.
+        streamDeclarations:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              columns:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      description: The name of the column.
+                    type:
+                      type: string
+                      enum:
+                      - string
+                      - int
+                      - long
+                      - real
+                      - boolean
+                      - datetime
+                      - dynamic
+                      description: The type of the column data.
+          description: Declaration of custom streams used in this rule.
+        dataSources:
+          $ref: '#/components/schemas/DataSources'
+        destinations:
+          $ref: '#/components/schemas/Destinations'
+        dataFlows:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataFlow'
+          description: The specification of data flows.
+        provisioningState:
+          type: string
+          readOnly: true
+          enum:
+          - Creating
+          - Updating
+          - Deleting
+          - Succeeded
+          - Canceled
+          - Failed
+          description: The resource provisioning state.
+    ResourceForUpdate:
+      type: object
+      properties:
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          description: Resource tags.
+        identity:
+          $ref: '#/components/schemas/ManagedServiceIdentity'
+    SystemData:
+      type: object
+      properties:
+        createdBy:
+          type: string
+        createdByType:
+          type: string
+          enum:
+          - User
+          - Application
+          - ManagedIdentity
+          - Key
+        createdAt:
+          type: string
+          format: date-time
+        lastModifiedBy:
+          type: string
+        lastModifiedByType:
+          type: string
+          enum:
+          - User
+          - Application
+          - ManagedIdentity
+          - Key
+        lastModifiedAt:
+          type: string
+          format: date-time
+    ManagedServiceIdentity:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum:
+          - None
+          - SystemAssigned
+          - UserAssigned
+          - SystemAssigned,UserAssigned
+          description: Type of managed service identity.
+        principalId:
+          type: string
+          readOnly: true
+          description: The service principal ID of the system-assigned identity.
+        tenantId:
+          type: string
+          readOnly: true
+          description: The tenant ID of the system-assigned identity.
+        userAssignedIdentities:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              principalId:
+                type: string
+                readOnly: true
+              clientId:
+                type: string
+                readOnly: true
+          description: The set of user-assigned identities.
+    DataFlow:
+      type: object
+      properties:
+        streams:
+          type: array
+          items:
+            type: string
+          description: List of streams for this data flow.
+        destinations:
+          type: array
+          items:
+            type: string
+          description: List of destinations for this data flow.
+        transformKql:
+          type: string
+          description: The KQL query to transform stream data.
+        outputStream:
+          type: string
+          description: The output stream of the transform.
+        builtInTransform:
+          type: string
+          description: The built-in transform to apply.
+    DataCollectionRuleResourceListResult:
+      type: object
+      required:
+      - value
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataCollectionRuleResource'
+          description: A list of data collection rules.
+        nextLink:
+          type: string
+          description: The URI to fetch the next page.
     Destinations:
       type: object
       properties:
@@ -519,135 +631,11 @@ components:
               name:
                 type: string
           description: List of Storage Table Direct destinations.
-    DataFlow:
-      type: object
-      properties:
-        streams:
-          type: array
-          items:
-            type: string
-          description: List of streams for this data flow.
-        destinations:
-          type: array
-          items:
-            type: string
-          description: List of destinations for this data flow.
-        transformKql:
-          type: string
-          description: The KQL query to transform stream data.
-        outputStream:
-          type: string
-          description: The output stream of the transform.
-        builtInTransform:
-          type: string
-          description: The built-in transform to apply.
-    ManagedServiceIdentity:
-      type: object
-      required:
-        - type
-      properties:
-        type:
-          type: string
-          enum:
-            - None
-            - SystemAssigned
-            - UserAssigned
-            - SystemAssigned,UserAssigned
-          description: >-
-            Type of managed service identity.
-        principalId:
-          type: string
-          readOnly: true
-          description: The service principal ID of the system-assigned identity.
-        tenantId:
-          type: string
-          readOnly: true
-          description: The tenant ID of the system-assigned identity.
-        userAssignedIdentities:
-          type: object
-          additionalProperties:
-            type: object
-            properties:
-              principalId:
-                type: string
-                readOnly: true
-              clientId:
-                type: string
-                readOnly: true
-          description: The set of user-assigned identities.
-    ResourceForUpdate:
-      type: object
-      properties:
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-          description: Resource tags.
-        identity:
-          $ref: '#/components/schemas/ManagedServiceIdentity'
-    SystemData:
-      type: object
-      properties:
-        createdBy:
-          type: string
-        createdByType:
-          type: string
-          enum:
-            - User
-            - Application
-            - ManagedIdentity
-            - Key
-        createdAt:
-          type: string
-          format: date-time
-        lastModifiedBy:
-          type: string
-        lastModifiedByType:
-          type: string
-          enum:
-            - User
-            - Application
-            - ManagedIdentity
-            - Key
-        lastModifiedAt:
-          type: string
-          format: date-time
-    DataCollectionRuleResourceListResult:
-      type: object
-      required:
-        - value
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/DataCollectionRuleResource'
-          description: A list of data collection rules.
-        nextLink:
-          type: string
-          description: The URI to fetch the next page.
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code.
-            message:
-              type: string
-              description: Error message.
-            target:
-              type: string
-              description: The target of the error.
-            details:
-              type: array
-              items:
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
-                  target:
-                    type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+          scopes:
+            https://management.azure.com/.default: Access Azure Management API

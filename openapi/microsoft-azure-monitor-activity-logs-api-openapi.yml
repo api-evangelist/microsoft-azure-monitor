@@ -1,10 +1,8 @@
 openapi: 3.1.0
 info:
-  title: Azure Monitor Activity Log API
-  description: >-
-    Access Azure Activity Log events for subscription-level operations including
-    resource creation, updates, deletions, and administrative actions.
-  version: '2015-04-01'
+  title: Azure Monitor Action Groups Activity Logs API
+  description: Create and manage action groups that define notification and automation actions triggered by Azure Monitor alerts, including email, SMS, webhooks, and Azure Functions.
+  version: '2022-06-01'
   contact:
     name: Microsoft Azure Support
     url: https://azure.microsoft.com/en-us/support/options/
@@ -12,47 +10,37 @@ info:
     name: Microsoft API License
     url: https://azure.microsoft.com/en-us/support/legal/
 servers:
-  - url: https://management.azure.com
-    description: Azure Resource Manager
+- url: https://management.azure.com
+  description: Azure Resource Manager
 security:
-  - oauth2:
-      - https://management.azure.com/.default
+- oauth2:
+  - https://management.azure.com/.default
 tags:
-  - name: Activity Logs
-    description: Operations for querying Azure Activity Log events
+- name: Activity Logs
+  description: Operations for querying Azure Activity Log events
 paths:
   /subscriptions/{subscriptionId}/providers/Microsoft.Insights/eventtypes/management/values:
     get:
       operationId: ActivityLogs_List
       summary: Azure Monitor List Activity Log events
-      description: >-
-        Provides the list of records from the Activity Log. The $filter parameter
-        is required and must include a time range. Optionally filter by resource
-        group, resource, resource provider, or event status.
+      description: Provides the list of records from the Activity Log. The $filter parameter is required and must include a time range. Optionally filter by resource group, resource, resource provider, or event status.
       tags:
-        - Activity Logs
+      - Activity Logs
       parameters:
-        - $ref: '#/components/parameters/SubscriptionIdParameter'
-        - $ref: '#/components/parameters/ApiVersionParameter'
-        - name: $filter
-          in: query
-          required: true
-          description: >-
-            Reduces the set of data collected. Must include a time range filter
-            using eventTimestamp. Supports filtering by resourceGroupName,
-            resourceUri, resourceProvider, eventChannels, status, subStatus,
-            correlationId, and caller. Example:
-            eventTimestamp ge '2024-01-01' and eventTimestamp le '2024-01-02'.
-          schema:
-            type: string
-        - name: $select
-          in: query
-          required: false
-          description: >-
-            Used to fetch events with only the given properties. Accepts a
-            comma-separated list of property names.
-          schema:
-            type: string
+      - $ref: '#/components/parameters/SubscriptionIdParameter'
+      - $ref: '#/components/parameters/ApiVersionParameter'
+      - name: $filter
+        in: query
+        required: true
+        description: 'Reduces the set of data collected. Must include a time range filter using eventTimestamp. Supports filtering by resourceGroupName, resourceUri, resourceProvider, eventChannels, status, subStatus, correlationId, and caller. Example: eventTimestamp ge ''2024-01-01'' and eventTimestamp le ''2024-01-02''.'
+        schema:
+          type: string
+      - name: $select
+        in: query
+        required: false
+        description: Used to fetch events with only the given properties. Accepts a comma-separated list of property names.
+        schema:
+          type: string
       responses:
         '200':
           description: Successful request to list Activity Log events.
@@ -67,22 +55,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
-  securitySchemes:
-    oauth2:
-      type: oauth2
-      flows:
-        clientCredentials:
-          tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
-          scopes:
-            https://management.azure.com/.default: Access Azure Management API
   parameters:
-    SubscriptionIdParameter:
-      name: subscriptionId
-      in: path
-      required: true
-      description: The ID of the target subscription.
-      schema:
-        type: string
     ApiVersionParameter:
       name: api-version
       in: query
@@ -91,20 +64,14 @@ components:
       schema:
         type: string
         default: '2015-04-01'
+    SubscriptionIdParameter:
+      name: subscriptionId
+      in: path
+      required: true
+      description: The ID of the target subscription.
+      schema:
+        type: string
   schemas:
-    EventDataCollection:
-      type: object
-      required:
-        - value
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/EventData'
-          description: The collection of events.
-        nextLink:
-          type: string
-          description: Provides the link to retrieve the next set of events.
     EventData:
       type: object
       properties:
@@ -183,11 +150,11 @@ components:
           type: string
           readOnly: true
           enum:
-            - Critical
-            - Error
-            - Warning
-            - Informational
-            - Verbose
+          - Critical
+          - Error
+          - Warning
+          - Informational
+          - Verbose
           description: The event level.
         resourceGroupName:
           type: string
@@ -279,3 +246,24 @@ components:
         message:
           type: string
           description: Error message indicating why the operation failed.
+    EventDataCollection:
+      type: object
+      required:
+      - value
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventData'
+          description: The collection of events.
+        nextLink:
+          type: string
+          description: Provides the link to retrieve the next set of events.
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+          scopes:
+            https://management.azure.com/.default: Access Azure Management API

@@ -1,0 +1,312 @@
+openapi: 3.1.0
+info:
+  title: Azure Monitor Action Groups Query API
+  description: Create and manage action groups that define notification and automation actions triggered by Azure Monitor alerts, including email, SMS, webhooks, and Azure Functions.
+  version: '2022-06-01'
+  contact:
+    name: Microsoft Azure Support
+    url: https://azure.microsoft.com/en-us/support/options/
+  license:
+    name: Microsoft API License
+    url: https://azure.microsoft.com/en-us/support/legal/
+servers:
+- url: https://management.azure.com
+  description: Azure Resource Manager
+security:
+- oauth2:
+  - https://management.azure.com/.default
+tags:
+- name: Query
+  description: Operations for querying Application Insights telemetry data
+paths:
+  /apps/{appId}/query:
+    get:
+      operationId: Query_Get
+      summary: Azure Monitor Execute an Application Insights query via GET
+      description: Executes an Analytics query against Application Insights data using Kusto Query Language (KQL). The query is provided as a query parameter.
+      tags:
+      - Query
+      parameters:
+      - $ref: '#/components/parameters/AppIdParameter'
+      - name: query
+        in: query
+        required: true
+        description: The Analytics query in KQL format.
+        schema:
+          type: string
+      - name: timespan
+        in: query
+        required: false
+        description: The timespan over which to query data in ISO 8601 duration format.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful query response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResults'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      operationId: Query_Execute
+      summary: Azure Monitor Execute an Application Insights query via POST
+      description: Executes an Analytics query against Application Insights data using Kusto Query Language (KQL). The query is provided in the request body.
+      tags:
+      - Query
+      parameters:
+      - $ref: '#/components/parameters/AppIdParameter'
+      requestBody:
+        description: The Analytics query request body.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryBody'
+      responses:
+        '200':
+          description: Successful query response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResults'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /workspaces/{workspaceId}/query:
+    get:
+      operationId: Query_Get
+      summary: Azure Monitor Execute a Log Analytics query via GET
+      description: Executes an Analytics query for data from a Log Analytics workspace using Kusto Query Language (KQL). The query is provided as a query parameter.
+      tags:
+      - Query
+      parameters:
+      - $ref: '#/components/parameters/WorkspaceIdParameter'
+      - name: query
+        in: query
+        required: true
+        description: The Analytics query in KQL format.
+        schema:
+          type: string
+      - name: timespan
+        in: query
+        required: false
+        description: The timespan over which to query data in ISO 8601 duration format.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful query response containing table results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResults_2'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      operationId: Query_Execute
+      summary: Azure Monitor Execute a Log Analytics query via POST
+      description: Executes an Analytics query for data from a Log Analytics workspace using Kusto Query Language (KQL). The query is provided in the request body along with optional parameters.
+      tags:
+      - Query
+      parameters:
+      - $ref: '#/components/parameters/WorkspaceIdParameter'
+      requestBody:
+        description: The Analytics query body containing query text and parameters.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryBody_2'
+      responses:
+        '200':
+          description: Successful query response containing table results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResults_2'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  parameters:
+    AppIdParameter:
+      name: appId
+      in: path
+      required: true
+      description: ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal.
+      schema:
+        type: string
+    WorkspaceIdParameter:
+      name: workspaceId
+      in: path
+      required: true
+      description: ID of the workspace. This is the Workspace ID from the Properties blade in the Azure portal.
+      schema:
+        type: string
+        format: uuid
+  schemas:
+    Table:
+      type: object
+      required:
+      - name
+      - columns
+      - rows
+      properties:
+        name:
+          type: string
+          description: The name of the table.
+        columns:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: The name of the column.
+              type:
+                type: string
+                description: The data type of the column.
+          description: The list of columns in this table.
+        rows:
+          type: array
+          items:
+            type: array
+            items: {}
+          description: The resulting rows from the query.
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+            message:
+              type: string
+              description: Error message.
+          required:
+          - code
+          - message
+    Table_2:
+      type: object
+      required:
+      - name
+      - columns
+      - rows
+      properties:
+        name:
+          type: string
+          description: The name of the table.
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/Column'
+          description: The list of columns in this table.
+        rows:
+          type: array
+          items:
+            type: array
+            items: {}
+          description: The resulting rows from this query. Each row is an array of values.
+    QueryResults:
+      type: object
+      required:
+      - tables
+      properties:
+        tables:
+          type: array
+          items:
+            $ref: '#/components/schemas/Table'
+          description: The list of tables, columns and rows.
+    QueryBody:
+      type: object
+      required:
+      - query
+      properties:
+        query:
+          type: string
+          description: The Analytics query in KQL format.
+        timespan:
+          type: string
+          description: The timespan over which to query data.
+        applications:
+          type: array
+          items:
+            type: string
+          description: A list of Application Insights application IDs for cross-application queries.
+    QueryBody_2:
+      type: object
+      required:
+      - query
+      properties:
+        query:
+          type: string
+          description: The Analytics query in KQL format.
+        timespan:
+          type: string
+          description: The timespan over which to query data in ISO 8601 duration format.
+        workspaces:
+          type: array
+          items:
+            type: string
+          description: A list of workspaces included in cross-workspace queries.
+        applications:
+          type: array
+          items:
+            type: string
+          description: A list of Application Insights applications for cross-application queries.
+    Column:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of this column.
+        type:
+          type: string
+          enum:
+          - bool
+          - datetime
+          - dynamic
+          - int
+          - long
+          - real
+          - string
+          - guid
+          - decimal
+          - timespan
+          description: The data type of this column.
+    QueryResults_2:
+      type: object
+      required:
+      - tables
+      properties:
+        tables:
+          type: array
+          items:
+            $ref: '#/components/schemas/Table_2'
+          description: The list of tables, columns and rows returned by the query.
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+          scopes:
+            https://management.azure.com/.default: Access Azure Management API

@@ -1,11 +1,8 @@
 openapi: 3.1.0
 info:
-  title: Azure Monitor Alerts API
-  description: >-
-    Create, update, and manage classic metric alert rules for monitoring Azure
-    resources. Supports threshold-based alerts on resource metrics with
-    configurable conditions and actions.
-  version: '2016-03-01'
+  title: Azure Monitor Action Groups Alert Rules API
+  description: Create and manage action groups that define notification and automation actions triggered by Azure Monitor alerts, including email, SMS, webhooks, and Azure Functions.
+  version: '2022-06-01'
   contact:
     name: Microsoft Azure Support
     url: https://azure.microsoft.com/en-us/support/options/
@@ -13,30 +10,27 @@ info:
     name: Microsoft API License
     url: https://azure.microsoft.com/en-us/support/legal/
 servers:
-  - url: https://management.azure.com
-    description: Azure Resource Manager
+- url: https://management.azure.com
+  description: Azure Resource Manager
 security:
-  - oauth2:
-      - https://management.azure.com/.default
+- oauth2:
+  - https://management.azure.com/.default
 tags:
-  - name: Alert Rules
-    description: Operations for managing classic metric alert rules
+- name: Alert Rules
+  description: Operations for managing classic metric alert rules
 paths:
   /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/alertrules/{ruleName}:
     put:
       operationId: AlertRules_CreateOrUpdate
       summary: Azure Monitor Create or update a classic metric alert rule
-      description: >-
-        Creates or updates a classic metric alert rule. Classic alert rules
-        evaluate metrics at regular intervals and trigger actions when conditions
-        are met.
+      description: Creates or updates a classic metric alert rule. Classic alert rules evaluate metrics at regular intervals and trigger actions when conditions are met.
       tags:
-        - Alert Rules
+      - Alert Rules
       parameters:
-        - $ref: '#/components/parameters/ResourceGroupNameParameter'
-        - $ref: '#/components/parameters/RuleNameParameter'
-        - $ref: '#/components/parameters/SubscriptionIdParameter'
-        - $ref: '#/components/parameters/ApiVersionParameter'
+      - $ref: '#/components/parameters/ResourceGroupNameParameter'
+      - $ref: '#/components/parameters/RuleNameParameter'
+      - $ref: '#/components/parameters/SubscriptionIdParameter'
+      - $ref: '#/components/parameters/ApiVersionParameter'
       requestBody:
         description: The parameters of the rule to create or update.
         required: true
@@ -66,15 +60,14 @@ paths:
     get:
       operationId: AlertRules_Get
       summary: Azure Monitor Get a classic metric alert rule
-      description: >-
-        Gets a classic metric alert rule by name from a specified resource group.
+      description: Gets a classic metric alert rule by name from a specified resource group.
       tags:
-        - Alert Rules
+      - Alert Rules
       parameters:
-        - $ref: '#/components/parameters/ResourceGroupNameParameter'
-        - $ref: '#/components/parameters/RuleNameParameter'
-        - $ref: '#/components/parameters/SubscriptionIdParameter'
-        - $ref: '#/components/parameters/ApiVersionParameter'
+      - $ref: '#/components/parameters/ResourceGroupNameParameter'
+      - $ref: '#/components/parameters/RuleNameParameter'
+      - $ref: '#/components/parameters/SubscriptionIdParameter'
+      - $ref: '#/components/parameters/ApiVersionParameter'
       responses:
         '200':
           description: Successful request to get an alert rule.
@@ -91,15 +84,14 @@ paths:
     delete:
       operationId: AlertRules_Delete
       summary: Azure Monitor Delete a classic metric alert rule
-      description: >-
-        Deletes a classic metric alert rule from a specified resource group.
+      description: Deletes a classic metric alert rule from a specified resource group.
       tags:
-        - Alert Rules
+      - Alert Rules
       parameters:
-        - $ref: '#/components/parameters/ResourceGroupNameParameter'
-        - $ref: '#/components/parameters/RuleNameParameter'
-        - $ref: '#/components/parameters/SubscriptionIdParameter'
-        - $ref: '#/components/parameters/ApiVersionParameter'
+      - $ref: '#/components/parameters/ResourceGroupNameParameter'
+      - $ref: '#/components/parameters/RuleNameParameter'
+      - $ref: '#/components/parameters/SubscriptionIdParameter'
+      - $ref: '#/components/parameters/ApiVersionParameter'
       responses:
         '200':
           description: Successful request to delete an alert rule.
@@ -114,16 +106,14 @@ paths:
     patch:
       operationId: AlertRules_Update
       summary: Azure Monitor Update a classic metric alert rule
-      description: >-
-        Updates an existing classic metric alert rule. This can be used to update
-        tags on the rule resource.
+      description: Updates an existing classic metric alert rule. This can be used to update tags on the rule resource.
       tags:
-        - Alert Rules
+      - Alert Rules
       parameters:
-        - $ref: '#/components/parameters/ResourceGroupNameParameter'
-        - $ref: '#/components/parameters/RuleNameParameter'
-        - $ref: '#/components/parameters/SubscriptionIdParameter'
-        - $ref: '#/components/parameters/ApiVersionParameter'
+      - $ref: '#/components/parameters/ResourceGroupNameParameter'
+      - $ref: '#/components/parameters/RuleNameParameter'
+      - $ref: '#/components/parameters/SubscriptionIdParameter'
+      - $ref: '#/components/parameters/ApiVersionParameter'
       requestBody:
         description: Parameters supplied to the operation.
         required: true
@@ -148,14 +138,13 @@ paths:
     get:
       operationId: AlertRules_ListByResourceGroup
       summary: Azure Monitor List classic alert rules in a resource group
-      description: >-
-        Lists the classic metric alert rules within a resource group.
+      description: Lists the classic metric alert rules within a resource group.
       tags:
-        - Alert Rules
+      - Alert Rules
       parameters:
-        - $ref: '#/components/parameters/ResourceGroupNameParameter'
-        - $ref: '#/components/parameters/SubscriptionIdParameter'
-        - $ref: '#/components/parameters/ApiVersionParameter'
+      - $ref: '#/components/parameters/ResourceGroupNameParameter'
+      - $ref: '#/components/parameters/SubscriptionIdParameter'
+      - $ref: '#/components/parameters/ApiVersionParameter'
       responses:
         '200':
           description: Successful request for a list of alert rules.
@@ -173,13 +162,12 @@ paths:
     get:
       operationId: AlertRules_ListBySubscription
       summary: Azure Monitor List classic alert rules in a subscription
-      description: >-
-        Lists the classic metric alert rules within a subscription.
+      description: Lists the classic metric alert rules within a subscription.
       tags:
-        - Alert Rules
+      - Alert Rules
       parameters:
-        - $ref: '#/components/parameters/SubscriptionIdParameter'
-        - $ref: '#/components/parameters/ApiVersionParameter'
+      - $ref: '#/components/parameters/SubscriptionIdParameter'
+      - $ref: '#/components/parameters/ApiVersionParameter'
       responses:
         '200':
           description: Successful request for a list of alert rules.
@@ -194,27 +182,27 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
-  securitySchemes:
-    oauth2:
-      type: oauth2
-      flows:
-        clientCredentials:
-          tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
-          scopes:
-            https://management.azure.com/.default: Access Azure Management API
   parameters:
-    SubscriptionIdParameter:
-      name: subscriptionId
-      in: path
+    ApiVersionParameter:
+      name: api-version
+      in: query
       required: true
-      description: The ID of the target subscription.
+      description: Client API version.
       schema:
         type: string
+        default: '2016-03-01'
     ResourceGroupNameParameter:
       name: resourceGroupName
       in: path
       required: true
       description: The name of the resource group.
+      schema:
+        type: string
+    SubscriptionIdParameter:
+      name: subscriptionId
+      in: path
+      required: true
+      description: The ID of the target subscription.
       schema:
         type: string
     RuleNameParameter:
@@ -224,20 +212,59 @@ components:
       description: The name of the rule.
       schema:
         type: string
-    ApiVersionParameter:
-      name: api-version
-      in: query
-      required: true
-      description: Client API version.
-      schema:
-        type: string
-        default: '2016-03-01'
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code.
+        message:
+          type: string
+          description: Error message indicating why the operation failed.
+    AlertRuleResourcePatch:
+      type: object
+      properties:
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          description: Resource tags.
+        properties:
+          $ref: '#/components/schemas/AlertRule'
+    RuleDataSource:
+      type: object
+      required:
+      - odata.type
+      properties:
+        odata.type:
+          type: string
+          description: Specifies the type of data source. Possible values include RuleMetricDataSource, RuleManagementEventDataSource.
+        resourceUri:
+          type: string
+          description: The resource identifier of the resource the rule monitors.
+        legacyResourceId:
+          type: string
+          description: The legacy resource identifier of the resource the rule monitors.
+        resourceLocation:
+          type: string
+          description: The location of the resource.
+        metricNamespace:
+          type: string
+          description: The namespace of the metric.
+    RuleAction:
+      type: object
+      required:
+      - odata.type
+      properties:
+        odata.type:
+          type: string
+          description: Specifies the type of action. Possible values include RuleEmailAction and RuleWebhookAction.
     AlertRuleResource:
       type: object
       required:
-        - location
-        - properties
+      - location
+      - properties
       properties:
         id:
           type: string
@@ -264,9 +291,9 @@ components:
     AlertRule:
       type: object
       required:
-        - name
-        - isEnabled
-        - condition
+      - name
+      - isEnabled
+      - condition
       properties:
         name:
           type: string
@@ -291,65 +318,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RuleAction'
-          description: >-
-            The array of actions that are performed when the alert rule becomes active.
-    RuleCondition:
-      type: object
-      required:
-        - odata.type
-      properties:
-        odata.type:
-          type: string
-          description: >-
-            Specifies the type of condition. Possible values include
-            ThresholdRuleCondition, LocationThresholdRuleCondition,
-            ManagementEventRuleCondition.
-        dataSource:
-          $ref: '#/components/schemas/RuleDataSource'
-    RuleDataSource:
-      type: object
-      required:
-        - odata.type
-      properties:
-        odata.type:
-          type: string
-          description: >-
-            Specifies the type of data source. Possible values include
-            RuleMetricDataSource, RuleManagementEventDataSource.
-        resourceUri:
-          type: string
-          description: >-
-            The resource identifier of the resource the rule monitors.
-        legacyResourceId:
-          type: string
-          description: >-
-            The legacy resource identifier of the resource the rule monitors.
-        resourceLocation:
-          type: string
-          description: The location of the resource.
-        metricNamespace:
-          type: string
-          description: The namespace of the metric.
-    RuleAction:
-      type: object
-      required:
-        - odata.type
-      properties:
-        odata.type:
-          type: string
-          description: >-
-            Specifies the type of action. Possible values include
-            RuleEmailAction and RuleWebhookAction.
-    AlertRuleResourcePatch:
-      type: object
-      properties:
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-          description: Resource tags.
-        properties:
-          $ref: '#/components/schemas/AlertRule'
+          description: The array of actions that are performed when the alert rule becomes active.
     AlertRuleResourceCollection:
       type: object
       properties:
@@ -358,12 +327,21 @@ components:
           items:
             $ref: '#/components/schemas/AlertRuleResource'
           description: The values for the alert rule resources.
-    ErrorResponse:
+    RuleCondition:
       type: object
+      required:
+      - odata.type
       properties:
-        code:
+        odata.type:
           type: string
-          description: Error code.
-        message:
-          type: string
-          description: Error message indicating why the operation failed.
+          description: Specifies the type of condition. Possible values include ThresholdRuleCondition, LocationThresholdRuleCondition, ManagementEventRuleCondition.
+        dataSource:
+          $ref: '#/components/schemas/RuleDataSource'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+          scopes:
+            https://management.azure.com/.default: Access Azure Management API

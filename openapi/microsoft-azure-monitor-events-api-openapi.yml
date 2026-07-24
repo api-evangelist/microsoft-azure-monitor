@@ -1,0 +1,296 @@
+openapi: 3.1.0
+info:
+  title: Azure Monitor Action Groups Events API
+  description: Create and manage action groups that define notification and automation actions triggered by Azure Monitor alerts, including email, SMS, webhooks, and Azure Functions.
+  version: '2022-06-01'
+  contact:
+    name: Microsoft Azure Support
+    url: https://azure.microsoft.com/en-us/support/options/
+  license:
+    name: Microsoft API License
+    url: https://azure.microsoft.com/en-us/support/legal/
+servers:
+- url: https://management.azure.com
+  description: Azure Resource Manager
+security:
+- oauth2:
+  - https://management.azure.com/.default
+tags:
+- name: Events
+  description: Operations for retrieving Application Insights events
+paths:
+  /apps/{appId}/events/{eventType}:
+    get:
+      operationId: Events_GetByType
+      summary: Azure Monitor Get events by type
+      description: Gets the results of an OData query for events of a specific type from Application Insights telemetry.
+      tags:
+      - Events
+      parameters:
+      - $ref: '#/components/parameters/AppIdParameter'
+      - name: eventType
+        in: path
+        required: true
+        description: The type of events to query.
+        schema:
+          type: string
+          enum:
+          - $all
+          - traces
+          - customEvents
+          - pageViews
+          - browserTimings
+          - requests
+          - dependencies
+          - exceptions
+          - availabilityResults
+          - performanceCounters
+          - customMetrics
+      - name: timespan
+        in: query
+        required: false
+        description: The timespan over which to query in ISO 8601 duration format.
+        schema:
+          type: string
+      - name: $filter
+        in: query
+        required: false
+        description: An expression used to filter the returned events.
+        schema:
+          type: string
+      - name: $search
+        in: query
+        required: false
+        description: A free-text search expression to match for whether a particular event should be returned.
+        schema:
+          type: string
+      - name: $orderby
+        in: query
+        required: false
+        description: A comma-separated list of properties with asc or desc to sort on.
+        schema:
+          type: string
+      - name: $select
+        in: query
+        required: false
+        description: Limits the properties returned for each event.
+        schema:
+          type: string
+      - name: $skip
+        in: query
+        required: false
+        description: The number of items to skip over before returning events.
+        schema:
+          type: integer
+      - name: $top
+        in: query
+        required: false
+        description: The number of events to return.
+        schema:
+          type: integer
+      - name: $format
+        in: query
+        required: false
+        description: Format for the returned events.
+        schema:
+          type: string
+      - name: $count
+        in: query
+        required: false
+        description: Request a count of matching items included with the returned events.
+        schema:
+          type: boolean
+      - name: $apply
+        in: query
+        required: false
+        description: An expression used for aggregation over returned events.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful request to get events.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventsResults'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /apps/{appId}/events/{eventType}/{eventId}:
+    get:
+      operationId: Events_Get
+      summary: Azure Monitor Get a single event
+      description: Gets the data for a single event from Application Insights telemetry.
+      tags:
+      - Events
+      parameters:
+      - $ref: '#/components/parameters/AppIdParameter'
+      - name: eventType
+        in: path
+        required: true
+        description: The type of events to query.
+        schema:
+          type: string
+          enum:
+          - $all
+          - traces
+          - customEvents
+          - pageViews
+          - browserTimings
+          - requests
+          - dependencies
+          - exceptions
+          - availabilityResults
+          - performanceCounters
+          - customMetrics
+      - name: eventId
+        in: path
+        required: true
+        description: The ID of the event.
+        schema:
+          type: string
+      - name: timespan
+        in: query
+        required: false
+        description: The timespan over which to query.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful request to get an event.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventsResults'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    EventsResults:
+      type: object
+      properties:
+        '@ai.messages':
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+          description: Messages from the service.
+        '@odata.context':
+          type: string
+          description: OData context.
+        '@odata.count':
+          type: integer
+          description: Count of matching results.
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventsResultData'
+          description: The collection of events.
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+            message:
+              type: string
+              description: Error message.
+          required:
+          - code
+          - message
+    EventsResultData:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique ID for this event.
+        type:
+          type: string
+          description: The type of event.
+        timestamp:
+          type: string
+          format: date-time
+          description: The timestamp of the event.
+        customDimensions:
+          type: object
+          additionalProperties:
+            type: string
+          description: Custom dimensions of the event.
+        customMeasurements:
+          type: object
+          additionalProperties:
+            type: number
+          description: Custom measurements of the event.
+        operation:
+          type: object
+          properties:
+            name:
+              type: string
+            id:
+              type: string
+            parentId:
+              type: string
+            syntheticSource:
+              type: string
+        session:
+          type: object
+          properties:
+            id:
+              type: string
+        user:
+          type: object
+          properties:
+            id:
+              type: string
+            authenticatedId:
+              type: string
+            accountId:
+              type: string
+        cloud:
+          type: object
+          properties:
+            roleName:
+              type: string
+            roleInstance:
+              type: string
+        ai:
+          type: object
+          properties:
+            iKey:
+              type: string
+            appName:
+              type: string
+            appId:
+              type: string
+            sdkVersion:
+              type: string
+  parameters:
+    AppIdParameter:
+      name: appId
+      in: path
+      required: true
+      description: ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal.
+      schema:
+        type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+          scopes:
+            https://management.azure.com/.default: Access Azure Management API

@@ -1,0 +1,597 @@
+openapi: 3.1.0
+info:
+  title: Azure Monitor Action Groups Autoscale Settings API
+  description: Create and manage action groups that define notification and automation actions triggered by Azure Monitor alerts, including email, SMS, webhooks, and Azure Functions.
+  version: '2022-06-01'
+  contact:
+    name: Microsoft Azure Support
+    url: https://azure.microsoft.com/en-us/support/options/
+  license:
+    name: Microsoft API License
+    url: https://azure.microsoft.com/en-us/support/legal/
+servers:
+- url: https://management.azure.com
+  description: Azure Resource Manager
+security:
+- oauth2:
+  - https://management.azure.com/.default
+tags:
+- name: Autoscale Settings
+  description: Operations for managing autoscale settings
+paths:
+  /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/autoscalesettings:
+    get:
+      operationId: AutoscaleSettings_ListByResourceGroup
+      summary: Azure Monitor List autoscale settings in a resource group
+      description: Lists the autoscale settings for a resource group. Returns all configured autoscale settings within the specified resource group.
+      tags:
+      - Autoscale Settings
+      parameters:
+      - $ref: '#/components/parameters/SubscriptionIdParameter'
+      - $ref: '#/components/parameters/ResourceGroupNameParameter'
+      - $ref: '#/components/parameters/ApiVersionParameter'
+      responses:
+        '200':
+          description: Successful request for a list of autoscale settings.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutoscaleSettingResourceCollection'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /subscriptions/{subscriptionId}/providers/Microsoft.Insights/autoscalesettings:
+    get:
+      operationId: AutoscaleSettings_ListBySubscription
+      summary: Azure Monitor List autoscale settings in a subscription
+      description: Lists the autoscale settings for a subscription. Returns all configured autoscale settings within the specified subscription.
+      tags:
+      - Autoscale Settings
+      parameters:
+      - $ref: '#/components/parameters/SubscriptionIdParameter'
+      - $ref: '#/components/parameters/ApiVersionParameter'
+      responses:
+        '200':
+          description: Successful request for a list of autoscale settings.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutoscaleSettingResourceCollection'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  ? /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/autoscalesettings/{autoscaleSettingName}
+  : put:
+      operationId: AutoscaleSettings_CreateOrUpdate
+      summary: Azure Monitor Create or update an autoscale setting
+      description: Creates or updates an autoscale setting. Autoscale settings define the rules and profiles for automatically scaling Azure resources.
+      tags:
+      - Autoscale Settings
+      parameters:
+      - $ref: '#/components/parameters/SubscriptionIdParameter'
+      - $ref: '#/components/parameters/ResourceGroupNameParameter'
+      - $ref: '#/components/parameters/AutoscaleSettingNameParameter'
+      - $ref: '#/components/parameters/ApiVersionParameter'
+      requestBody:
+        description: The parameters for the autoscale setting to create or update.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AutoscaleSettingResource'
+      responses:
+        '200':
+          description: Successful request to update an autoscale setting.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutoscaleSettingResource'
+        '201':
+          description: Successfully created an autoscale setting.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutoscaleSettingResource'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      operationId: AutoscaleSettings_Get
+      summary: Azure Monitor Get an autoscale setting
+      description: Gets an autoscale setting by name from a resource group.
+      tags:
+      - Autoscale Settings
+      parameters:
+      - $ref: '#/components/parameters/SubscriptionIdParameter'
+      - $ref: '#/components/parameters/ResourceGroupNameParameter'
+      - $ref: '#/components/parameters/AutoscaleSettingNameParameter'
+      - $ref: '#/components/parameters/ApiVersionParameter'
+      responses:
+        '200':
+          description: Successful request to get an autoscale setting.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutoscaleSettingResource'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      operationId: AutoscaleSettings_Update
+      summary: Azure Monitor Update an autoscale setting
+      description: Updates an existing autoscale setting resource. Only tag and property changes are supported.
+      tags:
+      - Autoscale Settings
+      parameters:
+      - $ref: '#/components/parameters/SubscriptionIdParameter'
+      - $ref: '#/components/parameters/ResourceGroupNameParameter'
+      - $ref: '#/components/parameters/AutoscaleSettingNameParameter'
+      - $ref: '#/components/parameters/ApiVersionParameter'
+      requestBody:
+        description: Parameters supplied to the operation.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AutoscaleSettingResourcePatch'
+      responses:
+        '200':
+          description: Successful request to update an autoscale setting.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutoscaleSettingResource'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      operationId: AutoscaleSettings_Delete
+      summary: Azure Monitor Delete an autoscale setting
+      description: Deletes an autoscale setting from a resource group.
+      tags:
+      - Autoscale Settings
+      parameters:
+      - $ref: '#/components/parameters/SubscriptionIdParameter'
+      - $ref: '#/components/parameters/ResourceGroupNameParameter'
+      - $ref: '#/components/parameters/AutoscaleSettingNameParameter'
+      - $ref: '#/components/parameters/ApiVersionParameter'
+      responses:
+        '200':
+          description: Successful request to delete an autoscale setting.
+        '204':
+          description: Autoscale setting does not exist.
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    AutoscaleSettingResource:
+      type: object
+      required:
+      - location
+      - properties
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Azure resource ID.
+        name:
+          type: string
+          readOnly: true
+          description: Azure resource name.
+        type:
+          type: string
+          readOnly: true
+          description: Azure resource type.
+        location:
+          type: string
+          description: Resource location.
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          description: Resource tags.
+        properties:
+          $ref: '#/components/schemas/AutoscaleSetting'
+    RecurrentSchedule:
+      type: object
+      required:
+      - timeZone
+      - days
+      - hours
+      - minutes
+      properties:
+        timeZone:
+          type: string
+          description: The timezone for the hours of the profile.
+        days:
+          type: array
+          items:
+            type: string
+          description: The collection of days that the profile takes effect on.
+        hours:
+          type: array
+          items:
+            type: integer
+          description: The collection of hours that the profile takes effect on.
+        minutes:
+          type: array
+          items:
+            type: integer
+          description: The collection of minutes at which the profile takes effect.
+    ScaleAction:
+      type: object
+      required:
+      - direction
+      - type
+      - cooldown
+      properties:
+        direction:
+          type: string
+          enum:
+          - None
+          - Increase
+          - Decrease
+          description: The scale direction.
+        type:
+          type: string
+          enum:
+          - ChangeCount
+          - PercentChangeCount
+          - ExactCount
+          - ServiceAllowedNextValue
+          description: The type of action that should occur when the scale rule fires.
+        value:
+          type: string
+          description: The number of instances involved in the scaling action.
+          default: '1'
+        cooldown:
+          type: string
+          description: The amount of time to wait since the last scaling action before this action occurs in ISO 8601 duration format.
+    TimeWindow:
+      type: object
+      required:
+      - start
+      - end
+      properties:
+        timeZone:
+          type: string
+          description: The timezone of the start and end times.
+        start:
+          type: string
+          format: date-time
+          description: The start time for the profile.
+        end:
+          type: string
+          format: date-time
+          description: The end time for the profile.
+    ScaleCapacity:
+      type: object
+      required:
+      - minimum
+      - maximum
+      - default
+      properties:
+        minimum:
+          type: string
+          description: The minimum number of instances.
+        maximum:
+          type: string
+          description: The maximum number of instances.
+        default:
+          type: string
+          description: The number of instances when autoscale cannot read metrics.
+    MetricTrigger:
+      type: object
+      required:
+      - metricName
+      - metricResourceUri
+      - timeGrain
+      - statistic
+      - timeWindow
+      - timeAggregation
+      - operator
+      - threshold
+      properties:
+        metricName:
+          type: string
+          description: The name of the metric that defines what the rule monitors.
+        metricNamespace:
+          type: string
+          description: The namespace of the metric.
+        metricResourceUri:
+          type: string
+          description: The resource identifier of the resource the rule monitors.
+        metricResourceLocation:
+          type: string
+          description: The location of the resource the rule monitors.
+        timeGrain:
+          type: string
+          description: The granularity of metrics the rule monitors in ISO 8601 duration format.
+        statistic:
+          type: string
+          enum:
+          - Average
+          - Min
+          - Max
+          - Sum
+          description: The metric statistic type.
+        timeWindow:
+          type: string
+          description: The range of time in which instance data is collected in ISO 8601 format.
+        timeAggregation:
+          type: string
+          enum:
+          - Average
+          - Minimum
+          - Maximum
+          - Total
+          - Count
+          - Last
+          description: The time aggregation type.
+        operator:
+          type: string
+          enum:
+          - Equals
+          - NotEquals
+          - GreaterThan
+          - GreaterThanOrEqual
+          - LessThan
+          - LessThanOrEqual
+          description: The operator used to compare the metric data and the threshold.
+        threshold:
+          type: number
+          format: double
+          description: The threshold of the metric that triggers the scale action.
+        dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScaleRuleMetricDimension'
+          description: List of dimension conditions.
+        dividePerInstance:
+          type: boolean
+          description: Indicates whether the metric should divide per instance.
+    PredictiveAutoscalePolicy:
+      type: object
+      required:
+      - scaleMode
+      properties:
+        scaleMode:
+          type: string
+          enum:
+          - Disabled
+          - ForecastOnly
+          - Enabled
+          description: The predictive autoscale mode.
+        scaleLookAheadTime:
+          type: string
+          description: The amount of time to specify by which instances are launched in advance in ISO 8601 duration format.
+    Recurrence:
+      type: object
+      required:
+      - frequency
+      - schedule
+      properties:
+        frequency:
+          type: string
+          enum:
+          - None
+          - Second
+          - Minute
+          - Hour
+          - Day
+          - Week
+          - Month
+          - Year
+          description: The recurrence frequency.
+        schedule:
+          $ref: '#/components/schemas/RecurrentSchedule'
+    AutoscaleSetting:
+      type: object
+      required:
+      - profiles
+      properties:
+        profiles:
+          type: array
+          maxItems: 20
+          items:
+            $ref: '#/components/schemas/AutoscaleProfile'
+          description: The collection of automatic scaling profiles (maximum 20).
+        notifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/AutoscaleNotification'
+          description: The collection of notifications.
+        enabled:
+          type: boolean
+          default: false
+          description: The enabled flag.
+        predictiveAutoscalePolicy:
+          $ref: '#/components/schemas/PredictiveAutoscalePolicy'
+        name:
+          type: string
+          description: The name of the autoscale setting.
+        targetResourceUri:
+          type: string
+          description: The resource identifier of the resource to autoscale.
+        targetResourceLocation:
+          type: string
+          description: The location of the resource to autoscale.
+    AutoscaleProfile:
+      type: object
+      required:
+      - name
+      - capacity
+      - rules
+      properties:
+        name:
+          type: string
+          description: The name of the profile.
+        capacity:
+          $ref: '#/components/schemas/ScaleCapacity'
+        rules:
+          type: array
+          maxItems: 10
+          items:
+            $ref: '#/components/schemas/ScaleRule'
+          description: The collection of rules (maximum 10).
+        fixedDate:
+          $ref: '#/components/schemas/TimeWindow'
+        recurrence:
+          $ref: '#/components/schemas/Recurrence'
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code.
+        message:
+          type: string
+          description: Error message indicating why the operation failed.
+    ScaleRuleMetricDimension:
+      type: object
+      required:
+      - DimensionName
+      - Operator
+      - Values
+      properties:
+        DimensionName:
+          type: string
+          description: Name of the dimension.
+        Operator:
+          type: string
+          enum:
+          - Equals
+          - NotEquals
+          description: The dimension operator.
+        Values:
+          type: array
+          items:
+            type: string
+          description: List of dimension values.
+    AutoscaleSettingResourcePatch:
+      type: object
+      properties:
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          description: Resource tags.
+        properties:
+          $ref: '#/components/schemas/AutoscaleSetting'
+    ScaleRule:
+      type: object
+      required:
+      - metricTrigger
+      - scaleAction
+      properties:
+        metricTrigger:
+          $ref: '#/components/schemas/MetricTrigger'
+        scaleAction:
+          $ref: '#/components/schemas/ScaleAction'
+    AutoscaleSettingResourceCollection:
+      type: object
+      required:
+      - value
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/AutoscaleSettingResource'
+          description: The autoscale setting resource collection.
+        nextLink:
+          type: string
+          description: URL to get the next set of results.
+    AutoscaleNotification:
+      type: object
+      required:
+      - operation
+      properties:
+        operation:
+          type: string
+          enum:
+          - Scale
+          description: The operation associated with the notification.
+        email:
+          type: object
+          properties:
+            sendToSubscriptionAdministrator:
+              type: boolean
+              description: Send email to subscription administrator.
+            sendToSubscriptionCoAdministrators:
+              type: boolean
+              description: Send email to subscription co-administrators.
+            customEmails:
+              type: array
+              items:
+                type: string
+              description: The custom email list.
+        webhooks:
+          type: array
+          items:
+            type: object
+            properties:
+              serviceUri:
+                type: string
+                format: uri
+                description: The service address to receive the notification.
+              properties:
+                type: object
+                additionalProperties:
+                  type: string
+  parameters:
+    ApiVersionParameter:
+      name: api-version
+      in: query
+      required: true
+      description: Client API version.
+      schema:
+        type: string
+        default: '2022-10-01'
+    ResourceGroupNameParameter:
+      name: resourceGroupName
+      in: path
+      required: true
+      description: The name of the resource group.
+      schema:
+        type: string
+    AutoscaleSettingNameParameter:
+      name: autoscaleSettingName
+      in: path
+      required: true
+      description: The autoscale setting name.
+      schema:
+        type: string
+    SubscriptionIdParameter:
+      name: subscriptionId
+      in: path
+      required: true
+      description: The ID of the target subscription.
+      schema:
+        type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+          scopes:
+            https://management.azure.com/.default: Access Azure Management API

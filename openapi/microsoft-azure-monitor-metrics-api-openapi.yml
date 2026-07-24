@@ -1,0 +1,637 @@
+openapi: 3.1.0
+info:
+  title: Azure Monitor Action Groups Metrics API
+  description: Create and manage action groups that define notification and automation actions triggered by Azure Monitor alerts, including email, SMS, webhooks, and Azure Functions.
+  version: '2022-06-01'
+  contact:
+    name: Microsoft Azure Support
+    url: https://azure.microsoft.com/en-us/support/options/
+  license:
+    name: Microsoft API License
+    url: https://azure.microsoft.com/en-us/support/legal/
+servers:
+- url: https://management.azure.com
+  description: Azure Resource Manager
+security:
+- oauth2:
+  - https://management.azure.com/.default
+tags:
+- name: Metrics
+  description: Operations for retrieving Application Insights metrics
+paths:
+  /apps/{appId}/metrics/{metricId}:
+    get:
+      operationId: Metrics_Get
+      summary: Azure Monitor Get an Application Insights metric
+      description: Gets metric values for a single Application Insights metric. Returns aggregated metric data for the specified timespan and interval.
+      tags:
+      - Metrics
+      parameters:
+      - $ref: '#/components/parameters/AppIdParameter'
+      - name: metricId
+        in: path
+        required: true
+        description: ID of the metric. Standard metrics include requests/count, requests/duration, dependencies/count, exceptions/count, etc.
+        schema:
+          type: string
+      - name: timespan
+        in: query
+        required: false
+        description: The timespan over which to query in ISO 8601 duration format.
+        schema:
+          type: string
+      - name: interval
+        in: query
+        required: false
+        description: The time interval to use when retrieving metric values.
+        schema:
+          type: string
+      - name: aggregation
+        in: query
+        required: false
+        description: The aggregation to use when computing the metric values.
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - min
+            - max
+            - avg
+            - sum
+            - count
+            - unique
+      - name: segment
+        in: query
+        required: false
+        description: The name of the dimension to segment the metric values by.
+        schema:
+          type: array
+          items:
+            type: string
+      - name: top
+        in: query
+        required: false
+        description: The number of segments to return.
+        schema:
+          type: integer
+      - name: orderby
+        in: query
+        required: false
+        description: The aggregation function and direction to sort the segments by.
+        schema:
+          type: string
+      - name: filter
+        in: query
+        required: false
+        description: An expression to filter the results.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful request to get metric values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetricsResult'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /apps/{appId}/metrics:
+    post:
+      operationId: Metrics_GetMultiple
+      summary: Azure Monitor Get multiple Application Insights metrics
+      description: Gets metric values for multiple Application Insights metrics in a single request.
+      tags:
+      - Metrics
+      parameters:
+      - $ref: '#/components/parameters/AppIdParameter'
+      requestBody:
+        description: The metrics query request body containing multiple metric queries.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/MetricsPostBody'
+      responses:
+        '200':
+          description: Successful request to get multiple metric values.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MetricsResult'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /subscriptions/{subscriptionId}/providers/Microsoft.Insights/metrics:
+    get:
+      operationId: Metrics_ListAtSubscriptionScope
+      summary: Azure Monitor List metrics at subscription scope
+      description: Lists the metric values for a subscription. The $filter parameter is used to reduce the set of metric data returned. Only some dimensions are available for subscriptions.
+      tags:
+      - Metrics
+      parameters:
+      - $ref: '#/components/parameters/SubscriptionIdParameter'
+      - $ref: '#/components/parameters/ApiVersionParameter'
+      - $ref: '#/components/parameters/RegionParameter'
+      - $ref: '#/components/parameters/TimespanParameter'
+      - $ref: '#/components/parameters/IntervalParameter'
+      - $ref: '#/components/parameters/MetricNamesParameter'
+      - $ref: '#/components/parameters/AggregationParameter'
+      - $ref: '#/components/parameters/FilterParameter'
+      - $ref: '#/components/parameters/TopParameter'
+      - $ref: '#/components/parameters/OrderByParameter'
+      - $ref: '#/components/parameters/ResultTypeParameter'
+      - $ref: '#/components/parameters/MetricNamespaceParameter'
+      - $ref: '#/components/parameters/AutoAdjustTimegrainParameter'
+      - $ref: '#/components/parameters/ValidateDimensionsParameter'
+      - $ref: '#/components/parameters/RollUpByParameter'
+      responses:
+        '200':
+          description: Successful request to get the list of metric values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetricsResponse'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse_2'
+    post:
+      operationId: Metrics_ListAtSubscriptionScopePost
+      summary: Azure Monitor List metrics at subscription scope via POST
+      description: Lists the metric values for a subscription using a POST request. Allows the same filtering as the GET variant but with a request body for complex queries.
+      tags:
+      - Metrics
+      parameters:
+      - $ref: '#/components/parameters/SubscriptionIdParameter'
+      - $ref: '#/components/parameters/ApiVersionParameter'
+      - $ref: '#/components/parameters/RegionParameter'
+      requestBody:
+        description: Parameters serialized in the body for subscription scope metrics.
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubscriptionScopeMetricsRequestBody'
+      responses:
+        '200':
+          description: Successful request to get the list of metric values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetricsResponse'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse_2'
+  /{resourceUri}/providers/Microsoft.Insights/metrics:
+    get:
+      operationId: Metrics_List
+      summary: Azure Monitor List metrics for a resource
+      description: Lists the metric values for a resource. The $filter parameter is used to reduce the set of metric data returned.
+      tags:
+      - Metrics
+      parameters:
+      - $ref: '#/components/parameters/ResourceUriParameter'
+      - $ref: '#/components/parameters/ApiVersionParameter'
+      - $ref: '#/components/parameters/TimespanParameter'
+      - $ref: '#/components/parameters/IntervalParameter'
+      - $ref: '#/components/parameters/MetricNamesParameter'
+      - $ref: '#/components/parameters/AggregationParameter'
+      - $ref: '#/components/parameters/FilterParameter'
+      - $ref: '#/components/parameters/TopParameter'
+      - $ref: '#/components/parameters/OrderByParameter'
+      - $ref: '#/components/parameters/ResultTypeParameter'
+      - $ref: '#/components/parameters/MetricNamespaceParameter'
+      - $ref: '#/components/parameters/AutoAdjustTimegrainParameter'
+      - $ref: '#/components/parameters/ValidateDimensionsParameter'
+      - $ref: '#/components/parameters/RollUpByParameter'
+      responses:
+        '200':
+          description: Successful request to get the list of metric values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetricsResponse'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse_2'
+components:
+  schemas:
+    SubscriptionScopeMetricsRequestBody:
+      type: object
+      properties:
+        timespan:
+          type: string
+          description: The timespan of the query.
+        interval:
+          type: string
+          description: The interval (window size) of the query.
+        metricNames:
+          type: string
+          description: The names of the metrics (comma-separated) to retrieve.
+        aggregation:
+          type: string
+          description: The list of aggregation types to retrieve.
+        filter:
+          type: string
+          description: The $filter used to reduce the set of metric data returned.
+        top:
+          type: integer
+          format: int32
+          description: The maximum number of records to retrieve.
+        orderBy:
+          type: string
+          description: The aggregation to use for sorting results.
+        rollUpBy:
+          type: string
+          description: Dimension name(s) to rollup results by.
+        resultType:
+          type: string
+          enum:
+          - Data
+          - Metadata
+          description: Reduces the set of data collected.
+        metricNamespace:
+          type: string
+          description: Metric namespace to query metric definitions for.
+        autoAdjustTimegrain:
+          type: boolean
+          description: Auto-adjust the time grain based on the timespan.
+        validateDimensions:
+          type: boolean
+          description: Validate dimension filter parameter values.
+    MetricUnit:
+      type: string
+      enum:
+      - Count
+      - Bytes
+      - Seconds
+      - CountPerSecond
+      - BytesPerSecond
+      - Percent
+      - MilliSeconds
+      - ByteSeconds
+      - Unspecified
+      - Cores
+      - MilliCores
+      - NanoCores
+      - BitsPerSecond
+      description: The unit of the metric.
+    MetricsPostBody:
+      type: object
+      required:
+      - id
+      - parameters
+      properties:
+        id:
+          type: string
+          description: An identifier for this query.
+        parameters:
+          type: object
+          required:
+          - metricId
+          properties:
+            metricId:
+              type: string
+              description: The metric ID.
+            timespan:
+              type: string
+              description: The timespan.
+            aggregation:
+              type: array
+              items:
+                type: string
+            segment:
+              type: array
+              items:
+                type: string
+            top:
+              type: integer
+            orderby:
+              type: string
+            filter:
+              type: string
+            interval:
+              type: string
+    MetricsResponse:
+      type: object
+      required:
+      - timespan
+      - value
+      properties:
+        cost:
+          type: integer
+          minimum: 0
+          description: The integer value representing the relative cost of the query.
+        timespan:
+          type: string
+          description: The timespan for which the data was retrieved, in ISO 8601 format.
+        interval:
+          type: string
+          description: The interval (window size) for which the metric data was returned in ISO 8601 format.
+        namespace:
+          type: string
+          description: The namespace of the metrics being queried.
+        resourceregion:
+          type: string
+          description: The region of the resource being queried for metrics.
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Metric'
+          description: The value of the collection.
+    LocalizableString:
+      type: object
+      required:
+      - value
+      properties:
+        value:
+          type: string
+          description: The invariant value.
+        localizedValue:
+          type: string
+          description: The display name.
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+            message:
+              type: string
+              description: Error message.
+          required:
+          - code
+          - message
+    Metric:
+      type: object
+      required:
+      - id
+      - type
+      - name
+      - unit
+      - timeseries
+      properties:
+        id:
+          type: string
+          description: The metric ID.
+        type:
+          type: string
+          description: The resource type of the metric resource.
+        name:
+          $ref: '#/components/schemas/LocalizableString'
+        displayDescription:
+          type: string
+          description: Detailed description of this metric.
+        errorCode:
+          type: string
+          description: Error code encountered while querying this specific metric.
+        errorMessage:
+          type: string
+          description: Error message encountered while querying this specific metric.
+        unit:
+          $ref: '#/components/schemas/MetricUnit'
+        timeseries:
+          type: array
+          items:
+            $ref: '#/components/schemas/TimeSeriesElement'
+          description: The time series returned when a data query is performed.
+    TimeSeriesElement:
+      type: object
+      properties:
+        metadatavalues:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetadataValue'
+          description: The metadata values returned.
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricValue'
+          description: An array of data points representing the metric values.
+    MetricsResult:
+      type: object
+      properties:
+        value:
+          type: object
+          properties:
+            start:
+              type: string
+              format: date-time
+              description: Start time of the metric.
+            end:
+              type: string
+              format: date-time
+              description: End time of the metric.
+            interval:
+              type: string
+              description: The interval used for segmenting the metric data.
+            segments:
+              type: array
+              items:
+                type: object
+                additionalProperties: true
+              description: Segmented metric data.
+    MetricValue:
+      type: object
+      required:
+      - timeStamp
+      properties:
+        timeStamp:
+          type: string
+          format: date-time
+          description: The timestamp for the metric value in ISO 8601 format.
+        average:
+          type: number
+          format: double
+          description: The average value in the time range.
+        minimum:
+          type: number
+          format: double
+          description: The least value in the time range.
+        maximum:
+          type: number
+          format: double
+          description: The greatest value in the time range.
+        total:
+          type: number
+          format: double
+          description: The sum of all of the values in the time range.
+        count:
+          type: number
+          format: double
+          description: The number of samples in the time range.
+    MetadataValue:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/LocalizableString'
+        value:
+          type: string
+          description: The value of the metadata.
+    ErrorResponse_2:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code.
+        message:
+          type: string
+          description: Error message indicating why the operation failed.
+  parameters:
+    OrderByParameter:
+      name: orderBy
+      in: query
+      required: false
+      description: The aggregation to use for sorting results and the direction of the sort.
+      schema:
+        type: string
+    ResourceUriParameter:
+      name: resourceUri
+      in: path
+      required: true
+      description: The identifier of the resource.
+      schema:
+        type: string
+    ApiVersionParameter:
+      name: api-version
+      in: query
+      required: true
+      description: Client API version.
+      schema:
+        type: string
+        default: '2023-10-01'
+    RegionParameter:
+      name: region
+      in: query
+      required: false
+      description: The region where the metrics you want reside.
+      schema:
+        type: string
+    MetricNamespaceParameter:
+      name: metricNamespace
+      in: query
+      required: false
+      description: Metric namespace to query metric definitions for.
+      schema:
+        type: string
+    IntervalParameter:
+      name: interval
+      in: query
+      required: false
+      description: The interval (window size) of the query in ISO 8601 duration format.
+      schema:
+        type: string
+        default: PT1M
+    ValidateDimensionsParameter:
+      name: ValidateDimensions
+      in: query
+      required: false
+      description: If set to false, invalid filter parameter values will be ignored.
+      schema:
+        type: boolean
+    AggregationParameter:
+      name: aggregation
+      in: query
+      required: false
+      description: The list of aggregation types (comma-separated) to retrieve.
+      schema:
+        type: string
+    TimespanParameter:
+      name: timespan
+      in: query
+      required: false
+      description: The timespan of the query in ISO 8601 duration format (startDateTime_ISO/endDateTime_ISO).
+      schema:
+        type: string
+    ResultTypeParameter:
+      name: resultType
+      in: query
+      required: false
+      description: Reduces the set of data collected. Data or Metadata.
+      schema:
+        type: string
+        enum:
+        - Data
+        - Metadata
+    AppIdParameter:
+      name: appId
+      in: path
+      required: true
+      description: ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal.
+      schema:
+        type: string
+    TopParameter:
+      name: top
+      in: query
+      required: false
+      description: The maximum number of records to retrieve. Defaults to 10.
+      schema:
+        type: integer
+        format: int32
+        default: 10
+    AutoAdjustTimegrainParameter:
+      name: AutoAdjustTimegrain
+      in: query
+      required: false
+      description: If set to true, the time grain is automatically adjusted based on the timespan.
+      schema:
+        type: boolean
+    RollUpByParameter:
+      name: rollUpBy
+      in: query
+      required: false
+      description: Dimension name(s) to rollup results by.
+      schema:
+        type: string
+    FilterParameter:
+      name: $filter
+      in: query
+      required: false
+      description: The $filter is used to reduce the set of metric data returned. Uses OData filter expressions.
+      schema:
+        type: string
+    MetricNamesParameter:
+      name: metricnames
+      in: query
+      required: false
+      description: The names of the metrics (comma-separated) to retrieve. Maximum of 20.
+      schema:
+        type: string
+    SubscriptionIdParameter:
+      name: subscriptionId
+      in: path
+      required: true
+      description: The ID of the target subscription.
+      schema:
+        type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+          scopes:
+            https://management.azure.com/.default: Access Azure Management API

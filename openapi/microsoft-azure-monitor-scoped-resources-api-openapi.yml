@@ -1,0 +1,266 @@
+openapi: 3.1.0
+info:
+  title: Azure Monitor Action Groups Scoped Resources API
+  description: Create and manage action groups that define notification and automation actions triggered by Azure Monitor alerts, including email, SMS, webhooks, and Azure Functions.
+  version: '2022-06-01'
+  contact:
+    name: Microsoft Azure Support
+    url: https://azure.microsoft.com/en-us/support/options/
+  license:
+    name: Microsoft API License
+    url: https://azure.microsoft.com/en-us/support/legal/
+servers:
+- url: https://management.azure.com
+  description: Azure Resource Manager
+security:
+- oauth2:
+  - https://management.azure.com/.default
+tags:
+- name: Scoped Resources
+  description: Operations for managing scoped resources within a Private Link Scope
+paths:
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopes/{scopeName}/scopedResources
+  : get:
+      operationId: ScopedResources_ListByPrivateLinkScope
+      summary: Azure Monitor List scoped resources in a private link scope
+      description: Gets all private endpoint connections on a private link scope.
+      tags:
+      - Scoped Resources
+      parameters:
+      - $ref: '#/components/parameters/SubscriptionIdParameter'
+      - $ref: '#/components/parameters/ResourceGroupNameParameter'
+      - $ref: '#/components/parameters/ScopeNameParameter'
+      - $ref: '#/components/parameters/ApiVersionParameter'
+      responses:
+        '200':
+          description: Successful request to list scoped resources.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScopedResourceListResult'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/privateLinkScopes/{scopeName}/scopedResources/{name}
+  : get:
+      operationId: ScopedResources_Get
+      summary: Azure Monitor Get a scoped resource
+      description: Gets a scoped resource in a private link scope.
+      tags:
+      - Scoped Resources
+      parameters:
+      - $ref: '#/components/parameters/SubscriptionIdParameter'
+      - $ref: '#/components/parameters/ResourceGroupNameParameter'
+      - $ref: '#/components/parameters/ScopeNameParameter'
+      - name: name
+        in: path
+        required: true
+        description: The name of the scoped resource.
+        schema:
+          type: string
+      - $ref: '#/components/parameters/ApiVersionParameter'
+      responses:
+        '200':
+          description: Successful request to get a scoped resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScopedResource'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      operationId: ScopedResources_CreateOrUpdate
+      summary: Azure Monitor Create or update a scoped resource
+      description: Approve or reject a scoped resource in a private link scope.
+      tags:
+      - Scoped Resources
+      parameters:
+      - $ref: '#/components/parameters/SubscriptionIdParameter'
+      - $ref: '#/components/parameters/ResourceGroupNameParameter'
+      - $ref: '#/components/parameters/ScopeNameParameter'
+      - name: name
+        in: path
+        required: true
+        description: The name of the scoped resource.
+        schema:
+          type: string
+      - $ref: '#/components/parameters/ApiVersionParameter'
+      requestBody:
+        description: The scoped resource to create or update.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScopedResource'
+      responses:
+        '200':
+          description: Successfully updated the scoped resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScopedResource'
+        '201':
+          description: Successfully created the scoped resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScopedResource'
+        '202':
+          description: Accepted. The operation is in progress.
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      operationId: ScopedResources_Delete
+      summary: Azure Monitor Delete a scoped resource
+      description: Deletes a scoped resource from a private link scope.
+      tags:
+      - Scoped Resources
+      parameters:
+      - $ref: '#/components/parameters/SubscriptionIdParameter'
+      - $ref: '#/components/parameters/ResourceGroupNameParameter'
+      - $ref: '#/components/parameters/ScopeNameParameter'
+      - name: name
+        in: path
+        required: true
+        description: The name of the scoped resource.
+        schema:
+          type: string
+      - $ref: '#/components/parameters/ApiVersionParameter'
+      responses:
+        '200':
+          description: Successfully deleted the scoped resource.
+        '202':
+          description: Accepted. The delete operation is in progress.
+        '204':
+          description: The scoped resource did not exist.
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  parameters:
+    ApiVersionParameter:
+      name: api-version
+      in: query
+      required: true
+      description: Client API version.
+      schema:
+        type: string
+        default: 2021-07-01-preview
+    ResourceGroupNameParameter:
+      name: resourceGroupName
+      in: path
+      required: true
+      description: The name of the resource group.
+      schema:
+        type: string
+    ScopeNameParameter:
+      name: scopeName
+      in: path
+      required: true
+      description: The name of the Azure Monitor Private Link Scope resource.
+      schema:
+        type: string
+    SubscriptionIdParameter:
+      name: subscriptionId
+      in: path
+      required: true
+      description: The ID of the target subscription.
+      schema:
+        type: string
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code.
+        message:
+          type: string
+          description: Error message indicating why the operation failed.
+    ScopedResourceListResult:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScopedResource'
+          description: List of scoped resources.
+        nextLink:
+          type: string
+          description: The URI to get the next set of results.
+    SystemData:
+      type: object
+      properties:
+        createdBy:
+          type: string
+        createdByType:
+          type: string
+          enum:
+          - User
+          - Application
+          - ManagedIdentity
+          - Key
+        createdAt:
+          type: string
+          format: date-time
+        lastModifiedBy:
+          type: string
+        lastModifiedByType:
+          type: string
+          enum:
+          - User
+          - Application
+          - ManagedIdentity
+          - Key
+        lastModifiedAt:
+          type: string
+          format: date-time
+    ScopedResource:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Azure resource ID.
+        name:
+          type: string
+          readOnly: true
+          description: Azure resource name.
+        type:
+          type: string
+          readOnly: true
+          description: Azure resource type.
+        properties:
+          type: object
+          properties:
+            linkedResourceId:
+              type: string
+              description: The resource ID of the scoped Azure Monitor resource.
+            provisioningState:
+              type: string
+              readOnly: true
+              description: State of the private endpoint connection.
+        systemData:
+          $ref: '#/components/schemas/SystemData'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+          scopes:
+            https://management.azure.com/.default: Access Azure Management API

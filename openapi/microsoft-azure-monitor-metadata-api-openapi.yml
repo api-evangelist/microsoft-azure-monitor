@@ -1,0 +1,172 @@
+openapi: 3.1.0
+info:
+  title: Azure Monitor Action Groups Metadata API
+  description: Create and manage action groups that define notification and automation actions triggered by Azure Monitor alerts, including email, SMS, webhooks, and Azure Functions.
+  version: '2022-06-01'
+  contact:
+    name: Microsoft Azure Support
+    url: https://azure.microsoft.com/en-us/support/options/
+  license:
+    name: Microsoft API License
+    url: https://azure.microsoft.com/en-us/support/legal/
+servers:
+- url: https://management.azure.com
+  description: Azure Resource Manager
+security:
+- oauth2:
+  - https://management.azure.com/.default
+tags:
+- name: Metadata
+  description: Operations for retrieving Application Insights metadata
+paths:
+  /apps/{appId}/metrics/metadata:
+    get:
+      operationId: Metrics_GetMetadata
+      summary: Azure Monitor Get metric metadata
+      description: Gets metadata describing the available metrics for the Application Insights component.
+      tags:
+      - Metadata
+      parameters:
+      - $ref: '#/components/parameters/AppIdParameter'
+      responses:
+        '200':
+          description: Successful request to get metrics metadata.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /workspaces/{workspaceId}/metadata:
+    get:
+      operationId: Metadata_Get
+      summary: Azure Monitor Get workspace metadata
+      description: Gets metadata information about the Log Analytics workspace including available tables, functions, and schemas.
+      tags:
+      - Metadata
+      parameters:
+      - $ref: '#/components/parameters/WorkspaceIdParameter'
+      responses:
+        '200':
+          description: Successful request to get workspace metadata.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetadataResults'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  parameters:
+    AppIdParameter:
+      name: appId
+      in: path
+      required: true
+      description: ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal.
+      schema:
+        type: string
+    WorkspaceIdParameter:
+      name: workspaceId
+      in: path
+      required: true
+      description: ID of the workspace. This is the Workspace ID from the Properties blade in the Azure portal.
+      schema:
+        type: string
+        format: uuid
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+            message:
+              type: string
+              description: Error message.
+          required:
+          - code
+          - message
+    MetadataFunction:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of the function.
+        name:
+          type: string
+          description: The name of the function.
+        body:
+          type: string
+          description: The KQL body of the function.
+        description:
+          type: string
+          description: The description of the function.
+    MetadataTable:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of the table.
+        name:
+          type: string
+          description: The name of the table.
+        description:
+          type: string
+          description: The description of the table.
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/Column'
+          description: The columns in the table.
+    Column:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of this column.
+        type:
+          type: string
+          enum:
+          - bool
+          - datetime
+          - dynamic
+          - int
+          - long
+          - real
+          - string
+          - guid
+          - decimal
+          - timespan
+          description: The data type of this column.
+    MetadataResults:
+      type: object
+      properties:
+        tables:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetadataTable'
+          description: The list of tables in the workspace.
+        functions:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetadataFunction'
+          description: The list of saved functions in the workspace.
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+          scopes:
+            https://management.azure.com/.default: Access Azure Management API

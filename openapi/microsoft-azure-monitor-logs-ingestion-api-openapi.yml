@@ -1,11 +1,8 @@
 openapi: 3.1.0
 info:
-  title: Azure Monitor Logs Ingestion API
-  description: >-
-    Sends custom log data to a Log Analytics workspace using a REST API call or
-    client libraries. Supports sending data to both supported Azure tables and
-    custom tables via data collection rules and endpoints.
-  version: '2023-01-01'
+  title: Azure Monitor Action Groups Logs Ingestion API
+  description: Create and manage action groups that define notification and automation actions triggered by Azure Monitor alerts, including email, SMS, webhooks, and Azure Functions.
+  version: '2022-06-01'
   contact:
     name: Microsoft Azure Support
     url: https://azure.microsoft.com/en-us/support/options/
@@ -13,69 +10,52 @@ info:
     name: Microsoft API License
     url: https://azure.microsoft.com/en-us/support/legal/
 servers:
-  - url: https://{dataCollectionEndpoint}
-    description: Data Collection Endpoint for log ingestion
-    variables:
-      dataCollectionEndpoint:
-        default: '{dce-name}.{region}.ingest.monitor.azure.com'
-        description: The data collection endpoint host.
+- url: https://management.azure.com
+  description: Azure Resource Manager
 security:
-  - oauth2:
-      - https://monitor.azure.com/.default
+- oauth2:
+  - https://management.azure.com/.default
 tags:
-  - name: Logs Ingestion
-    description: Operations for ingesting custom log data into Azure Monitor
+- name: Logs Ingestion
+  description: Operations for ingesting custom log data into Azure Monitor
 paths:
   /dataCollectionRules/{ruleId}/streams/{stream}:
     post:
       operationId: Upload_Logs
       summary: Azure Monitor Upload logs to a custom table
-      description: >-
-        Ingests log data to a Log Analytics workspace via a data collection rule.
-        The data is sent to the specified stream, which is mapped to a table in
-        the workspace by the data collection rule. Supports JSON arrays of log
-        records.
+      description: Ingests log data to a Log Analytics workspace via a data collection rule. The data is sent to the specified stream, which is mapped to a table in the workspace by the data collection rule. Supports JSON arrays of log records.
       tags:
-        - Logs Ingestion
+      - Logs Ingestion
       parameters:
-        - name: ruleId
-          in: path
-          required: true
-          description: >-
-            The immutable ID of the data collection rule resource.
-          schema:
-            type: string
-        - name: stream
-          in: path
-          required: true
-          description: >-
-            The name of the stream to send data to. For built-in tables, use
-            the stream name format like Custom-TableName. For custom tables,
-            use Custom-TableName_CL.
-          schema:
-            type: string
-        - name: api-version
-          in: query
-          required: true
-          description: The API version to use for this operation.
-          schema:
-            type: string
-            default: '2023-01-01'
-        - name: Content-Encoding
-          in: header
-          required: false
-          description: >-
-            The content encoding of the request body. Use gzip for compressed
-            payloads.
-          schema:
-            type: string
-            enum:
-              - gzip
+      - name: ruleId
+        in: path
+        required: true
+        description: The immutable ID of the data collection rule resource.
+        schema:
+          type: string
+      - name: stream
+        in: path
+        required: true
+        description: The name of the stream to send data to. For built-in tables, use the stream name format like Custom-TableName. For custom tables, use Custom-TableName_CL.
+        schema:
+          type: string
+      - name: api-version
+        in: query
+        required: true
+        description: The API version to use for this operation.
+        schema:
+          type: string
+          default: '2023-01-01'
+      - name: Content-Encoding
+        in: header
+        required: false
+        description: The content encoding of the request body. Use gzip for compressed payloads.
+        schema:
+          type: string
+          enum:
+          - gzip
       requestBody:
-        description: >-
-          An array of log entries to ingest. Each entry is a JSON object
-          representing a log record matching the schema defined by the data
-          collection rule.
+        description: An array of log entries to ingest. Each entry is a JSON object representing a log record matching the schema defined by the data collection rule.
         required: true
         content:
           application/json:
@@ -84,9 +64,7 @@ paths:
               items:
                 type: object
                 additionalProperties: true
-              description: >-
-                Array of log records. Each record is a JSON object whose
-                properties match the columns of the target table.
+              description: Array of log records. Each record is a JSON object whose properties match the columns of the target table.
       responses:
         '204':
           description: Data was successfully ingested.
@@ -139,14 +117,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
-  securitySchemes:
-    oauth2:
-      type: oauth2
-      flows:
-        clientCredentials:
-          tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
-          scopes:
-            https://monitor.azure.com/.default: Access Azure Monitor ingestion
   schemas:
     ErrorResponse:
       type: object
@@ -161,5 +131,13 @@ components:
               type: string
               description: Error message indicating why the operation failed.
           required:
-            - code
-            - message
+          - code
+          - message
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+          scopes:
+            https://management.azure.com/.default: Access Azure Management API

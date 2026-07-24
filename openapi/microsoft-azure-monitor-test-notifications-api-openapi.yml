@@ -1,0 +1,298 @@
+openapi: 3.1.0
+info:
+  title: Azure Monitor Action Groups Test Notifications API
+  description: Create and manage action groups that define notification and automation actions triggered by Azure Monitor alerts, including email, SMS, webhooks, and Azure Functions.
+  version: '2022-06-01'
+  contact:
+    name: Microsoft Azure Support
+    url: https://azure.microsoft.com/en-us/support/options/
+  license:
+    name: Microsoft API License
+    url: https://azure.microsoft.com/en-us/support/legal/
+servers:
+- url: https://management.azure.com
+  description: Azure Resource Manager
+security:
+- oauth2:
+  - https://management.azure.com/.default
+tags:
+- name: Test Notifications
+  description: Operations for sending and retrieving test notifications
+paths:
+  /subscriptions/{subscriptionId}/providers/Microsoft.Insights/createNotifications:
+    post:
+      operationId: ActionGroups_PostTestNotifications
+      summary: Azure Monitor Send test notifications
+      description: Send test notifications to a set of provided receivers to validate the action group configuration.
+      tags:
+      - Test Notifications
+      parameters:
+      - $ref: '#/components/parameters/SubscriptionIdParameter'
+      - $ref: '#/components/parameters/ApiVersionParameter'
+      requestBody:
+        description: The notification request body.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationRequestBody'
+      responses:
+        '200':
+          description: The notification has been accepted.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestNotificationDetailsResponse'
+        '202':
+          description: The notification has been accepted for processing.
+          headers:
+            location:
+              schema:
+                type: string
+              description: The URL to poll for the status of the notification.
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /subscriptions/{subscriptionId}/providers/Microsoft.Insights/notificationStatus/{notificationId}:
+    get:
+      operationId: ActionGroups_GetTestNotifications
+      summary: Azure Monitor Get test notification results
+      description: Get the test notification results by notification ID.
+      tags:
+      - Test Notifications
+      parameters:
+      - $ref: '#/components/parameters/SubscriptionIdParameter'
+      - name: notificationId
+        in: path
+        required: true
+        description: The notification ID.
+        schema:
+          type: string
+      - $ref: '#/components/parameters/ApiVersionParameter'
+      responses:
+        '200':
+          description: Successful request to get test notification details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestNotificationDetailsResponse'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    EmailReceiver:
+      type: object
+      required:
+      - name
+      - emailAddress
+      properties:
+        name:
+          type: string
+          description: The name of the email receiver.
+        emailAddress:
+          type: string
+          format: email
+          description: The email address of this receiver.
+        useCommonAlertSchema:
+          type: boolean
+          default: false
+          description: Indicates whether to use common alert schema.
+        status:
+          type: string
+          readOnly: true
+          enum:
+          - NotSpecified
+          - Enabled
+          - Disabled
+          description: The receiver status.
+    WebhookReceiver:
+      type: object
+      required:
+      - name
+      - serviceUri
+      properties:
+        name:
+          type: string
+          description: The name of the webhook receiver.
+        serviceUri:
+          type: string
+          format: uri
+          description: The URI where webhooks should be sent.
+        useCommonAlertSchema:
+          type: boolean
+          default: false
+          description: Indicates whether to use common alert schema.
+        useAadAuth:
+          type: boolean
+          default: false
+          description: Indicates whether to use AAD authentication.
+        objectId:
+          type: string
+          description: The object ID for AAD auth.
+        identifierUri:
+          type: string
+          description: The identifier URI for AAD auth.
+        tenantId:
+          type: string
+          description: The tenant ID for AAD auth.
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code.
+        message:
+          type: string
+          description: Error message indicating why the operation failed.
+    NotificationRequestBody:
+      type: object
+      required:
+      - alertType
+      properties:
+        alertType:
+          type: string
+          description: The value of the supported alert type.
+        emailReceivers:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailReceiver'
+        smsReceivers:
+          type: array
+          items:
+            $ref: '#/components/schemas/SmsReceiver'
+        webhookReceivers:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookReceiver'
+        azureAppPushReceivers:
+          type: array
+          items:
+            $ref: '#/components/schemas/AzureAppPushReceiver'
+        armRoleReceivers:
+          type: array
+          items:
+            $ref: '#/components/schemas/ArmRoleReceiver'
+    SmsReceiver:
+      type: object
+      required:
+      - name
+      - countryCode
+      - phoneNumber
+      properties:
+        name:
+          type: string
+          description: The name of the SMS receiver.
+        countryCode:
+          type: string
+          description: The country code of the SMS receiver.
+        phoneNumber:
+          type: string
+          description: The phone number of the SMS receiver.
+        status:
+          type: string
+          readOnly: true
+          enum:
+          - NotSpecified
+          - Enabled
+          - Disabled
+          description: The receiver status.
+    TestNotificationDetailsResponse:
+      type: object
+      required:
+      - state
+      properties:
+        state:
+          type: string
+          description: The overall state of the test notification.
+        completedTime:
+          type: string
+          format: date-time
+          description: The completed time.
+        createdTime:
+          type: string
+          format: date-time
+          description: The created time.
+        actionDetails:
+          type: array
+          items:
+            type: object
+            properties:
+              mechanismType:
+                type: string
+                description: The mechanism type.
+              name:
+                type: string
+                description: The name of the action.
+              status:
+                type: string
+                description: The send status.
+              subState:
+                type: string
+                description: The sub state.
+              sendTime:
+                type: string
+                format: date-time
+                description: The send time.
+              detail:
+                type: string
+                description: The detail of the action.
+    ArmRoleReceiver:
+      type: object
+      required:
+      - name
+      - roleId
+      properties:
+        name:
+          type: string
+          description: The name of the ARM role receiver.
+        roleId:
+          type: string
+          description: The ARM role ID.
+        useCommonAlertSchema:
+          type: boolean
+          default: false
+          description: Indicates whether to use common alert schema.
+    AzureAppPushReceiver:
+      type: object
+      required:
+      - name
+      - emailAddress
+      properties:
+        name:
+          type: string
+          description: The name of the Azure App Push receiver.
+        emailAddress:
+          type: string
+          format: email
+          description: The email address registered for the Azure mobile app.
+  parameters:
+    ApiVersionParameter:
+      name: api-version
+      in: query
+      required: true
+      description: Client API version.
+      schema:
+        type: string
+        default: '2022-06-01'
+    SubscriptionIdParameter:
+      name: subscriptionId
+      in: path
+      required: true
+      description: The ID of the target subscription.
+      schema:
+        type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+          scopes:
+            https://management.azure.com/.default: Access Azure Management API

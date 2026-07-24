@@ -1,11 +1,8 @@
 openapi: 3.1.0
 info:
-  title: Azure Monitor Metrics Batch API
-  description: >-
-    A high-volume API designed for retrieving metric values across multiple Azure
-    resources in a single request. All resources in a batch must be in the same
-    subscription and region.
-  version: '2024-02-01'
+  title: Azure Monitor Action Groups Metrics Batch API
+  description: Create and manage action groups that define notification and automation actions triggered by Azure Monitor alerts, including email, SMS, webhooks, and Azure Functions.
+  version: '2022-06-01'
   contact:
     name: Microsoft Azure Support
     url: https://azure.microsoft.com/en-us/support/options/
@@ -13,45 +10,37 @@ info:
     name: Microsoft API License
     url: https://azure.microsoft.com/en-us/support/legal/
 servers:
-  - url: https://{region}.metrics.monitor.azure.com
-    description: Azure Monitor Metrics regional endpoint
-    variables:
-      region:
-        default: eastus
-        description: The Azure region for the metrics endpoint.
+- url: https://management.azure.com
+  description: Azure Resource Manager
 security:
-  - oauth2:
-      - https://management.azure.com/.default
+- oauth2:
+  - https://management.azure.com/.default
 tags:
-  - name: Metrics Batch
-    description: Operations for batch querying Azure Monitor metrics across multiple resources
+- name: Metrics Batch
+  description: Operations for batch querying Azure Monitor metrics across multiple resources
 paths:
   /subscriptions/{subscriptionId}/metrics:batchGet:
     post:
       operationId: MetricsBatch_Batch
       summary: Azure Monitor Batch query metrics for multiple resources
-      description: >-
-        Lists the metric values for multiple resources in a single batch request.
-        All resources must be in the same subscription, region, and resource type.
-        Allows for efficient retrieval of metric data at scale.
+      description: Lists the metric values for multiple resources in a single batch request. All resources must be in the same subscription, region, and resource type. Allows for efficient retrieval of metric data at scale.
       tags:
-        - Metrics Batch
+      - Metrics Batch
       parameters:
-        - $ref: '#/components/parameters/SubscriptionIdParameter'
-        - $ref: '#/components/parameters/ApiVersionParameter'
-        - $ref: '#/components/parameters/StartTimeParameter'
-        - $ref: '#/components/parameters/EndTimeParameter'
-        - $ref: '#/components/parameters/IntervalParameter'
-        - $ref: '#/components/parameters/MetricNamesParameter'
-        - $ref: '#/components/parameters/MetricNamespaceParameter'
-        - $ref: '#/components/parameters/AggregationParameter'
-        - $ref: '#/components/parameters/TopParameter'
-        - $ref: '#/components/parameters/OrderByParameter'
-        - $ref: '#/components/parameters/FilterParameter'
-        - $ref: '#/components/parameters/RollUpByParameter'
+      - $ref: '#/components/parameters/SubscriptionIdParameter'
+      - $ref: '#/components/parameters/ApiVersionParameter'
+      - $ref: '#/components/parameters/StartTimeParameter'
+      - $ref: '#/components/parameters/EndTimeParameter'
+      - $ref: '#/components/parameters/IntervalParameter'
+      - $ref: '#/components/parameters/MetricNamesParameter'
+      - $ref: '#/components/parameters/MetricNamespaceParameter'
+      - $ref: '#/components/parameters/AggregationParameter'
+      - $ref: '#/components/parameters/TopParameter'
+      - $ref: '#/components/parameters/OrderByParameter'
+      - $ref: '#/components/parameters/FilterParameter'
+      - $ref: '#/components/parameters/RollUpByParameter'
       requestBody:
-        description: >-
-          The batch body that contains the list of resource IDs to query metrics for.
+        description: The batch body that contains the list of resource IDs to query metrics for.
         required: true
         content:
           application/json:
@@ -71,20 +60,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
-  securitySchemes:
-    oauth2:
-      type: oauth2
-      flows:
-        clientCredentials:
-          tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
-          scopes:
-            https://management.azure.com/.default: Access Azure Management API
   parameters:
-    SubscriptionIdParameter:
-      name: subscriptionId
-      in: path
-      required: true
-      description: The ID of the target subscription.
+    OrderByParameter:
+      name: orderBy
+      in: query
+      required: false
+      description: The aggregation to use for sorting results and the direction of the sort.
       schema:
         type: string
     ApiVersionParameter:
@@ -95,19 +76,18 @@ components:
       schema:
         type: string
         default: '2024-02-01'
+    MetricNamespaceParameter:
+      name: metricNamespace
+      in: query
+      required: true
+      description: Metric namespace that contains the requested metric names.
+      schema:
+        type: string
     StartTimeParameter:
       name: starttime
       in: query
       required: true
       description: The start time of the query in ISO 8601 format.
-      schema:
-        type: string
-        format: date-time
-    EndTimeParameter:
-      name: endtime
-      in: query
-      required: true
-      description: The end time of the query in ISO 8601 format.
       schema:
         type: string
         format: date-time
@@ -119,20 +99,6 @@ components:
       schema:
         type: string
         default: PT1M
-    MetricNamesParameter:
-      name: metricnames
-      in: query
-      required: true
-      description: The names of the metrics (comma-separated) to retrieve.
-      schema:
-        type: string
-    MetricNamespaceParameter:
-      name: metricNamespace
-      in: query
-      required: true
-      description: Metric namespace that contains the requested metric names.
-      schema:
-        type: string
     AggregationParameter:
       name: aggregation
       in: query
@@ -140,6 +106,14 @@ components:
       description: The list of aggregation types (comma-separated) to retrieve.
       schema:
         type: string
+    EndTimeParameter:
+      name: endtime
+      in: query
+      required: true
+      description: The end time of the query in ISO 8601 format.
+      schema:
+        type: string
+        format: date-time
     TopParameter:
       name: top
       in: query
@@ -148,13 +122,6 @@ components:
       schema:
         type: integer
         format: int32
-    OrderByParameter:
-      name: orderBy
-      in: query
-      required: false
-      description: The aggregation to use for sorting results and the direction of the sort.
-      schema:
-        type: string
     FilterParameter:
       name: $filter
       in: query
@@ -169,19 +136,21 @@ components:
       description: Dimension name(s) to rollup results by.
       schema:
         type: string
+    MetricNamesParameter:
+      name: metricnames
+      in: query
+      required: true
+      description: The names of the metrics (comma-separated) to retrieve.
+      schema:
+        type: string
+    SubscriptionIdParameter:
+      name: subscriptionId
+      in: path
+      required: true
+      description: The ID of the target subscription.
+      schema:
+        type: string
   schemas:
-    MetricsBatchRequest:
-      type: object
-      required:
-        - resourceids
-      properties:
-        resourceids:
-          type: array
-          items:
-            type: string
-          description: >-
-            The list of resource IDs to query metrics for. All resources must be
-            in the same subscription, region, and resource type.
     MetricsBatchResponse:
       type: object
       properties:
@@ -190,40 +159,24 @@ components:
           items:
             $ref: '#/components/schemas/MetricResultsResponse'
           description: The collection of metric results for each resource.
-    MetricResultsResponse:
+    MetricsBatchRequest:
       type: object
+      required:
+      - resourceids
       properties:
-        starttime:
-          type: string
-          description: The start time, in datetime format, for which the data was retrieved.
-        endtime:
-          type: string
-          description: The end time, in datetime format, for which the data was retrieved.
-        interval:
-          type: string
-          description: The interval (window size) for which the metric data was returned.
-        namespace:
-          type: string
-          description: The namespace of the metrics being queried.
-        resourceregion:
-          type: string
-          description: The region of the resource being queried for metrics.
-        resourceid:
-          type: string
-          description: The resource ID for which metrics were retrieved.
-        value:
+        resourceids:
           type: array
           items:
-            $ref: '#/components/schemas/Metric'
-          description: The value of the collection.
+            type: string
+          description: The list of resource IDs to query metrics for. All resources must be in the same subscription, region, and resource type.
     Metric:
       type: object
       required:
-        - id
-        - type
-        - name
-        - unit
-        - timeseries
+      - id
+      - type
+      - name
+      - unit
+      - timeseries
       properties:
         id:
           type: string
@@ -241,26 +194,26 @@ components:
               type: string
               description: The display name.
           required:
-            - value
+          - value
         displayDescription:
           type: string
           description: Detailed description of this metric.
         unit:
           type: string
           enum:
-            - Count
-            - Bytes
-            - Seconds
-            - CountPerSecond
-            - BytesPerSecond
-            - Percent
-            - MilliSeconds
-            - ByteSeconds
-            - Unspecified
-            - Cores
-            - MilliCores
-            - NanoCores
-            - BitsPerSecond
+          - Count
+          - Bytes
+          - Seconds
+          - CountPerSecond
+          - BytesPerSecond
+          - Percent
+          - MilliSeconds
+          - ByteSeconds
+          - Unspecified
+          - Cores
+          - MilliCores
+          - NanoCores
+          - BitsPerSecond
           description: The unit of the metric.
         timeseries:
           type: array
@@ -290,10 +243,19 @@ components:
           items:
             $ref: '#/components/schemas/MetricValue'
           description: An array of data points representing the metric values.
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code.
+        message:
+          type: string
+          description: Error message indicating why the operation failed.
     MetricValue:
       type: object
       required:
-        - timeStamp
+      - timeStamp
       properties:
         timeStamp:
           type: string
@@ -319,12 +281,37 @@ components:
           type: number
           format: double
           description: The number of samples in the time range.
-    ErrorResponse:
+    MetricResultsResponse:
       type: object
       properties:
-        code:
+        starttime:
           type: string
-          description: Error code.
-        message:
+          description: The start time, in datetime format, for which the data was retrieved.
+        endtime:
           type: string
-          description: Error message indicating why the operation failed.
+          description: The end time, in datetime format, for which the data was retrieved.
+        interval:
+          type: string
+          description: The interval (window size) for which the metric data was returned.
+        namespace:
+          type: string
+          description: The namespace of the metrics being queried.
+        resourceregion:
+          type: string
+          description: The region of the resource being queried for metrics.
+        resourceid:
+          type: string
+          description: The resource ID for which metrics were retrieved.
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Metric'
+          description: The value of the collection.
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+          scopes:
+            https://management.azure.com/.default: Access Azure Management API
