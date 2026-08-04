@@ -1,0 +1,319 @@
+openapi: 3.1.0
+info:
+  title: Azure Monitor Diagnostic Settings API
+  description: >-
+    Configure diagnostic settings to route platform logs and metrics from Azure
+    resources to destinations such as Log Analytics workspaces, Storage
+    Accounts, and Event Hubs.
+  version: '2021-05-01-preview'
+  contact:
+    name: Microsoft Azure Support
+    url: https://azure.microsoft.com/en-us/support/options/
+  license:
+    name: Microsoft API License
+    url: https://azure.microsoft.com/en-us/support/legal/
+servers:
+  - url: https://management.azure.com
+    description: Azure Resource Manager
+security:
+  - oauth2:
+      - https://management.azure.com/.default
+tags:
+  - name: Diagnostic Settings
+    description: Operations for managing diagnostic settings on Azure resources
+paths:
+  /{resourceUri}/providers/Microsoft.Insights/diagnosticSettings:
+    get:
+      operationId: DiagnosticSettings_List
+      summary: Azure Monitor List diagnostic settings for a resource
+      description: >-
+        Gets the active diagnostic settings list for the specified resource.
+        Returns all diagnostic settings configured for the resource.
+      tags:
+        - Diagnostic Settings
+      parameters:
+        - $ref: '#/components/parameters/ResourceUriParameter'
+        - $ref: '#/components/parameters/ApiVersionParameter'
+      responses:
+        '200':
+          description: Successful request to get the list of diagnostic settings.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiagnosticSettingsResourceCollection'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /{resourceUri}/providers/Microsoft.Insights/diagnosticSettings/{name}:
+    get:
+      operationId: DiagnosticSettings_Get
+      summary: Azure Monitor Get a diagnostic setting
+      description: >-
+        Gets the active diagnostic settings for the specified resource by name.
+      tags:
+        - Diagnostic Settings
+      parameters:
+        - $ref: '#/components/parameters/ResourceUriParameter'
+        - $ref: '#/components/parameters/SettingNameParameter'
+        - $ref: '#/components/parameters/ApiVersionParameter'
+      responses:
+        '200':
+          description: Successful request to get a diagnostic setting.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiagnosticSettingsResource'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      operationId: DiagnosticSettings_CreateOrUpdate
+      summary: Azure Monitor Create or update a diagnostic setting
+      description: >-
+        Creates or updates diagnostic settings for the specified resource.
+        Diagnostic settings determine where platform logs and metrics are routed.
+      tags:
+        - Diagnostic Settings
+      parameters:
+        - $ref: '#/components/parameters/ResourceUriParameter'
+        - $ref: '#/components/parameters/SettingNameParameter'
+        - $ref: '#/components/parameters/ApiVersionParameter'
+      requestBody:
+        description: Parameters supplied to the create or update diagnostic settings.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DiagnosticSettingsResource'
+      responses:
+        '200':
+          description: Successful request to create or update a diagnostic setting.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiagnosticSettingsResource'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      operationId: DiagnosticSettings_Delete
+      summary: Azure Monitor Delete a diagnostic setting
+      description: >-
+        Deletes existing diagnostic settings for the specified resource.
+      tags:
+        - Diagnostic Settings
+      parameters:
+        - $ref: '#/components/parameters/ResourceUriParameter'
+        - $ref: '#/components/parameters/SettingNameParameter'
+        - $ref: '#/components/parameters/ApiVersionParameter'
+      responses:
+        '200':
+          description: Successful request to delete a diagnostic setting.
+        '204':
+          description: Diagnostic setting does not exist.
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+          scopes:
+            https://management.azure.com/.default: Access Azure Management API
+  parameters:
+    ResourceUriParameter:
+      name: resourceUri
+      in: path
+      required: true
+      description: The identifier of the resource.
+      schema:
+        type: string
+    SettingNameParameter:
+      name: name
+      in: path
+      required: true
+      description: The name of the diagnostic setting.
+      schema:
+        type: string
+    ApiVersionParameter:
+      name: api-version
+      in: query
+      required: true
+      description: Client API version.
+      schema:
+        type: string
+        default: '2021-05-01-preview'
+  schemas:
+    DiagnosticSettingsResource:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Fully qualified resource ID.
+        name:
+          type: string
+          readOnly: true
+          description: The name of the resource.
+        type:
+          type: string
+          readOnly: true
+          description: The type of the resource.
+        properties:
+          $ref: '#/components/schemas/DiagnosticSettings'
+        systemData:
+          $ref: '#/components/schemas/SystemData'
+    DiagnosticSettings:
+      type: object
+      properties:
+        storageAccountId:
+          type: string
+          description: >-
+            The resource ID of the storage account to which diagnostics logs are sent.
+        serviceBusRuleId:
+          type: string
+          description: >-
+            The service bus rule ID of the diagnostic setting.
+        eventHubAuthorizationRuleId:
+          type: string
+          description: The resource ID of the Event Hub authorization rule.
+        eventHubName:
+          type: string
+          description: >-
+            The name of the Event Hub. If not specified, the default Event Hub is selected.
+        metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricSettings'
+          description: The list of metric settings.
+        logs:
+          type: array
+          items:
+            $ref: '#/components/schemas/LogSettings'
+          description: The list of logs settings.
+        workspaceId:
+          type: string
+          description: >-
+            The full resource ID of the Log Analytics workspace to which diagnostics
+            are sent.
+        marketplacePartnerId:
+          type: string
+          description: >-
+            The full resource ID of the Marketplace resource to which diagnostics
+            are sent.
+        logAnalyticsDestinationType:
+          type: string
+          description: >-
+            A string indicating whether the export to Log Analytics should use
+            the default destination type (AzureDiagnostics) or a dedicated type.
+    MetricSettings:
+      type: object
+      required:
+        - enabled
+      properties:
+        timeGrain:
+          type: string
+          description: The timegrain of the metric in ISO 8601 format.
+        category:
+          type: string
+          description: >-
+            Name of a Diagnostic Metric category for a resource type.
+        enabled:
+          type: boolean
+          description: Indicates whether this metric category is enabled.
+        retentionPolicy:
+          $ref: '#/components/schemas/RetentionPolicy'
+    LogSettings:
+      type: object
+      required:
+        - enabled
+      properties:
+        category:
+          type: string
+          description: >-
+            Name of a Diagnostic Log category for a resource type.
+        categoryGroup:
+          type: string
+          description: >-
+            Name of a Diagnostic Log category group for a resource type.
+        enabled:
+          type: boolean
+          description: Indicates whether this log category is enabled.
+        retentionPolicy:
+          $ref: '#/components/schemas/RetentionPolicy'
+    RetentionPolicy:
+      type: object
+      required:
+        - enabled
+        - days
+      properties:
+        enabled:
+          type: boolean
+          description: Indicates whether the retention policy is enabled.
+        days:
+          type: integer
+          format: int32
+          minimum: 0
+          description: >-
+            The number of days for the retention policy. A value of 0 retains
+            data indefinitely.
+    SystemData:
+      type: object
+      properties:
+        createdBy:
+          type: string
+          description: The identity that created the resource.
+        createdByType:
+          type: string
+          enum:
+            - User
+            - Application
+            - ManagedIdentity
+            - Key
+        createdAt:
+          type: string
+          format: date-time
+        lastModifiedBy:
+          type: string
+        lastModifiedByType:
+          type: string
+          enum:
+            - User
+            - Application
+            - ManagedIdentity
+            - Key
+        lastModifiedAt:
+          type: string
+          format: date-time
+    DiagnosticSettingsResourceCollection:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/DiagnosticSettingsResource'
+          description: The collection of diagnostic settings resources.
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code.
+        message:
+          type: string
+          description: Error message indicating why the operation failed.

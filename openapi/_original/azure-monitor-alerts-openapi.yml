@@ -1,0 +1,369 @@
+openapi: 3.1.0
+info:
+  title: Azure Monitor Alerts API
+  description: >-
+    Create, update, and manage classic metric alert rules for monitoring Azure
+    resources. Supports threshold-based alerts on resource metrics with
+    configurable conditions and actions.
+  version: '2016-03-01'
+  contact:
+    name: Microsoft Azure Support
+    url: https://azure.microsoft.com/en-us/support/options/
+  license:
+    name: Microsoft API License
+    url: https://azure.microsoft.com/en-us/support/legal/
+servers:
+  - url: https://management.azure.com
+    description: Azure Resource Manager
+security:
+  - oauth2:
+      - https://management.azure.com/.default
+tags:
+  - name: Alert Rules
+    description: Operations for managing classic metric alert rules
+paths:
+  /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/alertrules/{ruleName}:
+    put:
+      operationId: AlertRules_CreateOrUpdate
+      summary: Azure Monitor Create or update a classic metric alert rule
+      description: >-
+        Creates or updates a classic metric alert rule. Classic alert rules
+        evaluate metrics at regular intervals and trigger actions when conditions
+        are met.
+      tags:
+        - Alert Rules
+      parameters:
+        - $ref: '#/components/parameters/ResourceGroupNameParameter'
+        - $ref: '#/components/parameters/RuleNameParameter'
+        - $ref: '#/components/parameters/SubscriptionIdParameter'
+        - $ref: '#/components/parameters/ApiVersionParameter'
+      requestBody:
+        description: The parameters of the rule to create or update.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AlertRuleResource'
+      responses:
+        '200':
+          description: Successful request to update an alert rule.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertRuleResource'
+        '201':
+          description: Created new alert rule successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertRuleResource'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      operationId: AlertRules_Get
+      summary: Azure Monitor Get a classic metric alert rule
+      description: >-
+        Gets a classic metric alert rule by name from a specified resource group.
+      tags:
+        - Alert Rules
+      parameters:
+        - $ref: '#/components/parameters/ResourceGroupNameParameter'
+        - $ref: '#/components/parameters/RuleNameParameter'
+        - $ref: '#/components/parameters/SubscriptionIdParameter'
+        - $ref: '#/components/parameters/ApiVersionParameter'
+      responses:
+        '200':
+          description: Successful request to get an alert rule.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertRuleResource'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      operationId: AlertRules_Delete
+      summary: Azure Monitor Delete a classic metric alert rule
+      description: >-
+        Deletes a classic metric alert rule from a specified resource group.
+      tags:
+        - Alert Rules
+      parameters:
+        - $ref: '#/components/parameters/ResourceGroupNameParameter'
+        - $ref: '#/components/parameters/RuleNameParameter'
+        - $ref: '#/components/parameters/SubscriptionIdParameter'
+        - $ref: '#/components/parameters/ApiVersionParameter'
+      responses:
+        '200':
+          description: Successful request to delete an alert rule.
+        '204':
+          description: Alert rule does not exist. The request was still successful.
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      operationId: AlertRules_Update
+      summary: Azure Monitor Update a classic metric alert rule
+      description: >-
+        Updates an existing classic metric alert rule. This can be used to update
+        tags on the rule resource.
+      tags:
+        - Alert Rules
+      parameters:
+        - $ref: '#/components/parameters/ResourceGroupNameParameter'
+        - $ref: '#/components/parameters/RuleNameParameter'
+        - $ref: '#/components/parameters/SubscriptionIdParameter'
+        - $ref: '#/components/parameters/ApiVersionParameter'
+      requestBody:
+        description: Parameters supplied to the operation.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AlertRuleResourcePatch'
+      responses:
+        '200':
+          description: Successful request to update an alert rule.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertRuleResource'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/alertrules:
+    get:
+      operationId: AlertRules_ListByResourceGroup
+      summary: Azure Monitor List classic alert rules in a resource group
+      description: >-
+        Lists the classic metric alert rules within a resource group.
+      tags:
+        - Alert Rules
+      parameters:
+        - $ref: '#/components/parameters/ResourceGroupNameParameter'
+        - $ref: '#/components/parameters/SubscriptionIdParameter'
+        - $ref: '#/components/parameters/ApiVersionParameter'
+      responses:
+        '200':
+          description: Successful request for a list of alert rules.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertRuleResourceCollection'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /subscriptions/{subscriptionId}/providers/Microsoft.Insights/alertrules:
+    get:
+      operationId: AlertRules_ListBySubscription
+      summary: Azure Monitor List classic alert rules in a subscription
+      description: >-
+        Lists the classic metric alert rules within a subscription.
+      tags:
+        - Alert Rules
+      parameters:
+        - $ref: '#/components/parameters/SubscriptionIdParameter'
+        - $ref: '#/components/parameters/ApiVersionParameter'
+      responses:
+        '200':
+          description: Successful request for a list of alert rules.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertRuleResourceCollection'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+          scopes:
+            https://management.azure.com/.default: Access Azure Management API
+  parameters:
+    SubscriptionIdParameter:
+      name: subscriptionId
+      in: path
+      required: true
+      description: The ID of the target subscription.
+      schema:
+        type: string
+    ResourceGroupNameParameter:
+      name: resourceGroupName
+      in: path
+      required: true
+      description: The name of the resource group.
+      schema:
+        type: string
+    RuleNameParameter:
+      name: ruleName
+      in: path
+      required: true
+      description: The name of the rule.
+      schema:
+        type: string
+    ApiVersionParameter:
+      name: api-version
+      in: query
+      required: true
+      description: Client API version.
+      schema:
+        type: string
+        default: '2016-03-01'
+  schemas:
+    AlertRuleResource:
+      type: object
+      required:
+        - location
+        - properties
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Azure resource ID.
+        name:
+          type: string
+          readOnly: true
+          description: Azure resource name.
+        type:
+          type: string
+          readOnly: true
+          description: Azure resource type.
+        location:
+          type: string
+          description: Resource location.
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          description: Resource tags.
+        properties:
+          $ref: '#/components/schemas/AlertRule'
+    AlertRule:
+      type: object
+      required:
+        - name
+        - isEnabled
+        - condition
+      properties:
+        name:
+          type: string
+          description: The name of the alert rule.
+        description:
+          type: string
+          description: The description of the alert rule.
+        provisioningState:
+          type: string
+          description: The provisioning state.
+        isEnabled:
+          type: boolean
+          description: The flag that indicates whether the alert rule is enabled.
+        condition:
+          $ref: '#/components/schemas/RuleCondition'
+        lastUpdatedTime:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Last time the rule was updated in ISO 8601 format.
+        actions:
+          type: array
+          items:
+            $ref: '#/components/schemas/RuleAction'
+          description: >-
+            The array of actions that are performed when the alert rule becomes active.
+    RuleCondition:
+      type: object
+      required:
+        - odata.type
+      properties:
+        odata.type:
+          type: string
+          description: >-
+            Specifies the type of condition. Possible values include
+            ThresholdRuleCondition, LocationThresholdRuleCondition,
+            ManagementEventRuleCondition.
+        dataSource:
+          $ref: '#/components/schemas/RuleDataSource'
+    RuleDataSource:
+      type: object
+      required:
+        - odata.type
+      properties:
+        odata.type:
+          type: string
+          description: >-
+            Specifies the type of data source. Possible values include
+            RuleMetricDataSource, RuleManagementEventDataSource.
+        resourceUri:
+          type: string
+          description: >-
+            The resource identifier of the resource the rule monitors.
+        legacyResourceId:
+          type: string
+          description: >-
+            The legacy resource identifier of the resource the rule monitors.
+        resourceLocation:
+          type: string
+          description: The location of the resource.
+        metricNamespace:
+          type: string
+          description: The namespace of the metric.
+    RuleAction:
+      type: object
+      required:
+        - odata.type
+      properties:
+        odata.type:
+          type: string
+          description: >-
+            Specifies the type of action. Possible values include
+            RuleEmailAction and RuleWebhookAction.
+    AlertRuleResourcePatch:
+      type: object
+      properties:
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          description: Resource tags.
+        properties:
+          $ref: '#/components/schemas/AlertRule'
+    AlertRuleResourceCollection:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/AlertRuleResource'
+          description: The values for the alert rule resources.
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code.
+        message:
+          type: string
+          description: Error message indicating why the operation failed.

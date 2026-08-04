@@ -1,0 +1,165 @@
+openapi: 3.1.0
+info:
+  title: Azure Monitor Logs Ingestion API
+  description: >-
+    Sends custom log data to a Log Analytics workspace using a REST API call or
+    client libraries. Supports sending data to both supported Azure tables and
+    custom tables via data collection rules and endpoints.
+  version: '2023-01-01'
+  contact:
+    name: Microsoft Azure Support
+    url: https://azure.microsoft.com/en-us/support/options/
+  license:
+    name: Microsoft API License
+    url: https://azure.microsoft.com/en-us/support/legal/
+servers:
+  - url: https://{dataCollectionEndpoint}
+    description: Data Collection Endpoint for log ingestion
+    variables:
+      dataCollectionEndpoint:
+        default: '{dce-name}.{region}.ingest.monitor.azure.com'
+        description: The data collection endpoint host.
+security:
+  - oauth2:
+      - https://monitor.azure.com/.default
+tags:
+  - name: Logs Ingestion
+    description: Operations for ingesting custom log data into Azure Monitor
+paths:
+  /dataCollectionRules/{ruleId}/streams/{stream}:
+    post:
+      operationId: Upload_Logs
+      summary: Azure Monitor Upload logs to a custom table
+      description: >-
+        Ingests log data to a Log Analytics workspace via a data collection rule.
+        The data is sent to the specified stream, which is mapped to a table in
+        the workspace by the data collection rule. Supports JSON arrays of log
+        records.
+      tags:
+        - Logs Ingestion
+      parameters:
+        - name: ruleId
+          in: path
+          required: true
+          description: >-
+            The immutable ID of the data collection rule resource.
+          schema:
+            type: string
+        - name: stream
+          in: path
+          required: true
+          description: >-
+            The name of the stream to send data to. For built-in tables, use
+            the stream name format like Custom-TableName. For custom tables,
+            use Custom-TableName_CL.
+          schema:
+            type: string
+        - name: api-version
+          in: query
+          required: true
+          description: The API version to use for this operation.
+          schema:
+            type: string
+            default: '2023-01-01'
+        - name: Content-Encoding
+          in: header
+          required: false
+          description: >-
+            The content encoding of the request body. Use gzip for compressed
+            payloads.
+          schema:
+            type: string
+            enum:
+              - gzip
+      requestBody:
+        description: >-
+          An array of log entries to ingest. Each entry is a JSON object
+          representing a log record matching the schema defined by the data
+          collection rule.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                additionalProperties: true
+              description: >-
+                Array of log records. Each record is a JSON object whose
+                properties match the columns of the target table.
+      responses:
+        '204':
+          description: Data was successfully ingested.
+        '400':
+          description: Bad request. The data does not match the expected schema.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized. Authentication token is missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden. Caller does not have permission to upload data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found. The data collection rule or stream does not exist.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '413':
+          description: Payload too large. Maximum body size is 1MB uncompressed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Too many requests. Rate limit exceeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '503':
+          description: Service unavailable. The service is temporarily unavailable.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+          scopes:
+            https://monitor.azure.com/.default: Access Azure Monitor ingestion
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+            message:
+              type: string
+              description: Error message indicating why the operation failed.
+          required:
+            - code
+            - message

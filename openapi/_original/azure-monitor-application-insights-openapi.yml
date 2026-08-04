@@ -1,0 +1,640 @@
+openapi: 3.1.0
+info:
+  title: Azure Monitor Azure Application Insights API
+  description: >-
+    Access Application Insights telemetry data including requests, dependencies,
+    exceptions, traces, and custom events for application performance
+    monitoring. Query data using Kusto Query Language (KQL).
+  version: 'v1'
+  contact:
+    name: Microsoft Azure Support
+    url: https://azure.microsoft.com/en-us/support/options/
+  license:
+    name: Microsoft API License
+    url: https://azure.microsoft.com/en-us/support/legal/
+servers:
+  - url: https://api.applicationinsights.io/v1
+    description: Application Insights data plane API
+security:
+  - oauth2:
+      - https://api.applicationinsights.io/.default
+  - apiKey: []
+tags:
+  - name: Events
+    description: Operations for retrieving Application Insights events
+  - name: Metadata
+    description: Operations for retrieving Application Insights metadata
+  - name: Metrics
+    description: Operations for retrieving Application Insights metrics
+  - name: Query
+    description: Operations for querying Application Insights telemetry data
+paths:
+  /apps/{appId}/query:
+    get:
+      operationId: Query_Get
+      summary: Azure Monitor Execute an Application Insights query via GET
+      description: >-
+        Executes an Analytics query against Application Insights data using
+        Kusto Query Language (KQL). The query is provided as a query parameter.
+      tags:
+        - Query
+      parameters:
+        - $ref: '#/components/parameters/AppIdParameter'
+        - name: query
+          in: query
+          required: true
+          description: The Analytics query in KQL format.
+          schema:
+            type: string
+        - name: timespan
+          in: query
+          required: false
+          description: The timespan over which to query data in ISO 8601 duration format.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful query response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResults'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      operationId: Query_Execute
+      summary: Azure Monitor Execute an Application Insights query via POST
+      description: >-
+        Executes an Analytics query against Application Insights data using
+        Kusto Query Language (KQL). The query is provided in the request body.
+      tags:
+        - Query
+      parameters:
+        - $ref: '#/components/parameters/AppIdParameter'
+      requestBody:
+        description: The Analytics query request body.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryBody'
+      responses:
+        '200':
+          description: Successful query response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResults'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /apps/{appId}/metrics/{metricId}:
+    get:
+      operationId: Metrics_Get
+      summary: Azure Monitor Get an Application Insights metric
+      description: >-
+        Gets metric values for a single Application Insights metric. Returns
+        aggregated metric data for the specified timespan and interval.
+      tags:
+        - Metrics
+      parameters:
+        - $ref: '#/components/parameters/AppIdParameter'
+        - name: metricId
+          in: path
+          required: true
+          description: >-
+            ID of the metric. Standard metrics include requests/count,
+            requests/duration, dependencies/count, exceptions/count, etc.
+          schema:
+            type: string
+        - name: timespan
+          in: query
+          required: false
+          description: The timespan over which to query in ISO 8601 duration format.
+          schema:
+            type: string
+        - name: interval
+          in: query
+          required: false
+          description: The time interval to use when retrieving metric values.
+          schema:
+            type: string
+        - name: aggregation
+          in: query
+          required: false
+          description: The aggregation to use when computing the metric values.
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - min
+                - max
+                - avg
+                - sum
+                - count
+                - unique
+        - name: segment
+          in: query
+          required: false
+          description: The name of the dimension to segment the metric values by.
+          schema:
+            type: array
+            items:
+              type: string
+        - name: top
+          in: query
+          required: false
+          description: The number of segments to return.
+          schema:
+            type: integer
+        - name: orderby
+          in: query
+          required: false
+          description: The aggregation function and direction to sort the segments by.
+          schema:
+            type: string
+        - name: filter
+          in: query
+          required: false
+          description: An expression to filter the results.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful request to get metric values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetricsResult'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /apps/{appId}/metrics:
+    post:
+      operationId: Metrics_GetMultiple
+      summary: Azure Monitor Get multiple Application Insights metrics
+      description: >-
+        Gets metric values for multiple Application Insights metrics in a single
+        request.
+      tags:
+        - Metrics
+      parameters:
+        - $ref: '#/components/parameters/AppIdParameter'
+      requestBody:
+        description: The metrics query request body containing multiple metric queries.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/MetricsPostBody'
+      responses:
+        '200':
+          description: Successful request to get multiple metric values.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MetricsResult'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /apps/{appId}/metrics/metadata:
+    get:
+      operationId: Metrics_GetMetadata
+      summary: Azure Monitor Get metric metadata
+      description: >-
+        Gets metadata describing the available metrics for the Application
+        Insights component.
+      tags:
+        - Metadata
+      parameters:
+        - $ref: '#/components/parameters/AppIdParameter'
+      responses:
+        '200':
+          description: Successful request to get metrics metadata.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /apps/{appId}/events/{eventType}:
+    get:
+      operationId: Events_GetByType
+      summary: Azure Monitor Get events by type
+      description: >-
+        Gets the results of an OData query for events of a specific type from
+        Application Insights telemetry.
+      tags:
+        - Events
+      parameters:
+        - $ref: '#/components/parameters/AppIdParameter'
+        - name: eventType
+          in: path
+          required: true
+          description: The type of events to query.
+          schema:
+            type: string
+            enum:
+              - $all
+              - traces
+              - customEvents
+              - pageViews
+              - browserTimings
+              - requests
+              - dependencies
+              - exceptions
+              - availabilityResults
+              - performanceCounters
+              - customMetrics
+        - name: timespan
+          in: query
+          required: false
+          description: The timespan over which to query in ISO 8601 duration format.
+          schema:
+            type: string
+        - name: $filter
+          in: query
+          required: false
+          description: An expression used to filter the returned events.
+          schema:
+            type: string
+        - name: $search
+          in: query
+          required: false
+          description: A free-text search expression to match for whether a particular event should be returned.
+          schema:
+            type: string
+        - name: $orderby
+          in: query
+          required: false
+          description: A comma-separated list of properties with asc or desc to sort on.
+          schema:
+            type: string
+        - name: $select
+          in: query
+          required: false
+          description: Limits the properties returned for each event.
+          schema:
+            type: string
+        - name: $skip
+          in: query
+          required: false
+          description: The number of items to skip over before returning events.
+          schema:
+            type: integer
+        - name: $top
+          in: query
+          required: false
+          description: The number of events to return.
+          schema:
+            type: integer
+        - name: $format
+          in: query
+          required: false
+          description: Format for the returned events.
+          schema:
+            type: string
+        - name: $count
+          in: query
+          required: false
+          description: Request a count of matching items included with the returned events.
+          schema:
+            type: boolean
+        - name: $apply
+          in: query
+          required: false
+          description: An expression used for aggregation over returned events.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful request to get events.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventsResults'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /apps/{appId}/events/{eventType}/{eventId}:
+    get:
+      operationId: Events_Get
+      summary: Azure Monitor Get a single event
+      description: >-
+        Gets the data for a single event from Application Insights telemetry.
+      tags:
+        - Events
+      parameters:
+        - $ref: '#/components/parameters/AppIdParameter'
+        - name: eventType
+          in: path
+          required: true
+          description: The type of events to query.
+          schema:
+            type: string
+            enum:
+              - $all
+              - traces
+              - customEvents
+              - pageViews
+              - browserTimings
+              - requests
+              - dependencies
+              - exceptions
+              - availabilityResults
+              - performanceCounters
+              - customMetrics
+        - name: eventId
+          in: path
+          required: true
+          description: The ID of the event.
+          schema:
+            type: string
+        - name: timespan
+          in: query
+          required: false
+          description: The timespan over which to query.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful request to get an event.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventsResults'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+          scopes:
+            https://api.applicationinsights.io/.default: Access Application Insights API
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API key for demo workspace access.
+  parameters:
+    AppIdParameter:
+      name: appId
+      in: path
+      required: true
+      description: >-
+        ID of the Application Insights component. This is the Application ID from
+        the API Access settings blade in the Azure portal.
+      schema:
+        type: string
+  schemas:
+    QueryBody:
+      type: object
+      required:
+        - query
+      properties:
+        query:
+          type: string
+          description: The Analytics query in KQL format.
+        timespan:
+          type: string
+          description: The timespan over which to query data.
+        applications:
+          type: array
+          items:
+            type: string
+          description: A list of Application Insights application IDs for cross-application queries.
+    QueryResults:
+      type: object
+      required:
+        - tables
+      properties:
+        tables:
+          type: array
+          items:
+            $ref: '#/components/schemas/Table'
+          description: The list of tables, columns and rows.
+    Table:
+      type: object
+      required:
+        - name
+        - columns
+        - rows
+      properties:
+        name:
+          type: string
+          description: The name of the table.
+        columns:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: The name of the column.
+              type:
+                type: string
+                description: The data type of the column.
+          description: The list of columns in this table.
+        rows:
+          type: array
+          items:
+            type: array
+            items: {}
+          description: The resulting rows from the query.
+    MetricsPostBody:
+      type: object
+      required:
+        - id
+        - parameters
+      properties:
+        id:
+          type: string
+          description: An identifier for this query.
+        parameters:
+          type: object
+          required:
+            - metricId
+          properties:
+            metricId:
+              type: string
+              description: The metric ID.
+            timespan:
+              type: string
+              description: The timespan.
+            aggregation:
+              type: array
+              items:
+                type: string
+            segment:
+              type: array
+              items:
+                type: string
+            top:
+              type: integer
+            orderby:
+              type: string
+            filter:
+              type: string
+            interval:
+              type: string
+    MetricsResult:
+      type: object
+      properties:
+        value:
+          type: object
+          properties:
+            start:
+              type: string
+              format: date-time
+              description: Start time of the metric.
+            end:
+              type: string
+              format: date-time
+              description: End time of the metric.
+            interval:
+              type: string
+              description: The interval used for segmenting the metric data.
+            segments:
+              type: array
+              items:
+                type: object
+                additionalProperties: true
+              description: Segmented metric data.
+    EventsResults:
+      type: object
+      properties:
+        '@ai.messages':
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+          description: Messages from the service.
+        '@odata.context':
+          type: string
+          description: OData context.
+        '@odata.count':
+          type: integer
+          description: Count of matching results.
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventsResultData'
+          description: The collection of events.
+    EventsResultData:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique ID for this event.
+        type:
+          type: string
+          description: The type of event.
+        timestamp:
+          type: string
+          format: date-time
+          description: The timestamp of the event.
+        customDimensions:
+          type: object
+          additionalProperties:
+            type: string
+          description: Custom dimensions of the event.
+        customMeasurements:
+          type: object
+          additionalProperties:
+            type: number
+          description: Custom measurements of the event.
+        operation:
+          type: object
+          properties:
+            name:
+              type: string
+            id:
+              type: string
+            parentId:
+              type: string
+            syntheticSource:
+              type: string
+        session:
+          type: object
+          properties:
+            id:
+              type: string
+        user:
+          type: object
+          properties:
+            id:
+              type: string
+            authenticatedId:
+              type: string
+            accountId:
+              type: string
+        cloud:
+          type: object
+          properties:
+            roleName:
+              type: string
+            roleInstance:
+              type: string
+        ai:
+          type: object
+          properties:
+            iKey:
+              type: string
+            appName:
+              type: string
+            appId:
+              type: string
+            sdkVersion:
+              type: string
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+            message:
+              type: string
+              description: Error message.
+          required:
+            - code
+            - message

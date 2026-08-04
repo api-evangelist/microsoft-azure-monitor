@@ -1,0 +1,470 @@
+openapi: 3.1.0
+info:
+  title: Azure Monitor Data Collection Endpoints API
+  description: >-
+    Create and manage data collection endpoints that provide unique ingestion
+    and configuration endpoints for data collection in Azure Monitor.
+  version: '2023-03-11'
+  contact:
+    name: Microsoft Azure Support
+    url: https://azure.microsoft.com/en-us/support/options/
+  license:
+    name: Microsoft API License
+    url: https://azure.microsoft.com/en-us/support/legal/
+servers:
+  - url: https://management.azure.com
+    description: Azure Resource Manager
+security:
+  - oauth2:
+      - https://management.azure.com/.default
+tags:
+  - name: Data Collection Endpoints
+    description: Operations for managing data collection endpoints
+paths:
+  /subscriptions/{subscriptionId}/providers/Microsoft.Insights/dataCollectionEndpoints:
+    get:
+      operationId: DataCollectionEndpoints_ListBySubscription
+      summary: Azure Monitor List data collection endpoints in a subscription
+      description: >-
+        Lists all data collection endpoints in the specified subscription.
+      tags:
+        - Data Collection Endpoints
+      parameters:
+        - $ref: '#/components/parameters/SubscriptionIdParameter'
+        - $ref: '#/components/parameters/ApiVersionParameter'
+      responses:
+        '200':
+          description: Successful request to list data collection endpoints.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataCollectionEndpointResourceListResult'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionEndpoints:
+    get:
+      operationId: DataCollectionEndpoints_ListByResourceGroup
+      summary: Azure Monitor List data collection endpoints in a resource group
+      description: >-
+        Lists all data collection endpoints in the specified resource group.
+      tags:
+        - Data Collection Endpoints
+      parameters:
+        - $ref: '#/components/parameters/SubscriptionIdParameter'
+        - $ref: '#/components/parameters/ResourceGroupNameParameter'
+        - $ref: '#/components/parameters/ApiVersionParameter'
+      responses:
+        '200':
+          description: Successful request to list data collection endpoints.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataCollectionEndpointResourceListResult'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionEndpoints/{dataCollectionEndpointName}
+  : get:
+      operationId: DataCollectionEndpoints_Get
+      summary: Azure Monitor Get a data collection endpoint
+      description: >-
+        Returns the specified data collection endpoint.
+      tags:
+        - Data Collection Endpoints
+      parameters:
+        - $ref: '#/components/parameters/SubscriptionIdParameter'
+        - $ref: '#/components/parameters/ResourceGroupNameParameter'
+        - $ref: '#/components/parameters/DataCollectionEndpointNameParameter'
+        - $ref: '#/components/parameters/ApiVersionParameter'
+      responses:
+        '200':
+          description: Successful request to get a data collection endpoint.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataCollectionEndpointResource'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      operationId: DataCollectionEndpoints_Create
+      summary: Azure Monitor Create or update a data collection endpoint
+      description: >-
+        Creates or updates a data collection endpoint. Data collection endpoints
+        provide unique ingestion and configuration access points.
+      tags:
+        - Data Collection Endpoints
+      parameters:
+        - $ref: '#/components/parameters/SubscriptionIdParameter'
+        - $ref: '#/components/parameters/ResourceGroupNameParameter'
+        - $ref: '#/components/parameters/DataCollectionEndpointNameParameter'
+        - $ref: '#/components/parameters/ApiVersionParameter'
+      requestBody:
+        description: The data collection endpoint to create or update.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataCollectionEndpointResource'
+      responses:
+        '200':
+          description: Successfully updated the data collection endpoint.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataCollectionEndpointResource'
+        '201':
+          description: Successfully created the data collection endpoint.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataCollectionEndpointResource'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      operationId: DataCollectionEndpoints_Update
+      summary: Azure Monitor Update a data collection endpoint
+      description: >-
+        Updates part of a data collection endpoint. Only tags and identity can
+        be updated.
+      tags:
+        - Data Collection Endpoints
+      parameters:
+        - $ref: '#/components/parameters/SubscriptionIdParameter'
+        - $ref: '#/components/parameters/ResourceGroupNameParameter'
+        - $ref: '#/components/parameters/DataCollectionEndpointNameParameter'
+        - $ref: '#/components/parameters/ApiVersionParameter'
+      requestBody:
+        description: The data collection endpoint properties to update.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResourceForUpdate'
+      responses:
+        '200':
+          description: Successfully updated the data collection endpoint.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataCollectionEndpointResource'
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      operationId: DataCollectionEndpoints_Delete
+      summary: Azure Monitor Delete a data collection endpoint
+      description: >-
+        Deletes a data collection endpoint.
+      tags:
+        - Data Collection Endpoints
+      parameters:
+        - $ref: '#/components/parameters/SubscriptionIdParameter'
+        - $ref: '#/components/parameters/ResourceGroupNameParameter'
+        - $ref: '#/components/parameters/DataCollectionEndpointNameParameter'
+        - $ref: '#/components/parameters/ApiVersionParameter'
+      responses:
+        '200':
+          description: Successfully deleted the data collection endpoint.
+        '204':
+          description: The data collection endpoint did not exist.
+        default:
+          description: Error response describing why the operation failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+          scopes:
+            https://management.azure.com/.default: Access Azure Management API
+  parameters:
+    SubscriptionIdParameter:
+      name: subscriptionId
+      in: path
+      required: true
+      description: The ID of the target subscription.
+      schema:
+        type: string
+    ResourceGroupNameParameter:
+      name: resourceGroupName
+      in: path
+      required: true
+      description: The name of the resource group.
+      schema:
+        type: string
+    DataCollectionEndpointNameParameter:
+      name: dataCollectionEndpointName
+      in: path
+      required: true
+      description: The name of the data collection endpoint.
+      schema:
+        type: string
+    ApiVersionParameter:
+      name: api-version
+      in: query
+      required: true
+      description: The API version to use for this operation.
+      schema:
+        type: string
+        default: '2023-03-11'
+  schemas:
+    DataCollectionEndpointResource:
+      type: object
+      required:
+        - location
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Fully qualified resource ID.
+        name:
+          type: string
+          readOnly: true
+          description: The name of the resource.
+        type:
+          type: string
+          readOnly: true
+          description: The type of the resource.
+        location:
+          type: string
+          description: The geo-location where the resource lives.
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          description: Resource tags.
+        kind:
+          type: string
+          enum:
+            - Linux
+            - Windows
+          description: The kind of the resource.
+        identity:
+          $ref: '#/components/schemas/ManagedServiceIdentity'
+        properties:
+          $ref: '#/components/schemas/DataCollectionEndpoint'
+        systemData:
+          $ref: '#/components/schemas/SystemData'
+    DataCollectionEndpoint:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Description of the data collection endpoint.
+        immutableId:
+          type: string
+          readOnly: true
+          description: The immutable ID of this data collection endpoint resource.
+        configurationAccess:
+          type: object
+          properties:
+            endpoint:
+              type: string
+              readOnly: true
+              description: The endpoint URL for configuration access.
+          description: The endpoint used for accessing configuration.
+        logsIngestion:
+          type: object
+          properties:
+            endpoint:
+              type: string
+              readOnly: true
+              description: The endpoint URL for logs ingestion.
+          description: The endpoint used for ingesting logs.
+        metricsIngestion:
+          type: object
+          properties:
+            endpoint:
+              type: string
+              readOnly: true
+              description: The endpoint URL for metrics ingestion.
+          description: The endpoint used for ingesting metrics.
+        networkAcls:
+          type: object
+          properties:
+            publicNetworkAccess:
+              type: string
+              enum:
+                - Enabled
+                - Disabled
+                - SecuredByPerimeter
+              description: The configuration to set whether network access from public internet is allowed.
+          description: Network access control rules for the endpoints.
+        provisioningState:
+          type: string
+          readOnly: true
+          enum:
+            - Creating
+            - Updating
+            - Deleting
+            - Succeeded
+            - Canceled
+            - Failed
+          description: The resource provisioning state.
+        privateLinkScopedResources:
+          type: array
+          readOnly: true
+          items:
+            type: object
+            properties:
+              resourceId:
+                type: string
+              scopeId:
+                type: string
+          description: List of Azure Monitor Private Link Scope resources.
+        failoverConfiguration:
+          type: object
+          readOnly: true
+          properties:
+            activeLocation:
+              type: string
+            locations:
+              type: array
+              items:
+                type: object
+                properties:
+                  location:
+                    type: string
+                  provisioningStatus:
+                    type: string
+          description: Failover configuration on this endpoint.
+        metadata:
+          type: object
+          readOnly: true
+          properties:
+            provisionedBy:
+              type: string
+              readOnly: true
+              description: Azure offering managing this resource on-behalf-of customer.
+            provisionedByResourceId:
+              type: string
+              readOnly: true
+          description: Metadata for the resource.
+    ManagedServiceIdentity:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+          enum:
+            - None
+            - SystemAssigned
+            - UserAssigned
+            - SystemAssigned,UserAssigned
+          description: Type of managed service identity.
+        principalId:
+          type: string
+          readOnly: true
+        tenantId:
+          type: string
+          readOnly: true
+        userAssignedIdentities:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              principalId:
+                type: string
+                readOnly: true
+              clientId:
+                type: string
+                readOnly: true
+    ResourceForUpdate:
+      type: object
+      properties:
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          description: Resource tags.
+        identity:
+          $ref: '#/components/schemas/ManagedServiceIdentity'
+    SystemData:
+      type: object
+      properties:
+        createdBy:
+          type: string
+        createdByType:
+          type: string
+          enum:
+            - User
+            - Application
+            - ManagedIdentity
+            - Key
+        createdAt:
+          type: string
+          format: date-time
+        lastModifiedBy:
+          type: string
+        lastModifiedByType:
+          type: string
+          enum:
+            - User
+            - Application
+            - ManagedIdentity
+            - Key
+        lastModifiedAt:
+          type: string
+          format: date-time
+    DataCollectionEndpointResourceListResult:
+      type: object
+      required:
+        - value
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataCollectionEndpointResource'
+          description: A list of data collection endpoints.
+        nextLink:
+          type: string
+          description: The URI to fetch the next page.
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+            message:
+              type: string
+              description: Error message.
+            target:
+              type: string
+            details:
+              type: array
+              items:
+                type: object
+                properties:
+                  code:
+                    type: string
+                  message:
+                    type: string
+                  target:
+                    type: string
