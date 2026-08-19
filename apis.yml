@@ -27,7 +27,7 @@ tags:
 created: '2024'
 modified: '2026-05-19'
 url: https://azure.microsoft.com/en-us/services/monitor/
-specificationVersion: '0.18'
+specificationVersion: '0.23'
 apis:
 - aid: microsoft-azure-monitor:microsoft-azure-monitor-action-groups-api
   name: Azure Monitor Action Groups API
