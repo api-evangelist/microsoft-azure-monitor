@@ -1,0 +1,844 @@
+{
+  "item": [
+    {
+      "id": "0aec9160-4f10-4c4d-bde9-71ac0d0c2a26",
+      "name": "Logs Ingestion",
+      "description": {
+        "content": "Operations for ingesting custom log data into Azure Monitor",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9dc2255a-d4ad-4ca4-a4e0-23b99d2dc3fc",
+          "name": "Azure Monitor Upload logs to a custom table",
+          "request": {
+            "name": "Azure Monitor Upload logs to a custom table",
+            "description": {
+              "content": "Ingests log data to a Log Analytics workspace via a data collection rule. The data is sent to the specified stream, which is mapped to a table in the workspace by the data collection rule. Supports JSON arrays of log records.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dataCollectionRules",
+                ":ruleId",
+                "streams",
+                ":stream"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2023-01-01",
+                  "description": "(Required) The API version to use for this operation."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ruleId",
+                  "description": "(Required) The immutable ID of the data collection rule resource."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "stream",
+                  "description": "(Required) The name of the stream to send data to. For built-in tables, use the stream name format like Custom-TableName. For custom tables, use Custom-TableName_CL."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The content encoding of the request body. Use gzip for compressed payloads.",
+                "key": "Content-Encoding",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"key_0\": 819.3792437156844,\n    \"key_1\": \"string\"\n  },\n  {\n    \"key_0\": \"string\",\n    \"key_1\": false,\n    \"key_2\": \"string\",\n    \"key_3\": 2845\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c6526e54-5bed-4131-9da6-6e794d4494ce",
+              "name": "Data was successfully ingested.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataCollectionRules",
+                    ":ruleId",
+                    "streams",
+                    ":stream"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-01-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) The immutable ID of the data collection rule resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "stream",
+                      "description": "(Required) The name of the stream to send data to. For built-in tables, use the stream name format like Custom-TableName. For custom tables, use Custom-TableName_CL."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content encoding of the request body. Use gzip for compressed payloads.",
+                    "key": "Content-Encoding",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"key_0\": true\n  },\n  {\n    \"key_0\": 9409.635758021022,\n    \"key_1\": 5598.670966695158,\n    \"key_2\": 9821,\n    \"key_3\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5255e5e2-0c99-409e-b39e-2d6975722356",
+              "name": "Bad request. The data does not match the expected schema.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataCollectionRules",
+                    ":ruleId",
+                    "streams",
+                    ":stream"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-01-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) The immutable ID of the data collection rule resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "stream",
+                      "description": "(Required) The name of the stream to send data to. For built-in tables, use the stream name format like Custom-TableName. For custom tables, use Custom-TableName_CL."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content encoding of the request body. Use gzip for compressed payloads.",
+                    "key": "Content-Encoding",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"key_0\": true\n  },\n  {\n    \"key_0\": 9409.635758021022,\n    \"key_1\": 5598.670966695158,\n    \"key_2\": 9821,\n    \"key_3\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1e9ed569-2288-45cc-ad80-2e9ad91e9fef",
+              "name": "Unauthorized. Authentication token is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataCollectionRules",
+                    ":ruleId",
+                    "streams",
+                    ":stream"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-01-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) The immutable ID of the data collection rule resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "stream",
+                      "description": "(Required) The name of the stream to send data to. For built-in tables, use the stream name format like Custom-TableName. For custom tables, use Custom-TableName_CL."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content encoding of the request body. Use gzip for compressed payloads.",
+                    "key": "Content-Encoding",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"key_0\": true\n  },\n  {\n    \"key_0\": 9409.635758021022,\n    \"key_1\": 5598.670966695158,\n    \"key_2\": 9821,\n    \"key_3\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f660db1d-c127-4ed3-ab6c-d878830c54f5",
+              "name": "Forbidden. Caller does not have permission to upload data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataCollectionRules",
+                    ":ruleId",
+                    "streams",
+                    ":stream"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-01-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) The immutable ID of the data collection rule resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "stream",
+                      "description": "(Required) The name of the stream to send data to. For built-in tables, use the stream name format like Custom-TableName. For custom tables, use Custom-TableName_CL."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content encoding of the request body. Use gzip for compressed payloads.",
+                    "key": "Content-Encoding",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"key_0\": true\n  },\n  {\n    \"key_0\": 9409.635758021022,\n    \"key_1\": 5598.670966695158,\n    \"key_2\": 9821,\n    \"key_3\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c62b8329-0bd6-4b26-a4c3-55e91272d345",
+              "name": "Not found. The data collection rule or stream does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataCollectionRules",
+                    ":ruleId",
+                    "streams",
+                    ":stream"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-01-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) The immutable ID of the data collection rule resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "stream",
+                      "description": "(Required) The name of the stream to send data to. For built-in tables, use the stream name format like Custom-TableName. For custom tables, use Custom-TableName_CL."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content encoding of the request body. Use gzip for compressed payloads.",
+                    "key": "Content-Encoding",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"key_0\": true\n  },\n  {\n    \"key_0\": 9409.635758021022,\n    \"key_1\": 5598.670966695158,\n    \"key_2\": 9821,\n    \"key_3\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "44fb85ad-0cef-448f-a621-ed4118c9bd5f",
+              "name": "Payload too large. Maximum body size is 1MB uncompressed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataCollectionRules",
+                    ":ruleId",
+                    "streams",
+                    ":stream"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-01-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) The immutable ID of the data collection rule resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "stream",
+                      "description": "(Required) The name of the stream to send data to. For built-in tables, use the stream name format like Custom-TableName. For custom tables, use Custom-TableName_CL."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content encoding of the request body. Use gzip for compressed payloads.",
+                    "key": "Content-Encoding",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"key_0\": true\n  },\n  {\n    \"key_0\": 9409.635758021022,\n    \"key_1\": 5598.670966695158,\n    \"key_2\": 9821,\n    \"key_3\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d4086e96-2b46-4264-a83d-57108ab87617",
+              "name": "Too many requests. Rate limit exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataCollectionRules",
+                    ":ruleId",
+                    "streams",
+                    ":stream"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-01-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) The immutable ID of the data collection rule resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "stream",
+                      "description": "(Required) The name of the stream to send data to. For built-in tables, use the stream name format like Custom-TableName. For custom tables, use Custom-TableName_CL."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content encoding of the request body. Use gzip for compressed payloads.",
+                    "key": "Content-Encoding",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"key_0\": true\n  },\n  {\n    \"key_0\": 9409.635758021022,\n    \"key_1\": 5598.670966695158,\n    \"key_2\": 9821,\n    \"key_3\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e73b57b9-d02e-478d-ae85-159ec671136d",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataCollectionRules",
+                    ":ruleId",
+                    "streams",
+                    ":stream"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-01-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) The immutable ID of the data collection rule resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "stream",
+                      "description": "(Required) The name of the stream to send data to. For built-in tables, use the stream name format like Custom-TableName. For custom tables, use Custom-TableName_CL."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content encoding of the request body. Use gzip for compressed payloads.",
+                    "key": "Content-Encoding",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"key_0\": true\n  },\n  {\n    \"key_0\": 9409.635758021022,\n    \"key_1\": 5598.670966695158,\n    \"key_2\": 9821,\n    \"key_3\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bc061f01-5e9e-4914-9732-833ff75ad858",
+              "name": "Service unavailable. The service is temporarily unavailable.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataCollectionRules",
+                    ":ruleId",
+                    "streams",
+                    ":stream"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-01-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) The immutable ID of the data collection rule resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "stream",
+                      "description": "(Required) The name of the stream to send data to. For built-in tables, use the stream name format like Custom-TableName. For custom tables, use Custom-TableName_CL."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The content encoding of the request body. Use gzip for compressed payloads.",
+                    "key": "Content-Encoding",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"key_0\": true\n  },\n  {\n    \"key_0\": 9409.635758021022,\n    \"key_1\": 5598.670966695158,\n    \"key_2\": 9821,\n    \"key_3\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://management.azure.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://management.azure.com/.default"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9082d259-6e62-47db-8fa9-2cb0d047f553",
+    "name": "Azure Monitor Action Groups Logs Ingestion API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Create and manage action groups that define notification and automation actions triggered by Azure Monitor alerts, including email, SMS, webhooks, and Azure Functions.\n\nContact Support:\n Name: Microsoft Azure Support",
+      "type": "text/plain"
+    }
+  }
+}

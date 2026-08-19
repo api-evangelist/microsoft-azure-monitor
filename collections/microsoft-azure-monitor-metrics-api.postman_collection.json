@@ -1,0 +1,1445 @@
+{
+  "item": [
+    {
+      "id": "c45728ce-f122-45c6-8e80-81901f38438c",
+      "name": "Metrics",
+      "description": {
+        "content": "Operations for retrieving Application Insights metrics",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e79e1042-df5d-4be0-826c-855db38ee333",
+          "name": "Azure Monitor Get an Application Insights metric",
+          "request": {
+            "name": "Azure Monitor Get an Application Insights metric",
+            "description": {
+              "content": "Gets metric values for a single Application Insights metric. Returns aggregated metric data for the specified timespan and interval.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "apps",
+                ":appId",
+                "metrics",
+                ":metricId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "timespan",
+                  "value": "<string>",
+                  "description": "The timespan over which to query in ISO 8601 duration format."
+                },
+                {
+                  "disabled": false,
+                  "key": "interval",
+                  "value": "<string>",
+                  "description": "The time interval to use when retrieving metric values."
+                },
+                {
+                  "disabled": false,
+                  "key": "aggregation",
+                  "value": "<string>",
+                  "description": "The aggregation to use when computing the metric values."
+                },
+                {
+                  "disabled": false,
+                  "key": "aggregation",
+                  "value": "<string>",
+                  "description": "The aggregation to use when computing the metric values."
+                },
+                {
+                  "disabled": false,
+                  "key": "segment",
+                  "value": "<string>",
+                  "description": "The name of the dimension to segment the metric values by."
+                },
+                {
+                  "disabled": false,
+                  "key": "segment",
+                  "value": "<string>",
+                  "description": "The name of the dimension to segment the metric values by."
+                },
+                {
+                  "disabled": false,
+                  "key": "top",
+                  "value": "<integer>",
+                  "description": "The number of segments to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "orderby",
+                  "value": "<string>",
+                  "description": "The aggregation function and direction to sort the segments by."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>",
+                  "description": "An expression to filter the results."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "appId",
+                  "description": "(Required) ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "metricId",
+                  "description": "(Required) ID of the metric. Standard metrics include requests/count, requests/duration, dependencies/count, exceptions/count, etc."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6da12c8f-9f9b-4172-a9b2-e5c29bf7da9b",
+              "name": "Successful request to get metric values.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    ":appId",
+                    "metrics",
+                    ":metricId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timespan",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appId",
+                      "description": "(Required) ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "metricId",
+                      "description": "(Required) ID of the metric. Standard metrics include requests/count, requests/duration, dependencies/count, exceptions/count, etc."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": {\n    \"start\": \"1946-11-02T23:27:02.574Z\",\n    \"end\": \"1980-01-10T12:17:49.784Z\",\n    \"interval\": \"string\",\n    \"segments\": [\n      {\n        \"key_0\": 4418\n      },\n      {\n        \"key_0\": 7634,\n        \"key_1\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e6831a4b-6aaf-4c27-ab34-a2492006b951",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    ":appId",
+                    "metrics",
+                    ":metricId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timespan",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appId",
+                      "description": "(Required) ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "metricId",
+                      "description": "(Required) ID of the metric. Standard metrics include requests/count, requests/duration, dependencies/count, exceptions/count, etc."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "133b38da-478a-41ea-b332-91344f55b549",
+          "name": "Azure Monitor Get multiple Application Insights metrics",
+          "request": {
+            "name": "Azure Monitor Get multiple Application Insights metrics",
+            "description": {
+              "content": "Gets metric values for multiple Application Insights metrics in a single request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "apps",
+                ":appId",
+                "metrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "appId",
+                  "description": "(Required) ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"id\": \"<string>\",\n    \"parameters\": {\n      \"metricId\": \"<string>\",\n      \"timespan\": \"<string>\",\n      \"aggregation\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"segment\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"top\": \"<integer>\",\n      \"orderby\": \"<string>\",\n      \"filter\": \"<string>\",\n      \"interval\": \"<string>\"\n    }\n  },\n  {\n    \"id\": \"<string>\",\n    \"parameters\": {\n      \"metricId\": \"<string>\",\n      \"timespan\": \"<string>\",\n      \"aggregation\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"segment\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"top\": \"<integer>\",\n      \"orderby\": \"<string>\",\n      \"filter\": \"<string>\",\n      \"interval\": \"<string>\"\n    }\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a58dabfa-ec1a-4d75-99ce-3bd8a18386e1",
+              "name": "Successful request to get multiple metric values.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    ":appId",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appId",
+                      "description": "(Required) ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"id\": \"string\",\n    \"parameters\": {\n      \"metricId\": \"string\",\n      \"timespan\": \"string\",\n      \"aggregation\": [\n        \"string\",\n        \"string\"\n      ],\n      \"segment\": [\n        \"string\",\n        \"string\"\n      ],\n      \"top\": 5061,\n      \"orderby\": \"string\",\n      \"filter\": \"string\",\n      \"interval\": \"string\"\n    }\n  },\n  {\n    \"id\": \"string\",\n    \"parameters\": {\n      \"metricId\": \"string\",\n      \"timespan\": \"string\",\n      \"aggregation\": [\n        \"string\",\n        \"string\"\n      ],\n      \"segment\": [\n        \"string\",\n        \"string\"\n      ],\n      \"top\": 6962,\n      \"orderby\": \"string\",\n      \"filter\": \"string\",\n      \"interval\": \"string\"\n    }\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"value\": {\n      \"start\": \"1975-06-16T16:05:44.135Z\",\n      \"end\": \"1970-06-28T11:15:14.797Z\",\n      \"interval\": \"string\",\n      \"segments\": [\n        {\n          \"key_0\": 255,\n          \"key_1\": 5395\n        },\n        {\n          \"key_0\": 4805\n        }\n      ]\n    }\n  },\n  {\n    \"value\": {\n      \"start\": \"1978-05-21T00:36:25.375Z\",\n      \"end\": \"2013-02-07T09:55:23.475Z\",\n      \"interval\": \"string\",\n      \"segments\": [\n        {\n          \"key_0\": 7399.763923113322,\n          \"key_1\": 1658.2706605113374,\n          \"key_2\": \"string\"\n        },\n        {\n          \"key_0\": 271,\n          \"key_1\": false\n        }\n      ]\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "771a5fc0-0f7f-45e6-862b-d827abdf2218",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    ":appId",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appId",
+                      "description": "(Required) ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"id\": \"string\",\n    \"parameters\": {\n      \"metricId\": \"string\",\n      \"timespan\": \"string\",\n      \"aggregation\": [\n        \"string\",\n        \"string\"\n      ],\n      \"segment\": [\n        \"string\",\n        \"string\"\n      ],\n      \"top\": 5061,\n      \"orderby\": \"string\",\n      \"filter\": \"string\",\n      \"interval\": \"string\"\n    }\n  },\n  {\n    \"id\": \"string\",\n    \"parameters\": {\n      \"metricId\": \"string\",\n      \"timespan\": \"string\",\n      \"aggregation\": [\n        \"string\",\n        \"string\"\n      ],\n      \"segment\": [\n        \"string\",\n        \"string\"\n      ],\n      \"top\": 6962,\n      \"orderby\": \"string\",\n      \"filter\": \"string\",\n      \"interval\": \"string\"\n    }\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fa2ea0d9-c1df-4ef1-b75b-9eb2d4220598",
+          "name": "Azure Monitor List metrics at subscription scope",
+          "request": {
+            "name": "Azure Monitor List metrics at subscription scope",
+            "description": {
+              "content": "Lists the metric values for a subscription. The $filter parameter is used to reduce the set of metric data returned. Only some dimensions are available for subscriptions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "providers",
+                "Microsoft.Insights",
+                "metrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2023-10-01",
+                  "description": "(Required) Client API version."
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "<string>",
+                  "description": "The region where the metrics you want reside."
+                },
+                {
+                  "disabled": false,
+                  "key": "timespan",
+                  "value": "<string>",
+                  "description": "The timespan of the query in ISO 8601 duration format (startDateTime_ISO/endDateTime_ISO)."
+                },
+                {
+                  "disabled": false,
+                  "key": "interval",
+                  "value": "PT1M",
+                  "description": "The interval (window size) of the query in ISO 8601 duration format."
+                },
+                {
+                  "disabled": false,
+                  "key": "metricnames",
+                  "value": "<string>",
+                  "description": "The names of the metrics (comma-separated) to retrieve. Maximum of 20."
+                },
+                {
+                  "disabled": false,
+                  "key": "aggregation",
+                  "value": "<string>",
+                  "description": "The list of aggregation types (comma-separated) to retrieve."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "The $filter is used to reduce the set of metric data returned. Uses OData filter expressions."
+                },
+                {
+                  "disabled": false,
+                  "key": "top",
+                  "value": "10",
+                  "description": "The maximum number of records to retrieve. Defaults to 10."
+                },
+                {
+                  "disabled": false,
+                  "key": "orderBy",
+                  "value": "<string>",
+                  "description": "The aggregation to use for sorting results and the direction of the sort."
+                },
+                {
+                  "disabled": false,
+                  "key": "resultType",
+                  "value": "<string>",
+                  "description": "Reduces the set of data collected. Data or Metadata."
+                },
+                {
+                  "disabled": false,
+                  "key": "metricNamespace",
+                  "value": "<string>",
+                  "description": "Metric namespace to query metric definitions for."
+                },
+                {
+                  "disabled": false,
+                  "key": "AutoAdjustTimegrain",
+                  "value": "<boolean>",
+                  "description": "If set to true, the time grain is automatically adjusted based on the timespan."
+                },
+                {
+                  "disabled": false,
+                  "key": "ValidateDimensions",
+                  "value": "<boolean>",
+                  "description": "If set to false, invalid filter parameter values will be ignored."
+                },
+                {
+                  "disabled": false,
+                  "key": "rollUpBy",
+                  "value": "<string>",
+                  "description": "Dimension name(s) to rollup results by."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ee902e96-2852-43f2-9367-003487426934",
+              "name": "Successful request to get the list of metric values.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "providers",
+                    "Microsoft.Insights",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-10-01"
+                    },
+                    {
+                      "key": "region",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timespan",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "PT1M"
+                    },
+                    {
+                      "key": "metricnames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "top",
+                      "value": "10"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "resultType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metricNamespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "AutoAdjustTimegrain",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "ValidateDimensions",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "rollUpBy",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"timespan\": \"string\",\n  \"value\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"name\": {\n        \"value\": \"string\",\n        \"localizedValue\": \"string\"\n      },\n      \"unit\": \"Percent\",\n      \"timeseries\": [\n        {\n          \"metadatavalues\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"data\": [\n            {\n              \"timeStamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"average\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"minimum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maximum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"total\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"count\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"timeStamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"average\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"minimum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maximum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"total\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"count\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"metadatavalues\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"data\": [\n            {\n              \"timeStamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"average\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"minimum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maximum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"total\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"count\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"timeStamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"average\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"minimum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maximum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"total\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"count\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"displayDescription\": \"string\",\n      \"errorCode\": \"string\",\n      \"errorMessage\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"name\": {\n        \"value\": \"string\",\n        \"localizedValue\": \"string\"\n      },\n      \"unit\": \"BytesPerSecond\",\n      \"timeseries\": [\n        {\n          \"metadatavalues\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"data\": [\n            {\n              \"timeStamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"average\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"minimum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maximum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"total\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"count\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"timeStamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"average\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"minimum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maximum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"total\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"count\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"metadatavalues\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"data\": [\n            {\n              \"timeStamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"average\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"minimum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maximum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"total\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"count\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"timeStamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"average\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"minimum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maximum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"total\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"count\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"displayDescription\": \"string\",\n      \"errorCode\": \"string\",\n      \"errorMessage\": \"string\"\n    }\n  ],\n  \"cost\": 708,\n  \"interval\": \"string\",\n  \"namespace\": \"string\",\n  \"resourceregion\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf14d12a-476e-45e7-8186-a862d40a2f8d",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "providers",
+                    "Microsoft.Insights",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-10-01"
+                    },
+                    {
+                      "key": "region",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timespan",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "PT1M"
+                    },
+                    {
+                      "key": "metricnames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "top",
+                      "value": "10"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "resultType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metricNamespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "AutoAdjustTimegrain",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "ValidateDimensions",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "rollUpBy",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5ed45660-226b-46fb-bb64-73ec9ade706c",
+          "name": "Azure Monitor List metrics at subscription scope via POST",
+          "request": {
+            "name": "Azure Monitor List metrics at subscription scope via POST",
+            "description": {
+              "content": "Lists the metric values for a subscription using a POST request. Allows the same filtering as the GET variant but with a request body for complex queries.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "providers",
+                "Microsoft.Insights",
+                "metrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2023-10-01",
+                  "description": "(Required) Client API version."
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "<string>",
+                  "description": "The region where the metrics you want reside."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"timespan\": \"<string>\",\n  \"interval\": \"<string>\",\n  \"metricNames\": \"<string>\",\n  \"aggregation\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"top\": \"<integer>\",\n  \"orderBy\": \"<string>\",\n  \"rollUpBy\": \"<string>\",\n  \"resultType\": \"<string>\",\n  \"metricNamespace\": \"<string>\",\n  \"autoAdjustTimegrain\": \"<boolean>\",\n  \"validateDimensions\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a8bb93d6-f581-4ded-8945-85d324d9f2cb",
+              "name": "Successful request to get the list of metric values.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "providers",
+                    "Microsoft.Insights",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-10-01"
+                    },
+                    {
+                      "key": "region",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"timespan\": \"<string>\",\n  \"interval\": \"<string>\",\n  \"metricNames\": \"<string>\",\n  \"aggregation\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"top\": \"<integer>\",\n  \"orderBy\": \"<string>\",\n  \"rollUpBy\": \"<string>\",\n  \"resultType\": \"<string>\",\n  \"metricNamespace\": \"<string>\",\n  \"autoAdjustTimegrain\": \"<boolean>\",\n  \"validateDimensions\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"timespan\": \"string\",\n  \"value\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"name\": {\n        \"value\": \"string\",\n        \"localizedValue\": \"string\"\n      },\n      \"unit\": \"Percent\",\n      \"timeseries\": [\n        {\n          \"metadatavalues\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"data\": [\n            {\n              \"timeStamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"average\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"minimum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maximum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"total\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"count\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"timeStamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"average\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"minimum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maximum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"total\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"count\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"metadatavalues\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"data\": [\n            {\n              \"timeStamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"average\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"minimum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maximum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"total\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"count\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"timeStamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"average\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"minimum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maximum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"total\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"count\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"displayDescription\": \"string\",\n      \"errorCode\": \"string\",\n      \"errorMessage\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"name\": {\n        \"value\": \"string\",\n        \"localizedValue\": \"string\"\n      },\n      \"unit\": \"BytesPerSecond\",\n      \"timeseries\": [\n        {\n          \"metadatavalues\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"data\": [\n            {\n              \"timeStamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"average\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"minimum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maximum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"total\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"count\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"timeStamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"average\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"minimum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maximum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"total\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"count\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"metadatavalues\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"data\": [\n            {\n              \"timeStamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"average\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"minimum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maximum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"total\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"count\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"timeStamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"average\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"minimum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maximum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"total\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"count\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"displayDescription\": \"string\",\n      \"errorCode\": \"string\",\n      \"errorMessage\": \"string\"\n    }\n  ],\n  \"cost\": 708,\n  \"interval\": \"string\",\n  \"namespace\": \"string\",\n  \"resourceregion\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "071690a1-decd-407d-ad78-7d460adfce50",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "providers",
+                    "Microsoft.Insights",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-10-01"
+                    },
+                    {
+                      "key": "region",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"timespan\": \"<string>\",\n  \"interval\": \"<string>\",\n  \"metricNames\": \"<string>\",\n  \"aggregation\": \"<string>\",\n  \"filter\": \"<string>\",\n  \"top\": \"<integer>\",\n  \"orderBy\": \"<string>\",\n  \"rollUpBy\": \"<string>\",\n  \"resultType\": \"<string>\",\n  \"metricNamespace\": \"<string>\",\n  \"autoAdjustTimegrain\": \"<boolean>\",\n  \"validateDimensions\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "77f29127-83db-47e5-b549-a9954bb14664",
+          "name": "Azure Monitor List metrics for a resource",
+          "request": {
+            "name": "Azure Monitor List metrics for a resource",
+            "description": {
+              "content": "Lists the metric values for a resource. The $filter parameter is used to reduce the set of metric data returned.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":resourceUri",
+                "providers",
+                "Microsoft.Insights",
+                "metrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2023-10-01",
+                  "description": "(Required) Client API version."
+                },
+                {
+                  "disabled": false,
+                  "key": "timespan",
+                  "value": "<string>",
+                  "description": "The timespan of the query in ISO 8601 duration format (startDateTime_ISO/endDateTime_ISO)."
+                },
+                {
+                  "disabled": false,
+                  "key": "interval",
+                  "value": "PT1M",
+                  "description": "The interval (window size) of the query in ISO 8601 duration format."
+                },
+                {
+                  "disabled": false,
+                  "key": "metricnames",
+                  "value": "<string>",
+                  "description": "The names of the metrics (comma-separated) to retrieve. Maximum of 20."
+                },
+                {
+                  "disabled": false,
+                  "key": "aggregation",
+                  "value": "<string>",
+                  "description": "The list of aggregation types (comma-separated) to retrieve."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "The $filter is used to reduce the set of metric data returned. Uses OData filter expressions."
+                },
+                {
+                  "disabled": false,
+                  "key": "top",
+                  "value": "10",
+                  "description": "The maximum number of records to retrieve. Defaults to 10."
+                },
+                {
+                  "disabled": false,
+                  "key": "orderBy",
+                  "value": "<string>",
+                  "description": "The aggregation to use for sorting results and the direction of the sort."
+                },
+                {
+                  "disabled": false,
+                  "key": "resultType",
+                  "value": "<string>",
+                  "description": "Reduces the set of data collected. Data or Metadata."
+                },
+                {
+                  "disabled": false,
+                  "key": "metricNamespace",
+                  "value": "<string>",
+                  "description": "Metric namespace to query metric definitions for."
+                },
+                {
+                  "disabled": false,
+                  "key": "AutoAdjustTimegrain",
+                  "value": "<boolean>",
+                  "description": "If set to true, the time grain is automatically adjusted based on the timespan."
+                },
+                {
+                  "disabled": false,
+                  "key": "ValidateDimensions",
+                  "value": "<boolean>",
+                  "description": "If set to false, invalid filter parameter values will be ignored."
+                },
+                {
+                  "disabled": false,
+                  "key": "rollUpBy",
+                  "value": "<string>",
+                  "description": "Dimension name(s) to rollup results by."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceUri",
+                  "description": "(Required) The identifier of the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c539d392-d6c0-4924-b14f-b5eccae5fbf3",
+              "name": "Successful request to get the list of metric values.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":resourceUri",
+                    "providers",
+                    "Microsoft.Insights",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-10-01"
+                    },
+                    {
+                      "key": "timespan",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "PT1M"
+                    },
+                    {
+                      "key": "metricnames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "top",
+                      "value": "10"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "resultType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metricNamespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "AutoAdjustTimegrain",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "ValidateDimensions",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "rollUpBy",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceUri",
+                      "description": "(Required) The identifier of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"timespan\": \"string\",\n  \"value\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"name\": {\n        \"value\": \"string\",\n        \"localizedValue\": \"string\"\n      },\n      \"unit\": \"Percent\",\n      \"timeseries\": [\n        {\n          \"metadatavalues\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"data\": [\n            {\n              \"timeStamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"average\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"minimum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maximum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"total\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"count\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"timeStamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"average\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"minimum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maximum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"total\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"count\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"metadatavalues\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"data\": [\n            {\n              \"timeStamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"average\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"minimum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maximum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"total\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"count\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"timeStamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"average\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"minimum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maximum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"total\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"count\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"displayDescription\": \"string\",\n      \"errorCode\": \"string\",\n      \"errorMessage\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"name\": {\n        \"value\": \"string\",\n        \"localizedValue\": \"string\"\n      },\n      \"unit\": \"BytesPerSecond\",\n      \"timeseries\": [\n        {\n          \"metadatavalues\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"data\": [\n            {\n              \"timeStamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"average\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"minimum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maximum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"total\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"count\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"timeStamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"average\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"minimum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maximum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"total\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"count\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"metadatavalues\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"data\": [\n            {\n              \"timeStamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"average\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"minimum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maximum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"total\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"count\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"timeStamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"average\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"minimum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"maximum\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"total\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"count\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"displayDescription\": \"string\",\n      \"errorCode\": \"string\",\n      \"errorMessage\": \"string\"\n    }\n  ],\n  \"cost\": 708,\n  \"interval\": \"string\",\n  \"namespace\": \"string\",\n  \"resourceregion\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "798f34f9-0d18-4269-b725-46f1beece786",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":resourceUri",
+                    "providers",
+                    "Microsoft.Insights",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-10-01"
+                    },
+                    {
+                      "key": "timespan",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "PT1M"
+                    },
+                    {
+                      "key": "metricnames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aggregation",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "top",
+                      "value": "10"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "resultType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metricNamespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "AutoAdjustTimegrain",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "ValidateDimensions",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "rollUpBy",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceUri",
+                      "description": "(Required) The identifier of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://management.azure.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://management.azure.com/.default"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "97045c25-9821-4e1b-a765-a0a8a82e80e2",
+    "name": "Azure Monitor Action Groups Metrics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Create and manage action groups that define notification and automation actions triggered by Azure Monitor alerts, including email, SMS, webhooks, and Azure Functions.\n\nContact Support:\n Name: Microsoft Azure Support",
+      "type": "text/plain"
+    }
+  }
+}

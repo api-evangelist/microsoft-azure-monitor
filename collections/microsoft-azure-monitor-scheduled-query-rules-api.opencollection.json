@@ -1,0 +1,241 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Azure Monitor Action Groups Scheduled Query Rules API",
+    "version": "2022-06-01"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Scheduled Query Rules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Azure Monitor List scheduled query rules in a subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://management.azure.com/subscriptions/:subscriptionId/providers/Microsoft.Insights/scheduledQueryRules",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the target subscription."
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "Client API version."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all scheduled query rules defined within a subscription."
+        },
+        {
+          "info": {
+            "name": "Azure Monitor List scheduled query rules in a resource group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Insights/scheduledQueryRules",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the target subscription."
+              },
+              {
+                "name": "resourceGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the resource group."
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "Client API version."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of scheduled query rules within a resource group."
+        },
+        {
+          "info": {
+            "name": "Azure Monitor Get a scheduled query rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Insights/scheduledQueryRules/:ruleName",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the target subscription."
+              },
+              {
+                "name": "resourceGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the resource group."
+              },
+              {
+                "name": "ruleName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the rule."
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "Client API version."
+              }
+            ]
+          },
+          "docs": "Retrieve a scheduled query rule definition by name."
+        },
+        {
+          "info": {
+            "name": "Azure Monitor Create or update a scheduled query rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Insights/scheduledQueryRules/:ruleName",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the target subscription."
+              },
+              {
+                "name": "resourceGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the resource group."
+              },
+              {
+                "name": "ruleName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the rule."
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "Client API version."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates or updates a scheduled query rule. These rules evaluate log queries at defined intervals and trigger alerts when specified conditions are met."
+        },
+        {
+          "info": {
+            "name": "Azure Monitor Update a scheduled query rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Insights/scheduledQueryRules/:ruleName",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the target subscription."
+              },
+              {
+                "name": "resourceGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the resource group."
+              },
+              {
+                "name": "ruleName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the rule."
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "Client API version."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a scheduled query rule. Allows partial updates to an existing rule."
+        },
+        {
+          "info": {
+            "name": "Azure Monitor Delete a scheduled query rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Insights/scheduledQueryRules/:ruleName",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the target subscription."
+              },
+              {
+                "name": "resourceGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the resource group."
+              },
+              {
+                "name": "ruleName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the rule."
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "Client API version."
+              }
+            ]
+          },
+          "docs": "Deletes a scheduled query rule from a resource group."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

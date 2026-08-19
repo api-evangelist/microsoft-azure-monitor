@@ -1,0 +1,1609 @@
+{
+  "item": [
+    {
+      "id": "d46a50f1-9e28-456c-8598-8a7e1b6b68bf",
+      "name": "Private Link Scopes",
+      "description": {
+        "content": "Operations for managing Azure Monitor Private Link Scopes",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4dd0c879-e5da-479f-a839-5dfb2a1b0a9b",
+          "name": "Azure Monitor List private link scopes in a subscription",
+          "request": {
+            "name": "Azure Monitor List private link scopes in a subscription",
+            "description": {
+              "content": "Gets a list of all Azure Monitor Private Link Scopes within a subscription.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "providers",
+                "microsoft.insights",
+                "privateLinkScopes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2021-07-01-preview",
+                  "description": "(Required) Client API version."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7cabb76d-31a0-4fc5-a764-3bf9643c0331",
+              "name": "Successful request to list private link scopes.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "providers",
+                    "microsoft.insights",
+                    "privateLinkScopes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-07-01-preview"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"location\": \"string\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"tags\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"properties\": {\n        \"accessModeSettings\": {\n          \"queryAccessMode\": \"PrivateOnly\",\n          \"ingestionAccessMode\": \"Open\",\n          \"exclusions\": [\n            {\n              \"ingestionAccessMode\": \"Open\",\n              \"queryAccessMode\": \"Open\",\n              \"privateEndpointConnectionName\": \"string\"\n            },\n            {\n              \"ingestionAccessMode\": \"PrivateOnly\",\n              \"queryAccessMode\": \"Open\",\n              \"privateEndpointConnectionName\": \"string\"\n            }\n          ]\n        },\n        \"provisioningState\": \"string\",\n        \"privateEndpointConnections\": [\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"type\": \"string\",\n            \"properties\": {\n              \"privateEndpoint\": {\n                \"id\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"privateLinkServiceConnectionState\": {\n                \"status\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"description\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"actionsRequired\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"provisioningState\": \"string\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"type\": \"string\",\n            \"properties\": {\n              \"privateEndpoint\": {\n                \"id\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"privateLinkServiceConnectionState\": {\n                \"status\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"description\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"actionsRequired\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"provisioningState\": \"string\"\n            }\n          }\n        ]\n      },\n      \"systemData\": {\n        \"createdBy\": \"string\",\n        \"createdByType\": \"Application\",\n        \"createdAt\": \"2002-11-10T01:59:21.544Z\",\n        \"lastModifiedBy\": \"string\",\n        \"lastModifiedByType\": \"Key\",\n        \"lastModifiedAt\": \"1963-07-24T13:27:49.963Z\"\n      }\n    },\n    {\n      \"location\": \"string\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"tags\": {\n        \"key_0\": \"string\"\n      },\n      \"properties\": {\n        \"accessModeSettings\": {\n          \"queryAccessMode\": \"Open\",\n          \"ingestionAccessMode\": \"Open\",\n          \"exclusions\": [\n            {\n              \"ingestionAccessMode\": \"Open\",\n              \"queryAccessMode\": \"Open\",\n              \"privateEndpointConnectionName\": \"string\"\n            },\n            {\n              \"ingestionAccessMode\": \"Open\",\n              \"queryAccessMode\": \"Open\",\n              \"privateEndpointConnectionName\": \"string\"\n            }\n          ]\n        },\n        \"provisioningState\": \"string\",\n        \"privateEndpointConnections\": [\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"type\": \"string\",\n            \"properties\": {\n              \"privateEndpoint\": {\n                \"id\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"privateLinkServiceConnectionState\": {\n                \"status\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"description\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"actionsRequired\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"provisioningState\": \"string\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"type\": \"string\",\n            \"properties\": {\n              \"privateEndpoint\": {\n                \"id\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"privateLinkServiceConnectionState\": {\n                \"status\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"description\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"actionsRequired\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"provisioningState\": \"string\"\n            }\n          }\n        ]\n      },\n      \"systemData\": {\n        \"createdBy\": \"string\",\n        \"createdByType\": \"User\",\n        \"createdAt\": \"2005-09-11T01:31:00.047Z\",\n        \"lastModifiedBy\": \"string\",\n        \"lastModifiedByType\": \"User\",\n        \"lastModifiedAt\": \"1998-06-26T07:58:13.476Z\"\n      }\n    }\n  ],\n  \"nextLink\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8816cee7-b548-4c0f-9778-1bc3d8684a40",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "providers",
+                    "microsoft.insights",
+                    "privateLinkScopes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-07-01-preview"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c4371751-89b6-4561-9888-2403d9ee1d93",
+          "name": "Azure Monitor List private link scopes in a resource group",
+          "request": {
+            "name": "Azure Monitor List private link scopes in a resource group",
+            "description": {
+              "content": "Gets a list of Azure Monitor Private Link Scopes within a resource group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourceGroups",
+                ":resourceGroupName",
+                "providers",
+                "microsoft.insights",
+                "privateLinkScopes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2021-07-01-preview",
+                  "description": "(Required) Client API version."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aad967a0-3794-41e9-b064-c12bfd94bb10",
+              "name": "Successful request to list private link scopes.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "microsoft.insights",
+                    "privateLinkScopes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-07-01-preview"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"location\": \"string\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"tags\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"properties\": {\n        \"accessModeSettings\": {\n          \"queryAccessMode\": \"PrivateOnly\",\n          \"ingestionAccessMode\": \"Open\",\n          \"exclusions\": [\n            {\n              \"ingestionAccessMode\": \"Open\",\n              \"queryAccessMode\": \"Open\",\n              \"privateEndpointConnectionName\": \"string\"\n            },\n            {\n              \"ingestionAccessMode\": \"PrivateOnly\",\n              \"queryAccessMode\": \"Open\",\n              \"privateEndpointConnectionName\": \"string\"\n            }\n          ]\n        },\n        \"provisioningState\": \"string\",\n        \"privateEndpointConnections\": [\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"type\": \"string\",\n            \"properties\": {\n              \"privateEndpoint\": {\n                \"id\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"privateLinkServiceConnectionState\": {\n                \"status\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"description\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"actionsRequired\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"provisioningState\": \"string\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"type\": \"string\",\n            \"properties\": {\n              \"privateEndpoint\": {\n                \"id\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"privateLinkServiceConnectionState\": {\n                \"status\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"description\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"actionsRequired\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"provisioningState\": \"string\"\n            }\n          }\n        ]\n      },\n      \"systemData\": {\n        \"createdBy\": \"string\",\n        \"createdByType\": \"Application\",\n        \"createdAt\": \"2002-11-10T01:59:21.544Z\",\n        \"lastModifiedBy\": \"string\",\n        \"lastModifiedByType\": \"Key\",\n        \"lastModifiedAt\": \"1963-07-24T13:27:49.963Z\"\n      }\n    },\n    {\n      \"location\": \"string\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"tags\": {\n        \"key_0\": \"string\"\n      },\n      \"properties\": {\n        \"accessModeSettings\": {\n          \"queryAccessMode\": \"Open\",\n          \"ingestionAccessMode\": \"Open\",\n          \"exclusions\": [\n            {\n              \"ingestionAccessMode\": \"Open\",\n              \"queryAccessMode\": \"Open\",\n              \"privateEndpointConnectionName\": \"string\"\n            },\n            {\n              \"ingestionAccessMode\": \"Open\",\n              \"queryAccessMode\": \"Open\",\n              \"privateEndpointConnectionName\": \"string\"\n            }\n          ]\n        },\n        \"provisioningState\": \"string\",\n        \"privateEndpointConnections\": [\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"type\": \"string\",\n            \"properties\": {\n              \"privateEndpoint\": {\n                \"id\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"privateLinkServiceConnectionState\": {\n                \"status\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"description\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"actionsRequired\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"provisioningState\": \"string\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"type\": \"string\",\n            \"properties\": {\n              \"privateEndpoint\": {\n                \"id\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"privateLinkServiceConnectionState\": {\n                \"status\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"description\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"actionsRequired\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"provisioningState\": \"string\"\n            }\n          }\n        ]\n      },\n      \"systemData\": {\n        \"createdBy\": \"string\",\n        \"createdByType\": \"User\",\n        \"createdAt\": \"2005-09-11T01:31:00.047Z\",\n        \"lastModifiedBy\": \"string\",\n        \"lastModifiedByType\": \"User\",\n        \"lastModifiedAt\": \"1998-06-26T07:58:13.476Z\"\n      }\n    }\n  ],\n  \"nextLink\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "50893b58-d8ca-4ef5-a4d9-4111889a38dd",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "microsoft.insights",
+                    "privateLinkScopes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-07-01-preview"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c9b557f5-3195-4c33-8638-ec1a72b6040b",
+          "name": "Azure Monitor Get a private link scope",
+          "request": {
+            "name": "Azure Monitor Get a private link scope",
+            "description": {
+              "content": "Returns an Azure Monitor Private Link Scope.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourceGroups",
+                ":resourceGroupName",
+                "providers",
+                "microsoft.insights",
+                "privateLinkScopes",
+                ":scopeName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2021-07-01-preview",
+                  "description": "(Required) Client API version."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "scopeName",
+                  "description": "(Required) The name of the Azure Monitor Private Link Scope resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e5fa5a9a-706c-4d4f-a34d-d4bbdf8f1b35",
+              "name": "Successful request to get a private link scope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "microsoft.insights",
+                    "privateLinkScopes",
+                    ":scopeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-07-01-preview"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scopeName",
+                      "description": "(Required) The name of the Azure Monitor Private Link Scope resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"location\": \"string\",\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"tags\": {\n    \"key_0\": \"string\"\n  },\n  \"properties\": {\n    \"accessModeSettings\": {\n      \"queryAccessMode\": \"PrivateOnly\",\n      \"ingestionAccessMode\": \"Open\",\n      \"exclusions\": [\n        {\n          \"ingestionAccessMode\": \"Open\",\n          \"queryAccessMode\": \"Open\",\n          \"privateEndpointConnectionName\": \"string\"\n        },\n        {\n          \"ingestionAccessMode\": \"Open\",\n          \"queryAccessMode\": \"PrivateOnly\",\n          \"privateEndpointConnectionName\": \"string\"\n        }\n      ]\n    },\n    \"provisioningState\": \"string\",\n    \"privateEndpointConnections\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"properties\": {\n          \"privateEndpoint\": {\n            \"id\": \"string\"\n          },\n          \"privateLinkServiceConnectionState\": {\n            \"status\": \"string\",\n            \"description\": \"string\",\n            \"actionsRequired\": \"string\"\n          },\n          \"provisioningState\": \"string\"\n        }\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"properties\": {\n          \"privateEndpoint\": {\n            \"id\": \"string\"\n          },\n          \"privateLinkServiceConnectionState\": {\n            \"status\": \"string\",\n            \"description\": \"string\",\n            \"actionsRequired\": \"string\"\n          },\n          \"provisioningState\": \"string\"\n        }\n      }\n    ]\n  },\n  \"systemData\": {\n    \"createdBy\": \"string\",\n    \"createdByType\": \"ManagedIdentity\",\n    \"createdAt\": \"2007-06-01T23:30:57.669Z\",\n    \"lastModifiedBy\": \"string\",\n    \"lastModifiedByType\": \"ManagedIdentity\",\n    \"lastModifiedAt\": \"1969-11-24T03:37:32.745Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f3e4c893-3956-444c-bd9d-8fd49d2b30c6",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "microsoft.insights",
+                    "privateLinkScopes",
+                    ":scopeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-07-01-preview"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scopeName",
+                      "description": "(Required) The name of the Azure Monitor Private Link Scope resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4f7c78d9-0252-43df-917b-91baaee74741",
+          "name": "Azure Monitor Create or update a private link scope",
+          "request": {
+            "name": "Azure Monitor Create or update a private link scope",
+            "description": {
+              "content": "Creates or updates an Azure Monitor Private Link Scope. A Private Link Scope groups Azure Monitor resources together for secure access via private endpoints.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourceGroups",
+                ":resourceGroupName",
+                "providers",
+                "microsoft.insights",
+                "privateLinkScopes",
+                ":scopeName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2021-07-01-preview",
+                  "description": "(Required) Client API version."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "scopeName",
+                  "description": "(Required) The name of the Azure Monitor Private Link Scope resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"location\": \"<string>\",\n  \"tags\": {\n    \"key_0\": \"<string>\"\n  },\n  \"properties\": {\n    \"accessModeSettings\": {\n      \"queryAccessMode\": \"<string>\",\n      \"ingestionAccessMode\": \"<string>\",\n      \"exclusions\": [\n        {\n          \"ingestionAccessMode\": \"<string>\",\n          \"queryAccessMode\": \"<string>\",\n          \"privateEndpointConnectionName\": \"<string>\"\n        },\n        {\n          \"ingestionAccessMode\": \"<string>\",\n          \"queryAccessMode\": \"<string>\",\n          \"privateEndpointConnectionName\": \"<string>\"\n        }\n      ]\n    }\n  },\n  \"systemData\": {\n    \"createdBy\": \"<string>\",\n    \"createdByType\": \"<string>\",\n    \"createdAt\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByType\": \"<string>\",\n    \"lastModifiedAt\": \"<dateTime>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "38a15f62-65ba-4f01-9897-b7ed24f272dd",
+              "name": "Successfully updated the private link scope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "microsoft.insights",
+                    "privateLinkScopes",
+                    ":scopeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-07-01-preview"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scopeName",
+                      "description": "(Required) The name of the Azure Monitor Private Link Scope resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"location\": \"<string>\",\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"properties\": {\n    \"accessModeSettings\": {\n      \"queryAccessMode\": \"Open\",\n      \"ingestionAccessMode\": \"Open\",\n      \"exclusions\": [\n        {\n          \"ingestionAccessMode\": \"Open\",\n          \"queryAccessMode\": \"Open\",\n          \"privateEndpointConnectionName\": \"string\"\n        },\n        {\n          \"ingestionAccessMode\": \"Open\",\n          \"queryAccessMode\": \"PrivateOnly\",\n          \"privateEndpointConnectionName\": \"string\"\n        }\n      ]\n    }\n  },\n  \"systemData\": {\n    \"createdBy\": \"string\",\n    \"createdByType\": \"Key\",\n    \"createdAt\": \"1967-06-23T06:48:46.165Z\",\n    \"lastModifiedBy\": \"string\",\n    \"lastModifiedByType\": \"Application\",\n    \"lastModifiedAt\": \"1964-04-20T06:50:50.280Z\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"location\": \"string\",\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"tags\": {\n    \"key_0\": \"string\"\n  },\n  \"properties\": {\n    \"accessModeSettings\": {\n      \"queryAccessMode\": \"PrivateOnly\",\n      \"ingestionAccessMode\": \"Open\",\n      \"exclusions\": [\n        {\n          \"ingestionAccessMode\": \"Open\",\n          \"queryAccessMode\": \"Open\",\n          \"privateEndpointConnectionName\": \"string\"\n        },\n        {\n          \"ingestionAccessMode\": \"Open\",\n          \"queryAccessMode\": \"PrivateOnly\",\n          \"privateEndpointConnectionName\": \"string\"\n        }\n      ]\n    },\n    \"provisioningState\": \"string\",\n    \"privateEndpointConnections\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"properties\": {\n          \"privateEndpoint\": {\n            \"id\": \"string\"\n          },\n          \"privateLinkServiceConnectionState\": {\n            \"status\": \"string\",\n            \"description\": \"string\",\n            \"actionsRequired\": \"string\"\n          },\n          \"provisioningState\": \"string\"\n        }\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"properties\": {\n          \"privateEndpoint\": {\n            \"id\": \"string\"\n          },\n          \"privateLinkServiceConnectionState\": {\n            \"status\": \"string\",\n            \"description\": \"string\",\n            \"actionsRequired\": \"string\"\n          },\n          \"provisioningState\": \"string\"\n        }\n      }\n    ]\n  },\n  \"systemData\": {\n    \"createdBy\": \"string\",\n    \"createdByType\": \"ManagedIdentity\",\n    \"createdAt\": \"2007-06-01T23:30:57.669Z\",\n    \"lastModifiedBy\": \"string\",\n    \"lastModifiedByType\": \"ManagedIdentity\",\n    \"lastModifiedAt\": \"1969-11-24T03:37:32.745Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b1f74ab3-30ef-447c-a05c-9554bfcc997f",
+              "name": "Successfully created the private link scope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "microsoft.insights",
+                    "privateLinkScopes",
+                    ":scopeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-07-01-preview"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scopeName",
+                      "description": "(Required) The name of the Azure Monitor Private Link Scope resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"location\": \"<string>\",\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"properties\": {\n    \"accessModeSettings\": {\n      \"queryAccessMode\": \"Open\",\n      \"ingestionAccessMode\": \"Open\",\n      \"exclusions\": [\n        {\n          \"ingestionAccessMode\": \"Open\",\n          \"queryAccessMode\": \"Open\",\n          \"privateEndpointConnectionName\": \"string\"\n        },\n        {\n          \"ingestionAccessMode\": \"Open\",\n          \"queryAccessMode\": \"PrivateOnly\",\n          \"privateEndpointConnectionName\": \"string\"\n        }\n      ]\n    }\n  },\n  \"systemData\": {\n    \"createdBy\": \"string\",\n    \"createdByType\": \"Key\",\n    \"createdAt\": \"1967-06-23T06:48:46.165Z\",\n    \"lastModifiedBy\": \"string\",\n    \"lastModifiedByType\": \"Application\",\n    \"lastModifiedAt\": \"1964-04-20T06:50:50.280Z\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"location\": \"string\",\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"tags\": {\n    \"key_0\": \"string\"\n  },\n  \"properties\": {\n    \"accessModeSettings\": {\n      \"queryAccessMode\": \"PrivateOnly\",\n      \"ingestionAccessMode\": \"Open\",\n      \"exclusions\": [\n        {\n          \"ingestionAccessMode\": \"Open\",\n          \"queryAccessMode\": \"Open\",\n          \"privateEndpointConnectionName\": \"string\"\n        },\n        {\n          \"ingestionAccessMode\": \"Open\",\n          \"queryAccessMode\": \"PrivateOnly\",\n          \"privateEndpointConnectionName\": \"string\"\n        }\n      ]\n    },\n    \"provisioningState\": \"string\",\n    \"privateEndpointConnections\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"properties\": {\n          \"privateEndpoint\": {\n            \"id\": \"string\"\n          },\n          \"privateLinkServiceConnectionState\": {\n            \"status\": \"string\",\n            \"description\": \"string\",\n            \"actionsRequired\": \"string\"\n          },\n          \"provisioningState\": \"string\"\n        }\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"properties\": {\n          \"privateEndpoint\": {\n            \"id\": \"string\"\n          },\n          \"privateLinkServiceConnectionState\": {\n            \"status\": \"string\",\n            \"description\": \"string\",\n            \"actionsRequired\": \"string\"\n          },\n          \"provisioningState\": \"string\"\n        }\n      }\n    ]\n  },\n  \"systemData\": {\n    \"createdBy\": \"string\",\n    \"createdByType\": \"ManagedIdentity\",\n    \"createdAt\": \"2007-06-01T23:30:57.669Z\",\n    \"lastModifiedBy\": \"string\",\n    \"lastModifiedByType\": \"ManagedIdentity\",\n    \"lastModifiedAt\": \"1969-11-24T03:37:32.745Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b8ff3b3a-7843-4c70-8aa3-2aef5e208c83",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "microsoft.insights",
+                    "privateLinkScopes",
+                    ":scopeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-07-01-preview"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scopeName",
+                      "description": "(Required) The name of the Azure Monitor Private Link Scope resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"location\": \"<string>\",\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"properties\": {\n    \"accessModeSettings\": {\n      \"queryAccessMode\": \"Open\",\n      \"ingestionAccessMode\": \"Open\",\n      \"exclusions\": [\n        {\n          \"ingestionAccessMode\": \"Open\",\n          \"queryAccessMode\": \"Open\",\n          \"privateEndpointConnectionName\": \"string\"\n        },\n        {\n          \"ingestionAccessMode\": \"Open\",\n          \"queryAccessMode\": \"PrivateOnly\",\n          \"privateEndpointConnectionName\": \"string\"\n        }\n      ]\n    }\n  },\n  \"systemData\": {\n    \"createdBy\": \"string\",\n    \"createdByType\": \"Key\",\n    \"createdAt\": \"1967-06-23T06:48:46.165Z\",\n    \"lastModifiedBy\": \"string\",\n    \"lastModifiedByType\": \"Application\",\n    \"lastModifiedAt\": \"1964-04-20T06:50:50.280Z\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cd6f19b4-9835-498a-9fa1-14c0b59c2aee",
+          "name": "Azure Monitor Update tags on a private link scope",
+          "request": {
+            "name": "Azure Monitor Update tags on a private link scope",
+            "description": {
+              "content": "Updates an existing Private Link Scope's tags. Use this method to update tags only.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourceGroups",
+                ":resourceGroupName",
+                "providers",
+                "microsoft.insights",
+                "privateLinkScopes",
+                ":scopeName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2021-07-01-preview",
+                  "description": "(Required) Client API version."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "scopeName",
+                  "description": "(Required) The name of the Azure Monitor Private Link Scope resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tags\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4f41b71e-c052-4818-9fd8-fe77b90cf1c8",
+              "name": "Successfully updated tags.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "microsoft.insights",
+                    "privateLinkScopes",
+                    ":scopeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-07-01-preview"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scopeName",
+                      "description": "(Required) The name of the Azure Monitor Private Link Scope resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tags\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"location\": \"string\",\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"tags\": {\n    \"key_0\": \"string\"\n  },\n  \"properties\": {\n    \"accessModeSettings\": {\n      \"queryAccessMode\": \"PrivateOnly\",\n      \"ingestionAccessMode\": \"Open\",\n      \"exclusions\": [\n        {\n          \"ingestionAccessMode\": \"Open\",\n          \"queryAccessMode\": \"Open\",\n          \"privateEndpointConnectionName\": \"string\"\n        },\n        {\n          \"ingestionAccessMode\": \"Open\",\n          \"queryAccessMode\": \"PrivateOnly\",\n          \"privateEndpointConnectionName\": \"string\"\n        }\n      ]\n    },\n    \"provisioningState\": \"string\",\n    \"privateEndpointConnections\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"properties\": {\n          \"privateEndpoint\": {\n            \"id\": \"string\"\n          },\n          \"privateLinkServiceConnectionState\": {\n            \"status\": \"string\",\n            \"description\": \"string\",\n            \"actionsRequired\": \"string\"\n          },\n          \"provisioningState\": \"string\"\n        }\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"properties\": {\n          \"privateEndpoint\": {\n            \"id\": \"string\"\n          },\n          \"privateLinkServiceConnectionState\": {\n            \"status\": \"string\",\n            \"description\": \"string\",\n            \"actionsRequired\": \"string\"\n          },\n          \"provisioningState\": \"string\"\n        }\n      }\n    ]\n  },\n  \"systemData\": {\n    \"createdBy\": \"string\",\n    \"createdByType\": \"ManagedIdentity\",\n    \"createdAt\": \"2007-06-01T23:30:57.669Z\",\n    \"lastModifiedBy\": \"string\",\n    \"lastModifiedByType\": \"ManagedIdentity\",\n    \"lastModifiedAt\": \"1969-11-24T03:37:32.745Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2748d77b-0434-40cd-a03a-af31f423d6e8",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "microsoft.insights",
+                    "privateLinkScopes",
+                    ":scopeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-07-01-preview"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scopeName",
+                      "description": "(Required) The name of the Azure Monitor Private Link Scope resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tags\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bc881126-b726-48fd-adc4-1b033c98c2d7",
+          "name": "Azure Monitor Delete a private link scope",
+          "request": {
+            "name": "Azure Monitor Delete a private link scope",
+            "description": {
+              "content": "Deletes an Azure Monitor Private Link Scope.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourceGroups",
+                ":resourceGroupName",
+                "providers",
+                "microsoft.insights",
+                "privateLinkScopes",
+                ":scopeName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2021-07-01-preview",
+                  "description": "(Required) Client API version."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "scopeName",
+                  "description": "(Required) The name of the Azure Monitor Private Link Scope resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7c0805b9-9e60-4778-9083-75bc666e6447",
+              "name": "Successfully deleted the private link scope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "microsoft.insights",
+                    "privateLinkScopes",
+                    ":scopeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-07-01-preview"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scopeName",
+                      "description": "(Required) The name of the Azure Monitor Private Link Scope resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "38a1f7af-9271-4efc-9b6a-ff4c67035fda",
+              "name": "Accepted. The delete operation is in progress.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "microsoft.insights",
+                    "privateLinkScopes",
+                    ":scopeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-07-01-preview"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scopeName",
+                      "description": "(Required) The name of the Azure Monitor Private Link Scope resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3e171e90-7681-42cb-b32e-86c9790bdcb7",
+              "name": "The private link scope did not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "microsoft.insights",
+                    "privateLinkScopes",
+                    ":scopeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-07-01-preview"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scopeName",
+                      "description": "(Required) The name of the Azure Monitor Private Link Scope resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a07a2cdc-b200-4ab9-8757-b2b2b0b011c0",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "microsoft.insights",
+                    "privateLinkScopes",
+                    ":scopeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2021-07-01-preview"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scopeName",
+                      "description": "(Required) The name of the Azure Monitor Private Link Scope resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://management.azure.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://management.azure.com/.default"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "bac8bfed-2d19-4293-aabd-0f9bcb393296",
+    "name": "Azure Monitor Action Groups Private Link Scopes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Create and manage action groups that define notification and automation actions triggered by Azure Monitor alerts, including email, SMS, webhooks, and Azure Functions.\n\nContact Support:\n Name: Microsoft Azure Support",
+      "type": "text/plain"
+    }
+  }
+}

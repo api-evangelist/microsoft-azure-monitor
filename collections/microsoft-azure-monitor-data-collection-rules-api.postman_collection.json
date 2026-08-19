@@ -1,0 +1,1536 @@
+{
+  "item": [
+    {
+      "id": "0e1677e8-1ff7-44a4-a628-0134adff8add",
+      "name": "Data Collection Rules",
+      "description": {
+        "content": "Operations for managing data collection rules",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2ae9a4dc-f9ab-4f18-9acd-a4d39a64c921",
+          "name": "Azure Monitor List data collection rules in a subscription",
+          "request": {
+            "name": "Azure Monitor List data collection rules in a subscription",
+            "description": {
+              "content": "Lists all data collection rules in the specified subscription.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "providers",
+                "Microsoft.Insights",
+                "dataCollectionRules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2023-03-11",
+                  "description": "(Required) The API version to use for this operation."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6bc7740c-dd03-4db9-8299-8a26739f4ac2",
+              "name": "Successful request to list data collection rules.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "providers",
+                    "Microsoft.Insights",
+                    "dataCollectionRules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-03-11"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"location\": \"string\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"tags\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"kind\": \"Windows\",\n      \"identity\": {\n        \"type\": \"None\",\n        \"principalId\": \"string\",\n        \"tenantId\": \"string\",\n        \"userAssignedIdentities\": {\n          \"key_0\": {\n            \"principalId\": \"string\",\n            \"clientId\": \"string\"\n          },\n          \"key_1\": {\n            \"principalId\": \"string\",\n            \"clientId\": \"string\"\n          }\n        }\n      },\n      \"properties\": {\n        \"description\": \"string\",\n        \"immutableId\": \"string\",\n        \"dataCollectionEndpointId\": \"string\",\n        \"streamDeclarations\": {\n          \"key_0\": {\n            \"columns\": [\n              {\n                \"name\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"type\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              {\n                \"name\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"type\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            ]\n          }\n        },\n        \"dataSources\": {\n          \"performanceCounters\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"samplingFrequencyInSeconds\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"counterSpecifiers\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"samplingFrequencyInSeconds\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"counterSpecifiers\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"windowsEventLogs\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"xPathQueries\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"xPathQueries\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"syslog\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"facilityNames\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"logLevels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"facilityNames\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"logLevels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"extensions\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"extensionName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"extensionSettings\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"inputDataSources\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"extensionName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"extensionSettings\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"inputDataSources\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"logFiles\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"filePatterns\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"settings\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"filePatterns\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"settings\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"destinations\": {\n          \"logAnalytics\": [\n            {\n              \"workspaceResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"workspaceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"workspaceResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"workspaceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"monitoringAccounts\": [\n            {\n              \"accountResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"accountId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"accountResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"accountId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"azureMonitorMetrics\": {\n            \"name\": \"string\"\n          },\n          \"eventHubs\": [\n            {\n              \"eventHubResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"eventHubResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"eventHubsDirect\": [\n            {\n              \"eventHubResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"eventHubResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"storageBlobsDirect\": [\n            {\n              \"storageAccountResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"containerName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"storageAccountResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"containerName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"storageTablesDirect\": [\n            {\n              \"storageAccountResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tableName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"storageAccountResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tableName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"dataFlows\": [\n          {\n            \"streams\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"destinations\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"transformKql\": \"string\",\n            \"outputStream\": \"string\",\n            \"builtInTransform\": \"string\"\n          },\n          {\n            \"streams\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"destinations\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"transformKql\": \"string\",\n            \"outputStream\": \"string\",\n            \"builtInTransform\": \"string\"\n          }\n        ],\n        \"provisioningState\": \"Failed\"\n      },\n      \"systemData\": {\n        \"createdBy\": \"string\",\n        \"createdByType\": \"ManagedIdentity\",\n        \"createdAt\": \"2024-01-09T13:24:15.589Z\",\n        \"lastModifiedBy\": \"string\",\n        \"lastModifiedByType\": \"Key\",\n        \"lastModifiedAt\": \"1951-07-04T23:39:51.240Z\"\n      }\n    },\n    {\n      \"location\": \"string\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"tags\": {\n        \"key_0\": \"string\"\n      },\n      \"kind\": \"Linux\",\n      \"identity\": {\n        \"type\": \"SystemAssigned,UserAssigned\",\n        \"principalId\": \"string\",\n        \"tenantId\": \"string\",\n        \"userAssignedIdentities\": {\n          \"key_0\": {\n            \"principalId\": \"string\",\n            \"clientId\": \"string\"\n          }\n        }\n      },\n      \"properties\": {\n        \"description\": \"string\",\n        \"immutableId\": \"string\",\n        \"dataCollectionEndpointId\": \"string\",\n        \"streamDeclarations\": {\n          \"key_0\": {\n            \"columns\": [\n              {\n                \"name\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"type\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              {\n                \"name\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"type\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            ]\n          }\n        },\n        \"dataSources\": {\n          \"performanceCounters\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"samplingFrequencyInSeconds\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"counterSpecifiers\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"samplingFrequencyInSeconds\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"counterSpecifiers\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"windowsEventLogs\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"xPathQueries\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"xPathQueries\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"syslog\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"facilityNames\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"logLevels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"facilityNames\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"logLevels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"extensions\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"extensionName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"extensionSettings\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"inputDataSources\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"extensionName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"extensionSettings\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"inputDataSources\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"logFiles\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"filePatterns\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"settings\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"filePatterns\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"settings\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"destinations\": {\n          \"logAnalytics\": [\n            {\n              \"workspaceResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"workspaceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"workspaceResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"workspaceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"monitoringAccounts\": [\n            {\n              \"accountResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"accountId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"accountResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"accountId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"azureMonitorMetrics\": {\n            \"name\": \"string\"\n          },\n          \"eventHubs\": [\n            {\n              \"eventHubResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"eventHubResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"eventHubsDirect\": [\n            {\n              \"eventHubResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"eventHubResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"storageBlobsDirect\": [\n            {\n              \"storageAccountResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"containerName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"storageAccountResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"containerName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"storageTablesDirect\": [\n            {\n              \"storageAccountResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tableName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"storageAccountResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tableName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"dataFlows\": [\n          {\n            \"streams\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"destinations\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"transformKql\": \"string\",\n            \"outputStream\": \"string\",\n            \"builtInTransform\": \"string\"\n          },\n          {\n            \"streams\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"destinations\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"transformKql\": \"string\",\n            \"outputStream\": \"string\",\n            \"builtInTransform\": \"string\"\n          }\n        ],\n        \"provisioningState\": \"Creating\"\n      },\n      \"systemData\": {\n        \"createdBy\": \"string\",\n        \"createdByType\": \"ManagedIdentity\",\n        \"createdAt\": \"1947-10-06T22:17:20.166Z\",\n        \"lastModifiedBy\": \"string\",\n        \"lastModifiedByType\": \"User\",\n        \"lastModifiedAt\": \"1955-01-16T03:44:10.685Z\"\n      }\n    }\n  ],\n  \"nextLink\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1446f871-9957-4d1a-abf7-f71d16fe6606",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "providers",
+                    "Microsoft.Insights",
+                    "dataCollectionRules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-03-11"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"target\": \"string\",\n    \"details\": [\n      {\n        \"code\": \"string\",\n        \"message\": \"string\",\n        \"target\": \"string\"\n      },\n      {\n        \"code\": \"string\",\n        \"message\": \"string\",\n        \"target\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2b7c90e9-44c5-4fa2-ad3f-3882e7cccab2",
+          "name": "Azure Monitor List data collection rules in a resource group",
+          "request": {
+            "name": "Azure Monitor List data collection rules in a resource group",
+            "description": {
+              "content": "Lists all data collection rules in the specified resource group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourceGroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Insights",
+                "dataCollectionRules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2023-03-11",
+                  "description": "(Required) The API version to use for this operation."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f4479b25-1fc0-47ee-91d1-c87ed9737c4f",
+              "name": "Successful request to list data collection rules.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "dataCollectionRules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-03-11"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"location\": \"string\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"tags\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"kind\": \"Windows\",\n      \"identity\": {\n        \"type\": \"None\",\n        \"principalId\": \"string\",\n        \"tenantId\": \"string\",\n        \"userAssignedIdentities\": {\n          \"key_0\": {\n            \"principalId\": \"string\",\n            \"clientId\": \"string\"\n          },\n          \"key_1\": {\n            \"principalId\": \"string\",\n            \"clientId\": \"string\"\n          }\n        }\n      },\n      \"properties\": {\n        \"description\": \"string\",\n        \"immutableId\": \"string\",\n        \"dataCollectionEndpointId\": \"string\",\n        \"streamDeclarations\": {\n          \"key_0\": {\n            \"columns\": [\n              {\n                \"name\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"type\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              {\n                \"name\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"type\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            ]\n          }\n        },\n        \"dataSources\": {\n          \"performanceCounters\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"samplingFrequencyInSeconds\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"counterSpecifiers\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"samplingFrequencyInSeconds\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"counterSpecifiers\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"windowsEventLogs\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"xPathQueries\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"xPathQueries\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"syslog\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"facilityNames\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"logLevels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"facilityNames\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"logLevels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"extensions\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"extensionName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"extensionSettings\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"inputDataSources\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"extensionName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"extensionSettings\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"inputDataSources\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"logFiles\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"filePatterns\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"settings\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"filePatterns\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"settings\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"destinations\": {\n          \"logAnalytics\": [\n            {\n              \"workspaceResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"workspaceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"workspaceResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"workspaceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"monitoringAccounts\": [\n            {\n              \"accountResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"accountId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"accountResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"accountId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"azureMonitorMetrics\": {\n            \"name\": \"string\"\n          },\n          \"eventHubs\": [\n            {\n              \"eventHubResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"eventHubResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"eventHubsDirect\": [\n            {\n              \"eventHubResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"eventHubResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"storageBlobsDirect\": [\n            {\n              \"storageAccountResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"containerName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"storageAccountResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"containerName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"storageTablesDirect\": [\n            {\n              \"storageAccountResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tableName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"storageAccountResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tableName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"dataFlows\": [\n          {\n            \"streams\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"destinations\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"transformKql\": \"string\",\n            \"outputStream\": \"string\",\n            \"builtInTransform\": \"string\"\n          },\n          {\n            \"streams\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"destinations\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"transformKql\": \"string\",\n            \"outputStream\": \"string\",\n            \"builtInTransform\": \"string\"\n          }\n        ],\n        \"provisioningState\": \"Failed\"\n      },\n      \"systemData\": {\n        \"createdBy\": \"string\",\n        \"createdByType\": \"ManagedIdentity\",\n        \"createdAt\": \"2024-01-09T13:24:15.589Z\",\n        \"lastModifiedBy\": \"string\",\n        \"lastModifiedByType\": \"Key\",\n        \"lastModifiedAt\": \"1951-07-04T23:39:51.240Z\"\n      }\n    },\n    {\n      \"location\": \"string\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"tags\": {\n        \"key_0\": \"string\"\n      },\n      \"kind\": \"Linux\",\n      \"identity\": {\n        \"type\": \"SystemAssigned,UserAssigned\",\n        \"principalId\": \"string\",\n        \"tenantId\": \"string\",\n        \"userAssignedIdentities\": {\n          \"key_0\": {\n            \"principalId\": \"string\",\n            \"clientId\": \"string\"\n          }\n        }\n      },\n      \"properties\": {\n        \"description\": \"string\",\n        \"immutableId\": \"string\",\n        \"dataCollectionEndpointId\": \"string\",\n        \"streamDeclarations\": {\n          \"key_0\": {\n            \"columns\": [\n              {\n                \"name\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"type\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              {\n                \"name\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"type\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            ]\n          }\n        },\n        \"dataSources\": {\n          \"performanceCounters\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"samplingFrequencyInSeconds\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"counterSpecifiers\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"samplingFrequencyInSeconds\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"counterSpecifiers\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"windowsEventLogs\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"xPathQueries\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"xPathQueries\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"syslog\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"facilityNames\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"logLevels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"facilityNames\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"logLevels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"extensions\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"extensionName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"extensionSettings\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"inputDataSources\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"extensionName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"extensionSettings\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"inputDataSources\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"logFiles\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"filePatterns\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"settings\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"streams\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"filePatterns\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"settings\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"destinations\": {\n          \"logAnalytics\": [\n            {\n              \"workspaceResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"workspaceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"workspaceResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"workspaceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"monitoringAccounts\": [\n            {\n              \"accountResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"accountId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"accountResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"accountId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"azureMonitorMetrics\": {\n            \"name\": \"string\"\n          },\n          \"eventHubs\": [\n            {\n              \"eventHubResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"eventHubResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"eventHubsDirect\": [\n            {\n              \"eventHubResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"eventHubResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"storageBlobsDirect\": [\n            {\n              \"storageAccountResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"containerName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"storageAccountResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"containerName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"storageTablesDirect\": [\n            {\n              \"storageAccountResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tableName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"storageAccountResourceId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tableName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"dataFlows\": [\n          {\n            \"streams\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"destinations\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"transformKql\": \"string\",\n            \"outputStream\": \"string\",\n            \"builtInTransform\": \"string\"\n          },\n          {\n            \"streams\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"destinations\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"transformKql\": \"string\",\n            \"outputStream\": \"string\",\n            \"builtInTransform\": \"string\"\n          }\n        ],\n        \"provisioningState\": \"Creating\"\n      },\n      \"systemData\": {\n        \"createdBy\": \"string\",\n        \"createdByType\": \"ManagedIdentity\",\n        \"createdAt\": \"1947-10-06T22:17:20.166Z\",\n        \"lastModifiedBy\": \"string\",\n        \"lastModifiedByType\": \"User\",\n        \"lastModifiedAt\": \"1955-01-16T03:44:10.685Z\"\n      }\n    }\n  ],\n  \"nextLink\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b453d85-8bf0-489c-90f7-5c2c22d48007",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "dataCollectionRules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-03-11"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"target\": \"string\",\n    \"details\": [\n      {\n        \"code\": \"string\",\n        \"message\": \"string\",\n        \"target\": \"string\"\n      },\n      {\n        \"code\": \"string\",\n        \"message\": \"string\",\n        \"target\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cd5a5164-ad7b-4a96-9621-2a38d9d646ee",
+          "name": "Azure Monitor Get a data collection rule",
+          "request": {
+            "name": "Azure Monitor Get a data collection rule",
+            "description": {
+              "content": "Returns the specified data collection rule.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourceGroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Insights",
+                "dataCollectionRules",
+                ":dataCollectionRuleName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2023-03-11",
+                  "description": "(Required) The API version to use for this operation."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dataCollectionRuleName",
+                  "description": "(Required) The name of the data collection rule."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "424d0942-4951-4d63-9714-1ba307be9149",
+              "name": "Successful request to get a data collection rule.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "dataCollectionRules",
+                    ":dataCollectionRuleName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-03-11"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataCollectionRuleName",
+                      "description": "(Required) The name of the data collection rule."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"location\": \"string\",\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"tags\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"kind\": \"Windows\",\n  \"identity\": {\n    \"type\": \"SystemAssigned,UserAssigned\",\n    \"principalId\": \"string\",\n    \"tenantId\": \"string\",\n    \"userAssignedIdentities\": {\n      \"key_0\": {\n        \"principalId\": \"string\",\n        \"clientId\": \"string\"\n      },\n      \"key_1\": {\n        \"principalId\": \"string\",\n        \"clientId\": \"string\"\n      },\n      \"key_2\": {\n        \"principalId\": \"string\",\n        \"clientId\": \"string\"\n      }\n    }\n  },\n  \"properties\": {\n    \"description\": \"string\",\n    \"immutableId\": \"string\",\n    \"dataCollectionEndpointId\": \"string\",\n    \"streamDeclarations\": {\n      \"key_0\": {\n        \"columns\": [\n          {\n            \"name\": \"string\",\n            \"type\": \"real\"\n          },\n          {\n            \"name\": \"string\",\n            \"type\": \"string\"\n          }\n        ]\n      }\n    },\n    \"dataSources\": {\n      \"performanceCounters\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"samplingFrequencyInSeconds\": 4224,\n          \"counterSpecifiers\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"samplingFrequencyInSeconds\": 7774,\n          \"counterSpecifiers\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"windowsEventLogs\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"xPathQueries\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"xPathQueries\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"syslog\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"facilityNames\": [\n            \"string\",\n            \"string\"\n          ],\n          \"logLevels\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"facilityNames\": [\n            \"string\",\n            \"string\"\n          ],\n          \"logLevels\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"extensions\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"extensionName\": \"string\",\n          \"extensionSettings\": {\n            \"key_0\": true\n          },\n          \"inputDataSources\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"extensionName\": \"string\",\n          \"extensionSettings\": {\n            \"key_0\": 4542,\n            \"key_1\": false\n          },\n          \"inputDataSources\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"logFiles\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"filePatterns\": [\n            \"string\",\n            \"string\"\n          ],\n          \"format\": \"text\",\n          \"settings\": {\n            \"text\": {\n              \"recordStartTimestampFormat\": \"string\"\n            }\n          }\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"filePatterns\": [\n            \"string\",\n            \"string\"\n          ],\n          \"format\": \"text\",\n          \"settings\": {\n            \"text\": {\n              \"recordStartTimestampFormat\": \"string\"\n            }\n          }\n        }\n      ]\n    },\n    \"destinations\": {\n      \"logAnalytics\": [\n        {\n          \"workspaceResourceId\": \"string\",\n          \"workspaceId\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"workspaceResourceId\": \"string\",\n          \"workspaceId\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"monitoringAccounts\": [\n        {\n          \"accountResourceId\": \"string\",\n          \"accountId\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"accountResourceId\": \"string\",\n          \"accountId\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"azureMonitorMetrics\": {\n        \"name\": \"string\"\n      },\n      \"eventHubs\": [\n        {\n          \"eventHubResourceId\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"eventHubResourceId\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"eventHubsDirect\": [\n        {\n          \"eventHubResourceId\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"eventHubResourceId\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"storageBlobsDirect\": [\n        {\n          \"storageAccountResourceId\": \"string\",\n          \"containerName\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"storageAccountResourceId\": \"string\",\n          \"containerName\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"storageTablesDirect\": [\n        {\n          \"storageAccountResourceId\": \"string\",\n          \"tableName\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"storageAccountResourceId\": \"string\",\n          \"tableName\": \"string\",\n          \"name\": \"string\"\n        }\n      ]\n    },\n    \"dataFlows\": [\n      {\n        \"streams\": [\n          \"string\",\n          \"string\"\n        ],\n        \"destinations\": [\n          \"string\",\n          \"string\"\n        ],\n        \"transformKql\": \"string\",\n        \"outputStream\": \"string\",\n        \"builtInTransform\": \"string\"\n      },\n      {\n        \"streams\": [\n          \"string\",\n          \"string\"\n        ],\n        \"destinations\": [\n          \"string\",\n          \"string\"\n        ],\n        \"transformKql\": \"string\",\n        \"outputStream\": \"string\",\n        \"builtInTransform\": \"string\"\n      }\n    ],\n    \"provisioningState\": \"Updating\"\n  },\n  \"systemData\": {\n    \"createdBy\": \"string\",\n    \"createdByType\": \"Application\",\n    \"createdAt\": \"1981-02-15T21:47:14.430Z\",\n    \"lastModifiedBy\": \"string\",\n    \"lastModifiedByType\": \"User\",\n    \"lastModifiedAt\": \"2023-01-08T06:34:34.108Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3eeb7f0b-376e-4eba-91b0-44d16aff6d9e",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "dataCollectionRules",
+                    ":dataCollectionRuleName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-03-11"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataCollectionRuleName",
+                      "description": "(Required) The name of the data collection rule."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"target\": \"string\",\n    \"details\": [\n      {\n        \"code\": \"string\",\n        \"message\": \"string\",\n        \"target\": \"string\"\n      },\n      {\n        \"code\": \"string\",\n        \"message\": \"string\",\n        \"target\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9257ca1f-c559-4d2d-ab20-16a68cdb6223",
+          "name": "Azure Monitor Create or update a data collection rule",
+          "request": {
+            "name": "Azure Monitor Create or update a data collection rule",
+            "description": {
+              "content": "Creates or updates a data collection rule. Data collection rules define the data sources, transformations, and destinations for data collection in Azure Monitor.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourceGroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Insights",
+                "dataCollectionRules",
+                ":dataCollectionRuleName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2023-03-11",
+                  "description": "(Required) The API version to use for this operation."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dataCollectionRuleName",
+                  "description": "(Required) The name of the data collection rule."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"location\": \"<string>\",\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"kind\": \"<string>\",\n  \"identity\": {\n    \"type\": \"<string>\",\n    \"userAssignedIdentities\": {\n      \"key_0\": {}\n    }\n  },\n  \"properties\": {\n    \"description\": \"<string>\",\n    \"dataCollectionEndpointId\": \"<string>\",\n    \"streamDeclarations\": {\n      \"key_0\": {\n        \"columns\": [\n          {\n            \"name\": \"<string>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        ]\n      }\n    },\n    \"dataSources\": {\n      \"performanceCounters\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"samplingFrequencyInSeconds\": \"<integer>\",\n          \"counterSpecifiers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"samplingFrequencyInSeconds\": \"<integer>\",\n          \"counterSpecifiers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"windowsEventLogs\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"xPathQueries\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"xPathQueries\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"syslog\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"facilityNames\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"logLevels\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"facilityNames\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"logLevels\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"extensions\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"extensionName\": \"<string>\",\n          \"extensionSettings\": {\n            \"key_0\": 2041,\n            \"key_1\": 5618\n          },\n          \"inputDataSources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"extensionName\": \"<string>\",\n          \"extensionSettings\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\"\n          },\n          \"inputDataSources\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"logFiles\": [\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"filePatterns\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"format\": \"<string>\",\n          \"settings\": {\n            \"text\": {\n              \"recordStartTimestampFormat\": \"<string>\"\n            }\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"streams\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"filePatterns\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"format\": \"<string>\",\n          \"settings\": {\n            \"text\": {\n              \"recordStartTimestampFormat\": \"<string>\"\n            }\n          }\n        }\n      ]\n    },\n    \"destinations\": {\n      \"logAnalytics\": [\n        {\n          \"workspaceResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"workspaceResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"monitoringAccounts\": [\n        {\n          \"accountResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"accountResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"azureMonitorMetrics\": {\n        \"name\": \"<string>\"\n      },\n      \"eventHubs\": [\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"eventHubsDirect\": [\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"eventHubResourceId\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"storageBlobsDirect\": [\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"containerName\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"containerName\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"storageTablesDirect\": [\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"tableName\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"storageAccountResourceId\": \"<string>\",\n          \"tableName\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    },\n    \"dataFlows\": [\n      {\n        \"streams\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"destinations\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"transformKql\": \"<string>\",\n        \"outputStream\": \"<string>\",\n        \"builtInTransform\": \"<string>\"\n      },\n      {\n        \"streams\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"destinations\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"transformKql\": \"<string>\",\n        \"outputStream\": \"<string>\",\n        \"builtInTransform\": \"<string>\"\n      }\n    ]\n  },\n  \"systemData\": {\n    \"createdBy\": \"<string>\",\n    \"createdByType\": \"<string>\",\n    \"createdAt\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByType\": \"<string>\",\n    \"lastModifiedAt\": \"<dateTime>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "57a10f2c-926b-4b99-b440-d9cf4031702b",
+              "name": "Successfully updated the data collection rule.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "dataCollectionRules",
+                    ":dataCollectionRuleName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-03-11"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataCollectionRuleName",
+                      "description": "(Required) The name of the data collection rule."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"location\": \"<string>\",\n  \"tags\": {\n    \"key_0\": \"<string>\"\n  },\n  \"kind\": \"<string>\",\n  \"identity\": {\n    \"type\": \"SystemAssigned\",\n    \"userAssignedIdentities\": {\n      \"key_0\": {}\n    }\n  },\n  \"properties\": {\n    \"description\": \"string\",\n    \"dataCollectionEndpointId\": \"string\",\n    \"streamDeclarations\": {\n      \"key_0\": {\n        \"columns\": [\n          {\n            \"name\": \"string\",\n            \"type\": \"long\"\n          },\n          {\n            \"name\": \"string\",\n            \"type\": \"real\"\n          }\n        ]\n      },\n      \"key_1\": {\n        \"columns\": [\n          {\n            \"name\": \"string\",\n            \"type\": \"real\"\n          },\n          {\n            \"name\": \"string\",\n            \"type\": \"boolean\"\n          }\n        ]\n      }\n    },\n    \"dataSources\": {\n      \"performanceCounters\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"samplingFrequencyInSeconds\": 7676,\n          \"counterSpecifiers\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"samplingFrequencyInSeconds\": 2308,\n          \"counterSpecifiers\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"windowsEventLogs\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"xPathQueries\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"xPathQueries\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"syslog\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"facilityNames\": [\n            \"string\",\n            \"string\"\n          ],\n          \"logLevels\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"facilityNames\": [\n            \"string\",\n            \"string\"\n          ],\n          \"logLevels\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"extensions\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"extensionName\": \"string\",\n          \"extensionSettings\": {\n            \"key_0\": \"string\"\n          },\n          \"inputDataSources\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"extensionName\": \"string\",\n          \"extensionSettings\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\"\n          },\n          \"inputDataSources\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"logFiles\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"filePatterns\": [\n            \"string\",\n            \"string\"\n          ],\n          \"format\": \"text\",\n          \"settings\": {\n            \"text\": {\n              \"recordStartTimestampFormat\": \"string\"\n            }\n          }\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"filePatterns\": [\n            \"string\",\n            \"string\"\n          ],\n          \"format\": \"text\",\n          \"settings\": {\n            \"text\": {\n              \"recordStartTimestampFormat\": \"string\"\n            }\n          }\n        }\n      ]\n    },\n    \"destinations\": {\n      \"logAnalytics\": [\n        {\n          \"workspaceResourceId\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"workspaceResourceId\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"monitoringAccounts\": [\n        {\n          \"accountResourceId\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"accountResourceId\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"azureMonitorMetrics\": {\n        \"name\": \"string\"\n      },\n      \"eventHubs\": [\n        {\n          \"eventHubResourceId\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"eventHubResourceId\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"eventHubsDirect\": [\n        {\n          \"eventHubResourceId\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"eventHubResourceId\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"storageBlobsDirect\": [\n        {\n          \"storageAccountResourceId\": \"string\",\n          \"containerName\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"storageAccountResourceId\": \"string\",\n          \"containerName\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"storageTablesDirect\": [\n        {\n          \"storageAccountResourceId\": \"string\",\n          \"tableName\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"storageAccountResourceId\": \"string\",\n          \"tableName\": \"string\",\n          \"name\": \"string\"\n        }\n      ]\n    },\n    \"dataFlows\": [\n      {\n        \"streams\": [\n          \"string\",\n          \"string\"\n        ],\n        \"destinations\": [\n          \"string\",\n          \"string\"\n        ],\n        \"transformKql\": \"string\",\n        \"outputStream\": \"string\",\n        \"builtInTransform\": \"string\"\n      },\n      {\n        \"streams\": [\n          \"string\",\n          \"string\"\n        ],\n        \"destinations\": [\n          \"string\",\n          \"string\"\n        ],\n        \"transformKql\": \"string\",\n        \"outputStream\": \"string\",\n        \"builtInTransform\": \"string\"\n      }\n    ]\n  },\n  \"systemData\": {\n    \"createdBy\": \"string\",\n    \"createdByType\": \"Key\",\n    \"createdAt\": \"1958-07-29T09:09:17.068Z\",\n    \"lastModifiedBy\": \"string\",\n    \"lastModifiedByType\": \"ManagedIdentity\",\n    \"lastModifiedAt\": \"1982-05-16T09:15:16.637Z\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"location\": \"string\",\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"tags\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"kind\": \"Windows\",\n  \"identity\": {\n    \"type\": \"SystemAssigned,UserAssigned\",\n    \"principalId\": \"string\",\n    \"tenantId\": \"string\",\n    \"userAssignedIdentities\": {\n      \"key_0\": {\n        \"principalId\": \"string\",\n        \"clientId\": \"string\"\n      },\n      \"key_1\": {\n        \"principalId\": \"string\",\n        \"clientId\": \"string\"\n      },\n      \"key_2\": {\n        \"principalId\": \"string\",\n        \"clientId\": \"string\"\n      }\n    }\n  },\n  \"properties\": {\n    \"description\": \"string\",\n    \"immutableId\": \"string\",\n    \"dataCollectionEndpointId\": \"string\",\n    \"streamDeclarations\": {\n      \"key_0\": {\n        \"columns\": [\n          {\n            \"name\": \"string\",\n            \"type\": \"real\"\n          },\n          {\n            \"name\": \"string\",\n            \"type\": \"string\"\n          }\n        ]\n      }\n    },\n    \"dataSources\": {\n      \"performanceCounters\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"samplingFrequencyInSeconds\": 4224,\n          \"counterSpecifiers\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"samplingFrequencyInSeconds\": 7774,\n          \"counterSpecifiers\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"windowsEventLogs\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"xPathQueries\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"xPathQueries\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"syslog\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"facilityNames\": [\n            \"string\",\n            \"string\"\n          ],\n          \"logLevels\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"facilityNames\": [\n            \"string\",\n            \"string\"\n          ],\n          \"logLevels\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"extensions\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"extensionName\": \"string\",\n          \"extensionSettings\": {\n            \"key_0\": true\n          },\n          \"inputDataSources\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"extensionName\": \"string\",\n          \"extensionSettings\": {\n            \"key_0\": 4542,\n            \"key_1\": false\n          },\n          \"inputDataSources\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"logFiles\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"filePatterns\": [\n            \"string\",\n            \"string\"\n          ],\n          \"format\": \"text\",\n          \"settings\": {\n            \"text\": {\n              \"recordStartTimestampFormat\": \"string\"\n            }\n          }\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"filePatterns\": [\n            \"string\",\n            \"string\"\n          ],\n          \"format\": \"text\",\n          \"settings\": {\n            \"text\": {\n              \"recordStartTimestampFormat\": \"string\"\n            }\n          }\n        }\n      ]\n    },\n    \"destinations\": {\n      \"logAnalytics\": [\n        {\n          \"workspaceResourceId\": \"string\",\n          \"workspaceId\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"workspaceResourceId\": \"string\",\n          \"workspaceId\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"monitoringAccounts\": [\n        {\n          \"accountResourceId\": \"string\",\n          \"accountId\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"accountResourceId\": \"string\",\n          \"accountId\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"azureMonitorMetrics\": {\n        \"name\": \"string\"\n      },\n      \"eventHubs\": [\n        {\n          \"eventHubResourceId\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"eventHubResourceId\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"eventHubsDirect\": [\n        {\n          \"eventHubResourceId\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"eventHubResourceId\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"storageBlobsDirect\": [\n        {\n          \"storageAccountResourceId\": \"string\",\n          \"containerName\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"storageAccountResourceId\": \"string\",\n          \"containerName\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"storageTablesDirect\": [\n        {\n          \"storageAccountResourceId\": \"string\",\n          \"tableName\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"storageAccountResourceId\": \"string\",\n          \"tableName\": \"string\",\n          \"name\": \"string\"\n        }\n      ]\n    },\n    \"dataFlows\": [\n      {\n        \"streams\": [\n          \"string\",\n          \"string\"\n        ],\n        \"destinations\": [\n          \"string\",\n          \"string\"\n        ],\n        \"transformKql\": \"string\",\n        \"outputStream\": \"string\",\n        \"builtInTransform\": \"string\"\n      },\n      {\n        \"streams\": [\n          \"string\",\n          \"string\"\n        ],\n        \"destinations\": [\n          \"string\",\n          \"string\"\n        ],\n        \"transformKql\": \"string\",\n        \"outputStream\": \"string\",\n        \"builtInTransform\": \"string\"\n      }\n    ],\n    \"provisioningState\": \"Updating\"\n  },\n  \"systemData\": {\n    \"createdBy\": \"string\",\n    \"createdByType\": \"Application\",\n    \"createdAt\": \"1981-02-15T21:47:14.430Z\",\n    \"lastModifiedBy\": \"string\",\n    \"lastModifiedByType\": \"User\",\n    \"lastModifiedAt\": \"2023-01-08T06:34:34.108Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f0db3f5a-dbab-456a-9f08-9b307e534519",
+              "name": "Successfully created the data collection rule.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "dataCollectionRules",
+                    ":dataCollectionRuleName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-03-11"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataCollectionRuleName",
+                      "description": "(Required) The name of the data collection rule."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"location\": \"<string>\",\n  \"tags\": {\n    \"key_0\": \"<string>\"\n  },\n  \"kind\": \"<string>\",\n  \"identity\": {\n    \"type\": \"SystemAssigned\",\n    \"userAssignedIdentities\": {\n      \"key_0\": {}\n    }\n  },\n  \"properties\": {\n    \"description\": \"string\",\n    \"dataCollectionEndpointId\": \"string\",\n    \"streamDeclarations\": {\n      \"key_0\": {\n        \"columns\": [\n          {\n            \"name\": \"string\",\n            \"type\": \"long\"\n          },\n          {\n            \"name\": \"string\",\n            \"type\": \"real\"\n          }\n        ]\n      },\n      \"key_1\": {\n        \"columns\": [\n          {\n            \"name\": \"string\",\n            \"type\": \"real\"\n          },\n          {\n            \"name\": \"string\",\n            \"type\": \"boolean\"\n          }\n        ]\n      }\n    },\n    \"dataSources\": {\n      \"performanceCounters\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"samplingFrequencyInSeconds\": 7676,\n          \"counterSpecifiers\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"samplingFrequencyInSeconds\": 2308,\n          \"counterSpecifiers\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"windowsEventLogs\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"xPathQueries\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"xPathQueries\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"syslog\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"facilityNames\": [\n            \"string\",\n            \"string\"\n          ],\n          \"logLevels\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"facilityNames\": [\n            \"string\",\n            \"string\"\n          ],\n          \"logLevels\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"extensions\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"extensionName\": \"string\",\n          \"extensionSettings\": {\n            \"key_0\": \"string\"\n          },\n          \"inputDataSources\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"extensionName\": \"string\",\n          \"extensionSettings\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\"\n          },\n          \"inputDataSources\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"logFiles\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"filePatterns\": [\n            \"string\",\n            \"string\"\n          ],\n          \"format\": \"text\",\n          \"settings\": {\n            \"text\": {\n              \"recordStartTimestampFormat\": \"string\"\n            }\n          }\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"filePatterns\": [\n            \"string\",\n            \"string\"\n          ],\n          \"format\": \"text\",\n          \"settings\": {\n            \"text\": {\n              \"recordStartTimestampFormat\": \"string\"\n            }\n          }\n        }\n      ]\n    },\n    \"destinations\": {\n      \"logAnalytics\": [\n        {\n          \"workspaceResourceId\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"workspaceResourceId\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"monitoringAccounts\": [\n        {\n          \"accountResourceId\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"accountResourceId\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"azureMonitorMetrics\": {\n        \"name\": \"string\"\n      },\n      \"eventHubs\": [\n        {\n          \"eventHubResourceId\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"eventHubResourceId\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"eventHubsDirect\": [\n        {\n          \"eventHubResourceId\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"eventHubResourceId\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"storageBlobsDirect\": [\n        {\n          \"storageAccountResourceId\": \"string\",\n          \"containerName\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"storageAccountResourceId\": \"string\",\n          \"containerName\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"storageTablesDirect\": [\n        {\n          \"storageAccountResourceId\": \"string\",\n          \"tableName\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"storageAccountResourceId\": \"string\",\n          \"tableName\": \"string\",\n          \"name\": \"string\"\n        }\n      ]\n    },\n    \"dataFlows\": [\n      {\n        \"streams\": [\n          \"string\",\n          \"string\"\n        ],\n        \"destinations\": [\n          \"string\",\n          \"string\"\n        ],\n        \"transformKql\": \"string\",\n        \"outputStream\": \"string\",\n        \"builtInTransform\": \"string\"\n      },\n      {\n        \"streams\": [\n          \"string\",\n          \"string\"\n        ],\n        \"destinations\": [\n          \"string\",\n          \"string\"\n        ],\n        \"transformKql\": \"string\",\n        \"outputStream\": \"string\",\n        \"builtInTransform\": \"string\"\n      }\n    ]\n  },\n  \"systemData\": {\n    \"createdBy\": \"string\",\n    \"createdByType\": \"Key\",\n    \"createdAt\": \"1958-07-29T09:09:17.068Z\",\n    \"lastModifiedBy\": \"string\",\n    \"lastModifiedByType\": \"ManagedIdentity\",\n    \"lastModifiedAt\": \"1982-05-16T09:15:16.637Z\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"location\": \"string\",\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"tags\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"kind\": \"Windows\",\n  \"identity\": {\n    \"type\": \"SystemAssigned,UserAssigned\",\n    \"principalId\": \"string\",\n    \"tenantId\": \"string\",\n    \"userAssignedIdentities\": {\n      \"key_0\": {\n        \"principalId\": \"string\",\n        \"clientId\": \"string\"\n      },\n      \"key_1\": {\n        \"principalId\": \"string\",\n        \"clientId\": \"string\"\n      },\n      \"key_2\": {\n        \"principalId\": \"string\",\n        \"clientId\": \"string\"\n      }\n    }\n  },\n  \"properties\": {\n    \"description\": \"string\",\n    \"immutableId\": \"string\",\n    \"dataCollectionEndpointId\": \"string\",\n    \"streamDeclarations\": {\n      \"key_0\": {\n        \"columns\": [\n          {\n            \"name\": \"string\",\n            \"type\": \"real\"\n          },\n          {\n            \"name\": \"string\",\n            \"type\": \"string\"\n          }\n        ]\n      }\n    },\n    \"dataSources\": {\n      \"performanceCounters\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"samplingFrequencyInSeconds\": 4224,\n          \"counterSpecifiers\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"samplingFrequencyInSeconds\": 7774,\n          \"counterSpecifiers\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"windowsEventLogs\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"xPathQueries\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"xPathQueries\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"syslog\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"facilityNames\": [\n            \"string\",\n            \"string\"\n          ],\n          \"logLevels\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"facilityNames\": [\n            \"string\",\n            \"string\"\n          ],\n          \"logLevels\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"extensions\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"extensionName\": \"string\",\n          \"extensionSettings\": {\n            \"key_0\": true\n          },\n          \"inputDataSources\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"extensionName\": \"string\",\n          \"extensionSettings\": {\n            \"key_0\": 4542,\n            \"key_1\": false\n          },\n          \"inputDataSources\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"logFiles\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"filePatterns\": [\n            \"string\",\n            \"string\"\n          ],\n          \"format\": \"text\",\n          \"settings\": {\n            \"text\": {\n              \"recordStartTimestampFormat\": \"string\"\n            }\n          }\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"filePatterns\": [\n            \"string\",\n            \"string\"\n          ],\n          \"format\": \"text\",\n          \"settings\": {\n            \"text\": {\n              \"recordStartTimestampFormat\": \"string\"\n            }\n          }\n        }\n      ]\n    },\n    \"destinations\": {\n      \"logAnalytics\": [\n        {\n          \"workspaceResourceId\": \"string\",\n          \"workspaceId\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"workspaceResourceId\": \"string\",\n          \"workspaceId\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"monitoringAccounts\": [\n        {\n          \"accountResourceId\": \"string\",\n          \"accountId\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"accountResourceId\": \"string\",\n          \"accountId\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"azureMonitorMetrics\": {\n        \"name\": \"string\"\n      },\n      \"eventHubs\": [\n        {\n          \"eventHubResourceId\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"eventHubResourceId\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"eventHubsDirect\": [\n        {\n          \"eventHubResourceId\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"eventHubResourceId\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"storageBlobsDirect\": [\n        {\n          \"storageAccountResourceId\": \"string\",\n          \"containerName\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"storageAccountResourceId\": \"string\",\n          \"containerName\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"storageTablesDirect\": [\n        {\n          \"storageAccountResourceId\": \"string\",\n          \"tableName\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"storageAccountResourceId\": \"string\",\n          \"tableName\": \"string\",\n          \"name\": \"string\"\n        }\n      ]\n    },\n    \"dataFlows\": [\n      {\n        \"streams\": [\n          \"string\",\n          \"string\"\n        ],\n        \"destinations\": [\n          \"string\",\n          \"string\"\n        ],\n        \"transformKql\": \"string\",\n        \"outputStream\": \"string\",\n        \"builtInTransform\": \"string\"\n      },\n      {\n        \"streams\": [\n          \"string\",\n          \"string\"\n        ],\n        \"destinations\": [\n          \"string\",\n          \"string\"\n        ],\n        \"transformKql\": \"string\",\n        \"outputStream\": \"string\",\n        \"builtInTransform\": \"string\"\n      }\n    ],\n    \"provisioningState\": \"Updating\"\n  },\n  \"systemData\": {\n    \"createdBy\": \"string\",\n    \"createdByType\": \"Application\",\n    \"createdAt\": \"1981-02-15T21:47:14.430Z\",\n    \"lastModifiedBy\": \"string\",\n    \"lastModifiedByType\": \"User\",\n    \"lastModifiedAt\": \"2023-01-08T06:34:34.108Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fa63fac7-68a0-40f2-93b8-b4bddedd04e3",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "dataCollectionRules",
+                    ":dataCollectionRuleName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-03-11"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataCollectionRuleName",
+                      "description": "(Required) The name of the data collection rule."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"location\": \"<string>\",\n  \"tags\": {\n    \"key_0\": \"<string>\"\n  },\n  \"kind\": \"<string>\",\n  \"identity\": {\n    \"type\": \"SystemAssigned\",\n    \"userAssignedIdentities\": {\n      \"key_0\": {}\n    }\n  },\n  \"properties\": {\n    \"description\": \"string\",\n    \"dataCollectionEndpointId\": \"string\",\n    \"streamDeclarations\": {\n      \"key_0\": {\n        \"columns\": [\n          {\n            \"name\": \"string\",\n            \"type\": \"long\"\n          },\n          {\n            \"name\": \"string\",\n            \"type\": \"real\"\n          }\n        ]\n      },\n      \"key_1\": {\n        \"columns\": [\n          {\n            \"name\": \"string\",\n            \"type\": \"real\"\n          },\n          {\n            \"name\": \"string\",\n            \"type\": \"boolean\"\n          }\n        ]\n      }\n    },\n    \"dataSources\": {\n      \"performanceCounters\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"samplingFrequencyInSeconds\": 7676,\n          \"counterSpecifiers\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"samplingFrequencyInSeconds\": 2308,\n          \"counterSpecifiers\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"windowsEventLogs\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"xPathQueries\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"xPathQueries\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"syslog\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"facilityNames\": [\n            \"string\",\n            \"string\"\n          ],\n          \"logLevels\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"facilityNames\": [\n            \"string\",\n            \"string\"\n          ],\n          \"logLevels\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"extensions\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"extensionName\": \"string\",\n          \"extensionSettings\": {\n            \"key_0\": \"string\"\n          },\n          \"inputDataSources\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"extensionName\": \"string\",\n          \"extensionSettings\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\"\n          },\n          \"inputDataSources\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"logFiles\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"filePatterns\": [\n            \"string\",\n            \"string\"\n          ],\n          \"format\": \"text\",\n          \"settings\": {\n            \"text\": {\n              \"recordStartTimestampFormat\": \"string\"\n            }\n          }\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"filePatterns\": [\n            \"string\",\n            \"string\"\n          ],\n          \"format\": \"text\",\n          \"settings\": {\n            \"text\": {\n              \"recordStartTimestampFormat\": \"string\"\n            }\n          }\n        }\n      ]\n    },\n    \"destinations\": {\n      \"logAnalytics\": [\n        {\n          \"workspaceResourceId\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"workspaceResourceId\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"monitoringAccounts\": [\n        {\n          \"accountResourceId\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"accountResourceId\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"azureMonitorMetrics\": {\n        \"name\": \"string\"\n      },\n      \"eventHubs\": [\n        {\n          \"eventHubResourceId\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"eventHubResourceId\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"eventHubsDirect\": [\n        {\n          \"eventHubResourceId\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"eventHubResourceId\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"storageBlobsDirect\": [\n        {\n          \"storageAccountResourceId\": \"string\",\n          \"containerName\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"storageAccountResourceId\": \"string\",\n          \"containerName\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"storageTablesDirect\": [\n        {\n          \"storageAccountResourceId\": \"string\",\n          \"tableName\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"storageAccountResourceId\": \"string\",\n          \"tableName\": \"string\",\n          \"name\": \"string\"\n        }\n      ]\n    },\n    \"dataFlows\": [\n      {\n        \"streams\": [\n          \"string\",\n          \"string\"\n        ],\n        \"destinations\": [\n          \"string\",\n          \"string\"\n        ],\n        \"transformKql\": \"string\",\n        \"outputStream\": \"string\",\n        \"builtInTransform\": \"string\"\n      },\n      {\n        \"streams\": [\n          \"string\",\n          \"string\"\n        ],\n        \"destinations\": [\n          \"string\",\n          \"string\"\n        ],\n        \"transformKql\": \"string\",\n        \"outputStream\": \"string\",\n        \"builtInTransform\": \"string\"\n      }\n    ]\n  },\n  \"systemData\": {\n    \"createdBy\": \"string\",\n    \"createdByType\": \"Key\",\n    \"createdAt\": \"1958-07-29T09:09:17.068Z\",\n    \"lastModifiedBy\": \"string\",\n    \"lastModifiedByType\": \"ManagedIdentity\",\n    \"lastModifiedAt\": \"1982-05-16T09:15:16.637Z\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"target\": \"string\",\n    \"details\": [\n      {\n        \"code\": \"string\",\n        \"message\": \"string\",\n        \"target\": \"string\"\n      },\n      {\n        \"code\": \"string\",\n        \"message\": \"string\",\n        \"target\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "54bf03bc-233c-4de8-bacc-c8871ec86862",
+          "name": "Azure Monitor Update a data collection rule",
+          "request": {
+            "name": "Azure Monitor Update a data collection rule",
+            "description": {
+              "content": "Updates part of a data collection rule. Only tags and identity can be updated via PATCH.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourceGroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Insights",
+                "dataCollectionRules",
+                ":dataCollectionRuleName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2023-03-11",
+                  "description": "(Required) The API version to use for this operation."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dataCollectionRuleName",
+                  "description": "(Required) The name of the data collection rule."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"identity\": {\n    \"type\": \"<string>\",\n    \"userAssignedIdentities\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bdeeb967-5bc3-4985-a9ac-b4ea09d0f18e",
+              "name": "Successfully updated the data collection rule.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "dataCollectionRules",
+                    ":dataCollectionRuleName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-03-11"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataCollectionRuleName",
+                      "description": "(Required) The name of the data collection rule."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\"\n  },\n  \"identity\": {\n    \"type\": \"None\",\n    \"userAssignedIdentities\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"location\": \"string\",\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"tags\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"kind\": \"Windows\",\n  \"identity\": {\n    \"type\": \"SystemAssigned,UserAssigned\",\n    \"principalId\": \"string\",\n    \"tenantId\": \"string\",\n    \"userAssignedIdentities\": {\n      \"key_0\": {\n        \"principalId\": \"string\",\n        \"clientId\": \"string\"\n      },\n      \"key_1\": {\n        \"principalId\": \"string\",\n        \"clientId\": \"string\"\n      },\n      \"key_2\": {\n        \"principalId\": \"string\",\n        \"clientId\": \"string\"\n      }\n    }\n  },\n  \"properties\": {\n    \"description\": \"string\",\n    \"immutableId\": \"string\",\n    \"dataCollectionEndpointId\": \"string\",\n    \"streamDeclarations\": {\n      \"key_0\": {\n        \"columns\": [\n          {\n            \"name\": \"string\",\n            \"type\": \"real\"\n          },\n          {\n            \"name\": \"string\",\n            \"type\": \"string\"\n          }\n        ]\n      }\n    },\n    \"dataSources\": {\n      \"performanceCounters\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"samplingFrequencyInSeconds\": 4224,\n          \"counterSpecifiers\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"samplingFrequencyInSeconds\": 7774,\n          \"counterSpecifiers\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"windowsEventLogs\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"xPathQueries\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"xPathQueries\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"syslog\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"facilityNames\": [\n            \"string\",\n            \"string\"\n          ],\n          \"logLevels\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"facilityNames\": [\n            \"string\",\n            \"string\"\n          ],\n          \"logLevels\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"extensions\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"extensionName\": \"string\",\n          \"extensionSettings\": {\n            \"key_0\": true\n          },\n          \"inputDataSources\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"extensionName\": \"string\",\n          \"extensionSettings\": {\n            \"key_0\": 4542,\n            \"key_1\": false\n          },\n          \"inputDataSources\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"logFiles\": [\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"filePatterns\": [\n            \"string\",\n            \"string\"\n          ],\n          \"format\": \"text\",\n          \"settings\": {\n            \"text\": {\n              \"recordStartTimestampFormat\": \"string\"\n            }\n          }\n        },\n        {\n          \"name\": \"string\",\n          \"streams\": [\n            \"string\",\n            \"string\"\n          ],\n          \"filePatterns\": [\n            \"string\",\n            \"string\"\n          ],\n          \"format\": \"text\",\n          \"settings\": {\n            \"text\": {\n              \"recordStartTimestampFormat\": \"string\"\n            }\n          }\n        }\n      ]\n    },\n    \"destinations\": {\n      \"logAnalytics\": [\n        {\n          \"workspaceResourceId\": \"string\",\n          \"workspaceId\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"workspaceResourceId\": \"string\",\n          \"workspaceId\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"monitoringAccounts\": [\n        {\n          \"accountResourceId\": \"string\",\n          \"accountId\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"accountResourceId\": \"string\",\n          \"accountId\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"azureMonitorMetrics\": {\n        \"name\": \"string\"\n      },\n      \"eventHubs\": [\n        {\n          \"eventHubResourceId\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"eventHubResourceId\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"eventHubsDirect\": [\n        {\n          \"eventHubResourceId\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"eventHubResourceId\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"storageBlobsDirect\": [\n        {\n          \"storageAccountResourceId\": \"string\",\n          \"containerName\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"storageAccountResourceId\": \"string\",\n          \"containerName\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"storageTablesDirect\": [\n        {\n          \"storageAccountResourceId\": \"string\",\n          \"tableName\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"storageAccountResourceId\": \"string\",\n          \"tableName\": \"string\",\n          \"name\": \"string\"\n        }\n      ]\n    },\n    \"dataFlows\": [\n      {\n        \"streams\": [\n          \"string\",\n          \"string\"\n        ],\n        \"destinations\": [\n          \"string\",\n          \"string\"\n        ],\n        \"transformKql\": \"string\",\n        \"outputStream\": \"string\",\n        \"builtInTransform\": \"string\"\n      },\n      {\n        \"streams\": [\n          \"string\",\n          \"string\"\n        ],\n        \"destinations\": [\n          \"string\",\n          \"string\"\n        ],\n        \"transformKql\": \"string\",\n        \"outputStream\": \"string\",\n        \"builtInTransform\": \"string\"\n      }\n    ],\n    \"provisioningState\": \"Updating\"\n  },\n  \"systemData\": {\n    \"createdBy\": \"string\",\n    \"createdByType\": \"Application\",\n    \"createdAt\": \"1981-02-15T21:47:14.430Z\",\n    \"lastModifiedBy\": \"string\",\n    \"lastModifiedByType\": \"User\",\n    \"lastModifiedAt\": \"2023-01-08T06:34:34.108Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "74c263b1-5a32-4265-be9c-726ae35b9c34",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "dataCollectionRules",
+                    ":dataCollectionRuleName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-03-11"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataCollectionRuleName",
+                      "description": "(Required) The name of the data collection rule."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\"\n  },\n  \"identity\": {\n    \"type\": \"None\",\n    \"userAssignedIdentities\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"target\": \"string\",\n    \"details\": [\n      {\n        \"code\": \"string\",\n        \"message\": \"string\",\n        \"target\": \"string\"\n      },\n      {\n        \"code\": \"string\",\n        \"message\": \"string\",\n        \"target\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "754745d4-1eaa-49b8-9ed7-c952433b6b48",
+          "name": "Azure Monitor Delete a data collection rule",
+          "request": {
+            "name": "Azure Monitor Delete a data collection rule",
+            "description": {
+              "content": "Deletes a data collection rule.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourceGroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Insights",
+                "dataCollectionRules",
+                ":dataCollectionRuleName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2023-03-11",
+                  "description": "(Required) The API version to use for this operation."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dataCollectionRuleName",
+                  "description": "(Required) The name of the data collection rule."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3a03c931-6f7f-4270-a890-939d20895070",
+              "name": "Successfully deleted the data collection rule.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "dataCollectionRules",
+                    ":dataCollectionRuleName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-03-11"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataCollectionRuleName",
+                      "description": "(Required) The name of the data collection rule."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "68742b61-5551-457b-9118-fe840ba957b3",
+              "name": "The data collection rule did not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "dataCollectionRules",
+                    ":dataCollectionRuleName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-03-11"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataCollectionRuleName",
+                      "description": "(Required) The name of the data collection rule."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "86ccbd8a-962c-4136-81d7-00608b692cf1",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "dataCollectionRules",
+                    ":dataCollectionRuleName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-03-11"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataCollectionRuleName",
+                      "description": "(Required) The name of the data collection rule."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"target\": \"string\",\n    \"details\": [\n      {\n        \"code\": \"string\",\n        \"message\": \"string\",\n        \"target\": \"string\"\n      },\n      {\n        \"code\": \"string\",\n        \"message\": \"string\",\n        \"target\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://management.azure.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://management.azure.com/.default"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "bb05e621-1b07-4c06-a95f-f8ba1759d15d",
+    "name": "Azure Monitor Action Groups Data Collection Rules API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Create and manage action groups that define notification and automation actions triggered by Azure Monitor alerts, including email, SMS, webhooks, and Azure Functions.\n\nContact Support:\n Name: Microsoft Azure Support",
+      "type": "text/plain"
+    }
+  }
+}

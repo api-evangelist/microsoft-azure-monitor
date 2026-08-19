@@ -1,0 +1,520 @@
+{
+  "item": [
+    {
+      "id": "82e97f65-7dc4-4664-9a37-c76321839f17",
+      "name": "Test Notifications",
+      "description": {
+        "content": "Operations for sending and retrieving test notifications",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8e23e44f-981f-418b-bece-ce5dfdc20b00",
+          "name": "Azure Monitor Send test notifications",
+          "request": {
+            "name": "Azure Monitor Send test notifications",
+            "description": {
+              "content": "Send test notifications to a set of provided receivers to validate the action group configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "providers",
+                "Microsoft.Insights",
+                "createNotifications"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2022-06-01",
+                  "description": "(Required) Client API version."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"alertType\": \"<string>\",\n  \"emailReceivers\": [\n    {\n      \"name\": \"<string>\",\n      \"emailAddress\": \"<email>\",\n      \"useCommonAlertSchema\": false\n    },\n    {\n      \"name\": \"<string>\",\n      \"emailAddress\": \"<email>\",\n      \"useCommonAlertSchema\": false\n    }\n  ],\n  \"smsReceivers\": [\n    {\n      \"name\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"phoneNumber\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"phoneNumber\": \"<string>\"\n    }\n  ],\n  \"webhookReceivers\": [\n    {\n      \"name\": \"<string>\",\n      \"serviceUri\": \"<uri>\",\n      \"useCommonAlertSchema\": false,\n      \"useAadAuth\": false,\n      \"objectId\": \"<string>\",\n      \"identifierUri\": \"<string>\",\n      \"tenantId\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"serviceUri\": \"<uri>\",\n      \"useCommonAlertSchema\": false,\n      \"useAadAuth\": false,\n      \"objectId\": \"<string>\",\n      \"identifierUri\": \"<string>\",\n      \"tenantId\": \"<string>\"\n    }\n  ],\n  \"azureAppPushReceivers\": [\n    {\n      \"name\": \"<string>\",\n      \"emailAddress\": \"<email>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"emailAddress\": \"<email>\"\n    }\n  ],\n  \"armRoleReceivers\": [\n    {\n      \"name\": \"<string>\",\n      \"roleId\": \"<string>\",\n      \"useCommonAlertSchema\": false\n    },\n    {\n      \"name\": \"<string>\",\n      \"roleId\": \"<string>\",\n      \"useCommonAlertSchema\": false\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6faae715-cf9d-49c7-a434-15ba99342902",
+              "name": "The notification has been accepted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "providers",
+                    "Microsoft.Insights",
+                    "createNotifications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2022-06-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alertType\": \"<string>\",\n  \"emailReceivers\": [\n    {\n      \"name\": \"string\",\n      \"emailAddress\": \"jmwN@qhKmqXaHZ.osx\",\n      \"useCommonAlertSchema\": false\n    },\n    {\n      \"name\": \"string\",\n      \"emailAddress\": \"JFVkv2u5NQr3Rq7@mPziOUGgwNAw.tz\",\n      \"useCommonAlertSchema\": false\n    }\n  ],\n  \"smsReceivers\": [\n    {\n      \"name\": \"string\",\n      \"countryCode\": \"string\",\n      \"phoneNumber\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"countryCode\": \"string\",\n      \"phoneNumber\": \"string\"\n    }\n  ],\n  \"webhookReceivers\": [\n    {\n      \"name\": \"string\",\n      \"serviceUri\": \"https://fRyOmXhOrwCWVvLIKhAEVulzRFlAPf.iuillRldcUOkA,6TmhmbcigGoX-y0G9OLNaE\",\n      \"useCommonAlertSchema\": false,\n      \"useAadAuth\": false,\n      \"objectId\": \"string\",\n      \"identifierUri\": \"string\",\n      \"tenantId\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"serviceUri\": \"https://pqOpUWN.xaivklqa2S\",\n      \"useCommonAlertSchema\": false,\n      \"useAadAuth\": false,\n      \"objectId\": \"string\",\n      \"identifierUri\": \"string\",\n      \"tenantId\": \"string\"\n    }\n  ],\n  \"azureAppPushReceivers\": [\n    {\n      \"name\": \"string\",\n      \"emailAddress\": \"TuxRoy9Wn3h85-z@g.hv\"\n    },\n    {\n      \"name\": \"string\",\n      \"emailAddress\": \"0Y47uL@DFelZSfASxTgXVnnO.htxp\"\n    }\n  ],\n  \"armRoleReceivers\": [\n    {\n      \"name\": \"string\",\n      \"roleId\": \"string\",\n      \"useCommonAlertSchema\": false\n    },\n    {\n      \"name\": \"string\",\n      \"roleId\": \"string\",\n      \"useCommonAlertSchema\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": \"string\",\n  \"completedTime\": \"1963-07-01T18:06:21.497Z\",\n  \"createdTime\": \"2007-12-13T19:43:11.347Z\",\n  \"actionDetails\": [\n    {\n      \"mechanismType\": \"string\",\n      \"name\": \"string\",\n      \"status\": \"string\",\n      \"subState\": \"string\",\n      \"sendTime\": \"2000-10-28T13:36:46.865Z\",\n      \"detail\": \"string\"\n    },\n    {\n      \"mechanismType\": \"string\",\n      \"name\": \"string\",\n      \"status\": \"string\",\n      \"subState\": \"string\",\n      \"sendTime\": \"2003-04-10T06:55:35.225Z\",\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4270871a-1aa7-47fd-8058-286e47b7931f",
+              "name": "The notification has been accepted for processing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "providers",
+                    "Microsoft.Insights",
+                    "createNotifications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2022-06-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alertType\": \"<string>\",\n  \"emailReceivers\": [\n    {\n      \"name\": \"string\",\n      \"emailAddress\": \"jmwN@qhKmqXaHZ.osx\",\n      \"useCommonAlertSchema\": false\n    },\n    {\n      \"name\": \"string\",\n      \"emailAddress\": \"JFVkv2u5NQr3Rq7@mPziOUGgwNAw.tz\",\n      \"useCommonAlertSchema\": false\n    }\n  ],\n  \"smsReceivers\": [\n    {\n      \"name\": \"string\",\n      \"countryCode\": \"string\",\n      \"phoneNumber\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"countryCode\": \"string\",\n      \"phoneNumber\": \"string\"\n    }\n  ],\n  \"webhookReceivers\": [\n    {\n      \"name\": \"string\",\n      \"serviceUri\": \"https://fRyOmXhOrwCWVvLIKhAEVulzRFlAPf.iuillRldcUOkA,6TmhmbcigGoX-y0G9OLNaE\",\n      \"useCommonAlertSchema\": false,\n      \"useAadAuth\": false,\n      \"objectId\": \"string\",\n      \"identifierUri\": \"string\",\n      \"tenantId\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"serviceUri\": \"https://pqOpUWN.xaivklqa2S\",\n      \"useCommonAlertSchema\": false,\n      \"useAadAuth\": false,\n      \"objectId\": \"string\",\n      \"identifierUri\": \"string\",\n      \"tenantId\": \"string\"\n    }\n  ],\n  \"azureAppPushReceivers\": [\n    {\n      \"name\": \"string\",\n      \"emailAddress\": \"TuxRoy9Wn3h85-z@g.hv\"\n    },\n    {\n      \"name\": \"string\",\n      \"emailAddress\": \"0Y47uL@DFelZSfASxTgXVnnO.htxp\"\n    }\n  ],\n  \"armRoleReceivers\": [\n    {\n      \"name\": \"string\",\n      \"roleId\": \"string\",\n      \"useCommonAlertSchema\": false\n    },\n    {\n      \"name\": \"string\",\n      \"roleId\": \"string\",\n      \"useCommonAlertSchema\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The URL to poll for the status of the notification.",
+                  "key": "location",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1a993e31-6272-4891-bc4d-66266eb8c062",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "providers",
+                    "Microsoft.Insights",
+                    "createNotifications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2022-06-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alertType\": \"<string>\",\n  \"emailReceivers\": [\n    {\n      \"name\": \"string\",\n      \"emailAddress\": \"jmwN@qhKmqXaHZ.osx\",\n      \"useCommonAlertSchema\": false\n    },\n    {\n      \"name\": \"string\",\n      \"emailAddress\": \"JFVkv2u5NQr3Rq7@mPziOUGgwNAw.tz\",\n      \"useCommonAlertSchema\": false\n    }\n  ],\n  \"smsReceivers\": [\n    {\n      \"name\": \"string\",\n      \"countryCode\": \"string\",\n      \"phoneNumber\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"countryCode\": \"string\",\n      \"phoneNumber\": \"string\"\n    }\n  ],\n  \"webhookReceivers\": [\n    {\n      \"name\": \"string\",\n      \"serviceUri\": \"https://fRyOmXhOrwCWVvLIKhAEVulzRFlAPf.iuillRldcUOkA,6TmhmbcigGoX-y0G9OLNaE\",\n      \"useCommonAlertSchema\": false,\n      \"useAadAuth\": false,\n      \"objectId\": \"string\",\n      \"identifierUri\": \"string\",\n      \"tenantId\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"serviceUri\": \"https://pqOpUWN.xaivklqa2S\",\n      \"useCommonAlertSchema\": false,\n      \"useAadAuth\": false,\n      \"objectId\": \"string\",\n      \"identifierUri\": \"string\",\n      \"tenantId\": \"string\"\n    }\n  ],\n  \"azureAppPushReceivers\": [\n    {\n      \"name\": \"string\",\n      \"emailAddress\": \"TuxRoy9Wn3h85-z@g.hv\"\n    },\n    {\n      \"name\": \"string\",\n      \"emailAddress\": \"0Y47uL@DFelZSfASxTgXVnnO.htxp\"\n    }\n  ],\n  \"armRoleReceivers\": [\n    {\n      \"name\": \"string\",\n      \"roleId\": \"string\",\n      \"useCommonAlertSchema\": false\n    },\n    {\n      \"name\": \"string\",\n      \"roleId\": \"string\",\n      \"useCommonAlertSchema\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6aecd975-1f8f-4c58-9490-f6a90f2ea0b4",
+          "name": "Azure Monitor Get test notification results",
+          "request": {
+            "name": "Azure Monitor Get test notification results",
+            "description": {
+              "content": "Get the test notification results by notification ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "providers",
+                "Microsoft.Insights",
+                "notificationStatus",
+                ":notificationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2022-06-01",
+                  "description": "(Required) Client API version."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "notificationId",
+                  "description": "(Required) The notification ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4b4b2519-7755-474a-9ee7-a631d69a6c43",
+              "name": "Successful request to get test notification details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "providers",
+                    "Microsoft.Insights",
+                    "notificationStatus",
+                    ":notificationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2022-06-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "notificationId",
+                      "description": "(Required) The notification ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"state\": \"string\",\n  \"completedTime\": \"1963-07-01T18:06:21.497Z\",\n  \"createdTime\": \"2007-12-13T19:43:11.347Z\",\n  \"actionDetails\": [\n    {\n      \"mechanismType\": \"string\",\n      \"name\": \"string\",\n      \"status\": \"string\",\n      \"subState\": \"string\",\n      \"sendTime\": \"2000-10-28T13:36:46.865Z\",\n      \"detail\": \"string\"\n    },\n    {\n      \"mechanismType\": \"string\",\n      \"name\": \"string\",\n      \"status\": \"string\",\n      \"subState\": \"string\",\n      \"sendTime\": \"2003-04-10T06:55:35.225Z\",\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "afe42d5c-fc05-4631-95eb-a6e22ec01e3c",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "providers",
+                    "Microsoft.Insights",
+                    "notificationStatus",
+                    ":notificationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2022-06-01"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "notificationId",
+                      "description": "(Required) The notification ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://management.azure.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://management.azure.com/.default"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e80edb65-1b66-41e6-b40d-e88caea4766f",
+    "name": "Azure Monitor Action Groups Test Notifications API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Create and manage action groups that define notification and automation actions triggered by Azure Monitor alerts, including email, SMS, webhooks, and Azure Functions.\n\nContact Support:\n Name: Microsoft Azure Support",
+      "type": "text/plain"
+    }
+  }
+}

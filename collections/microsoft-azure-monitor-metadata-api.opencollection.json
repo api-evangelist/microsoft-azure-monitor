@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Azure Monitor Action Groups Metadata API",
+    "version": "2022-06-01"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Metadata",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Azure Monitor Get metric metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://management.azure.com/apps/:appId/metrics/metadata",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal."
+              }
+            ]
+          },
+          "docs": "Gets metadata describing the available metrics for the Application Insights component."
+        },
+        {
+          "info": {
+            "name": "Azure Monitor Get workspace metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://management.azure.com/workspaces/:workspaceId/metadata",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the workspace. This is the Workspace ID from the Properties blade in the Azure portal."
+              }
+            ]
+          },
+          "docs": "Gets metadata information about the Log Analytics workspace including available tables, functions, and schemas."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

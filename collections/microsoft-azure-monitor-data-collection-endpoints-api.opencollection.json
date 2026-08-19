@@ -1,0 +1,241 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Azure Monitor Action Groups Data Collection Endpoints API",
+    "version": "2022-06-01"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Data Collection Endpoints",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Azure Monitor List data collection endpoints in a subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://management.azure.com/subscriptions/:subscriptionId/providers/Microsoft.Insights/dataCollectionEndpoints",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the target subscription."
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "The API version to use for this operation."
+              }
+            ]
+          },
+          "docs": "Lists all data collection endpoints in the specified subscription."
+        },
+        {
+          "info": {
+            "name": "Azure Monitor List data collection endpoints in a resource group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Insights/dataCollectionEndpoints",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the target subscription."
+              },
+              {
+                "name": "resourceGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the resource group."
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "The API version to use for this operation."
+              }
+            ]
+          },
+          "docs": "Lists all data collection endpoints in the specified resource group."
+        },
+        {
+          "info": {
+            "name": "Azure Monitor Get a data collection endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Insights/dataCollectionEndpoints/:dataCollectionEndpointName",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the target subscription."
+              },
+              {
+                "name": "resourceGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the resource group."
+              },
+              {
+                "name": "dataCollectionEndpointName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the data collection endpoint."
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "The API version to use for this operation."
+              }
+            ]
+          },
+          "docs": "Returns the specified data collection endpoint."
+        },
+        {
+          "info": {
+            "name": "Azure Monitor Create or update a data collection endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Insights/dataCollectionEndpoints/:dataCollectionEndpointName",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the target subscription."
+              },
+              {
+                "name": "resourceGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the resource group."
+              },
+              {
+                "name": "dataCollectionEndpointName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the data collection endpoint."
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "The API version to use for this operation."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates or updates a data collection endpoint. Data collection endpoints provide unique ingestion and configuration access points."
+        },
+        {
+          "info": {
+            "name": "Azure Monitor Update a data collection endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Insights/dataCollectionEndpoints/:dataCollectionEndpointName",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the target subscription."
+              },
+              {
+                "name": "resourceGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the resource group."
+              },
+              {
+                "name": "dataCollectionEndpointName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the data collection endpoint."
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "The API version to use for this operation."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates part of a data collection endpoint. Only tags and identity can be updated."
+        },
+        {
+          "info": {
+            "name": "Azure Monitor Delete a data collection endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Insights/dataCollectionEndpoints/:dataCollectionEndpointName",
+            "params": [
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the target subscription."
+              },
+              {
+                "name": "resourceGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the resource group."
+              },
+              {
+                "name": "dataCollectionEndpointName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the data collection endpoint."
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "The API version to use for this operation."
+              }
+            ]
+          },
+          "docs": "Deletes a data collection endpoint."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

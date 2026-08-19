@@ -1,0 +1,1536 @@
+{
+  "item": [
+    {
+      "id": "10a9e594-99ca-4502-ae50-f6e00f3a43e7",
+      "name": "Data Collection Endpoints",
+      "description": {
+        "content": "Operations for managing data collection endpoints",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "de6b20a3-148b-448f-9f18-5593ccb77561",
+          "name": "Azure Monitor List data collection endpoints in a subscription",
+          "request": {
+            "name": "Azure Monitor List data collection endpoints in a subscription",
+            "description": {
+              "content": "Lists all data collection endpoints in the specified subscription.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "providers",
+                "Microsoft.Insights",
+                "dataCollectionEndpoints"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2023-03-11",
+                  "description": "(Required) The API version to use for this operation."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b17d5958-37b9-4642-b01d-9a43899158f9",
+              "name": "Successful request to list data collection endpoints.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "providers",
+                    "Microsoft.Insights",
+                    "dataCollectionEndpoints"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-03-11"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"location\": \"string\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"tags\": {\n        \"key_0\": \"string\"\n      },\n      \"kind\": \"Windows\",\n      \"identity\": {\n        \"type\": \"None\",\n        \"principalId\": \"string\",\n        \"tenantId\": \"string\",\n        \"userAssignedIdentities\": {\n          \"key_0\": {\n            \"principalId\": \"string\",\n            \"clientId\": \"string\"\n          },\n          \"key_1\": {\n            \"principalId\": \"string\",\n            \"clientId\": \"string\"\n          }\n        }\n      },\n      \"properties\": {\n        \"description\": \"string\",\n        \"immutableId\": \"string\",\n        \"configurationAccess\": {\n          \"endpoint\": \"string\"\n        },\n        \"logsIngestion\": {\n          \"endpoint\": \"string\"\n        },\n        \"metricsIngestion\": {\n          \"endpoint\": \"string\"\n        },\n        \"networkAcls\": {\n          \"publicNetworkAccess\": \"Disabled\"\n        },\n        \"provisioningState\": \"Updating\",\n        \"privateLinkScopedResources\": [\n          {\n            \"resourceId\": \"string\",\n            \"scopeId\": \"string\"\n          },\n          {\n            \"resourceId\": \"string\",\n            \"scopeId\": \"string\"\n          }\n        ],\n        \"failoverConfiguration\": {\n          \"activeLocation\": \"string\",\n          \"locations\": [\n            {\n              \"location\": \"string\",\n              \"provisioningStatus\": \"string\"\n            },\n            {\n              \"location\": \"string\",\n              \"provisioningStatus\": \"string\"\n            }\n          ]\n        },\n        \"metadata\": {\n          \"provisionedBy\": \"string\",\n          \"provisionedByResourceId\": \"string\"\n        }\n      },\n      \"systemData\": {\n        \"createdBy\": \"string\",\n        \"createdByType\": \"User\",\n        \"createdAt\": \"1965-12-31T16:43:25.753Z\",\n        \"lastModifiedBy\": \"string\",\n        \"lastModifiedByType\": \"User\",\n        \"lastModifiedAt\": \"1972-01-05T10:32:14.505Z\"\n      }\n    },\n    {\n      \"location\": \"string\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"tags\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"kind\": \"Windows\",\n      \"identity\": {\n        \"type\": \"None\",\n        \"principalId\": \"string\",\n        \"tenantId\": \"string\",\n        \"userAssignedIdentities\": {\n          \"key_0\": {\n            \"principalId\": \"string\",\n            \"clientId\": \"string\"\n          },\n          \"key_1\": {\n            \"principalId\": \"string\",\n            \"clientId\": \"string\"\n          }\n        }\n      },\n      \"properties\": {\n        \"description\": \"string\",\n        \"immutableId\": \"string\",\n        \"configurationAccess\": {\n          \"endpoint\": \"string\"\n        },\n        \"logsIngestion\": {\n          \"endpoint\": \"string\"\n        },\n        \"metricsIngestion\": {\n          \"endpoint\": \"string\"\n        },\n        \"networkAcls\": {\n          \"publicNetworkAccess\": \"Enabled\"\n        },\n        \"provisioningState\": \"Creating\",\n        \"privateLinkScopedResources\": [\n          {\n            \"resourceId\": \"string\",\n            \"scopeId\": \"string\"\n          },\n          {\n            \"resourceId\": \"string\",\n            \"scopeId\": \"string\"\n          }\n        ],\n        \"failoverConfiguration\": {\n          \"activeLocation\": \"string\",\n          \"locations\": [\n            {\n              \"location\": \"string\",\n              \"provisioningStatus\": \"string\"\n            },\n            {\n              \"location\": \"string\",\n              \"provisioningStatus\": \"string\"\n            }\n          ]\n        },\n        \"metadata\": {\n          \"provisionedBy\": \"string\",\n          \"provisionedByResourceId\": \"string\"\n        }\n      },\n      \"systemData\": {\n        \"createdBy\": \"string\",\n        \"createdByType\": \"User\",\n        \"createdAt\": \"1990-03-25T21:15:29.989Z\",\n        \"lastModifiedBy\": \"string\",\n        \"lastModifiedByType\": \"Application\",\n        \"lastModifiedAt\": \"2001-08-21T05:14:08.591Z\"\n      }\n    }\n  ],\n  \"nextLink\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a2f8e78f-b670-46f6-a7de-25c837975f16",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "providers",
+                    "Microsoft.Insights",
+                    "dataCollectionEndpoints"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-03-11"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"target\": \"string\",\n    \"details\": [\n      {\n        \"code\": \"string\",\n        \"message\": \"string\",\n        \"target\": \"string\"\n      },\n      {\n        \"code\": \"string\",\n        \"message\": \"string\",\n        \"target\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e8356ac-fe80-4854-8737-4ee9f0aa2368",
+          "name": "Azure Monitor List data collection endpoints in a resource group",
+          "request": {
+            "name": "Azure Monitor List data collection endpoints in a resource group",
+            "description": {
+              "content": "Lists all data collection endpoints in the specified resource group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourceGroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Insights",
+                "dataCollectionEndpoints"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2023-03-11",
+                  "description": "(Required) The API version to use for this operation."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8d2cd812-6054-4172-abd7-1bc9cd0ce4f8",
+              "name": "Successful request to list data collection endpoints.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "dataCollectionEndpoints"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-03-11"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"location\": \"string\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"tags\": {\n        \"key_0\": \"string\"\n      },\n      \"kind\": \"Windows\",\n      \"identity\": {\n        \"type\": \"None\",\n        \"principalId\": \"string\",\n        \"tenantId\": \"string\",\n        \"userAssignedIdentities\": {\n          \"key_0\": {\n            \"principalId\": \"string\",\n            \"clientId\": \"string\"\n          },\n          \"key_1\": {\n            \"principalId\": \"string\",\n            \"clientId\": \"string\"\n          }\n        }\n      },\n      \"properties\": {\n        \"description\": \"string\",\n        \"immutableId\": \"string\",\n        \"configurationAccess\": {\n          \"endpoint\": \"string\"\n        },\n        \"logsIngestion\": {\n          \"endpoint\": \"string\"\n        },\n        \"metricsIngestion\": {\n          \"endpoint\": \"string\"\n        },\n        \"networkAcls\": {\n          \"publicNetworkAccess\": \"Disabled\"\n        },\n        \"provisioningState\": \"Updating\",\n        \"privateLinkScopedResources\": [\n          {\n            \"resourceId\": \"string\",\n            \"scopeId\": \"string\"\n          },\n          {\n            \"resourceId\": \"string\",\n            \"scopeId\": \"string\"\n          }\n        ],\n        \"failoverConfiguration\": {\n          \"activeLocation\": \"string\",\n          \"locations\": [\n            {\n              \"location\": \"string\",\n              \"provisioningStatus\": \"string\"\n            },\n            {\n              \"location\": \"string\",\n              \"provisioningStatus\": \"string\"\n            }\n          ]\n        },\n        \"metadata\": {\n          \"provisionedBy\": \"string\",\n          \"provisionedByResourceId\": \"string\"\n        }\n      },\n      \"systemData\": {\n        \"createdBy\": \"string\",\n        \"createdByType\": \"User\",\n        \"createdAt\": \"1965-12-31T16:43:25.753Z\",\n        \"lastModifiedBy\": \"string\",\n        \"lastModifiedByType\": \"User\",\n        \"lastModifiedAt\": \"1972-01-05T10:32:14.505Z\"\n      }\n    },\n    {\n      \"location\": \"string\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"tags\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"kind\": \"Windows\",\n      \"identity\": {\n        \"type\": \"None\",\n        \"principalId\": \"string\",\n        \"tenantId\": \"string\",\n        \"userAssignedIdentities\": {\n          \"key_0\": {\n            \"principalId\": \"string\",\n            \"clientId\": \"string\"\n          },\n          \"key_1\": {\n            \"principalId\": \"string\",\n            \"clientId\": \"string\"\n          }\n        }\n      },\n      \"properties\": {\n        \"description\": \"string\",\n        \"immutableId\": \"string\",\n        \"configurationAccess\": {\n          \"endpoint\": \"string\"\n        },\n        \"logsIngestion\": {\n          \"endpoint\": \"string\"\n        },\n        \"metricsIngestion\": {\n          \"endpoint\": \"string\"\n        },\n        \"networkAcls\": {\n          \"publicNetworkAccess\": \"Enabled\"\n        },\n        \"provisioningState\": \"Creating\",\n        \"privateLinkScopedResources\": [\n          {\n            \"resourceId\": \"string\",\n            \"scopeId\": \"string\"\n          },\n          {\n            \"resourceId\": \"string\",\n            \"scopeId\": \"string\"\n          }\n        ],\n        \"failoverConfiguration\": {\n          \"activeLocation\": \"string\",\n          \"locations\": [\n            {\n              \"location\": \"string\",\n              \"provisioningStatus\": \"string\"\n            },\n            {\n              \"location\": \"string\",\n              \"provisioningStatus\": \"string\"\n            }\n          ]\n        },\n        \"metadata\": {\n          \"provisionedBy\": \"string\",\n          \"provisionedByResourceId\": \"string\"\n        }\n      },\n      \"systemData\": {\n        \"createdBy\": \"string\",\n        \"createdByType\": \"User\",\n        \"createdAt\": \"1990-03-25T21:15:29.989Z\",\n        \"lastModifiedBy\": \"string\",\n        \"lastModifiedByType\": \"Application\",\n        \"lastModifiedAt\": \"2001-08-21T05:14:08.591Z\"\n      }\n    }\n  ],\n  \"nextLink\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ab7379d-9fd9-481e-b3fe-597a1ce4cdaf",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "dataCollectionEndpoints"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-03-11"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"target\": \"string\",\n    \"details\": [\n      {\n        \"code\": \"string\",\n        \"message\": \"string\",\n        \"target\": \"string\"\n      },\n      {\n        \"code\": \"string\",\n        \"message\": \"string\",\n        \"target\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "213dc784-c614-4a06-80fa-7b51a86a4cd9",
+          "name": "Azure Monitor Get a data collection endpoint",
+          "request": {
+            "name": "Azure Monitor Get a data collection endpoint",
+            "description": {
+              "content": "Returns the specified data collection endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourceGroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Insights",
+                "dataCollectionEndpoints",
+                ":dataCollectionEndpointName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2023-03-11",
+                  "description": "(Required) The API version to use for this operation."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dataCollectionEndpointName",
+                  "description": "(Required) The name of the data collection endpoint."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7debd2b6-d9f6-4bb2-846a-e5b81896814c",
+              "name": "Successful request to get a data collection endpoint.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "dataCollectionEndpoints",
+                    ":dataCollectionEndpointName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-03-11"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataCollectionEndpointName",
+                      "description": "(Required) The name of the data collection endpoint."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"location\": \"string\",\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"tags\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  },\n  \"kind\": \"Windows\",\n  \"identity\": {\n    \"type\": \"SystemAssigned,UserAssigned\",\n    \"principalId\": \"string\",\n    \"tenantId\": \"string\",\n    \"userAssignedIdentities\": {\n      \"key_0\": {\n        \"principalId\": \"string\",\n        \"clientId\": \"string\"\n      }\n    }\n  },\n  \"properties\": {\n    \"description\": \"string\",\n    \"immutableId\": \"string\",\n    \"configurationAccess\": {\n      \"endpoint\": \"string\"\n    },\n    \"logsIngestion\": {\n      \"endpoint\": \"string\"\n    },\n    \"metricsIngestion\": {\n      \"endpoint\": \"string\"\n    },\n    \"networkAcls\": {\n      \"publicNetworkAccess\": \"Disabled\"\n    },\n    \"provisioningState\": \"Failed\",\n    \"privateLinkScopedResources\": [\n      {\n        \"resourceId\": \"string\",\n        \"scopeId\": \"string\"\n      },\n      {\n        \"resourceId\": \"string\",\n        \"scopeId\": \"string\"\n      }\n    ],\n    \"failoverConfiguration\": {\n      \"activeLocation\": \"string\",\n      \"locations\": [\n        {\n          \"location\": \"string\",\n          \"provisioningStatus\": \"string\"\n        },\n        {\n          \"location\": \"string\",\n          \"provisioningStatus\": \"string\"\n        }\n      ]\n    },\n    \"metadata\": {\n      \"provisionedBy\": \"string\",\n      \"provisionedByResourceId\": \"string\"\n    }\n  },\n  \"systemData\": {\n    \"createdBy\": \"string\",\n    \"createdByType\": \"User\",\n    \"createdAt\": \"2000-09-22T17:35:22.873Z\",\n    \"lastModifiedBy\": \"string\",\n    \"lastModifiedByType\": \"Application\",\n    \"lastModifiedAt\": \"1986-04-04T23:17:18.365Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "643b14f4-3a86-460e-8b8c-26a927d494bb",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "dataCollectionEndpoints",
+                    ":dataCollectionEndpointName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-03-11"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataCollectionEndpointName",
+                      "description": "(Required) The name of the data collection endpoint."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"target\": \"string\",\n    \"details\": [\n      {\n        \"code\": \"string\",\n        \"message\": \"string\",\n        \"target\": \"string\"\n      },\n      {\n        \"code\": \"string\",\n        \"message\": \"string\",\n        \"target\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2160a682-bfe7-40bb-a449-c4fa4c39e08e",
+          "name": "Azure Monitor Create or update a data collection endpoint",
+          "request": {
+            "name": "Azure Monitor Create or update a data collection endpoint",
+            "description": {
+              "content": "Creates or updates a data collection endpoint. Data collection endpoints provide unique ingestion and configuration access points.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourceGroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Insights",
+                "dataCollectionEndpoints",
+                ":dataCollectionEndpointName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2023-03-11",
+                  "description": "(Required) The API version to use for this operation."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dataCollectionEndpointName",
+                  "description": "(Required) The name of the data collection endpoint."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"location\": \"<string>\",\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"kind\": \"<string>\",\n  \"identity\": {\n    \"type\": \"<string>\",\n    \"userAssignedIdentities\": {\n      \"key_0\": {}\n    }\n  },\n  \"properties\": {\n    \"description\": \"<string>\",\n    \"configurationAccess\": {},\n    \"logsIngestion\": {},\n    \"metricsIngestion\": {},\n    \"networkAcls\": {\n      \"publicNetworkAccess\": \"<string>\"\n    }\n  },\n  \"systemData\": {\n    \"createdBy\": \"<string>\",\n    \"createdByType\": \"<string>\",\n    \"createdAt\": \"<dateTime>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"lastModifiedByType\": \"<string>\",\n    \"lastModifiedAt\": \"<dateTime>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c0fc67e6-dfe8-4857-9b70-6ff6e5527396",
+              "name": "Successfully updated the data collection endpoint.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "dataCollectionEndpoints",
+                    ":dataCollectionEndpointName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-03-11"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataCollectionEndpointName",
+                      "description": "(Required) The name of the data collection endpoint."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"location\": \"<string>\",\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"kind\": \"<string>\",\n  \"identity\": {\n    \"type\": \"SystemAssigned,UserAssigned\",\n    \"userAssignedIdentities\": {\n      \"key_0\": {}\n    }\n  },\n  \"properties\": {\n    \"description\": \"string\",\n    \"configurationAccess\": {},\n    \"logsIngestion\": {},\n    \"metricsIngestion\": {},\n    \"networkAcls\": {\n      \"publicNetworkAccess\": \"Disabled\"\n    }\n  },\n  \"systemData\": {\n    \"createdBy\": \"string\",\n    \"createdByType\": \"Application\",\n    \"createdAt\": \"1980-12-24T20:22:39.967Z\",\n    \"lastModifiedBy\": \"string\",\n    \"lastModifiedByType\": \"Application\",\n    \"lastModifiedAt\": \"2025-07-23T00:04:34.431Z\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"location\": \"string\",\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"tags\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  },\n  \"kind\": \"Windows\",\n  \"identity\": {\n    \"type\": \"SystemAssigned,UserAssigned\",\n    \"principalId\": \"string\",\n    \"tenantId\": \"string\",\n    \"userAssignedIdentities\": {\n      \"key_0\": {\n        \"principalId\": \"string\",\n        \"clientId\": \"string\"\n      }\n    }\n  },\n  \"properties\": {\n    \"description\": \"string\",\n    \"immutableId\": \"string\",\n    \"configurationAccess\": {\n      \"endpoint\": \"string\"\n    },\n    \"logsIngestion\": {\n      \"endpoint\": \"string\"\n    },\n    \"metricsIngestion\": {\n      \"endpoint\": \"string\"\n    },\n    \"networkAcls\": {\n      \"publicNetworkAccess\": \"Disabled\"\n    },\n    \"provisioningState\": \"Failed\",\n    \"privateLinkScopedResources\": [\n      {\n        \"resourceId\": \"string\",\n        \"scopeId\": \"string\"\n      },\n      {\n        \"resourceId\": \"string\",\n        \"scopeId\": \"string\"\n      }\n    ],\n    \"failoverConfiguration\": {\n      \"activeLocation\": \"string\",\n      \"locations\": [\n        {\n          \"location\": \"string\",\n          \"provisioningStatus\": \"string\"\n        },\n        {\n          \"location\": \"string\",\n          \"provisioningStatus\": \"string\"\n        }\n      ]\n    },\n    \"metadata\": {\n      \"provisionedBy\": \"string\",\n      \"provisionedByResourceId\": \"string\"\n    }\n  },\n  \"systemData\": {\n    \"createdBy\": \"string\",\n    \"createdByType\": \"User\",\n    \"createdAt\": \"2000-09-22T17:35:22.873Z\",\n    \"lastModifiedBy\": \"string\",\n    \"lastModifiedByType\": \"Application\",\n    \"lastModifiedAt\": \"1986-04-04T23:17:18.365Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66635d79-6dcb-48a0-b0b0-8ceec3debebf",
+              "name": "Successfully created the data collection endpoint.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "dataCollectionEndpoints",
+                    ":dataCollectionEndpointName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-03-11"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataCollectionEndpointName",
+                      "description": "(Required) The name of the data collection endpoint."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"location\": \"<string>\",\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"kind\": \"<string>\",\n  \"identity\": {\n    \"type\": \"SystemAssigned,UserAssigned\",\n    \"userAssignedIdentities\": {\n      \"key_0\": {}\n    }\n  },\n  \"properties\": {\n    \"description\": \"string\",\n    \"configurationAccess\": {},\n    \"logsIngestion\": {},\n    \"metricsIngestion\": {},\n    \"networkAcls\": {\n      \"publicNetworkAccess\": \"Disabled\"\n    }\n  },\n  \"systemData\": {\n    \"createdBy\": \"string\",\n    \"createdByType\": \"Application\",\n    \"createdAt\": \"1980-12-24T20:22:39.967Z\",\n    \"lastModifiedBy\": \"string\",\n    \"lastModifiedByType\": \"Application\",\n    \"lastModifiedAt\": \"2025-07-23T00:04:34.431Z\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"location\": \"string\",\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"tags\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  },\n  \"kind\": \"Windows\",\n  \"identity\": {\n    \"type\": \"SystemAssigned,UserAssigned\",\n    \"principalId\": \"string\",\n    \"tenantId\": \"string\",\n    \"userAssignedIdentities\": {\n      \"key_0\": {\n        \"principalId\": \"string\",\n        \"clientId\": \"string\"\n      }\n    }\n  },\n  \"properties\": {\n    \"description\": \"string\",\n    \"immutableId\": \"string\",\n    \"configurationAccess\": {\n      \"endpoint\": \"string\"\n    },\n    \"logsIngestion\": {\n      \"endpoint\": \"string\"\n    },\n    \"metricsIngestion\": {\n      \"endpoint\": \"string\"\n    },\n    \"networkAcls\": {\n      \"publicNetworkAccess\": \"Disabled\"\n    },\n    \"provisioningState\": \"Failed\",\n    \"privateLinkScopedResources\": [\n      {\n        \"resourceId\": \"string\",\n        \"scopeId\": \"string\"\n      },\n      {\n        \"resourceId\": \"string\",\n        \"scopeId\": \"string\"\n      }\n    ],\n    \"failoverConfiguration\": {\n      \"activeLocation\": \"string\",\n      \"locations\": [\n        {\n          \"location\": \"string\",\n          \"provisioningStatus\": \"string\"\n        },\n        {\n          \"location\": \"string\",\n          \"provisioningStatus\": \"string\"\n        }\n      ]\n    },\n    \"metadata\": {\n      \"provisionedBy\": \"string\",\n      \"provisionedByResourceId\": \"string\"\n    }\n  },\n  \"systemData\": {\n    \"createdBy\": \"string\",\n    \"createdByType\": \"User\",\n    \"createdAt\": \"2000-09-22T17:35:22.873Z\",\n    \"lastModifiedBy\": \"string\",\n    \"lastModifiedByType\": \"Application\",\n    \"lastModifiedAt\": \"1986-04-04T23:17:18.365Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c6c3312-1433-49d6-9abf-8ab446b6febd",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "dataCollectionEndpoints",
+                    ":dataCollectionEndpointName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-03-11"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataCollectionEndpointName",
+                      "description": "(Required) The name of the data collection endpoint."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"location\": \"<string>\",\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"kind\": \"<string>\",\n  \"identity\": {\n    \"type\": \"SystemAssigned,UserAssigned\",\n    \"userAssignedIdentities\": {\n      \"key_0\": {}\n    }\n  },\n  \"properties\": {\n    \"description\": \"string\",\n    \"configurationAccess\": {},\n    \"logsIngestion\": {},\n    \"metricsIngestion\": {},\n    \"networkAcls\": {\n      \"publicNetworkAccess\": \"Disabled\"\n    }\n  },\n  \"systemData\": {\n    \"createdBy\": \"string\",\n    \"createdByType\": \"Application\",\n    \"createdAt\": \"1980-12-24T20:22:39.967Z\",\n    \"lastModifiedBy\": \"string\",\n    \"lastModifiedByType\": \"Application\",\n    \"lastModifiedAt\": \"2025-07-23T00:04:34.431Z\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"target\": \"string\",\n    \"details\": [\n      {\n        \"code\": \"string\",\n        \"message\": \"string\",\n        \"target\": \"string\"\n      },\n      {\n        \"code\": \"string\",\n        \"message\": \"string\",\n        \"target\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "857b8645-1c9a-4a08-a376-9999a2b5d20e",
+          "name": "Azure Monitor Update a data collection endpoint",
+          "request": {
+            "name": "Azure Monitor Update a data collection endpoint",
+            "description": {
+              "content": "Updates part of a data collection endpoint. Only tags and identity can be updated.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourceGroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Insights",
+                "dataCollectionEndpoints",
+                ":dataCollectionEndpointName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2023-03-11",
+                  "description": "(Required) The API version to use for this operation."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dataCollectionEndpointName",
+                  "description": "(Required) The name of the data collection endpoint."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"identity\": {\n    \"type\": \"<string>\",\n    \"userAssignedIdentities\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4c372f8e-9cb6-4e1e-a4a6-a69370df9dce",
+              "name": "Successfully updated the data collection endpoint.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "dataCollectionEndpoints",
+                    ":dataCollectionEndpointName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-03-11"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataCollectionEndpointName",
+                      "description": "(Required) The name of the data collection endpoint."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"identity\": {\n    \"type\": \"UserAssigned\",\n    \"userAssignedIdentities\": {\n      \"key_0\": {}\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"location\": \"string\",\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"tags\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  },\n  \"kind\": \"Windows\",\n  \"identity\": {\n    \"type\": \"SystemAssigned,UserAssigned\",\n    \"principalId\": \"string\",\n    \"tenantId\": \"string\",\n    \"userAssignedIdentities\": {\n      \"key_0\": {\n        \"principalId\": \"string\",\n        \"clientId\": \"string\"\n      }\n    }\n  },\n  \"properties\": {\n    \"description\": \"string\",\n    \"immutableId\": \"string\",\n    \"configurationAccess\": {\n      \"endpoint\": \"string\"\n    },\n    \"logsIngestion\": {\n      \"endpoint\": \"string\"\n    },\n    \"metricsIngestion\": {\n      \"endpoint\": \"string\"\n    },\n    \"networkAcls\": {\n      \"publicNetworkAccess\": \"Disabled\"\n    },\n    \"provisioningState\": \"Failed\",\n    \"privateLinkScopedResources\": [\n      {\n        \"resourceId\": \"string\",\n        \"scopeId\": \"string\"\n      },\n      {\n        \"resourceId\": \"string\",\n        \"scopeId\": \"string\"\n      }\n    ],\n    \"failoverConfiguration\": {\n      \"activeLocation\": \"string\",\n      \"locations\": [\n        {\n          \"location\": \"string\",\n          \"provisioningStatus\": \"string\"\n        },\n        {\n          \"location\": \"string\",\n          \"provisioningStatus\": \"string\"\n        }\n      ]\n    },\n    \"metadata\": {\n      \"provisionedBy\": \"string\",\n      \"provisionedByResourceId\": \"string\"\n    }\n  },\n  \"systemData\": {\n    \"createdBy\": \"string\",\n    \"createdByType\": \"User\",\n    \"createdAt\": \"2000-09-22T17:35:22.873Z\",\n    \"lastModifiedBy\": \"string\",\n    \"lastModifiedByType\": \"Application\",\n    \"lastModifiedAt\": \"1986-04-04T23:17:18.365Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66384196-03fc-4842-bf6d-43078c0b1510",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "dataCollectionEndpoints",
+                    ":dataCollectionEndpointName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-03-11"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataCollectionEndpointName",
+                      "description": "(Required) The name of the data collection endpoint."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"identity\": {\n    \"type\": \"UserAssigned\",\n    \"userAssignedIdentities\": {\n      \"key_0\": {}\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"target\": \"string\",\n    \"details\": [\n      {\n        \"code\": \"string\",\n        \"message\": \"string\",\n        \"target\": \"string\"\n      },\n      {\n        \"code\": \"string\",\n        \"message\": \"string\",\n        \"target\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3ad3c34a-780a-4cb8-a4c6-2c3c4b59bb43",
+          "name": "Azure Monitor Delete a data collection endpoint",
+          "request": {
+            "name": "Azure Monitor Delete a data collection endpoint",
+            "description": {
+              "content": "Deletes a data collection endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscriptionId",
+                "resourceGroups",
+                ":resourceGroupName",
+                "providers",
+                "Microsoft.Insights",
+                "dataCollectionEndpoints",
+                ":dataCollectionEndpointName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2023-03-11",
+                  "description": "(Required) The API version to use for this operation."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) The ID of the target subscription."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceGroupName",
+                  "description": "(Required) The name of the resource group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dataCollectionEndpointName",
+                  "description": "(Required) The name of the data collection endpoint."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9ce5a00e-e6c8-40da-bb74-2f3579bed875",
+              "name": "Successfully deleted the data collection endpoint.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "dataCollectionEndpoints",
+                    ":dataCollectionEndpointName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-03-11"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataCollectionEndpointName",
+                      "description": "(Required) The name of the data collection endpoint."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "33f67c5b-beb4-4ba4-a95e-b5fde559c677",
+              "name": "The data collection endpoint did not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "dataCollectionEndpoints",
+                    ":dataCollectionEndpointName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-03-11"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataCollectionEndpointName",
+                      "description": "(Required) The name of the data collection endpoint."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dc101397-5321-4a79-8936-7758d7485332",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId",
+                    "resourceGroups",
+                    ":resourceGroupName",
+                    "providers",
+                    "Microsoft.Insights",
+                    "dataCollectionEndpoints",
+                    ":dataCollectionEndpointName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2023-03-11"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) The ID of the target subscription."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceGroupName",
+                      "description": "(Required) The name of the resource group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataCollectionEndpointName",
+                      "description": "(Required) The name of the data collection endpoint."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"target\": \"string\",\n    \"details\": [\n      {\n        \"code\": \"string\",\n        \"message\": \"string\",\n        \"target\": \"string\"\n      },\n      {\n        \"code\": \"string\",\n        \"message\": \"string\",\n        \"target\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://management.azure.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://management.azure.com/.default"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f5fb32c4-4d3f-4aca-9ad3-ed882ad07ad8",
+    "name": "Azure Monitor Action Groups Data Collection Endpoints API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Create and manage action groups that define notification and automation actions triggered by Azure Monitor alerts, including email, SMS, webhooks, and Azure Functions.\n\nContact Support:\n Name: Microsoft Azure Support",
+      "type": "text/plain"
+    }
+  }
+}

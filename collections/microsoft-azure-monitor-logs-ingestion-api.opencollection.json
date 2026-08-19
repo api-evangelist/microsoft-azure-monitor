@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Azure Monitor Action Groups Logs Ingestion API",
+    "version": "2022-06-01"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Logs Ingestion",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Azure Monitor Upload logs to a custom table",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://management.azure.com/dataCollectionRules/:ruleId/streams/:stream",
+            "headers": [
+              {
+                "name": "Content-Encoding",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "ruleId",
+                "value": "",
+                "type": "path",
+                "description": "The immutable ID of the data collection rule resource."
+              },
+              {
+                "name": "stream",
+                "value": "",
+                "type": "path",
+                "description": "The name of the stream to send data to. For built-in tables, use the stream name format like Custom-TableName. For custom tables, use Custom-TableName_CL."
+              },
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "The API version to use for this operation."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Ingests log data to a Log Analytics workspace via a data collection rule. The data is sent to the specified stream, which is mapped to a table in the workspace by the data collection rule. Supports JSON arrays of log records."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

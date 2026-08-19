@@ -1,0 +1,583 @@
+{
+  "item": [
+    {
+      "id": "ebaaa87c-9f98-4049-bd10-4cd697cd9f50",
+      "name": "Events",
+      "description": {
+        "content": "Operations for retrieving Application Insights events",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1f89f544-6c63-4b5d-b4a2-5460696f3082",
+          "name": "Azure Monitor Get events by type",
+          "request": {
+            "name": "Azure Monitor Get events by type",
+            "description": {
+              "content": "Gets the results of an OData query for events of a specific type from Application Insights telemetry.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "apps",
+                ":appId",
+                "events",
+                ":eventType"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "timespan",
+                  "value": "<string>",
+                  "description": "The timespan over which to query in ISO 8601 duration format."
+                },
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "An expression used to filter the returned events."
+                },
+                {
+                  "disabled": false,
+                  "key": "$search",
+                  "value": "<string>",
+                  "description": "A free-text search expression to match for whether a particular event should be returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "A comma-separated list of properties with asc or desc to sort on."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Limits the properties returned for each event."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "The number of items to skip over before returning events."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "The number of events to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "$format",
+                  "value": "<string>",
+                  "description": "Format for the returned events."
+                },
+                {
+                  "disabled": false,
+                  "key": "$count",
+                  "value": "<boolean>",
+                  "description": "Request a count of matching items included with the returned events."
+                },
+                {
+                  "disabled": false,
+                  "key": "$apply",
+                  "value": "<string>",
+                  "description": "An expression used for aggregation over returned events."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "appId",
+                  "description": "(Required) ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "eventType",
+                  "description": "(Required) The type of events to query."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "90d13673-b553-46d5-b1bf-d9d987f95d6c",
+              "name": "Successful request to get events.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    ":appId",
+                    "events",
+                    ":eventType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timespan",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$count",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "$apply",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appId",
+                      "description": "(Required) ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "eventType",
+                      "description": "(Required) The type of events to query."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@ai.messages\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ],\n  \"@odata.context\": \"string\",\n  \"@odata.count\": 4967,\n  \"value\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"timestamp\": \"1946-12-30T12:54:59.820Z\",\n      \"customDimensions\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"customMeasurements\": {\n        \"key_0\": 2419.9411858680564,\n        \"key_1\": 9726.056285165858,\n        \"key_2\": 3516.1867431914593\n      },\n      \"operation\": {\n        \"name\": \"string\",\n        \"id\": \"string\",\n        \"parentId\": \"string\",\n        \"syntheticSource\": \"string\"\n      },\n      \"session\": {\n        \"id\": \"string\"\n      },\n      \"user\": {\n        \"id\": \"string\",\n        \"authenticatedId\": \"string\",\n        \"accountId\": \"string\"\n      },\n      \"cloud\": {\n        \"roleName\": \"string\",\n        \"roleInstance\": \"string\"\n      },\n      \"ai\": {\n        \"iKey\": \"string\",\n        \"appName\": \"string\",\n        \"appId\": \"string\",\n        \"sdkVersion\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"timestamp\": \"2022-08-29T06:31:36.975Z\",\n      \"customDimensions\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"customMeasurements\": {\n        \"key_0\": 8335.0737696807,\n        \"key_1\": 5204.29495342137,\n        \"key_2\": 827.5771315022873\n      },\n      \"operation\": {\n        \"name\": \"string\",\n        \"id\": \"string\",\n        \"parentId\": \"string\",\n        \"syntheticSource\": \"string\"\n      },\n      \"session\": {\n        \"id\": \"string\"\n      },\n      \"user\": {\n        \"id\": \"string\",\n        \"authenticatedId\": \"string\",\n        \"accountId\": \"string\"\n      },\n      \"cloud\": {\n        \"roleName\": \"string\",\n        \"roleInstance\": \"string\"\n      },\n      \"ai\": {\n        \"iKey\": \"string\",\n        \"appName\": \"string\",\n        \"appId\": \"string\",\n        \"sdkVersion\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2b66fdf7-68d0-4c47-8d2c-fc827e944270",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    ":appId",
+                    "events",
+                    ":eventType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timespan",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$count",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "$apply",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appId",
+                      "description": "(Required) ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "eventType",
+                      "description": "(Required) The type of events to query."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "68bff594-8987-4298-82bb-8fd13b58f370",
+          "name": "Azure Monitor Get a single event",
+          "request": {
+            "name": "Azure Monitor Get a single event",
+            "description": {
+              "content": "Gets the data for a single event from Application Insights telemetry.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "apps",
+                ":appId",
+                "events",
+                ":eventType",
+                ":eventId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "timespan",
+                  "value": "<string>",
+                  "description": "The timespan over which to query."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "appId",
+                  "description": "(Required) ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "eventType",
+                  "description": "(Required) The type of events to query."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "eventId",
+                  "description": "(Required) The ID of the event."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "df349e84-c79d-462c-a1e9-0544533f637f",
+              "name": "Successful request to get an event.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    ":appId",
+                    "events",
+                    ":eventType",
+                    ":eventId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timespan",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appId",
+                      "description": "(Required) ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "eventType",
+                      "description": "(Required) The type of events to query."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "eventId",
+                      "description": "(Required) The ID of the event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@ai.messages\": [\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ],\n  \"@odata.context\": \"string\",\n  \"@odata.count\": 4967,\n  \"value\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"timestamp\": \"1946-12-30T12:54:59.820Z\",\n      \"customDimensions\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"customMeasurements\": {\n        \"key_0\": 2419.9411858680564,\n        \"key_1\": 9726.056285165858,\n        \"key_2\": 3516.1867431914593\n      },\n      \"operation\": {\n        \"name\": \"string\",\n        \"id\": \"string\",\n        \"parentId\": \"string\",\n        \"syntheticSource\": \"string\"\n      },\n      \"session\": {\n        \"id\": \"string\"\n      },\n      \"user\": {\n        \"id\": \"string\",\n        \"authenticatedId\": \"string\",\n        \"accountId\": \"string\"\n      },\n      \"cloud\": {\n        \"roleName\": \"string\",\n        \"roleInstance\": \"string\"\n      },\n      \"ai\": {\n        \"iKey\": \"string\",\n        \"appName\": \"string\",\n        \"appId\": \"string\",\n        \"sdkVersion\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"timestamp\": \"2022-08-29T06:31:36.975Z\",\n      \"customDimensions\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"customMeasurements\": {\n        \"key_0\": 8335.0737696807,\n        \"key_1\": 5204.29495342137,\n        \"key_2\": 827.5771315022873\n      },\n      \"operation\": {\n        \"name\": \"string\",\n        \"id\": \"string\",\n        \"parentId\": \"string\",\n        \"syntheticSource\": \"string\"\n      },\n      \"session\": {\n        \"id\": \"string\"\n      },\n      \"user\": {\n        \"id\": \"string\",\n        \"authenticatedId\": \"string\",\n        \"accountId\": \"string\"\n      },\n      \"cloud\": {\n        \"roleName\": \"string\",\n        \"roleInstance\": \"string\"\n      },\n      \"ai\": {\n        \"iKey\": \"string\",\n        \"appName\": \"string\",\n        \"appId\": \"string\",\n        \"sdkVersion\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "efe2715a-19c7-4e2f-bc49-067056e5fc76",
+              "name": "Error response describing why the operation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    ":appId",
+                    "events",
+                    ":eventType",
+                    ":eventId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timespan",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appId",
+                      "description": "(Required) ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "eventType",
+                      "description": "(Required) The type of events to query."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "eventId",
+                      "description": "(Required) The ID of the event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://management.azure.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://management.azure.com/.default"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "aac563c2-3d01-4fde-9618-e2b4e3a0ec89",
+    "name": "Azure Monitor Action Groups Events API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Create and manage action groups that define notification and automation actions triggered by Azure Monitor alerts, including email, SMS, webhooks, and Azure Functions.\n\nContact Support:\n Name: Microsoft Azure Support",
+      "type": "text/plain"
+    }
+  }
+}
