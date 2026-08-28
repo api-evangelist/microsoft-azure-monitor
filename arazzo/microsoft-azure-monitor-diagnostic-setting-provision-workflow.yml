@@ -13,7 +13,7 @@ info:
   version: 1.0.0
 sourceDescriptions:
 - name: diagnosticSettingsApi
-  url: ../openapi/azure-monitor-diagnostic-settings-openapi.yml
+  url: ../openapi/microsoft-azure-monitor-diagnostic-settings-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: provision-diagnostic-setting

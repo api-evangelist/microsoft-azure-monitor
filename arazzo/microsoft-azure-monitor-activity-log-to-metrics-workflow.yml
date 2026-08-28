@@ -10,14 +10,14 @@ info:
     be read and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: activityLogApi
-  url: ../openapi/azure-monitor-activity-log-openapi.yml
+- name: activityLogsApi
+  url: ../openapi/microsoft-azure-monitor-activity-logs-api-openapi.yml
   type: openapi
 - name: metricDefinitionsApi
-  url: ../openapi/azure-monitor-metric-definitions-openapi.yml
+  url: ../openapi/microsoft-azure-monitor-metric-definitions-api-openapi.yml
   type: openapi
 - name: metricsApi
-  url: ../openapi/azure-monitor-metrics-openapi.yml
+  url: ../openapi/microsoft-azure-monitor-metrics-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: triage-activity-and-metrics

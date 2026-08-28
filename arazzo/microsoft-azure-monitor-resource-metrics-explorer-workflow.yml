@@ -12,10 +12,10 @@ info:
   version: 1.0.0
 sourceDescriptions:
 - name: metricDefinitionsApi
-  url: ../openapi/azure-monitor-metric-definitions-openapi.yml
+  url: ../openapi/microsoft-azure-monitor-metric-definitions-api-openapi.yml
   type: openapi
 - name: metricsApi
-  url: ../openapi/azure-monitor-metrics-openapi.yml
+  url: ../openapi/microsoft-azure-monitor-metrics-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: explore-resource-metrics

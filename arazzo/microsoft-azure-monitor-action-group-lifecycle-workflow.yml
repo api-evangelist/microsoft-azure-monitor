@@ -11,7 +11,10 @@ info:
   version: 1.0.0
 sourceDescriptions:
 - name: actionGroupsApi
-  url: ../openapi/azure-monitor-action-groups-openapi.yml
+  url: ../openapi/microsoft-azure-monitor-action-groups-api-openapi.yml
+  type: openapi
+- name: testNotificationsApi
+  url: ../openapi/microsoft-azure-monitor-test-notifications-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: validate-action-group

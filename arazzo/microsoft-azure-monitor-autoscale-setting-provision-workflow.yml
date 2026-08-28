@@ -11,8 +11,11 @@ info:
     the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: autoscaleApi
-  url: ../openapi/azure-monitor-autoscale-openapi.yml
+- name: autoscaleSettingsApi
+  url: ../openapi/microsoft-azure-monitor-autoscale-settings-api-openapi.yml
+  type: openapi
+- name: predictiveMetricsApi
+  url: ../openapi/microsoft-azure-monitor-predictive-metrics-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: provision-autoscale-setting

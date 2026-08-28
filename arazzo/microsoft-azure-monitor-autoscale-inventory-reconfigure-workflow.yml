@@ -10,8 +10,8 @@ info:
     read and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: autoscaleApi
-  url: ../openapi/azure-monitor-autoscale-openapi.yml
+- name: autoscaleSettingsApi
+  url: ../openapi/microsoft-azure-monitor-autoscale-settings-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: reconfigure-autoscale-settings

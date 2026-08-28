@@ -12,10 +12,10 @@ info:
   version: 1.0.0
 sourceDescriptions:
 - name: metricDefinitionsApi
-  url: ../openapi/azure-monitor-metric-definitions-openapi.yml
+  url: ../openapi/microsoft-azure-monitor-metric-definitions-api-openapi.yml
   type: openapi
 - name: metricsBatchApi
-  url: ../openapi/azure-monitor-metrics-batch-openapi.yml
+  url: ../openapi/microsoft-azure-monitor-metrics-batch-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: batch-query-metrics

@@ -12,10 +12,10 @@ info:
   version: 1.0.0
 sourceDescriptions:
 - name: actionGroupsApi
-  url: ../openapi/azure-monitor-action-groups-openapi.yml
+  url: ../openapi/microsoft-azure-monitor-action-groups-api-openapi.yml
   type: openapi
-- name: alertsApi
-  url: ../openapi/azure-monitor-alerts-openapi.yml
+- name: alertRulesApi
+  url: ../openapi/microsoft-azure-monitor-alert-rules-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: provision-action-group-and-alert
