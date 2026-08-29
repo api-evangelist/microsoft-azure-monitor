@@ -1,8 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Azure Monitor Action Groups Logs Ingestion API
-  description: Create and manage action groups that define notification and automation actions triggered by Azure Monitor alerts, including email, SMS, webhooks, and Azure Functions.
-  version: '2022-06-01'
+  title: Azure Monitor Logs Ingestion API
+  description: Sends custom log data to a Log Analytics workspace using a REST API call or client libraries. Supports sending data to both supported Azure tables and custom tables via data collection rules and endpoints.
+  version: '2023-01-01'
   contact:
     name: Microsoft Azure Support
     url: https://azure.microsoft.com/en-us/support/options/
@@ -10,11 +10,15 @@ info:
     name: Microsoft API License
     url: https://azure.microsoft.com/en-us/support/legal/
 servers:
-- url: https://management.azure.com
-  description: Azure Resource Manager
+- url: https://{dataCollectionEndpoint}
+  description: Data Collection Endpoint for log ingestion
+  variables:
+    dataCollectionEndpoint:
+      default: '{dce-name}.{region}.ingest.monitor.azure.com'
+      description: The data collection endpoint host.
 security:
 - oauth2:
-  - https://management.azure.com/.default
+  - https://monitor.azure.com/.default
 tags:
 - name: Logs Ingestion
   description: Operations for ingesting custom log data into Azure Monitor
@@ -140,4 +144,4 @@ components:
         clientCredentials:
           tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
           scopes:
-            https://management.azure.com/.default: Access Azure Management API
+            https://monitor.azure.com/.default: Access Azure Monitor ingestion

@@ -1,8 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Azure Monitor Action Groups Metrics Batch API
-  description: Create and manage action groups that define notification and automation actions triggered by Azure Monitor alerts, including email, SMS, webhooks, and Azure Functions.
-  version: '2022-06-01'
+  title: Azure Monitor Metrics Batch API
+  description: A high-volume API designed for retrieving metric values across multiple Azure resources in a single request. All resources in a batch must be in the same subscription and region.
+  version: '2024-02-01'
   contact:
     name: Microsoft Azure Support
     url: https://azure.microsoft.com/en-us/support/options/
@@ -10,8 +10,12 @@ info:
     name: Microsoft API License
     url: https://azure.microsoft.com/en-us/support/legal/
 servers:
-- url: https://management.azure.com
-  description: Azure Resource Manager
+- url: https://{region}.metrics.monitor.azure.com
+  description: Azure Monitor Metrics regional endpoint
+  variables:
+    region:
+      default: eastus
+      description: The Azure region for the metrics endpoint.
 security:
 - oauth2:
   - https://management.azure.com/.default
@@ -60,115 +64,65 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
-  parameters:
-    OrderByParameter:
-      name: orderBy
-      in: query
-      required: false
-      description: The aggregation to use for sorting results and the direction of the sort.
-      schema:
-        type: string
-    ApiVersionParameter:
-      name: api-version
-      in: query
-      required: true
-      description: Client API version.
-      schema:
-        type: string
-        default: '2024-02-01'
-    MetricNamespaceParameter:
-      name: metricNamespace
-      in: query
-      required: true
-      description: Metric namespace that contains the requested metric names.
-      schema:
-        type: string
-    StartTimeParameter:
-      name: starttime
-      in: query
-      required: true
-      description: The start time of the query in ISO 8601 format.
-      schema:
-        type: string
-        format: date-time
-    IntervalParameter:
-      name: interval
-      in: query
-      required: false
-      description: The interval (window size) of the query in ISO 8601 duration format.
-      schema:
-        type: string
-        default: PT1M
-    AggregationParameter:
-      name: aggregation
-      in: query
-      required: false
-      description: The list of aggregation types (comma-separated) to retrieve.
-      schema:
-        type: string
-    EndTimeParameter:
-      name: endtime
-      in: query
-      required: true
-      description: The end time of the query in ISO 8601 format.
-      schema:
-        type: string
-        format: date-time
-    TopParameter:
-      name: top
-      in: query
-      required: false
-      description: The maximum number of records to retrieve per resource.
-      schema:
-        type: integer
-        format: int32
-    FilterParameter:
-      name: $filter
-      in: query
-      required: false
-      description: The $filter used to reduce the set of metric data returned.
-      schema:
-        type: string
-    RollUpByParameter:
-      name: rollUpBy
-      in: query
-      required: false
-      description: Dimension name(s) to rollup results by.
-      schema:
-        type: string
-    MetricNamesParameter:
-      name: metricnames
-      in: query
-      required: true
-      description: The names of the metrics (comma-separated) to retrieve.
-      schema:
-        type: string
-    SubscriptionIdParameter:
-      name: subscriptionId
-      in: path
-      required: true
-      description: The ID of the target subscription.
-      schema:
-        type: string
   schemas:
-    MetricsBatchResponse:
+    ErrorResponse:
       type: object
       properties:
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/MetricResultsResponse'
-          description: The collection of metric results for each resource.
-    MetricsBatchRequest:
+        code:
+          type: string
+          description: Error code.
+        message:
+          type: string
+          description: Error message indicating why the operation failed.
+    TimeSeriesElement:
       type: object
-      required:
-      - resourceids
       properties:
-        resourceids:
+        metadatavalues:
           type: array
           items:
-            type: string
-          description: The list of resource IDs to query metrics for. All resources must be in the same subscription, region, and resource type.
+            type: object
+            properties:
+              name:
+                type: object
+                properties:
+                  value:
+                    type: string
+                  localizedValue:
+                    type: string
+              value:
+                type: string
+          description: The metadata values returned.
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricValue'
+          description: An array of data points representing the metric values.
+    MetricResultsResponse:
+      type: object
+      properties:
+        starttime:
+          type: string
+          description: The start time, in datetime format, for which the data was retrieved.
+        endtime:
+          type: string
+          description: The end time, in datetime format, for which the data was retrieved.
+        interval:
+          type: string
+          description: The interval (window size) for which the metric data was returned.
+        namespace:
+          type: string
+          description: The namespace of the metrics being queried.
+        resourceregion:
+          type: string
+          description: The region of the resource being queried for metrics.
+        resourceid:
+          type: string
+          description: The resource ID for which metrics were retrieved.
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Metric'
+          description: The value of the collection.
     Metric:
       type: object
       required:
@@ -220,38 +174,6 @@ components:
           items:
             $ref: '#/components/schemas/TimeSeriesElement'
           description: The time series returned when a data query is performed.
-    TimeSeriesElement:
-      type: object
-      properties:
-        metadatavalues:
-          type: array
-          items:
-            type: object
-            properties:
-              name:
-                type: object
-                properties:
-                  value:
-                    type: string
-                  localizedValue:
-                    type: string
-              value:
-                type: string
-          description: The metadata values returned.
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/MetricValue'
-          description: An array of data points representing the metric values.
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code.
-        message:
-          type: string
-          description: Error message indicating why the operation failed.
     MetricValue:
       type: object
       required:
@@ -281,32 +203,114 @@ components:
           type: number
           format: double
           description: The number of samples in the time range.
-    MetricResultsResponse:
+    MetricsBatchResponse:
       type: object
       properties:
-        starttime:
-          type: string
-          description: The start time, in datetime format, for which the data was retrieved.
-        endtime:
-          type: string
-          description: The end time, in datetime format, for which the data was retrieved.
-        interval:
-          type: string
-          description: The interval (window size) for which the metric data was returned.
-        namespace:
-          type: string
-          description: The namespace of the metrics being queried.
-        resourceregion:
-          type: string
-          description: The region of the resource being queried for metrics.
-        resourceid:
-          type: string
-          description: The resource ID for which metrics were retrieved.
-        value:
+        values:
           type: array
           items:
-            $ref: '#/components/schemas/Metric'
-          description: The value of the collection.
+            $ref: '#/components/schemas/MetricResultsResponse'
+          description: The collection of metric results for each resource.
+    MetricsBatchRequest:
+      type: object
+      required:
+      - resourceids
+      properties:
+        resourceids:
+          type: array
+          items:
+            type: string
+          description: The list of resource IDs to query metrics for. All resources must be in the same subscription, region, and resource type.
+  parameters:
+    SubscriptionIdParameter:
+      name: subscriptionId
+      in: path
+      required: true
+      description: The ID of the target subscription.
+      schema:
+        type: string
+    OrderByParameter:
+      name: orderBy
+      in: query
+      required: false
+      description: The aggregation to use for sorting results and the direction of the sort.
+      schema:
+        type: string
+    IntervalParameter:
+      name: interval
+      in: query
+      required: false
+      description: The interval (window size) of the query in ISO 8601 duration format.
+      schema:
+        type: string
+        default: PT1M
+    MetricNamesParameter:
+      name: metricnames
+      in: query
+      required: true
+      description: The names of the metrics (comma-separated) to retrieve.
+      schema:
+        type: string
+    RollUpByParameter:
+      name: rollUpBy
+      in: query
+      required: false
+      description: Dimension name(s) to rollup results by.
+      schema:
+        type: string
+    ApiVersionParameter:
+      name: api-version
+      in: query
+      required: true
+      description: Client API version.
+      schema:
+        type: string
+        default: '2024-02-01'
+    MetricNamespaceParameter:
+      name: metricNamespace
+      in: query
+      required: true
+      description: Metric namespace that contains the requested metric names.
+      schema:
+        type: string
+    TopParameter:
+      name: top
+      in: query
+      required: false
+      description: The maximum number of records to retrieve per resource.
+      schema:
+        type: integer
+        format: int32
+    StartTimeParameter:
+      name: starttime
+      in: query
+      required: true
+      description: The start time of the query in ISO 8601 format.
+      schema:
+        type: string
+        format: date-time
+    FilterParameter:
+      name: $filter
+      in: query
+      required: false
+      description: The $filter used to reduce the set of metric data returned.
+      schema:
+        type: string
+    AggregationParameter:
+      name: aggregation
+      in: query
+      required: false
+      description: The list of aggregation types (comma-separated) to retrieve.
+      schema:
+        type: string
+    EndTimeParameter:
+      name: endtime
+      in: query
+      required: true
+      description: The end time of the query in ISO 8601 format.
+      schema:
+        type: string
+        format: date-time
   securitySchemes:
     oauth2:
       type: oauth2

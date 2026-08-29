@@ -1,20 +1,19 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Azure Monitor Action Groups Metadata API
-  description: Create and manage action groups that define notification and automation actions triggered by Azure Monitor alerts, including email, SMS, webhooks, and Azure Functions.
-  version: '2022-06-01'
+  title: Microsoft Azure Monitor Metadata API
   contact:
     name: Microsoft Azure Support
     url: https://azure.microsoft.com/en-us/support/options/
   license:
     name: Microsoft API License
     url: https://azure.microsoft.com/en-us/support/legal/
+  version: '1.0'
+  description: 'Operations tagged Metadata across 2 of this provider''s published API definitions: azure-monitor-application-insights-openapi.yml, azure-monitor-logs-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://management.azure.com
-  description: Azure Resource Manager
-security:
-- oauth2:
-  - https://management.azure.com/.default
+- url: https://api.applicationinsights.io/v1
+  description: Application Insights data plane API
+- url: https://api.loganalytics.io/v1
+  description: Azure Log Analytics data plane API
 tags:
 - name: Metadata
   description: Operations for retrieving Application Insights metadata
@@ -42,6 +41,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - oauth2:
+        - https://api.applicationinsights.io/.default
+      - apiKey: []
+    servers:
+    - url: https://api.applicationinsights.io/v1
+      description: Application Insights data plane API
   /workspaces/{workspaceId}/metadata:
     get:
       operationId: Metadata_Get
@@ -64,23 +70,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - oauth2:
+        - https://api.loganalytics.io/.default
+    servers:
+    - url: https://api.loganalytics.io/v1
+      description: Azure Log Analytics data plane API
+    - url: https://api.applicationinsights.io/v1
+      description: Application Insights data plane API
 components:
-  parameters:
-    AppIdParameter:
-      name: appId
-      in: path
-      required: true
-      description: ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal.
-      schema:
-        type: string
-    WorkspaceIdParameter:
-      name: workspaceId
-      in: path
-      required: true
-      description: ID of the workspace. This is the Workspace ID from the Properties blade in the Azure portal.
-      schema:
-        type: string
-        format: uuid
   schemas:
     ErrorResponse:
       type: object
@@ -97,38 +95,6 @@ components:
           required:
           - code
           - message
-    MetadataFunction:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The ID of the function.
-        name:
-          type: string
-          description: The name of the function.
-        body:
-          type: string
-          description: The KQL body of the function.
-        description:
-          type: string
-          description: The description of the function.
-    MetadataTable:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The ID of the table.
-        name:
-          type: string
-          description: The name of the table.
-        description:
-          type: string
-          description: The description of the table.
-        columns:
-          type: array
-          items:
-            $ref: '#/components/schemas/Column'
-          description: The columns in the table.
     Column:
       type: object
       properties:
@@ -162,6 +128,54 @@ components:
           items:
             $ref: '#/components/schemas/MetadataFunction'
           description: The list of saved functions in the workspace.
+    MetadataTable:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of the table.
+        name:
+          type: string
+          description: The name of the table.
+        description:
+          type: string
+          description: The description of the table.
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/Column'
+          description: The columns in the table.
+    MetadataFunction:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of the function.
+        name:
+          type: string
+          description: The name of the function.
+        body:
+          type: string
+          description: The KQL body of the function.
+        description:
+          type: string
+          description: The description of the function.
+  parameters:
+    AppIdParameter:
+      name: appId
+      in: path
+      required: true
+      description: ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal.
+      schema:
+        type: string
+    WorkspaceIdParameter:
+      name: workspaceId
+      in: path
+      required: true
+      description: ID of the workspace. This is the Workspace ID from the Properties blade in the Azure portal.
+      schema:
+        type: string
+        format: uuid
   securitySchemes:
     oauth2:
       type: oauth2
@@ -169,4 +183,12 @@ components:
         clientCredentials:
           tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
           scopes:
-            https://management.azure.com/.default: Access Azure Management API
+            https://api.applicationinsights.io/.default: Access Application Insights API
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API key for demo workspace access.
+x-refined-from:
+- azure-monitor-application-insights-openapi.yml
+- azure-monitor-logs-openapi.yml

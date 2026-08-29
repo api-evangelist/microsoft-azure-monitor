@@ -1,8 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Azure Monitor Action Groups Private Link Scopes API
-  description: Create and manage action groups that define notification and automation actions triggered by Azure Monitor alerts, including email, SMS, webhooks, and Azure Functions.
-  version: '2022-06-01'
+  title: Azure Monitor Private Link Scopes API
+  description: Create and manage Azure Monitor Private Link Scopes to connect Azure Monitor resources to private endpoints, enabling secure network access to monitoring data.
+  version: 2021-07-01-preview
   contact:
     name: Microsoft Azure Support
     url: https://azure.microsoft.com/en-us/support/options/
@@ -184,36 +184,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
-  parameters:
-    ApiVersionParameter:
-      name: api-version
-      in: query
-      required: true
-      description: Client API version.
-      schema:
-        type: string
-        default: 2021-07-01-preview
-    ResourceGroupNameParameter:
-      name: resourceGroupName
-      in: path
-      required: true
-      description: The name of the resource group.
-      schema:
-        type: string
-    ScopeNameParameter:
-      name: scopeName
-      in: path
-      required: true
-      description: The name of the Azure Monitor Private Link Scope resource.
-      schema:
-        type: string
-    SubscriptionIdParameter:
-      name: subscriptionId
-      in: path
-      required: true
-      description: The ID of the target subscription.
-      schema:
-        type: string
   schemas:
     ErrorResponse:
       type: object
@@ -251,19 +221,43 @@ components:
         lastModifiedAt:
           type: string
           format: date-time
-    AzureMonitorPrivateLinkScopeListResult:
+    TagsResource:
+      type: object
+      properties:
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          description: Resource tags.
+    AzureMonitorPrivateLinkScope:
       type: object
       required:
-      - value
+      - location
       properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/AzureMonitorPrivateLinkScope'
-          description: List of Azure Monitor Private Link Scope definitions.
-        nextLink:
+        id:
           type: string
-          description: The URI to get the next set of results.
+          readOnly: true
+          description: Azure resource ID.
+        name:
+          type: string
+          readOnly: true
+          description: Azure resource name.
+        type:
+          type: string
+          readOnly: true
+          description: Azure resource type.
+        location:
+          type: string
+          description: Resource location.
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          description: Resource tags.
+        properties:
+          $ref: '#/components/schemas/AzureMonitorPrivateLinkScopeProperties'
+        systemData:
+          $ref: '#/components/schemas/SystemData'
     AzureMonitorPrivateLinkScopeProperties:
       type: object
       required:
@@ -342,43 +336,49 @@ components:
                     type: string
               description: List of exclusions that override the default access mode.
           description: Access mode settings for the Private Link Scope.
-    TagsResource:
-      type: object
-      properties:
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-          description: Resource tags.
-    AzureMonitorPrivateLinkScope:
+    AzureMonitorPrivateLinkScopeListResult:
       type: object
       required:
-      - location
+      - value
       properties:
-        id:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/AzureMonitorPrivateLinkScope'
+          description: List of Azure Monitor Private Link Scope definitions.
+        nextLink:
           type: string
-          readOnly: true
-          description: Azure resource ID.
-        name:
-          type: string
-          readOnly: true
-          description: Azure resource name.
-        type:
-          type: string
-          readOnly: true
-          description: Azure resource type.
-        location:
-          type: string
-          description: Resource location.
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-          description: Resource tags.
-        properties:
-          $ref: '#/components/schemas/AzureMonitorPrivateLinkScopeProperties'
-        systemData:
-          $ref: '#/components/schemas/SystemData'
+          description: The URI to get the next set of results.
+  parameters:
+    SubscriptionIdParameter:
+      name: subscriptionId
+      in: path
+      required: true
+      description: The ID of the target subscription.
+      schema:
+        type: string
+    ApiVersionParameter:
+      name: api-version
+      in: query
+      required: true
+      description: Client API version.
+      schema:
+        type: string
+        default: 2021-07-01-preview
+    ScopeNameParameter:
+      name: scopeName
+      in: path
+      required: true
+      description: The name of the Azure Monitor Private Link Scope resource.
+      schema:
+        type: string
+    ResourceGroupNameParameter:
+      name: resourceGroupName
+      in: path
+      required: true
+      description: The name of the resource group.
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2

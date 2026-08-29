@@ -1,8 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Azure Monitor Action Groups Data Collection Endpoints API
-  description: Create and manage action groups that define notification and automation actions triggered by Azure Monitor alerts, including email, SMS, webhooks, and Azure Functions.
-  version: '2022-06-01'
+  title: Azure Monitor Data Collection Endpoints API
+  description: Create and manage data collection endpoints that provide unique ingestion and configuration endpoints for data collection in Azure Monitor.
+  version: '2023-03-11'
   contact:
     name: Microsoft Azure Support
     url: https://azure.microsoft.com/en-us/support/options/
@@ -183,26 +183,11 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   parameters:
-    ApiVersionParameter:
-      name: api-version
-      in: query
-      required: true
-      description: The API version to use for this operation.
-      schema:
-        type: string
-        default: '2023-03-11'
     ResourceGroupNameParameter:
       name: resourceGroupName
       in: path
       required: true
       description: The name of the resource group.
-      schema:
-        type: string
-    SubscriptionIdParameter:
-      name: subscriptionId
-      in: path
-      required: true
-      description: The ID of the target subscription.
       schema:
         type: string
     DataCollectionEndpointNameParameter:
@@ -212,7 +197,99 @@ components:
       description: The name of the data collection endpoint.
       schema:
         type: string
+    SubscriptionIdParameter:
+      name: subscriptionId
+      in: path
+      required: true
+      description: The ID of the target subscription.
+      schema:
+        type: string
+    ApiVersionParameter:
+      name: api-version
+      in: query
+      required: true
+      description: The API version to use for this operation.
+      schema:
+        type: string
+        default: '2023-03-11'
   schemas:
+    DataCollectionEndpointResourceListResult:
+      type: object
+      required:
+      - value
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataCollectionEndpointResource'
+          description: A list of data collection endpoints.
+        nextLink:
+          type: string
+          description: The URI to fetch the next page.
+    DataCollectionEndpointResource:
+      type: object
+      required:
+      - location
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Fully qualified resource ID.
+        name:
+          type: string
+          readOnly: true
+          description: The name of the resource.
+        type:
+          type: string
+          readOnly: true
+          description: The type of the resource.
+        location:
+          type: string
+          description: The geo-location where the resource lives.
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          description: Resource tags.
+        kind:
+          type: string
+          enum:
+          - Linux
+          - Windows
+          description: The kind of the resource.
+        identity:
+          $ref: '#/components/schemas/ManagedServiceIdentity'
+        properties:
+          $ref: '#/components/schemas/DataCollectionEndpoint'
+        systemData:
+          $ref: '#/components/schemas/SystemData'
+    SystemData:
+      type: object
+      properties:
+        createdBy:
+          type: string
+        createdByType:
+          type: string
+          enum:
+          - User
+          - Application
+          - ManagedIdentity
+          - Key
+        createdAt:
+          type: string
+          format: date-time
+        lastModifiedBy:
+          type: string
+        lastModifiedByType:
+          type: string
+          enum:
+          - User
+          - Application
+          - ManagedIdentity
+          - Key
+        lastModifiedAt:
+          type: string
+          format: date-time
     ErrorResponse:
       type: object
       properties:
@@ -238,19 +315,6 @@ components:
                     type: string
                   target:
                     type: string
-    DataCollectionEndpointResourceListResult:
-      type: object
-      required:
-      - value
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/DataCollectionEndpointResource'
-          description: A list of data collection endpoints.
-        nextLink:
-          type: string
-          description: The URI to fetch the next page.
     ResourceForUpdate:
       type: object
       properties:
@@ -356,70 +420,6 @@ components:
               type: string
               readOnly: true
           description: Metadata for the resource.
-    SystemData:
-      type: object
-      properties:
-        createdBy:
-          type: string
-        createdByType:
-          type: string
-          enum:
-          - User
-          - Application
-          - ManagedIdentity
-          - Key
-        createdAt:
-          type: string
-          format: date-time
-        lastModifiedBy:
-          type: string
-        lastModifiedByType:
-          type: string
-          enum:
-          - User
-          - Application
-          - ManagedIdentity
-          - Key
-        lastModifiedAt:
-          type: string
-          format: date-time
-    DataCollectionEndpointResource:
-      type: object
-      required:
-      - location
-      properties:
-        id:
-          type: string
-          readOnly: true
-          description: Fully qualified resource ID.
-        name:
-          type: string
-          readOnly: true
-          description: The name of the resource.
-        type:
-          type: string
-          readOnly: true
-          description: The type of the resource.
-        location:
-          type: string
-          description: The geo-location where the resource lives.
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-          description: Resource tags.
-        kind:
-          type: string
-          enum:
-          - Linux
-          - Windows
-          description: The kind of the resource.
-        identity:
-          $ref: '#/components/schemas/ManagedServiceIdentity'
-        properties:
-          $ref: '#/components/schemas/DataCollectionEndpoint'
-        systemData:
-          $ref: '#/components/schemas/SystemData'
     ManagedServiceIdentity:
       type: object
       required:
