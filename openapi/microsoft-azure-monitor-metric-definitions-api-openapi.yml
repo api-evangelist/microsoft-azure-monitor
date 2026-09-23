@@ -69,6 +69,43 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
+  parameters:
+    MetricNamespaceParameter:
+      name: metricNamespace
+      in: query
+      required: false
+      description: Metric namespace to query metric definitions for.
+      schema:
+        type: string
+    ResourceUriParameter:
+      name: resourceUri
+      in: path
+      required: true
+      description: The identifier of the resource.
+      schema:
+        type: string
+    RegionParameter:
+      name: region
+      in: query
+      required: false
+      description: The region where the metrics you want reside.
+      schema:
+        type: string
+    ApiVersionParameter:
+      name: api-version
+      in: query
+      required: true
+      description: Client API version.
+      schema:
+        type: string
+        default: '2023-10-01'
+    SubscriptionIdParameter:
+      name: subscriptionId
+      in: path
+      required: true
+      description: The ID of the target subscription.
+      schema:
+        type: string
   schemas:
     MetricDefinitionCollection:
       type: object
@@ -80,15 +117,6 @@ components:
           items:
             $ref: '#/components/schemas/MetricDefinition'
           description: The values for the metric definitions.
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code.
-        message:
-          type: string
-          description: Error message indicating why the operation failed.
     MetricDefinition:
       type: object
       properties:
@@ -170,6 +198,24 @@ components:
           items:
             $ref: '#/components/schemas/LocalizableString'
           description: The name and the display name of the dimension, i.e. the localized string representation.
+    MetricAvailability:
+      type: object
+      properties:
+        timeGrain:
+          type: string
+          description: The time grain specifies the aggregation interval in ISO 8601 duration format.
+        retention:
+          type: string
+          description: The retention period for the metric in ISO 8601 duration format.
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code.
+        message:
+          type: string
+          description: Error message indicating why the operation failed.
     LocalizableString:
       type: object
       required:
@@ -181,52 +227,6 @@ components:
         localizedValue:
           type: string
           description: The display name.
-    MetricAvailability:
-      type: object
-      properties:
-        timeGrain:
-          type: string
-          description: The time grain specifies the aggregation interval in ISO 8601 duration format.
-        retention:
-          type: string
-          description: The retention period for the metric in ISO 8601 duration format.
-  parameters:
-    SubscriptionIdParameter:
-      name: subscriptionId
-      in: path
-      required: true
-      description: The ID of the target subscription.
-      schema:
-        type: string
-    ResourceUriParameter:
-      name: resourceUri
-      in: path
-      required: true
-      description: The identifier of the resource.
-      schema:
-        type: string
-    ApiVersionParameter:
-      name: api-version
-      in: query
-      required: true
-      description: Client API version.
-      schema:
-        type: string
-        default: '2023-10-01'
-    MetricNamespaceParameter:
-      name: metricNamespace
-      in: query
-      required: false
-      description: Metric namespace to query metric definitions for.
-      schema:
-        type: string
-    RegionParameter:
-      name: region
-      in: query
-      required: false
-      description: The region where the metrics you want reside.
-      schema:
-        type: string
   securitySchemes:
     oauth2:
       type: oauth2

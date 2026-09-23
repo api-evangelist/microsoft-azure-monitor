@@ -166,31 +166,6 @@ paths:
       description: Application Insights data plane API
 components:
   schemas:
-    QueryResults:
-      type: object
-      required:
-      - tables
-      properties:
-        tables:
-          type: array
-          items:
-            $ref: '#/components/schemas/Table'
-          description: The list of tables, columns and rows.
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code.
-            message:
-              type: string
-              description: Error message.
-          required:
-          - code
-          - message
     QueryBody:
       type: object
       required:
@@ -207,6 +182,21 @@ components:
           items:
             type: string
           description: A list of Application Insights application IDs for cross-application queries.
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+            message:
+              type: string
+              description: Error message.
+          required:
+          - code
+          - message
     Table:
       type: object
       required:
@@ -235,6 +225,16 @@ components:
             type: array
             items: {}
           description: The resulting rows from the query.
+    QueryResults:
+      type: object
+      required:
+      - tables
+      properties:
+        tables:
+          type: array
+          items:
+            $ref: '#/components/schemas/Table'
+          description: The list of tables, columns and rows.
     Column:
       type: object
       properties:
@@ -255,16 +255,6 @@ components:
           - decimal
           - timespan
           description: The data type of this column.
-    QueryResults_2:
-      type: object
-      required:
-      - tables
-      properties:
-        tables:
-          type: array
-          items:
-            $ref: '#/components/schemas/Table_2'
-          description: The list of tables, columns and rows returned by the query.
     QueryBody_2:
       type: object
       required:
@@ -307,6 +297,16 @@ components:
             type: array
             items: {}
           description: The resulting rows from this query. Each row is an array of values.
+    QueryResults_2:
+      type: object
+      required:
+      - tables
+      properties:
+        tables:
+          type: array
+          items:
+            $ref: '#/components/schemas/Table_2'
+          description: The list of tables, columns and rows returned by the query.
   parameters:
     AppIdParameter:
       name: appId

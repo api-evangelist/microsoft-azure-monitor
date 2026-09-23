@@ -87,56 +87,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    AzureAppPushReceiver:
-      type: object
-      required:
-      - name
-      - emailAddress
-      properties:
-        name:
-          type: string
-          description: The name of the Azure App Push receiver.
-        emailAddress:
-          type: string
-          format: email
-          description: The email address registered for the Azure mobile app.
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code.
-        message:
-          type: string
-          description: Error message indicating why the operation failed.
-    NotificationRequestBody:
-      type: object
-      required:
-      - alertType
-      properties:
-        alertType:
-          type: string
-          description: The value of the supported alert type.
-        emailReceivers:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailReceiver'
-        smsReceivers:
-          type: array
-          items:
-            $ref: '#/components/schemas/SmsReceiver'
-        webhookReceivers:
-          type: array
-          items:
-            $ref: '#/components/schemas/WebhookReceiver'
-        azureAppPushReceivers:
-          type: array
-          items:
-            $ref: '#/components/schemas/AzureAppPushReceiver'
-        armRoleReceivers:
-          type: array
-          items:
-            $ref: '#/components/schemas/ArmRoleReceiver'
     WebhookReceiver:
       type: object
       required:
@@ -167,30 +117,28 @@ components:
         tenantId:
           type: string
           description: The tenant ID for AAD auth.
-    SmsReceiver:
+    AzureAppPushReceiver:
       type: object
       required:
       - name
-      - countryCode
-      - phoneNumber
+      - emailAddress
       properties:
         name:
           type: string
-          description: The name of the SMS receiver.
-        countryCode:
+          description: The name of the Azure App Push receiver.
+        emailAddress:
           type: string
-          description: The country code of the SMS receiver.
-        phoneNumber:
+          format: email
+          description: The email address registered for the Azure mobile app.
+    ErrorResponse:
+      type: object
+      properties:
+        code:
           type: string
-          description: The phone number of the SMS receiver.
-        status:
+          description: Error code.
+        message:
           type: string
-          readOnly: true
-          enum:
-          - NotSpecified
-          - Enabled
-          - Disabled
-          description: The receiver status.
+          description: Error message indicating why the operation failed.
     EmailReceiver:
       type: object
       required:
@@ -256,6 +204,34 @@ components:
               detail:
                 type: string
                 description: The detail of the action.
+    NotificationRequestBody:
+      type: object
+      required:
+      - alertType
+      properties:
+        alertType:
+          type: string
+          description: The value of the supported alert type.
+        emailReceivers:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailReceiver'
+        smsReceivers:
+          type: array
+          items:
+            $ref: '#/components/schemas/SmsReceiver'
+        webhookReceivers:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookReceiver'
+        azureAppPushReceivers:
+          type: array
+          items:
+            $ref: '#/components/schemas/AzureAppPushReceiver'
+        armRoleReceivers:
+          type: array
+          items:
+            $ref: '#/components/schemas/ArmRoleReceiver'
     ArmRoleReceiver:
       type: object
       required:
@@ -272,14 +248,31 @@ components:
           type: boolean
           default: false
           description: Indicates whether to use common alert schema.
+    SmsReceiver:
+      type: object
+      required:
+      - name
+      - countryCode
+      - phoneNumber
+      properties:
+        name:
+          type: string
+          description: The name of the SMS receiver.
+        countryCode:
+          type: string
+          description: The country code of the SMS receiver.
+        phoneNumber:
+          type: string
+          description: The phone number of the SMS receiver.
+        status:
+          type: string
+          readOnly: true
+          enum:
+          - NotSpecified
+          - Enabled
+          - Disabled
+          description: The receiver status.
   parameters:
-    SubscriptionIdParameter:
-      name: subscriptionId
-      in: path
-      required: true
-      description: The ID of the target subscription.
-      schema:
-        type: string
     ApiVersionParameter:
       name: api-version
       in: query
@@ -288,6 +281,13 @@ components:
       schema:
         type: string
         default: '2022-06-01'
+    SubscriptionIdParameter:
+      name: subscriptionId
+      in: path
+      required: true
+      description: The ID of the target subscription.
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2

@@ -221,15 +221,6 @@ components:
           type: string
           readOnly: true
           description: The Azure tenant ID.
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code.
-        message:
-          type: string
-          description: Error message indicating why the operation failed.
     EventDataCollection:
       type: object
       required:
@@ -243,14 +234,16 @@ components:
         nextLink:
           type: string
           description: Provides the link to retrieve the next set of events.
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code.
+        message:
+          type: string
+          description: Error message indicating why the operation failed.
   parameters:
-    SubscriptionIdParameter:
-      name: subscriptionId
-      in: path
-      required: true
-      description: The ID of the target subscription.
-      schema:
-        type: string
     ApiVersionParameter:
       name: api-version
       in: query
@@ -259,6 +252,13 @@ components:
       schema:
         type: string
         default: '2015-04-01'
+    SubscriptionIdParameter:
+      name: subscriptionId
+      in: path
+      required: true
+      description: The ID of the target subscription.
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2

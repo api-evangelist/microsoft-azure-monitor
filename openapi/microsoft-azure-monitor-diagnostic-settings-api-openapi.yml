@@ -119,6 +119,102 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    LogSettings:
+      type: object
+      required:
+      - enabled
+      properties:
+        category:
+          type: string
+          description: Name of a Diagnostic Log category for a resource type.
+        categoryGroup:
+          type: string
+          description: Name of a Diagnostic Log category group for a resource type.
+        enabled:
+          type: boolean
+          description: Indicates whether this log category is enabled.
+        retentionPolicy:
+          $ref: '#/components/schemas/RetentionPolicy'
+    MetricSettings:
+      type: object
+      required:
+      - enabled
+      properties:
+        timeGrain:
+          type: string
+          description: The timegrain of the metric in ISO 8601 format.
+        category:
+          type: string
+          description: Name of a Diagnostic Metric category for a resource type.
+        enabled:
+          type: boolean
+          description: Indicates whether this metric category is enabled.
+        retentionPolicy:
+          $ref: '#/components/schemas/RetentionPolicy'
+    DiagnosticSettingsResourceCollection:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/DiagnosticSettingsResource'
+          description: The collection of diagnostic settings resources.
+    DiagnosticSettingsResource:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Fully qualified resource ID.
+        name:
+          type: string
+          readOnly: true
+          description: The name of the resource.
+        type:
+          type: string
+          readOnly: true
+          description: The type of the resource.
+        properties:
+          $ref: '#/components/schemas/DiagnosticSettings'
+        systemData:
+          $ref: '#/components/schemas/SystemData'
+    SystemData:
+      type: object
+      properties:
+        createdBy:
+          type: string
+          description: The identity that created the resource.
+        createdByType:
+          type: string
+          enum:
+          - User
+          - Application
+          - ManagedIdentity
+          - Key
+        createdAt:
+          type: string
+          format: date-time
+        lastModifiedBy:
+          type: string
+        lastModifiedByType:
+          type: string
+          enum:
+          - User
+          - Application
+          - ManagedIdentity
+          - Key
+        lastModifiedAt:
+          type: string
+          format: date-time
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code.
+        message:
+          type: string
+          description: Error message indicating why the operation failed.
     DiagnosticSettings:
       type: object
       properties:
@@ -153,86 +249,6 @@ components:
         logAnalyticsDestinationType:
           type: string
           description: A string indicating whether the export to Log Analytics should use the default destination type (AzureDiagnostics) or a dedicated type.
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code.
-        message:
-          type: string
-          description: Error message indicating why the operation failed.
-    SystemData:
-      type: object
-      properties:
-        createdBy:
-          type: string
-          description: The identity that created the resource.
-        createdByType:
-          type: string
-          enum:
-          - User
-          - Application
-          - ManagedIdentity
-          - Key
-        createdAt:
-          type: string
-          format: date-time
-        lastModifiedBy:
-          type: string
-        lastModifiedByType:
-          type: string
-          enum:
-          - User
-          - Application
-          - ManagedIdentity
-          - Key
-        lastModifiedAt:
-          type: string
-          format: date-time
-    DiagnosticSettingsResource:
-      type: object
-      properties:
-        id:
-          type: string
-          readOnly: true
-          description: Fully qualified resource ID.
-        name:
-          type: string
-          readOnly: true
-          description: The name of the resource.
-        type:
-          type: string
-          readOnly: true
-          description: The type of the resource.
-        properties:
-          $ref: '#/components/schemas/DiagnosticSettings'
-        systemData:
-          $ref: '#/components/schemas/SystemData'
-    MetricSettings:
-      type: object
-      required:
-      - enabled
-      properties:
-        timeGrain:
-          type: string
-          description: The timegrain of the metric in ISO 8601 format.
-        category:
-          type: string
-          description: Name of a Diagnostic Metric category for a resource type.
-        enabled:
-          type: boolean
-          description: Indicates whether this metric category is enabled.
-        retentionPolicy:
-          $ref: '#/components/schemas/RetentionPolicy'
-    DiagnosticSettingsResourceCollection:
-      type: object
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/DiagnosticSettingsResource'
-          description: The collection of diagnostic settings resources.
     RetentionPolicy:
       type: object
       required:
@@ -247,22 +263,6 @@ components:
           format: int32
           minimum: 0
           description: The number of days for the retention policy. A value of 0 retains data indefinitely.
-    LogSettings:
-      type: object
-      required:
-      - enabled
-      properties:
-        category:
-          type: string
-          description: Name of a Diagnostic Log category for a resource type.
-        categoryGroup:
-          type: string
-          description: Name of a Diagnostic Log category group for a resource type.
-        enabled:
-          type: boolean
-          description: Indicates whether this log category is enabled.
-        retentionPolicy:
-          $ref: '#/components/schemas/RetentionPolicy'
   parameters:
     ResourceUriParameter:
       name: resourceUri

@@ -60,7 +60,8 @@
     "azure-monitor-scheduled-query-rules-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "tag 'Metadata' spans 2 source specs (azure-monitor-application-insights-openapi.yml, azure-monitor-logs-openapi.yml): per-path servers applied",
     "tag 'Metrics' spans 2 source specs (azure-monitor-application-insights-openapi.yml, azure-monitor-metrics-openapi.yml): per-path servers applied",
-    "tag 'Query' spans 2 source specs (azure-monitor-application-insights-openapi.yml, azure-monitor-logs-openapi.yml): per-path servers applied"
+    "tag 'Query' spans 2 source specs (azure-monitor-application-insights-openapi.yml, azure-monitor-logs-openapi.yml): per-path servers applied",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "microsoft-azure-monitor-action-groups-api-openapi.yml: previously refined output, superseded by openapi/_original/",

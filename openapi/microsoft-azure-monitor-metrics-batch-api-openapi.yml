@@ -64,65 +64,107 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
+  parameters:
+    EndTimeParameter:
+      name: endtime
+      in: query
+      required: true
+      description: The end time of the query in ISO 8601 format.
+      schema:
+        type: string
+        format: date-time
+    MetricNamespaceParameter:
+      name: metricNamespace
+      in: query
+      required: true
+      description: Metric namespace that contains the requested metric names.
+      schema:
+        type: string
+    MetricNamesParameter:
+      name: metricnames
+      in: query
+      required: true
+      description: The names of the metrics (comma-separated) to retrieve.
+      schema:
+        type: string
+    OrderByParameter:
+      name: orderBy
+      in: query
+      required: false
+      description: The aggregation to use for sorting results and the direction of the sort.
+      schema:
+        type: string
+    FilterParameter:
+      name: $filter
+      in: query
+      required: false
+      description: The $filter used to reduce the set of metric data returned.
+      schema:
+        type: string
+    StartTimeParameter:
+      name: starttime
+      in: query
+      required: true
+      description: The start time of the query in ISO 8601 format.
+      schema:
+        type: string
+        format: date-time
+    AggregationParameter:
+      name: aggregation
+      in: query
+      required: false
+      description: The list of aggregation types (comma-separated) to retrieve.
+      schema:
+        type: string
+    IntervalParameter:
+      name: interval
+      in: query
+      required: false
+      description: The interval (window size) of the query in ISO 8601 duration format.
+      schema:
+        type: string
+        default: PT1M
+    SubscriptionIdParameter:
+      name: subscriptionId
+      in: path
+      required: true
+      description: The ID of the target subscription.
+      schema:
+        type: string
+    ApiVersionParameter:
+      name: api-version
+      in: query
+      required: true
+      description: Client API version.
+      schema:
+        type: string
+        default: '2024-02-01'
+    RollUpByParameter:
+      name: rollUpBy
+      in: query
+      required: false
+      description: Dimension name(s) to rollup results by.
+      schema:
+        type: string
+    TopParameter:
+      name: top
+      in: query
+      required: false
+      description: The maximum number of records to retrieve per resource.
+      schema:
+        type: integer
+        format: int32
   schemas:
-    ErrorResponse:
+    MetricsBatchRequest:
       type: object
+      required:
+      - resourceids
       properties:
-        code:
-          type: string
-          description: Error code.
-        message:
-          type: string
-          description: Error message indicating why the operation failed.
-    TimeSeriesElement:
-      type: object
-      properties:
-        metadatavalues:
+        resourceids:
           type: array
           items:
-            type: object
-            properties:
-              name:
-                type: object
-                properties:
-                  value:
-                    type: string
-                  localizedValue:
-                    type: string
-              value:
-                type: string
-          description: The metadata values returned.
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/MetricValue'
-          description: An array of data points representing the metric values.
-    MetricResultsResponse:
-      type: object
-      properties:
-        starttime:
-          type: string
-          description: The start time, in datetime format, for which the data was retrieved.
-        endtime:
-          type: string
-          description: The end time, in datetime format, for which the data was retrieved.
-        interval:
-          type: string
-          description: The interval (window size) for which the metric data was returned.
-        namespace:
-          type: string
-          description: The namespace of the metrics being queried.
-        resourceregion:
-          type: string
-          description: The region of the resource being queried for metrics.
-        resourceid:
-          type: string
-          description: The resource ID for which metrics were retrieved.
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Metric'
-          description: The value of the collection.
+            type: string
+          description: The list of resource IDs to query metrics for. All resources must be in the same subscription, region, and resource type.
     Metric:
       type: object
       required:
@@ -174,6 +216,40 @@ components:
           items:
             $ref: '#/components/schemas/TimeSeriesElement'
           description: The time series returned when a data query is performed.
+    MetricsBatchResponse:
+      type: object
+      properties:
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricResultsResponse'
+          description: The collection of metric results for each resource.
+    MetricResultsResponse:
+      type: object
+      properties:
+        starttime:
+          type: string
+          description: The start time, in datetime format, for which the data was retrieved.
+        endtime:
+          type: string
+          description: The end time, in datetime format, for which the data was retrieved.
+        interval:
+          type: string
+          description: The interval (window size) for which the metric data was returned.
+        namespace:
+          type: string
+          description: The namespace of the metrics being queried.
+        resourceregion:
+          type: string
+          description: The region of the resource being queried for metrics.
+        resourceid:
+          type: string
+          description: The resource ID for which metrics were retrieved.
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Metric'
+          description: The value of the collection.
     MetricValue:
       type: object
       required:
@@ -203,114 +279,38 @@ components:
           type: number
           format: double
           description: The number of samples in the time range.
-    MetricsBatchResponse:
+    ErrorResponse:
       type: object
       properties:
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/MetricResultsResponse'
-          description: The collection of metric results for each resource.
-    MetricsBatchRequest:
+        code:
+          type: string
+          description: Error code.
+        message:
+          type: string
+          description: Error message indicating why the operation failed.
+    TimeSeriesElement:
       type: object
-      required:
-      - resourceids
       properties:
-        resourceids:
+        metadatavalues:
           type: array
           items:
-            type: string
-          description: The list of resource IDs to query metrics for. All resources must be in the same subscription, region, and resource type.
-  parameters:
-    SubscriptionIdParameter:
-      name: subscriptionId
-      in: path
-      required: true
-      description: The ID of the target subscription.
-      schema:
-        type: string
-    OrderByParameter:
-      name: orderBy
-      in: query
-      required: false
-      description: The aggregation to use for sorting results and the direction of the sort.
-      schema:
-        type: string
-    IntervalParameter:
-      name: interval
-      in: query
-      required: false
-      description: The interval (window size) of the query in ISO 8601 duration format.
-      schema:
-        type: string
-        default: PT1M
-    MetricNamesParameter:
-      name: metricnames
-      in: query
-      required: true
-      description: The names of the metrics (comma-separated) to retrieve.
-      schema:
-        type: string
-    RollUpByParameter:
-      name: rollUpBy
-      in: query
-      required: false
-      description: Dimension name(s) to rollup results by.
-      schema:
-        type: string
-    ApiVersionParameter:
-      name: api-version
-      in: query
-      required: true
-      description: Client API version.
-      schema:
-        type: string
-        default: '2024-02-01'
-    MetricNamespaceParameter:
-      name: metricNamespace
-      in: query
-      required: true
-      description: Metric namespace that contains the requested metric names.
-      schema:
-        type: string
-    TopParameter:
-      name: top
-      in: query
-      required: false
-      description: The maximum number of records to retrieve per resource.
-      schema:
-        type: integer
-        format: int32
-    StartTimeParameter:
-      name: starttime
-      in: query
-      required: true
-      description: The start time of the query in ISO 8601 format.
-      schema:
-        type: string
-        format: date-time
-    FilterParameter:
-      name: $filter
-      in: query
-      required: false
-      description: The $filter used to reduce the set of metric data returned.
-      schema:
-        type: string
-    AggregationParameter:
-      name: aggregation
-      in: query
-      required: false
-      description: The list of aggregation types (comma-separated) to retrieve.
-      schema:
-        type: string
-    EndTimeParameter:
-      name: endtime
-      in: query
-      required: true
-      description: The end time of the query in ISO 8601 format.
-      schema:
-        type: string
-        format: date-time
+            type: object
+            properties:
+              name:
+                type: object
+                properties:
+                  value:
+                    type: string
+                  localizedValue:
+                    type: string
+              value:
+                type: string
+          description: The metadata values returned.
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricValue'
+          description: An array of data points representing the metric values.
   securitySchemes:
     oauth2:
       type: oauth2

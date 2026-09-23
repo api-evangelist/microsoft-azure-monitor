@@ -185,79 +185,19 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code.
-        message:
-          type: string
-          description: Error message indicating why the operation failed.
-    SystemData:
-      type: object
-      properties:
-        createdBy:
-          type: string
-        createdByType:
-          type: string
-          enum:
-          - User
-          - Application
-          - ManagedIdentity
-          - Key
-        createdAt:
-          type: string
-          format: date-time
-        lastModifiedBy:
-          type: string
-        lastModifiedByType:
-          type: string
-          enum:
-          - User
-          - Application
-          - ManagedIdentity
-          - Key
-        lastModifiedAt:
-          type: string
-          format: date-time
-    TagsResource:
-      type: object
-      properties:
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-          description: Resource tags.
-    AzureMonitorPrivateLinkScope:
+    AzureMonitorPrivateLinkScopeListResult:
       type: object
       required:
-      - location
+      - value
       properties:
-        id:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/AzureMonitorPrivateLinkScope'
+          description: List of Azure Monitor Private Link Scope definitions.
+        nextLink:
           type: string
-          readOnly: true
-          description: Azure resource ID.
-        name:
-          type: string
-          readOnly: true
-          description: Azure resource name.
-        type:
-          type: string
-          readOnly: true
-          description: Azure resource type.
-        location:
-          type: string
-          description: Resource location.
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-          description: Resource tags.
-        properties:
-          $ref: '#/components/schemas/AzureMonitorPrivateLinkScopeProperties'
-        systemData:
-          $ref: '#/components/schemas/SystemData'
+          description: The URI to get the next set of results.
     AzureMonitorPrivateLinkScopeProperties:
       type: object
       required:
@@ -336,25 +276,85 @@ components:
                     type: string
               description: List of exclusions that override the default access mode.
           description: Access mode settings for the Private Link Scope.
-    AzureMonitorPrivateLinkScopeListResult:
+    TagsResource:
+      type: object
+      properties:
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          description: Resource tags.
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code.
+        message:
+          type: string
+          description: Error message indicating why the operation failed.
+    SystemData:
+      type: object
+      properties:
+        createdBy:
+          type: string
+        createdByType:
+          type: string
+          enum:
+          - User
+          - Application
+          - ManagedIdentity
+          - Key
+        createdAt:
+          type: string
+          format: date-time
+        lastModifiedBy:
+          type: string
+        lastModifiedByType:
+          type: string
+          enum:
+          - User
+          - Application
+          - ManagedIdentity
+          - Key
+        lastModifiedAt:
+          type: string
+          format: date-time
+    AzureMonitorPrivateLinkScope:
       type: object
       required:
-      - value
+      - location
       properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/AzureMonitorPrivateLinkScope'
-          description: List of Azure Monitor Private Link Scope definitions.
-        nextLink:
+        id:
           type: string
-          description: The URI to get the next set of results.
+          readOnly: true
+          description: Azure resource ID.
+        name:
+          type: string
+          readOnly: true
+          description: Azure resource name.
+        type:
+          type: string
+          readOnly: true
+          description: Azure resource type.
+        location:
+          type: string
+          description: Resource location.
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          description: Resource tags.
+        properties:
+          $ref: '#/components/schemas/AzureMonitorPrivateLinkScopeProperties'
+        systemData:
+          $ref: '#/components/schemas/SystemData'
   parameters:
-    SubscriptionIdParameter:
-      name: subscriptionId
+    ResourceGroupNameParameter:
+      name: resourceGroupName
       in: path
       required: true
-      description: The ID of the target subscription.
+      description: The name of the resource group.
       schema:
         type: string
     ApiVersionParameter:
@@ -365,18 +365,18 @@ components:
       schema:
         type: string
         default: 2021-07-01-preview
+    SubscriptionIdParameter:
+      name: subscriptionId
+      in: path
+      required: true
+      description: The ID of the target subscription.
+      schema:
+        type: string
     ScopeNameParameter:
       name: scopeName
       in: path
       required: true
       description: The name of the Azure Monitor Private Link Scope resource.
-      schema:
-        type: string
-    ResourceGroupNameParameter:
-      name: resourceGroupName
-      in: path
-      required: true
-      description: The name of the resource group.
       schema:
         type: string
   securitySchemes:

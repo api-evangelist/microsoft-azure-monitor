@@ -213,6 +213,79 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    ArmRoleReceiver:
+      type: object
+      required:
+      - name
+      - roleId
+      properties:
+        name:
+          type: string
+          description: The name of the ARM role receiver.
+        roleId:
+          type: string
+          description: The ARM role ID.
+        useCommonAlertSchema:
+          type: boolean
+          default: false
+          description: Indicates whether to use common alert schema.
+    EnableRequest:
+      type: object
+      required:
+      - receiverName
+      properties:
+        receiverName:
+          type: string
+          description: The name of the receiver to re-enable.
+    ActionGroupList:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActionGroupResource'
+          description: The list of action groups.
+        nextLink:
+          type: string
+          description: Link to the next page of results.
+    AzureAppPushReceiver:
+      type: object
+      required:
+      - name
+      - emailAddress
+      properties:
+        name:
+          type: string
+          description: The name of the Azure App Push receiver.
+        emailAddress:
+          type: string
+          format: email
+          description: The email address registered for the Azure mobile app.
+    AzureFunctionReceiver:
+      type: object
+      required:
+      - name
+      - functionAppResourceId
+      - functionName
+      - httpTriggerUrl
+      properties:
+        name:
+          type: string
+          description: The name of the Azure Function receiver.
+        functionAppResourceId:
+          type: string
+          description: The Azure resource ID of the function app.
+        functionName:
+          type: string
+          description: The function name in the function app.
+        httpTriggerUrl:
+          type: string
+          format: uri
+          description: The HTTP trigger URL.
+        useCommonAlertSchema:
+          type: boolean
+          default: false
+          description: Indicates whether to use common alert schema.
     ActionGroupPatchBody:
       type: object
       properties:
@@ -227,36 +300,77 @@ components:
             enabled:
               type: boolean
               description: Indicates whether the action group is enabled.
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code.
-        message:
-          type: string
-          description: Error message indicating why the operation failed.
-    LogicAppReceiver:
+    EmailReceiver:
       type: object
       required:
       - name
-      - resourceId
-      - callbackUrl
+      - emailAddress
       properties:
         name:
           type: string
-          description: The name of the Logic App receiver.
-        resourceId:
+          description: The name of the email receiver.
+        emailAddress:
           type: string
-          description: The Azure resource ID of the Logic App.
-        callbackUrl:
-          type: string
-          format: uri
-          description: The callback URL.
+          format: email
+          description: The email address of this receiver.
         useCommonAlertSchema:
           type: boolean
           default: false
           description: Indicates whether to use common alert schema.
+        status:
+          type: string
+          readOnly: true
+          enum:
+          - NotSpecified
+          - Enabled
+          - Disabled
+          description: The receiver status.
+    VoiceReceiver:
+      type: object
+      required:
+      - name
+      - countryCode
+      - phoneNumber
+      properties:
+        name:
+          type: string
+          description: The name of the voice receiver.
+        countryCode:
+          type: string
+          description: The country code of the voice receiver.
+        phoneNumber:
+          type: string
+          description: The phone number of the voice receiver.
+    WebhookReceiver:
+      type: object
+      required:
+      - name
+      - serviceUri
+      properties:
+        name:
+          type: string
+          description: The name of the webhook receiver.
+        serviceUri:
+          type: string
+          format: uri
+          description: The URI where webhooks should be sent.
+        useCommonAlertSchema:
+          type: boolean
+          default: false
+          description: Indicates whether to use common alert schema.
+        useAadAuth:
+          type: boolean
+          default: false
+          description: Indicates whether to use AAD authentication.
+        objectId:
+          type: string
+          description: The object ID for AAD auth.
+        identifierUri:
+          type: string
+          description: The identifier URI for AAD auth.
+        tenantId:
+          type: string
+          description: The tenant ID for AAD auth.
     ActionGroup:
       type: object
       required:
@@ -326,41 +440,6 @@ components:
           items:
             $ref: '#/components/schemas/EventHubReceiver'
           description: The list of Event Hub receivers.
-    ActionGroupList:
-      type: object
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/ActionGroupResource'
-          description: The list of action groups.
-        nextLink:
-          type: string
-          description: Link to the next page of results.
-    SmsReceiver:
-      type: object
-      required:
-      - name
-      - countryCode
-      - phoneNumber
-      properties:
-        name:
-          type: string
-          description: The name of the SMS receiver.
-        countryCode:
-          type: string
-          description: The country code of the SMS receiver.
-        phoneNumber:
-          type: string
-          description: The phone number of the SMS receiver.
-        status:
-          type: string
-          readOnly: true
-          enum:
-          - NotSpecified
-          - Enabled
-          - Disabled
-          description: The receiver status.
     AutomationRunbookReceiver:
       type: object
       required:
@@ -392,60 +471,30 @@ components:
           type: boolean
           default: false
           description: Indicates whether to use common alert schema.
-    AzureAppPushReceiver:
+    ItsmReceiver:
       type: object
       required:
       - name
-      - emailAddress
+      - workspaceId
+      - connectionId
+      - ticketConfiguration
+      - region
       properties:
         name:
           type: string
-          description: The name of the Azure App Push receiver.
-        emailAddress:
+          description: The name of the ITSM receiver.
+        workspaceId:
           type: string
-          format: email
-          description: The email address registered for the Azure mobile app.
-    AzureFunctionReceiver:
-      type: object
-      required:
-      - name
-      - functionAppResourceId
-      - functionName
-      - httpTriggerUrl
-      properties:
-        name:
+          description: Log Analytics workspace ID.
+        connectionId:
           type: string
-          description: The name of the Azure Function receiver.
-        functionAppResourceId:
+          description: The unique connection identifier.
+        ticketConfiguration:
           type: string
-          description: The Azure resource ID of the function app.
-        functionName:
+          description: JSON blob for the configurations of the ITSM action.
+        region:
           type: string
-          description: The function name in the function app.
-        httpTriggerUrl:
-          type: string
-          format: uri
-          description: The HTTP trigger URL.
-        useCommonAlertSchema:
-          type: boolean
-          default: false
-          description: Indicates whether to use common alert schema.
-    VoiceReceiver:
-      type: object
-      required:
-      - name
-      - countryCode
-      - phoneNumber
-      properties:
-        name:
-          type: string
-          description: The name of the voice receiver.
-        countryCode:
-          type: string
-          description: The country code of the voice receiver.
-        phoneNumber:
-          type: string
-          description: The phone number of the voice receiver.
+          description: Region in which workspace resides.
     EventHubReceiver:
       type: object
       required:
@@ -473,46 +522,36 @@ components:
           type: boolean
           default: false
           description: Indicates whether to use common alert schema.
-    ArmRoleReceiver:
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code.
+        message:
+          type: string
+          description: Error message indicating why the operation failed.
+    LogicAppReceiver:
       type: object
       required:
       - name
-      - roleId
+      - resourceId
+      - callbackUrl
       properties:
         name:
           type: string
-          description: The name of the ARM role receiver.
-        roleId:
+          description: The name of the Logic App receiver.
+        resourceId:
           type: string
-          description: The ARM role ID.
+          description: The Azure resource ID of the Logic App.
+        callbackUrl:
+          type: string
+          format: uri
+          description: The callback URL.
         useCommonAlertSchema:
           type: boolean
           default: false
           description: Indicates whether to use common alert schema.
-    ItsmReceiver:
-      type: object
-      required:
-      - name
-      - workspaceId
-      - connectionId
-      - ticketConfiguration
-      - region
-      properties:
-        name:
-          type: string
-          description: The name of the ITSM receiver.
-        workspaceId:
-          type: string
-          description: Log Analytics workspace ID.
-        connectionId:
-          type: string
-          description: The unique connection identifier.
-        ticketConfiguration:
-          type: string
-          description: JSON blob for the configurations of the ITSM action.
-        region:
-          type: string
-          description: Region in which workspace resides.
     ActionGroupResource:
       type: object
       required:
@@ -540,61 +579,22 @@ components:
           description: Resource tags.
         properties:
           $ref: '#/components/schemas/ActionGroup'
-    EnableRequest:
-      type: object
-      required:
-      - receiverName
-      properties:
-        receiverName:
-          type: string
-          description: The name of the receiver to re-enable.
-    WebhookReceiver:
+    SmsReceiver:
       type: object
       required:
       - name
-      - serviceUri
+      - countryCode
+      - phoneNumber
       properties:
         name:
           type: string
-          description: The name of the webhook receiver.
-        serviceUri:
+          description: The name of the SMS receiver.
+        countryCode:
           type: string
-          format: uri
-          description: The URI where webhooks should be sent.
-        useCommonAlertSchema:
-          type: boolean
-          default: false
-          description: Indicates whether to use common alert schema.
-        useAadAuth:
-          type: boolean
-          default: false
-          description: Indicates whether to use AAD authentication.
-        objectId:
+          description: The country code of the SMS receiver.
+        phoneNumber:
           type: string
-          description: The object ID for AAD auth.
-        identifierUri:
-          type: string
-          description: The identifier URI for AAD auth.
-        tenantId:
-          type: string
-          description: The tenant ID for AAD auth.
-    EmailReceiver:
-      type: object
-      required:
-      - name
-      - emailAddress
-      properties:
-        name:
-          type: string
-          description: The name of the email receiver.
-        emailAddress:
-          type: string
-          format: email
-          description: The email address of this receiver.
-        useCommonAlertSchema:
-          type: boolean
-          default: false
-          description: Indicates whether to use common alert schema.
+          description: The phone number of the SMS receiver.
         status:
           type: string
           readOnly: true
@@ -604,6 +604,13 @@ components:
           - Disabled
           description: The receiver status.
   parameters:
+    ResourceGroupNameParameter:
+      name: resourceGroupName
+      in: path
+      required: true
+      description: The name of the resource group.
+      schema:
+        type: string
     SubscriptionIdParameter:
       name: subscriptionId
       in: path
@@ -626,13 +633,6 @@ components:
       schema:
         type: string
         default: '2022-06-01'
-    ResourceGroupNameParameter:
-      name: resourceGroupName
-      in: path
-      required: true
-      description: The name of the resource group.
-      schema:
-        type: string
   securitySchemes:
     oauth2:
       type: oauth2
