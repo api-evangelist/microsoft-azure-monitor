@@ -93,7 +93,7 @@ paths:
       description: Application Insights data plane API
   /workspaces/{workspaceId}/query:
     get:
-      operationId: Query_Get
+      operationId: getWorkspacesByWorkspaceIdQuery
       summary: Azure Monitor Execute a Log Analytics query via GET
       description: Executes an Analytics query for data from a Log Analytics workspace using Kusto Query Language (KQL). The query is provided as a query parameter.
       tags:
@@ -128,8 +128,10 @@ paths:
       security:
       - oauth2:
         - https://api.loganalytics.io/.default
+      x-operation-id-source: normalized
+      x-operation-id-original: Query_Get
     post:
-      operationId: Query_Execute
+      operationId: postWorkspacesByWorkspaceIdQuery
       summary: Azure Monitor Execute a Log Analytics query via POST
       description: Executes an Analytics query for data from a Log Analytics workspace using Kusto Query Language (KQL). The query is provided in the request body along with optional parameters.
       tags:
@@ -159,6 +161,8 @@ paths:
       security:
       - oauth2:
         - https://api.loganalytics.io/.default
+      x-operation-id-source: normalized
+      x-operation-id-original: Query_Execute
     servers:
     - url: https://api.loganalytics.io/v1
       description: Azure Log Analytics data plane API
@@ -182,21 +186,16 @@ components:
           items:
             type: string
           description: A list of Application Insights application IDs for cross-application queries.
-    ErrorResponse:
+    QueryResults:
       type: object
+      required:
+      - tables
       properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code.
-            message:
-              type: string
-              description: Error message.
-          required:
-          - code
-          - message
+        tables:
+          type: array
+          items:
+            $ref: '#/components/schemas/Table'
+          description: The list of tables, columns and rows.
     Table:
       type: object
       required:
@@ -225,36 +224,21 @@ components:
             type: array
             items: {}
           description: The resulting rows from the query.
-    QueryResults:
-      type: object
-      required:
-      - tables
-      properties:
-        tables:
-          type: array
-          items:
-            $ref: '#/components/schemas/Table'
-          description: The list of tables, columns and rows.
-    Column:
+    ErrorResponse:
       type: object
       properties:
-        name:
-          type: string
-          description: The name of this column.
-        type:
-          type: string
-          enum:
-          - bool
-          - datetime
-          - dynamic
-          - int
-          - long
-          - real
-          - string
-          - guid
-          - decimal
-          - timespan
-          description: The data type of this column.
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+            message:
+              type: string
+              description: Error message.
+          required:
+          - code
+          - message
     QueryBody_2:
       type: object
       required:
@@ -276,6 +260,16 @@ components:
           items:
             type: string
           description: A list of Application Insights applications for cross-application queries.
+    QueryResults_2:
+      type: object
+      required:
+      - tables
+      properties:
+        tables:
+          type: array
+          items:
+            $ref: '#/components/schemas/Table_2'
+          description: The list of tables, columns and rows returned by the query.
     Table_2:
       type: object
       required:
@@ -297,16 +291,26 @@ components:
             type: array
             items: {}
           description: The resulting rows from this query. Each row is an array of values.
-    QueryResults_2:
+    Column:
       type: object
-      required:
-      - tables
       properties:
-        tables:
-          type: array
-          items:
-            $ref: '#/components/schemas/Table_2'
-          description: The list of tables, columns and rows returned by the query.
+        name:
+          type: string
+          description: The name of this column.
+        type:
+          type: string
+          enum:
+          - bool
+          - datetime
+          - dynamic
+          - int
+          - long
+          - real
+          - string
+          - guid
+          - decimal
+          - timespan
+          description: The data type of this column.
   parameters:
     AppIdParameter:
       name: appId

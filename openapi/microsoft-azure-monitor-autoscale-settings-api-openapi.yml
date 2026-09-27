@@ -183,85 +183,142 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    AutoscaleProfile:
+    AutoscaleNotification:
       type: object
       required:
-      - name
-      - capacity
-      - rules
+      - operation
       properties:
-        name:
-          type: string
-          description: The name of the profile.
-        capacity:
-          $ref: '#/components/schemas/ScaleCapacity'
-        rules:
-          type: array
-          maxItems: 10
-          items:
-            $ref: '#/components/schemas/ScaleRule'
-          description: The collection of rules (maximum 10).
-        fixedDate:
-          $ref: '#/components/schemas/TimeWindow'
-        recurrence:
-          $ref: '#/components/schemas/Recurrence'
-    ScaleRuleMetricDimension:
-      type: object
-      required:
-      - DimensionName
-      - Operator
-      - Values
-      properties:
-        DimensionName:
-          type: string
-          description: Name of the dimension.
-        Operator:
+        operation:
           type: string
           enum:
-          - Equals
-          - NotEquals
-          description: The dimension operator.
-        Values:
+          - Scale
+          description: The operation associated with the notification.
+        email:
+          type: object
+          properties:
+            sendToSubscriptionAdministrator:
+              type: boolean
+              description: Send email to subscription administrator.
+            sendToSubscriptionCoAdministrators:
+              type: boolean
+              description: Send email to subscription co-administrators.
+            customEmails:
+              type: array
+              items:
+                type: string
+              description: The custom email list.
+        webhooks:
           type: array
           items:
+            type: object
+            properties:
+              serviceUri:
+                type: string
+                format: uri
+                description: The service address to receive the notification.
+              properties:
+                type: object
+                additionalProperties:
+                  type: string
+    PredictiveAutoscalePolicy:
+      type: object
+      required:
+      - scaleMode
+      properties:
+        scaleMode:
+          type: string
+          enum:
+          - Disabled
+          - ForecastOnly
+          - Enabled
+          description: The predictive autoscale mode.
+        scaleLookAheadTime:
+          type: string
+          description: The amount of time to specify by which instances are launched in advance in ISO 8601 duration format.
+    TimeWindow:
+      type: object
+      required:
+      - start
+      - end
+      properties:
+        timeZone:
+          type: string
+          description: The timezone of the start and end times.
+        start:
+          type: string
+          format: date-time
+          description: The start time for the profile.
+        end:
+          type: string
+          format: date-time
+          description: The end time for the profile.
+    AutoscaleSettingResourcePatch:
+      type: object
+      properties:
+        tags:
+          type: object
+          additionalProperties:
             type: string
-          description: List of dimension values.
-    ScaleCapacity:
+          description: Resource tags.
+        properties:
+          $ref: '#/components/schemas/AutoscaleSetting'
+    AutoscaleSettingResource:
       type: object
       required:
-      - minimum
-      - maximum
-      - default
+      - location
+      - properties
       properties:
-        minimum:
+        id:
           type: string
-          description: The minimum number of instances.
-        maximum:
+          readOnly: true
+          description: Azure resource ID.
+        name:
           type: string
-          description: The maximum number of instances.
-        default:
+          readOnly: true
+          description: Azure resource name.
+        type:
           type: string
-          description: The number of instances when autoscale cannot read metrics.
-    Recurrence:
+          readOnly: true
+          description: Azure resource type.
+        location:
+          type: string
+          description: Resource location.
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          description: Resource tags.
+        properties:
+          $ref: '#/components/schemas/AutoscaleSetting'
+    ScaleAction:
       type: object
       required:
-      - frequency
-      - schedule
+      - direction
+      - type
+      - cooldown
       properties:
-        frequency:
+        direction:
           type: string
           enum:
           - None
-          - Second
-          - Minute
-          - Hour
-          - Day
-          - Week
-          - Month
-          - Year
-          description: The recurrence frequency.
-        schedule:
-          $ref: '#/components/schemas/RecurrentSchedule'
+          - Increase
+          - Decrease
+          description: The scale direction.
+        type:
+          type: string
+          enum:
+          - ChangeCount
+          - PercentChangeCount
+          - ExactCount
+          - ServiceAllowedNextValue
+          description: The type of action that should occur when the scale rule fires.
+        value:
+          type: string
+          description: The number of instances involved in the scaling action.
+          default: '1'
+        cooldown:
+          type: string
+          description: The amount of time to wait since the last scaling action before this action occurs in ISO 8601 duration format.
     MetricTrigger:
       type: object
       required:
@@ -332,77 +389,35 @@ components:
         dividePerInstance:
           type: boolean
           description: Indicates whether the metric should divide per instance.
-    AutoscaleSettingResource:
+    Recurrence:
       type: object
       required:
-      - location
-      - properties
+      - frequency
+      - schedule
       properties:
-        id:
+        frequency:
           type: string
-          readOnly: true
-          description: Azure resource ID.
-        name:
-          type: string
-          readOnly: true
-          description: Azure resource name.
-        type:
-          type: string
-          readOnly: true
-          description: Azure resource type.
-        location:
-          type: string
-          description: Resource location.
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-          description: Resource tags.
-        properties:
-          $ref: '#/components/schemas/AutoscaleSetting'
-    TimeWindow:
+          enum:
+          - None
+          - Second
+          - Minute
+          - Hour
+          - Day
+          - Week
+          - Month
+          - Year
+          description: The recurrence frequency.
+        schedule:
+          $ref: '#/components/schemas/RecurrentSchedule'
+    ErrorResponse:
       type: object
-      required:
-      - start
-      - end
       properties:
-        timeZone:
+        code:
           type: string
-          description: The timezone of the start and end times.
-        start:
+          description: Error code.
+        message:
           type: string
-          format: date-time
-          description: The start time for the profile.
-        end:
-          type: string
-          format: date-time
-          description: The end time for the profile.
-    RecurrentSchedule:
-      type: object
-      required:
-      - timeZone
-      - days
-      - hours
-      - minutes
-      properties:
-        timeZone:
-          type: string
-          description: The timezone for the hours of the profile.
-        days:
-          type: array
-          items:
-            type: string
-          description: The collection of days that the profile takes effect on.
-        hours:
-          type: array
-          items:
-            type: integer
-          description: The collection of hours that the profile takes effect on.
-        minutes:
-          type: array
-          items:
-            type: integer
-          description: The collection of minutes at which the profile takes effect.
+          description: Error message indicating why the operation failed.
     ScaleRule:
       type: object
       required:
@@ -413,119 +428,22 @@ components:
           $ref: '#/components/schemas/MetricTrigger'
         scaleAction:
           $ref: '#/components/schemas/ScaleAction'
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code.
-        message:
-          type: string
-          description: Error message indicating why the operation failed.
-    ScaleAction:
+    ScaleCapacity:
       type: object
       required:
-      - direction
-      - type
-      - cooldown
+      - minimum
+      - maximum
+      - default
       properties:
-        direction:
+        minimum:
           type: string
-          enum:
-          - None
-          - Increase
-          - Decrease
-          description: The scale direction.
-        type:
+          description: The minimum number of instances.
+        maximum:
           type: string
-          enum:
-          - ChangeCount
-          - PercentChangeCount
-          - ExactCount
-          - ServiceAllowedNextValue
-          description: The type of action that should occur when the scale rule fires.
-        value:
+          description: The maximum number of instances.
+        default:
           type: string
-          description: The number of instances involved in the scaling action.
-          default: '1'
-        cooldown:
-          type: string
-          description: The amount of time to wait since the last scaling action before this action occurs in ISO 8601 duration format.
-    PredictiveAutoscalePolicy:
-      type: object
-      required:
-      - scaleMode
-      properties:
-        scaleMode:
-          type: string
-          enum:
-          - Disabled
-          - ForecastOnly
-          - Enabled
-          description: The predictive autoscale mode.
-        scaleLookAheadTime:
-          type: string
-          description: The amount of time to specify by which instances are launched in advance in ISO 8601 duration format.
-    AutoscaleSettingResourcePatch:
-      type: object
-      properties:
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-          description: Resource tags.
-        properties:
-          $ref: '#/components/schemas/AutoscaleSetting'
-    AutoscaleSettingResourceCollection:
-      type: object
-      required:
-      - value
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/AutoscaleSettingResource'
-          description: The autoscale setting resource collection.
-        nextLink:
-          type: string
-          description: URL to get the next set of results.
-    AutoscaleNotification:
-      type: object
-      required:
-      - operation
-      properties:
-        operation:
-          type: string
-          enum:
-          - Scale
-          description: The operation associated with the notification.
-        email:
-          type: object
-          properties:
-            sendToSubscriptionAdministrator:
-              type: boolean
-              description: Send email to subscription administrator.
-            sendToSubscriptionCoAdministrators:
-              type: boolean
-              description: Send email to subscription co-administrators.
-            customEmails:
-              type: array
-              items:
-                type: string
-              description: The custom email list.
-        webhooks:
-          type: array
-          items:
-            type: object
-            properties:
-              serviceUri:
-                type: string
-                format: uri
-                description: The service address to receive the notification.
-              properties:
-                type: object
-                additionalProperties:
-                  type: string
+          description: The number of instances when autoscale cannot read metrics.
     AutoscaleSetting:
       type: object
       required:
@@ -557,14 +475,97 @@ components:
         targetResourceLocation:
           type: string
           description: The location of the resource to autoscale.
+    AutoscaleProfile:
+      type: object
+      required:
+      - name
+      - capacity
+      - rules
+      properties:
+        name:
+          type: string
+          description: The name of the profile.
+        capacity:
+          $ref: '#/components/schemas/ScaleCapacity'
+        rules:
+          type: array
+          maxItems: 10
+          items:
+            $ref: '#/components/schemas/ScaleRule'
+          description: The collection of rules (maximum 10).
+        fixedDate:
+          $ref: '#/components/schemas/TimeWindow'
+        recurrence:
+          $ref: '#/components/schemas/Recurrence'
+    AutoscaleSettingResourceCollection:
+      type: object
+      required:
+      - value
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/AutoscaleSettingResource'
+          description: The autoscale setting resource collection.
+        nextLink:
+          type: string
+          description: URL to get the next set of results.
+    RecurrentSchedule:
+      type: object
+      required:
+      - timeZone
+      - days
+      - hours
+      - minutes
+      properties:
+        timeZone:
+          type: string
+          description: The timezone for the hours of the profile.
+        days:
+          type: array
+          items:
+            type: string
+          description: The collection of days that the profile takes effect on.
+        hours:
+          type: array
+          items:
+            type: integer
+          description: The collection of hours that the profile takes effect on.
+        minutes:
+          type: array
+          items:
+            type: integer
+          description: The collection of minutes at which the profile takes effect.
+    ScaleRuleMetricDimension:
+      type: object
+      required:
+      - DimensionName
+      - Operator
+      - Values
+      properties:
+        DimensionName:
+          type: string
+          description: Name of the dimension.
+        Operator:
+          type: string
+          enum:
+          - Equals
+          - NotEquals
+          description: The dimension operator.
+        Values:
+          type: array
+          items:
+            type: string
+          description: List of dimension values.
   parameters:
-    AutoscaleSettingNameParameter:
-      name: autoscaleSettingName
-      in: path
+    ApiVersionParameter:
+      name: api-version
+      in: query
       required: true
-      description: The autoscale setting name.
+      description: Client API version.
       schema:
         type: string
+        default: '2022-10-01'
     ResourceGroupNameParameter:
       name: resourceGroupName
       in: path
@@ -579,14 +580,13 @@ components:
       description: The ID of the target subscription.
       schema:
         type: string
-    ApiVersionParameter:
-      name: api-version
-      in: query
+    AutoscaleSettingNameParameter:
+      name: autoscaleSettingName
+      in: path
       required: true
-      description: Client API version.
+      description: The autoscale setting name.
       schema:
         type: string
-        default: '2022-10-01'
   securitySchemes:
     oauth2:
       type: oauth2

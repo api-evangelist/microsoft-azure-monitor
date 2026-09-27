@@ -184,20 +184,93 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
+  parameters:
+    ApiVersionParameter:
+      name: api-version
+      in: query
+      required: true
+      description: Client API version.
+      schema:
+        type: string
+        default: 2021-07-01-preview
+    ResourceGroupNameParameter:
+      name: resourceGroupName
+      in: path
+      required: true
+      description: The name of the resource group.
+      schema:
+        type: string
+    ScopeNameParameter:
+      name: scopeName
+      in: path
+      required: true
+      description: The name of the Azure Monitor Private Link Scope resource.
+      schema:
+        type: string
+    SubscriptionIdParameter:
+      name: subscriptionId
+      in: path
+      required: true
+      description: The ID of the target subscription.
+      schema:
+        type: string
   schemas:
-    AzureMonitorPrivateLinkScopeListResult:
+    SystemData:
+      type: object
+      properties:
+        createdBy:
+          type: string
+        createdByType:
+          type: string
+          enum:
+          - User
+          - Application
+          - ManagedIdentity
+          - Key
+        createdAt:
+          type: string
+          format: date-time
+        lastModifiedBy:
+          type: string
+        lastModifiedByType:
+          type: string
+          enum:
+          - User
+          - Application
+          - ManagedIdentity
+          - Key
+        lastModifiedAt:
+          type: string
+          format: date-time
+    AzureMonitorPrivateLinkScope:
       type: object
       required:
-      - value
+      - location
       properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/AzureMonitorPrivateLinkScope'
-          description: List of Azure Monitor Private Link Scope definitions.
-        nextLink:
+        id:
           type: string
-          description: The URI to get the next set of results.
+          readOnly: true
+          description: Azure resource ID.
+        name:
+          type: string
+          readOnly: true
+          description: Azure resource name.
+        type:
+          type: string
+          readOnly: true
+          description: Azure resource type.
+        location:
+          type: string
+          description: Resource location.
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          description: Resource tags.
+        properties:
+          $ref: '#/components/schemas/AzureMonitorPrivateLinkScopeProperties'
+        systemData:
+          $ref: '#/components/schemas/SystemData'
     AzureMonitorPrivateLinkScopeProperties:
       type: object
       required:
@@ -276,14 +349,6 @@ components:
                     type: string
               description: List of exclusions that override the default access mode.
           description: Access mode settings for the Private Link Scope.
-    TagsResource:
-      type: object
-      properties:
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-          description: Resource tags.
     ErrorResponse:
       type: object
       properties:
@@ -293,92 +358,27 @@ components:
         message:
           type: string
           description: Error message indicating why the operation failed.
-    SystemData:
+    TagsResource:
       type: object
       properties:
-        createdBy:
-          type: string
-        createdByType:
-          type: string
-          enum:
-          - User
-          - Application
-          - ManagedIdentity
-          - Key
-        createdAt:
-          type: string
-          format: date-time
-        lastModifiedBy:
-          type: string
-        lastModifiedByType:
-          type: string
-          enum:
-          - User
-          - Application
-          - ManagedIdentity
-          - Key
-        lastModifiedAt:
-          type: string
-          format: date-time
-    AzureMonitorPrivateLinkScope:
-      type: object
-      required:
-      - location
-      properties:
-        id:
-          type: string
-          readOnly: true
-          description: Azure resource ID.
-        name:
-          type: string
-          readOnly: true
-          description: Azure resource name.
-        type:
-          type: string
-          readOnly: true
-          description: Azure resource type.
-        location:
-          type: string
-          description: Resource location.
         tags:
           type: object
           additionalProperties:
             type: string
           description: Resource tags.
-        properties:
-          $ref: '#/components/schemas/AzureMonitorPrivateLinkScopeProperties'
-        systemData:
-          $ref: '#/components/schemas/SystemData'
-  parameters:
-    ResourceGroupNameParameter:
-      name: resourceGroupName
-      in: path
-      required: true
-      description: The name of the resource group.
-      schema:
-        type: string
-    ApiVersionParameter:
-      name: api-version
-      in: query
-      required: true
-      description: Client API version.
-      schema:
-        type: string
-        default: 2021-07-01-preview
-    SubscriptionIdParameter:
-      name: subscriptionId
-      in: path
-      required: true
-      description: The ID of the target subscription.
-      schema:
-        type: string
-    ScopeNameParameter:
-      name: scopeName
-      in: path
-      required: true
-      description: The name of the Azure Monitor Private Link Scope resource.
-      schema:
-        type: string
+    AzureMonitorPrivateLinkScopeListResult:
+      type: object
+      required:
+      - value
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/AzureMonitorPrivateLinkScope'
+          description: List of Azure Monitor Private Link Scope definitions.
+        nextLink:
+          type: string
+          description: The URI to get the next set of results.
   securitySchemes:
     oauth2:
       type: oauth2

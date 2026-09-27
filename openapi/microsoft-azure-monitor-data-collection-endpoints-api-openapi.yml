@@ -182,7 +182,64 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
+  parameters:
+    ApiVersionParameter:
+      name: api-version
+      in: query
+      required: true
+      description: The API version to use for this operation.
+      schema:
+        type: string
+        default: '2023-03-11'
+    ResourceGroupNameParameter:
+      name: resourceGroupName
+      in: path
+      required: true
+      description: The name of the resource group.
+      schema:
+        type: string
+    SubscriptionIdParameter:
+      name: subscriptionId
+      in: path
+      required: true
+      description: The ID of the target subscription.
+      schema:
+        type: string
+    DataCollectionEndpointNameParameter:
+      name: dataCollectionEndpointName
+      in: path
+      required: true
+      description: The name of the data collection endpoint.
+      schema:
+        type: string
   schemas:
+    SystemData:
+      type: object
+      properties:
+        createdBy:
+          type: string
+        createdByType:
+          type: string
+          enum:
+          - User
+          - Application
+          - ManagedIdentity
+          - Key
+        createdAt:
+          type: string
+          format: date-time
+        lastModifiedBy:
+          type: string
+        lastModifiedByType:
+          type: string
+          enum:
+          - User
+          - Application
+          - ManagedIdentity
+          - Key
+        lastModifiedAt:
+          type: string
+          format: date-time
     ManagedServiceIdentity:
       type: object
       required:
@@ -226,6 +283,41 @@ components:
         nextLink:
           type: string
           description: The URI to fetch the next page.
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+            message:
+              type: string
+              description: Error message.
+            target:
+              type: string
+            details:
+              type: array
+              items:
+                type: object
+                properties:
+                  code:
+                    type: string
+                  message:
+                    type: string
+                  target:
+                    type: string
+    ResourceForUpdate:
+      type: object
+      properties:
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          description: Resource tags.
+        identity:
+          $ref: '#/components/schemas/ManagedServiceIdentity'
     DataCollectionEndpointResource:
       type: object
       required:
@@ -263,16 +355,6 @@ components:
           $ref: '#/components/schemas/DataCollectionEndpoint'
         systemData:
           $ref: '#/components/schemas/SystemData'
-    ResourceForUpdate:
-      type: object
-      properties:
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-          description: Resource tags.
-        identity:
-          $ref: '#/components/schemas/ManagedServiceIdentity'
     DataCollectionEndpoint:
       type: object
       properties:
@@ -368,88 +450,6 @@ components:
               type: string
               readOnly: true
           description: Metadata for the resource.
-    SystemData:
-      type: object
-      properties:
-        createdBy:
-          type: string
-        createdByType:
-          type: string
-          enum:
-          - User
-          - Application
-          - ManagedIdentity
-          - Key
-        createdAt:
-          type: string
-          format: date-time
-        lastModifiedBy:
-          type: string
-        lastModifiedByType:
-          type: string
-          enum:
-          - User
-          - Application
-          - ManagedIdentity
-          - Key
-        lastModifiedAt:
-          type: string
-          format: date-time
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code.
-            message:
-              type: string
-              description: Error message.
-            target:
-              type: string
-            details:
-              type: array
-              items:
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
-                  target:
-                    type: string
-  parameters:
-    ResourceGroupNameParameter:
-      name: resourceGroupName
-      in: path
-      required: true
-      description: The name of the resource group.
-      schema:
-        type: string
-    ApiVersionParameter:
-      name: api-version
-      in: query
-      required: true
-      description: The API version to use for this operation.
-      schema:
-        type: string
-        default: '2023-03-11'
-    SubscriptionIdParameter:
-      name: subscriptionId
-      in: path
-      required: true
-      description: The ID of the target subscription.
-      schema:
-        type: string
-    DataCollectionEndpointNameParameter:
-      name: dataCollectionEndpointName
-      in: path
-      required: true
-      description: The name of the data collection endpoint.
-      schema:
-        type: string
   securitySchemes:
     oauth2:
       type: oauth2

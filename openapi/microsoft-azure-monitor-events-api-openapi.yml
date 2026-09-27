@@ -174,45 +174,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code.
-            message:
-              type: string
-              description: Error message.
-          required:
-          - code
-          - message
-    EventsResults:
-      type: object
-      properties:
-        '@ai.messages':
-          type: array
-          items:
-            type: object
-            properties:
-              code:
-                type: string
-              message:
-                type: string
-          description: Messages from the service.
-        '@odata.context':
-          type: string
-          description: OData context.
-        '@odata.count':
-          type: integer
-          description: Count of matching results.
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/EventsResultData'
-          description: The collection of events.
     EventsResultData:
       type: object
       properties:
@@ -279,6 +240,45 @@ components:
               type: string
             sdkVersion:
               type: string
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+            message:
+              type: string
+              description: Error message.
+          required:
+          - code
+          - message
+    EventsResults:
+      type: object
+      properties:
+        '@ai.messages':
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+          description: Messages from the service.
+        '@odata.context':
+          type: string
+          description: OData context.
+        '@odata.count':
+          type: integer
+          description: Count of matching results.
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventsResultData'
+          description: The collection of events.
   parameters:
     AppIdParameter:
       name: appId

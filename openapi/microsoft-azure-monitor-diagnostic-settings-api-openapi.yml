@@ -118,47 +118,30 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
+  parameters:
+    ApiVersionParameter:
+      name: api-version
+      in: query
+      required: true
+      description: Client API version.
+      schema:
+        type: string
+        default: 2021-05-01-preview
+    SettingNameParameter:
+      name: name
+      in: path
+      required: true
+      description: The name of the diagnostic setting.
+      schema:
+        type: string
+    ResourceUriParameter:
+      name: resourceUri
+      in: path
+      required: true
+      description: The identifier of the resource.
+      schema:
+        type: string
   schemas:
-    LogSettings:
-      type: object
-      required:
-      - enabled
-      properties:
-        category:
-          type: string
-          description: Name of a Diagnostic Log category for a resource type.
-        categoryGroup:
-          type: string
-          description: Name of a Diagnostic Log category group for a resource type.
-        enabled:
-          type: boolean
-          description: Indicates whether this log category is enabled.
-        retentionPolicy:
-          $ref: '#/components/schemas/RetentionPolicy'
-    MetricSettings:
-      type: object
-      required:
-      - enabled
-      properties:
-        timeGrain:
-          type: string
-          description: The timegrain of the metric in ISO 8601 format.
-        category:
-          type: string
-          description: Name of a Diagnostic Metric category for a resource type.
-        enabled:
-          type: boolean
-          description: Indicates whether this metric category is enabled.
-        retentionPolicy:
-          $ref: '#/components/schemas/RetentionPolicy'
-    DiagnosticSettingsResourceCollection:
-      type: object
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/DiagnosticSettingsResource'
-          description: The collection of diagnostic settings resources.
     DiagnosticSettingsResource:
       type: object
       properties:
@@ -206,15 +189,14 @@ components:
         lastModifiedAt:
           type: string
           format: date-time
-    ErrorResponse:
+    DiagnosticSettingsResourceCollection:
       type: object
       properties:
-        code:
-          type: string
-          description: Error code.
-        message:
-          type: string
-          description: Error message indicating why the operation failed.
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/DiagnosticSettingsResource'
+          description: The collection of diagnostic settings resources.
     DiagnosticSettings:
       type: object
       properties:
@@ -249,6 +231,47 @@ components:
         logAnalyticsDestinationType:
           type: string
           description: A string indicating whether the export to Log Analytics should use the default destination type (AzureDiagnostics) or a dedicated type.
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code.
+        message:
+          type: string
+          description: Error message indicating why the operation failed.
+    MetricSettings:
+      type: object
+      required:
+      - enabled
+      properties:
+        timeGrain:
+          type: string
+          description: The timegrain of the metric in ISO 8601 format.
+        category:
+          type: string
+          description: Name of a Diagnostic Metric category for a resource type.
+        enabled:
+          type: boolean
+          description: Indicates whether this metric category is enabled.
+        retentionPolicy:
+          $ref: '#/components/schemas/RetentionPolicy'
+    LogSettings:
+      type: object
+      required:
+      - enabled
+      properties:
+        category:
+          type: string
+          description: Name of a Diagnostic Log category for a resource type.
+        categoryGroup:
+          type: string
+          description: Name of a Diagnostic Log category group for a resource type.
+        enabled:
+          type: boolean
+          description: Indicates whether this log category is enabled.
+        retentionPolicy:
+          $ref: '#/components/schemas/RetentionPolicy'
     RetentionPolicy:
       type: object
       required:
@@ -263,29 +286,6 @@ components:
           format: int32
           minimum: 0
           description: The number of days for the retention policy. A value of 0 retains data indefinitely.
-  parameters:
-    ResourceUriParameter:
-      name: resourceUri
-      in: path
-      required: true
-      description: The identifier of the resource.
-      schema:
-        type: string
-    ApiVersionParameter:
-      name: api-version
-      in: query
-      required: true
-      description: Client API version.
-      schema:
-        type: string
-        default: 2021-05-01-preview
-    SettingNameParameter:
-      name: name
-      in: path
-      required: true
-      description: The name of the diagnostic setting.
-      schema:
-        type: string
   securitySchemes:
     oauth2:
       type: oauth2

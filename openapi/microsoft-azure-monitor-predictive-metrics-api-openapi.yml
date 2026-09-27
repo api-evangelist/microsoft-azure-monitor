@@ -75,7 +75,46 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
+  parameters:
+    ApiVersionParameter:
+      name: api-version
+      in: query
+      required: true
+      description: Client API version.
+      schema:
+        type: string
+        default: '2022-10-01'
+    AutoscaleSettingNameParameter:
+      name: autoscaleSettingName
+      in: path
+      required: true
+      description: The autoscale setting name.
+      schema:
+        type: string
+    ResourceGroupNameParameter:
+      name: resourceGroupName
+      in: path
+      required: true
+      description: The name of the resource group.
+      schema:
+        type: string
+    SubscriptionIdParameter:
+      name: subscriptionId
+      in: path
+      required: true
+      description: The ID of the target subscription.
+      schema:
+        type: string
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code.
+        message:
+          type: string
+          description: Error message indicating why the operation failed.
     PredictiveResponse:
       type: object
       properties:
@@ -105,45 +144,6 @@ components:
                 format: double
                 description: The predicted metric value.
           description: The predicted metric values.
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code.
-        message:
-          type: string
-          description: Error message indicating why the operation failed.
-  parameters:
-    ResourceGroupNameParameter:
-      name: resourceGroupName
-      in: path
-      required: true
-      description: The name of the resource group.
-      schema:
-        type: string
-    ApiVersionParameter:
-      name: api-version
-      in: query
-      required: true
-      description: Client API version.
-      schema:
-        type: string
-        default: '2022-10-01'
-    AutoscaleSettingNameParameter:
-      name: autoscaleSettingName
-      in: path
-      required: true
-      description: The autoscale setting name.
-      schema:
-        type: string
-    SubscriptionIdParameter:
-      name: subscriptionId
-      in: path
-      required: true
-      description: The ID of the target subscription.
-      schema:
-        type: string
   securitySchemes:
     oauth2:
       type: oauth2

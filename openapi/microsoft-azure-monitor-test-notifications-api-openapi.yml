@@ -86,84 +86,23 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
+  parameters:
+    ApiVersionParameter:
+      name: api-version
+      in: query
+      required: true
+      description: Client API version.
+      schema:
+        type: string
+        default: '2022-06-01'
+    SubscriptionIdParameter:
+      name: subscriptionId
+      in: path
+      required: true
+      description: The ID of the target subscription.
+      schema:
+        type: string
   schemas:
-    WebhookReceiver:
-      type: object
-      required:
-      - name
-      - serviceUri
-      properties:
-        name:
-          type: string
-          description: The name of the webhook receiver.
-        serviceUri:
-          type: string
-          format: uri
-          description: The URI where webhooks should be sent.
-        useCommonAlertSchema:
-          type: boolean
-          default: false
-          description: Indicates whether to use common alert schema.
-        useAadAuth:
-          type: boolean
-          default: false
-          description: Indicates whether to use AAD authentication.
-        objectId:
-          type: string
-          description: The object ID for AAD auth.
-        identifierUri:
-          type: string
-          description: The identifier URI for AAD auth.
-        tenantId:
-          type: string
-          description: The tenant ID for AAD auth.
-    AzureAppPushReceiver:
-      type: object
-      required:
-      - name
-      - emailAddress
-      properties:
-        name:
-          type: string
-          description: The name of the Azure App Push receiver.
-        emailAddress:
-          type: string
-          format: email
-          description: The email address registered for the Azure mobile app.
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code.
-        message:
-          type: string
-          description: Error message indicating why the operation failed.
-    EmailReceiver:
-      type: object
-      required:
-      - name
-      - emailAddress
-      properties:
-        name:
-          type: string
-          description: The name of the email receiver.
-        emailAddress:
-          type: string
-          format: email
-          description: The email address of this receiver.
-        useCommonAlertSchema:
-          type: boolean
-          default: false
-          description: Indicates whether to use common alert schema.
-        status:
-          type: string
-          readOnly: true
-          enum:
-          - NotSpecified
-          - Enabled
-          - Disabled
-          description: The receiver status.
     TestNotificationDetailsResponse:
       type: object
       required:
@@ -204,6 +143,90 @@ components:
               detail:
                 type: string
                 description: The detail of the action.
+    EmailReceiver:
+      type: object
+      required:
+      - name
+      - emailAddress
+      properties:
+        name:
+          type: string
+          description: The name of the email receiver.
+        emailAddress:
+          type: string
+          format: email
+          description: The email address of this receiver.
+        useCommonAlertSchema:
+          type: boolean
+          default: false
+          description: Indicates whether to use common alert schema.
+        status:
+          type: string
+          readOnly: true
+          enum:
+          - NotSpecified
+          - Enabled
+          - Disabled
+          description: The receiver status.
+    AzureAppPushReceiver:
+      type: object
+      required:
+      - name
+      - emailAddress
+      properties:
+        name:
+          type: string
+          description: The name of the Azure App Push receiver.
+        emailAddress:
+          type: string
+          format: email
+          description: The email address registered for the Azure mobile app.
+    ArmRoleReceiver:
+      type: object
+      required:
+      - name
+      - roleId
+      properties:
+        name:
+          type: string
+          description: The name of the ARM role receiver.
+        roleId:
+          type: string
+          description: The ARM role ID.
+        useCommonAlertSchema:
+          type: boolean
+          default: false
+          description: Indicates whether to use common alert schema.
+    WebhookReceiver:
+      type: object
+      required:
+      - name
+      - serviceUri
+      properties:
+        name:
+          type: string
+          description: The name of the webhook receiver.
+        serviceUri:
+          type: string
+          format: uri
+          description: The URI where webhooks should be sent.
+        useCommonAlertSchema:
+          type: boolean
+          default: false
+          description: Indicates whether to use common alert schema.
+        useAadAuth:
+          type: boolean
+          default: false
+          description: Indicates whether to use AAD authentication.
+        objectId:
+          type: string
+          description: The object ID for AAD auth.
+        identifierUri:
+          type: string
+          description: The identifier URI for AAD auth.
+        tenantId:
+          type: string
+          description: The tenant ID for AAD auth.
     NotificationRequestBody:
       type: object
       required:
@@ -232,22 +255,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ArmRoleReceiver'
-    ArmRoleReceiver:
-      type: object
-      required:
-      - name
-      - roleId
-      properties:
-        name:
-          type: string
-          description: The name of the ARM role receiver.
-        roleId:
-          type: string
-          description: The ARM role ID.
-        useCommonAlertSchema:
-          type: boolean
-          default: false
-          description: Indicates whether to use common alert schema.
     SmsReceiver:
       type: object
       required:
@@ -272,22 +279,15 @@ components:
           - Enabled
           - Disabled
           description: The receiver status.
-  parameters:
-    ApiVersionParameter:
-      name: api-version
-      in: query
-      required: true
-      description: Client API version.
-      schema:
-        type: string
-        default: '2022-06-01'
-    SubscriptionIdParameter:
-      name: subscriptionId
-      in: path
-      required: true
-      description: The ID of the target subscription.
-      schema:
-        type: string
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code.
+        message:
+          type: string
+          description: Error message indicating why the operation failed.
   securitySchemes:
     oauth2:
       type: oauth2

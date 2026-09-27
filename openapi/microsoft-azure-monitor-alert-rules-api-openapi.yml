@@ -183,13 +183,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   parameters:
-    ResourceGroupNameParameter:
-      name: resourceGroupName
-      in: path
-      required: true
-      description: The name of the resource group.
-      schema:
-        type: string
     RuleNameParameter:
       name: ruleName
       in: path
@@ -205,6 +198,13 @@ components:
       schema:
         type: string
         default: '2016-03-01'
+    ResourceGroupNameParameter:
+      name: resourceGroupName
+      in: path
+      required: true
+      description: The name of the resource group.
+      schema:
+        type: string
     SubscriptionIdParameter:
       name: subscriptionId
       in: path
@@ -221,34 +221,53 @@ components:
         odata.type:
           type: string
           description: Specifies the type of action. Possible values include RuleEmailAction and RuleWebhookAction.
-    AlertRuleResource:
+    RuleDataSource:
       type: object
       required:
-      - location
-      - properties
+      - odata.type
       properties:
-        id:
+        odata.type:
           type: string
-          readOnly: true
-          description: Azure resource ID.
-        name:
+          description: Specifies the type of data source. Possible values include RuleMetricDataSource, RuleManagementEventDataSource.
+        resourceUri:
           type: string
-          readOnly: true
-          description: Azure resource name.
-        type:
+          description: The resource identifier of the resource the rule monitors.
+        legacyResourceId:
           type: string
-          readOnly: true
-          description: Azure resource type.
-        location:
+          description: The legacy resource identifier of the resource the rule monitors.
+        resourceLocation:
           type: string
-          description: Resource location.
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-          description: Resource tags.
-        properties:
-          $ref: '#/components/schemas/AlertRule'
+          description: The location of the resource.
+        metricNamespace:
+          type: string
+          description: The namespace of the metric.
+    RuleCondition:
+      type: object
+      required:
+      - odata.type
+      properties:
+        odata.type:
+          type: string
+          description: Specifies the type of condition. Possible values include ThresholdRuleCondition, LocationThresholdRuleCondition, ManagementEventRuleCondition.
+        dataSource:
+          $ref: '#/components/schemas/RuleDataSource'
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code.
+        message:
+          type: string
+          description: Error message indicating why the operation failed.
+    AlertRuleResourceCollection:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/AlertRuleResource'
+          description: The values for the alert rule resources.
     AlertRuleResourcePatch:
       type: object
       properties:
@@ -259,14 +278,6 @@ components:
           description: Resource tags.
         properties:
           $ref: '#/components/schemas/AlertRule'
-    AlertRuleResourceCollection:
-      type: object
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/AlertRuleResource'
-          description: The values for the alert rule resources.
     AlertRule:
       type: object
       required:
@@ -298,45 +309,34 @@ components:
           items:
             $ref: '#/components/schemas/RuleAction'
           description: The array of actions that are performed when the alert rule becomes active.
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code.
-        message:
-          type: string
-          description: Error message indicating why the operation failed.
-    RuleCondition:
+    AlertRuleResource:
       type: object
       required:
-      - odata.type
+      - location
+      - properties
       properties:
-        odata.type:
+        id:
           type: string
-          description: Specifies the type of condition. Possible values include ThresholdRuleCondition, LocationThresholdRuleCondition, ManagementEventRuleCondition.
-        dataSource:
-          $ref: '#/components/schemas/RuleDataSource'
-    RuleDataSource:
-      type: object
-      required:
-      - odata.type
-      properties:
-        odata.type:
+          readOnly: true
+          description: Azure resource ID.
+        name:
           type: string
-          description: Specifies the type of data source. Possible values include RuleMetricDataSource, RuleManagementEventDataSource.
-        resourceUri:
+          readOnly: true
+          description: Azure resource name.
+        type:
           type: string
-          description: The resource identifier of the resource the rule monitors.
-        legacyResourceId:
+          readOnly: true
+          description: Azure resource type.
+        location:
           type: string
-          description: The legacy resource identifier of the resource the rule monitors.
-        resourceLocation:
-          type: string
-          description: The location of the resource.
-        metricNamespace:
-          type: string
-          description: The namespace of the metric.
+          description: Resource location.
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          description: Resource tags.
+        properties:
+          $ref: '#/components/schemas/AlertRule'
   securitySchemes:
     oauth2:
       type: oauth2

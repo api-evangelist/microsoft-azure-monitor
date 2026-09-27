@@ -55,7 +55,45 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
+  parameters:
+    ApiVersionParameter:
+      name: api-version
+      in: query
+      required: true
+      description: Client API version.
+      schema:
+        type: string
+        default: '2015-04-01'
+    SubscriptionIdParameter:
+      name: subscriptionId
+      in: path
+      required: true
+      description: The ID of the target subscription.
+      schema:
+        type: string
   schemas:
+    EventDataCollection:
+      type: object
+      required:
+      - value
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventData'
+          description: The collection of events.
+        nextLink:
+          type: string
+          description: Provides the link to retrieve the next set of events.
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code.
+        message:
+          type: string
+          description: Error message indicating why the operation failed.
     EventData:
       type: object
       properties:
@@ -221,44 +259,6 @@ components:
           type: string
           readOnly: true
           description: The Azure tenant ID.
-    EventDataCollection:
-      type: object
-      required:
-      - value
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/EventData'
-          description: The collection of events.
-        nextLink:
-          type: string
-          description: Provides the link to retrieve the next set of events.
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code.
-        message:
-          type: string
-          description: Error message indicating why the operation failed.
-  parameters:
-    ApiVersionParameter:
-      name: api-version
-      in: query
-      required: true
-      description: Client API version.
-      schema:
-        type: string
-        default: '2015-04-01'
-    SubscriptionIdParameter:
-      name: subscriptionId
-      in: path
-      required: true
-      description: The ID of the target subscription.
-      schema:
-        type: string
   securitySchemes:
     oauth2:
       type: oauth2
