@@ -170,22 +170,6 @@ paths:
       description: Application Insights data plane API
 components:
   schemas:
-    QueryBody:
-      type: object
-      required:
-      - query
-      properties:
-        query:
-          type: string
-          description: The Analytics query in KQL format.
-        timespan:
-          type: string
-          description: The timespan over which to query data.
-        applications:
-          type: array
-          items:
-            type: string
-          description: A list of Application Insights application IDs for cross-application queries.
     QueryResults:
       type: object
       required:
@@ -239,7 +223,7 @@ components:
           required:
           - code
           - message
-    QueryBody_2:
+    QueryBody:
       type: object
       required:
       - query
@@ -249,17 +233,12 @@ components:
           description: The Analytics query in KQL format.
         timespan:
           type: string
-          description: The timespan over which to query data in ISO 8601 duration format.
-        workspaces:
-          type: array
-          items:
-            type: string
-          description: A list of workspaces included in cross-workspace queries.
+          description: The timespan over which to query data.
         applications:
           type: array
           items:
             type: string
-          description: A list of Application Insights applications for cross-application queries.
+          description: A list of Application Insights application IDs for cross-application queries.
     QueryResults_2:
       type: object
       required:
@@ -311,6 +290,27 @@ components:
           - decimal
           - timespan
           description: The data type of this column.
+    QueryBody_2:
+      type: object
+      required:
+      - query
+      properties:
+        query:
+          type: string
+          description: The Analytics query in KQL format.
+        timespan:
+          type: string
+          description: The timespan over which to query data in ISO 8601 duration format.
+        workspaces:
+          type: array
+          items:
+            type: string
+          description: A list of workspaces included in cross-workspace queries.
+        applications:
+          type: array
+          items:
+            type: string
+          description: A list of Application Insights applications for cross-application queries.
   parameters:
     AppIdParameter:
       name: appId

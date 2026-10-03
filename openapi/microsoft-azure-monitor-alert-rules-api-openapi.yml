@@ -182,95 +182,28 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
-  parameters:
-    RuleNameParameter:
-      name: ruleName
-      in: path
-      required: true
-      description: The name of the rule.
-      schema:
-        type: string
-    ApiVersionParameter:
-      name: api-version
-      in: query
-      required: true
-      description: Client API version.
-      schema:
-        type: string
-        default: '2016-03-01'
-    ResourceGroupNameParameter:
-      name: resourceGroupName
-      in: path
-      required: true
-      description: The name of the resource group.
-      schema:
-        type: string
-    SubscriptionIdParameter:
-      name: subscriptionId
-      in: path
-      required: true
-      description: The ID of the target subscription.
-      schema:
-        type: string
   schemas:
-    RuleAction:
+    AlertRuleResource:
       type: object
       required:
-      - odata.type
+      - location
+      - properties
       properties:
-        odata.type:
+        id:
           type: string
-          description: Specifies the type of action. Possible values include RuleEmailAction and RuleWebhookAction.
-    RuleDataSource:
-      type: object
-      required:
-      - odata.type
-      properties:
-        odata.type:
+          readOnly: true
+          description: Azure resource ID.
+        name:
           type: string
-          description: Specifies the type of data source. Possible values include RuleMetricDataSource, RuleManagementEventDataSource.
-        resourceUri:
+          readOnly: true
+          description: Azure resource name.
+        type:
           type: string
-          description: The resource identifier of the resource the rule monitors.
-        legacyResourceId:
+          readOnly: true
+          description: Azure resource type.
+        location:
           type: string
-          description: The legacy resource identifier of the resource the rule monitors.
-        resourceLocation:
-          type: string
-          description: The location of the resource.
-        metricNamespace:
-          type: string
-          description: The namespace of the metric.
-    RuleCondition:
-      type: object
-      required:
-      - odata.type
-      properties:
-        odata.type:
-          type: string
-          description: Specifies the type of condition. Possible values include ThresholdRuleCondition, LocationThresholdRuleCondition, ManagementEventRuleCondition.
-        dataSource:
-          $ref: '#/components/schemas/RuleDataSource'
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code.
-        message:
-          type: string
-          description: Error message indicating why the operation failed.
-    AlertRuleResourceCollection:
-      type: object
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/AlertRuleResource'
-          description: The values for the alert rule resources.
-    AlertRuleResourcePatch:
-      type: object
-      properties:
+          description: Resource location.
         tags:
           type: object
           additionalProperties:
@@ -309,27 +242,48 @@ components:
           items:
             $ref: '#/components/schemas/RuleAction'
           description: The array of actions that are performed when the alert rule becomes active.
-    AlertRuleResource:
+    RuleCondition:
       type: object
       required:
-      - location
-      - properties
+      - odata.type
       properties:
-        id:
+        odata.type:
           type: string
-          readOnly: true
-          description: Azure resource ID.
-        name:
+          description: Specifies the type of condition. Possible values include ThresholdRuleCondition, LocationThresholdRuleCondition, ManagementEventRuleCondition.
+        dataSource:
+          $ref: '#/components/schemas/RuleDataSource'
+    ErrorResponse:
+      type: object
+      properties:
+        code:
           type: string
-          readOnly: true
-          description: Azure resource name.
-        type:
+          description: Error code.
+        message:
           type: string
-          readOnly: true
-          description: Azure resource type.
-        location:
+          description: Error message indicating why the operation failed.
+    RuleDataSource:
+      type: object
+      required:
+      - odata.type
+      properties:
+        odata.type:
           type: string
-          description: Resource location.
+          description: Specifies the type of data source. Possible values include RuleMetricDataSource, RuleManagementEventDataSource.
+        resourceUri:
+          type: string
+          description: The resource identifier of the resource the rule monitors.
+        legacyResourceId:
+          type: string
+          description: The legacy resource identifier of the resource the rule monitors.
+        resourceLocation:
+          type: string
+          description: The location of the resource.
+        metricNamespace:
+          type: string
+          description: The namespace of the metric.
+    AlertRuleResourcePatch:
+      type: object
+      properties:
         tags:
           type: object
           additionalProperties:
@@ -337,6 +291,52 @@ components:
           description: Resource tags.
         properties:
           $ref: '#/components/schemas/AlertRule'
+    RuleAction:
+      type: object
+      required:
+      - odata.type
+      properties:
+        odata.type:
+          type: string
+          description: Specifies the type of action. Possible values include RuleEmailAction and RuleWebhookAction.
+    AlertRuleResourceCollection:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/AlertRuleResource'
+          description: The values for the alert rule resources.
+  parameters:
+    ResourceGroupNameParameter:
+      name: resourceGroupName
+      in: path
+      required: true
+      description: The name of the resource group.
+      schema:
+        type: string
+    ApiVersionParameter:
+      name: api-version
+      in: query
+      required: true
+      description: Client API version.
+      schema:
+        type: string
+        default: '2016-03-01'
+    RuleNameParameter:
+      name: ruleName
+      in: path
+      required: true
+      description: The name of the rule.
+      schema:
+        type: string
+    SubscriptionIdParameter:
+      name: subscriptionId
+      in: path
+      required: true
+      description: The ID of the target subscription.
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2

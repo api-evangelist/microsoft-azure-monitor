@@ -79,6 +79,22 @@ paths:
     - url: https://api.applicationinsights.io/v1
       description: Application Insights data plane API
 components:
+  parameters:
+    AppIdParameter:
+      name: appId
+      in: path
+      required: true
+      description: ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal.
+      schema:
+        type: string
+    WorkspaceIdParameter:
+      name: workspaceId
+      in: path
+      required: true
+      description: ID of the workspace. This is the Workspace ID from the Properties blade in the Azure portal.
+      schema:
+        type: string
+        format: uuid
   schemas:
     ErrorResponse:
       type: object
@@ -95,6 +111,43 @@ components:
           required:
           - code
           - message
+    Column:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of this column.
+        type:
+          type: string
+          enum:
+          - bool
+          - datetime
+          - dynamic
+          - int
+          - long
+          - real
+          - string
+          - guid
+          - decimal
+          - timespan
+          description: The data type of this column.
+    MetadataTable:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of the table.
+        name:
+          type: string
+          description: The name of the table.
+        description:
+          type: string
+          description: The description of the table.
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/Column'
+          description: The columns in the table.
     MetadataFunction:
       type: object
       properties:
@@ -123,59 +176,6 @@ components:
           items:
             $ref: '#/components/schemas/MetadataFunction'
           description: The list of saved functions in the workspace.
-    MetadataTable:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The ID of the table.
-        name:
-          type: string
-          description: The name of the table.
-        description:
-          type: string
-          description: The description of the table.
-        columns:
-          type: array
-          items:
-            $ref: '#/components/schemas/Column'
-          description: The columns in the table.
-    Column:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The name of this column.
-        type:
-          type: string
-          enum:
-          - bool
-          - datetime
-          - dynamic
-          - int
-          - long
-          - real
-          - string
-          - guid
-          - decimal
-          - timespan
-          description: The data type of this column.
-  parameters:
-    AppIdParameter:
-      name: appId
-      in: path
-      required: true
-      description: ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal.
-      schema:
-        type: string
-    WorkspaceIdParameter:
-      name: workspaceId
-      in: path
-      required: true
-      description: ID of the workspace. This is the Workspace ID from the Properties blade in the Azure portal.
-      schema:
-        type: string
-        format: uuid
   securitySchemes:
     oauth2:
       type: oauth2
