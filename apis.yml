@@ -1925,6 +1925,9 @@ apis:
   - type: Reference
     url: https://learn.microsoft.com/en-us/azure/azure-monitor/logs/private-link-design
 common:
+  - type: CapabilityMap
+    url: capabilities/microsoft-azure-monitor-capability-edges.yml
+    name: Azure Monitor Business Capability Map
   - type: AgenticAccess
     url: agentic-access/microsoft-azure-monitor-agentic-access.yml
   - type: DomainSecurity
