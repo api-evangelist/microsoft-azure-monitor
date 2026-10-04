@@ -170,16 +170,6 @@ paths:
       description: Application Insights data plane API
 components:
   schemas:
-    QueryResults:
-      type: object
-      required:
-      - tables
-      properties:
-        tables:
-          type: array
-          items:
-            $ref: '#/components/schemas/Table'
-          description: The list of tables, columns and rows.
     Table:
       type: object
       required:
@@ -208,21 +198,6 @@ components:
             type: array
             items: {}
           description: The resulting rows from the query.
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code.
-            message:
-              type: string
-              description: Error message.
-          required:
-          - code
-          - message
     QueryBody:
       type: object
       required:
@@ -239,7 +214,7 @@ components:
           items:
             type: string
           description: A list of Application Insights application IDs for cross-application queries.
-    QueryResults_2:
+    QueryResults:
       type: object
       required:
       - tables
@@ -247,8 +222,23 @@ components:
         tables:
           type: array
           items:
-            $ref: '#/components/schemas/Table_2'
-          description: The list of tables, columns and rows returned by the query.
+            $ref: '#/components/schemas/Table'
+          description: The list of tables, columns and rows.
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+            message:
+              type: string
+              description: Error message.
+          required:
+          - code
+          - message
     Table_2:
       type: object
       required:
@@ -311,6 +301,16 @@ components:
           items:
             type: string
           description: A list of Application Insights applications for cross-application queries.
+    QueryResults_2:
+      type: object
+      required:
+      - tables
+      properties:
+        tables:
+          type: array
+          items:
+            $ref: '#/components/schemas/Table_2'
+          description: The list of tables, columns and rows returned by the query.
   parameters:
     AppIdParameter:
       name: appId

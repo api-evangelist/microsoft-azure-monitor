@@ -56,15 +56,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code.
-        message:
-          type: string
-          description: Error message indicating why the operation failed.
     EventData:
       type: object
       properties:
@@ -243,6 +234,15 @@ components:
         nextLink:
           type: string
           description: Provides the link to retrieve the next set of events.
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code.
+        message:
+          type: string
+          description: Error message indicating why the operation failed.
   parameters:
     ApiVersionParameter:
       name: api-version

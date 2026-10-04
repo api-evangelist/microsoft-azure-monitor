@@ -185,15 +185,27 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
+    AzureMonitorPrivateLinkScopeListResult:
+      type: object
+      required:
+      - value
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/AzureMonitorPrivateLinkScope'
+          description: List of Azure Monitor Private Link Scope definitions.
+        nextLink:
+          type: string
+          description: The URI to get the next set of results.
+    TagsResource:
       type: object
       properties:
-        code:
-          type: string
-          description: Error code.
-        message:
-          type: string
-          description: Error message indicating why the operation failed.
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          description: Resource tags.
     AzureMonitorPrivateLinkScopeProperties:
       type: object
       required:
@@ -272,14 +284,15 @@ components:
                     type: string
               description: List of exclusions that override the default access mode.
           description: Access mode settings for the Private Link Scope.
-    TagsResource:
+    ErrorResponse:
       type: object
       properties:
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-          description: Resource tags.
+        code:
+          type: string
+          description: Error code.
+        message:
+          type: string
+          description: Error message indicating why the operation failed.
     AzureMonitorPrivateLinkScope:
       type: object
       required:
@@ -309,19 +322,6 @@ components:
           $ref: '#/components/schemas/AzureMonitorPrivateLinkScopeProperties'
         systemData:
           $ref: '#/components/schemas/SystemData'
-    AzureMonitorPrivateLinkScopeListResult:
-      type: object
-      required:
-      - value
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/AzureMonitorPrivateLinkScope'
-          description: List of Azure Monitor Private Link Scope definitions.
-        nextLink:
-          type: string
-          description: The URI to get the next set of results.
     SystemData:
       type: object
       properties:
@@ -350,6 +350,14 @@ components:
           type: string
           format: date-time
   parameters:
+    ApiVersionParameter:
+      name: api-version
+      in: query
+      required: true
+      description: Client API version.
+      schema:
+        type: string
+        default: 2021-07-01-preview
     ScopeNameParameter:
       name: scopeName
       in: path
@@ -364,14 +372,6 @@ components:
       description: The name of the resource group.
       schema:
         type: string
-    ApiVersionParameter:
-      name: api-version
-      in: query
-      required: true
-      description: Client API version.
-      schema:
-        type: string
-        default: 2021-07-01-preview
     SubscriptionIdParameter:
       name: subscriptionId
       in: path

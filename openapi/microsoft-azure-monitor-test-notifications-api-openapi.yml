@@ -111,28 +111,6 @@ components:
           - Enabled
           - Disabled
           description: The receiver status.
-    AzureAppPushReceiver:
-      type: object
-      required:
-      - name
-      - emailAddress
-      properties:
-        name:
-          type: string
-          description: The name of the Azure App Push receiver.
-        emailAddress:
-          type: string
-          format: email
-          description: The email address registered for the Azure mobile app.
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code.
-        message:
-          type: string
-          description: Error message indicating why the operation failed.
     NotificationRequestBody:
       type: object
       required:
@@ -161,22 +139,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ArmRoleReceiver'
-    ArmRoleReceiver:
-      type: object
-      required:
-      - name
-      - roleId
-      properties:
-        name:
-          type: string
-          description: The name of the ARM role receiver.
-        roleId:
-          type: string
-          description: The ARM role ID.
-        useCommonAlertSchema:
-          type: boolean
-          default: false
-          description: Indicates whether to use common alert schema.
     TestNotificationDetailsResponse:
       type: object
       required:
@@ -217,6 +179,69 @@ components:
               detail:
                 type: string
                 description: The detail of the action.
+    AzureAppPushReceiver:
+      type: object
+      required:
+      - name
+      - emailAddress
+      properties:
+        name:
+          type: string
+          description: The name of the Azure App Push receiver.
+        emailAddress:
+          type: string
+          format: email
+          description: The email address registered for the Azure mobile app.
+    EmailReceiver:
+      type: object
+      required:
+      - name
+      - emailAddress
+      properties:
+        name:
+          type: string
+          description: The name of the email receiver.
+        emailAddress:
+          type: string
+          format: email
+          description: The email address of this receiver.
+        useCommonAlertSchema:
+          type: boolean
+          default: false
+          description: Indicates whether to use common alert schema.
+        status:
+          type: string
+          readOnly: true
+          enum:
+          - NotSpecified
+          - Enabled
+          - Disabled
+          description: The receiver status.
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code.
+        message:
+          type: string
+          description: Error message indicating why the operation failed.
+    ArmRoleReceiver:
+      type: object
+      required:
+      - name
+      - roleId
+      properties:
+        name:
+          type: string
+          description: The name of the ARM role receiver.
+        roleId:
+          type: string
+          description: The ARM role ID.
+        useCommonAlertSchema:
+          type: boolean
+          default: false
+          description: Indicates whether to use common alert schema.
     WebhookReceiver:
       type: object
       required:
@@ -247,31 +272,6 @@ components:
         tenantId:
           type: string
           description: The tenant ID for AAD auth.
-    EmailReceiver:
-      type: object
-      required:
-      - name
-      - emailAddress
-      properties:
-        name:
-          type: string
-          description: The name of the email receiver.
-        emailAddress:
-          type: string
-          format: email
-          description: The email address of this receiver.
-        useCommonAlertSchema:
-          type: boolean
-          default: false
-          description: Indicates whether to use common alert schema.
-        status:
-          type: string
-          readOnly: true
-          enum:
-          - NotSpecified
-          - Enabled
-          - Disabled
-          description: The receiver status.
   parameters:
     ApiVersionParameter:
       name: api-version

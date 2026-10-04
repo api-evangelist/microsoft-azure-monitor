@@ -263,134 +263,22 @@ paths:
     - url: https://management.azure.com
       description: Azure Resource Manager
 components:
-  parameters:
-    AppIdParameter:
-      name: appId
-      in: path
-      required: true
-      description: ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal.
-      schema:
-        type: string
-    TimespanParameter:
-      name: timespan
-      in: query
-      required: false
-      description: The timespan of the query in ISO 8601 duration format (startDateTime_ISO/endDateTime_ISO).
-      schema:
-        type: string
-    AutoAdjustTimegrainParameter:
-      name: AutoAdjustTimegrain
-      in: query
-      required: false
-      description: If set to true, the time grain is automatically adjusted based on the timespan.
-      schema:
-        type: boolean
-    RegionParameter:
-      name: region
-      in: query
-      required: false
-      description: The region where the metrics you want reside.
-      schema:
-        type: string
-    FilterParameter:
-      name: $filter
-      in: query
-      required: false
-      description: The $filter is used to reduce the set of metric data returned. Uses OData filter expressions.
-      schema:
-        type: string
-    MetricNamesParameter:
-      name: metricnames
-      in: query
-      required: false
-      description: The names of the metrics (comma-separated) to retrieve. Maximum of 20.
-      schema:
-        type: string
-    ResourceUriParameter:
-      name: resourceUri
-      in: path
-      required: true
-      description: The identifier of the resource.
-      schema:
-        type: string
-    IntervalParameter:
-      name: interval
-      in: query
-      required: false
-      description: The interval (window size) of the query in ISO 8601 duration format.
-      schema:
-        type: string
-        default: PT1M
-    OrderByParameter:
-      name: orderBy
-      in: query
-      required: false
-      description: The aggregation to use for sorting results and the direction of the sort.
-      schema:
-        type: string
-    TopParameter:
-      name: top
-      in: query
-      required: false
-      description: The maximum number of records to retrieve. Defaults to 10.
-      schema:
-        type: integer
-        format: int32
-        default: 10
-    ValidateDimensionsParameter:
-      name: ValidateDimensions
-      in: query
-      required: false
-      description: If set to false, invalid filter parameter values will be ignored.
-      schema:
-        type: boolean
-    MetricNamespaceParameter:
-      name: metricNamespace
-      in: query
-      required: false
-      description: Metric namespace to query metric definitions for.
-      schema:
-        type: string
-    ApiVersionParameter:
-      name: api-version
-      in: query
-      required: true
-      description: Client API version.
-      schema:
-        type: string
-        default: '2023-10-01'
-    RollUpByParameter:
-      name: rollUpBy
-      in: query
-      required: false
-      description: Dimension name(s) to rollup results by.
-      schema:
-        type: string
-    SubscriptionIdParameter:
-      name: subscriptionId
-      in: path
-      required: true
-      description: The ID of the target subscription.
-      schema:
-        type: string
-    AggregationParameter:
-      name: aggregation
-      in: query
-      required: false
-      description: The list of aggregation types (comma-separated) to retrieve.
-      schema:
-        type: string
-    ResultTypeParameter:
-      name: resultType
-      in: query
-      required: false
-      description: Reduces the set of data collected. Data or Metadata.
-      schema:
-        type: string
-        enum:
-        - Data
-        - Metadata
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Error code.
+            message:
+              type: string
+              description: Error message.
+          required:
+          - code
+          - message
     MetricsPostBody:
       type: object
       required:
@@ -450,122 +338,6 @@ components:
                 type: object
                 additionalProperties: true
               description: Segmented metric data.
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Error code.
-            message:
-              type: string
-              description: Error message.
-          required:
-          - code
-          - message
-    MetricsResponse:
-      type: object
-      required:
-      - timespan
-      - value
-      properties:
-        cost:
-          type: integer
-          minimum: 0
-          description: The integer value representing the relative cost of the query.
-        timespan:
-          type: string
-          description: The timespan for which the data was retrieved, in ISO 8601 format.
-        interval:
-          type: string
-          description: The interval (window size) for which the metric data was returned in ISO 8601 format.
-        namespace:
-          type: string
-          description: The namespace of the metrics being queried.
-        resourceregion:
-          type: string
-          description: The region of the resource being queried for metrics.
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Metric'
-          description: The value of the collection.
-    LocalizableString:
-      type: object
-      required:
-      - value
-      properties:
-        value:
-          type: string
-          description: The invariant value.
-        localizedValue:
-          type: string
-          description: The display name.
-    MetadataValue:
-      type: object
-      properties:
-        name:
-          $ref: '#/components/schemas/LocalizableString'
-        value:
-          type: string
-          description: The value of the metadata.
-    MetricUnit:
-      type: string
-      enum:
-      - Count
-      - Bytes
-      - Seconds
-      - CountPerSecond
-      - BytesPerSecond
-      - Percent
-      - MilliSeconds
-      - ByteSeconds
-      - Unspecified
-      - Cores
-      - MilliCores
-      - NanoCores
-      - BitsPerSecond
-      description: The unit of the metric.
-    ErrorResponse_2:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code.
-        message:
-          type: string
-          description: Error message indicating why the operation failed.
-    MetricValue:
-      type: object
-      required:
-      - timeStamp
-      properties:
-        timeStamp:
-          type: string
-          format: date-time
-          description: The timestamp for the metric value in ISO 8601 format.
-        average:
-          type: number
-          format: double
-          description: The average value in the time range.
-        minimum:
-          type: number
-          format: double
-          description: The least value in the time range.
-        maximum:
-          type: number
-          format: double
-          description: The greatest value in the time range.
-        total:
-          type: number
-          format: double
-          description: The sum of all of the values in the time range.
-        count:
-          type: number
-          format: double
-          description: The number of samples in the time range.
     SubscriptionScopeMetricsRequestBody:
       type: object
       properties:
@@ -609,6 +381,80 @@ components:
         validateDimensions:
           type: boolean
           description: Validate dimension filter parameter values.
+    MetadataValue:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/LocalizableString'
+        value:
+          type: string
+          description: The value of the metadata.
+    MetricsResponse:
+      type: object
+      required:
+      - timespan
+      - value
+      properties:
+        cost:
+          type: integer
+          minimum: 0
+          description: The integer value representing the relative cost of the query.
+        timespan:
+          type: string
+          description: The timespan for which the data was retrieved, in ISO 8601 format.
+        interval:
+          type: string
+          description: The interval (window size) for which the metric data was returned in ISO 8601 format.
+        namespace:
+          type: string
+          description: The namespace of the metrics being queried.
+        resourceregion:
+          type: string
+          description: The region of the resource being queried for metrics.
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Metric'
+          description: The value of the collection.
+    MetricUnit:
+      type: string
+      enum:
+      - Count
+      - Bytes
+      - Seconds
+      - CountPerSecond
+      - BytesPerSecond
+      - Percent
+      - MilliSeconds
+      - ByteSeconds
+      - Unspecified
+      - Cores
+      - MilliCores
+      - NanoCores
+      - BitsPerSecond
+      description: The unit of the metric.
+    ErrorResponse_2:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code.
+        message:
+          type: string
+          description: Error message indicating why the operation failed.
+    TimeSeriesElement:
+      type: object
+      properties:
+        metadatavalues:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetadataValue'
+          description: The metadata values returned.
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricValue'
+          description: An array of data points representing the metric values.
     Metric:
       type: object
       required:
@@ -642,19 +488,173 @@ components:
           items:
             $ref: '#/components/schemas/TimeSeriesElement'
           description: The time series returned when a data query is performed.
-    TimeSeriesElement:
+    LocalizableString:
       type: object
+      required:
+      - value
       properties:
-        metadatavalues:
-          type: array
-          items:
-            $ref: '#/components/schemas/MetadataValue'
-          description: The metadata values returned.
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/MetricValue'
-          description: An array of data points representing the metric values.
+        value:
+          type: string
+          description: The invariant value.
+        localizedValue:
+          type: string
+          description: The display name.
+    MetricValue:
+      type: object
+      required:
+      - timeStamp
+      properties:
+        timeStamp:
+          type: string
+          format: date-time
+          description: The timestamp for the metric value in ISO 8601 format.
+        average:
+          type: number
+          format: double
+          description: The average value in the time range.
+        minimum:
+          type: number
+          format: double
+          description: The least value in the time range.
+        maximum:
+          type: number
+          format: double
+          description: The greatest value in the time range.
+        total:
+          type: number
+          format: double
+          description: The sum of all of the values in the time range.
+        count:
+          type: number
+          format: double
+          description: The number of samples in the time range.
+  parameters:
+    AppIdParameter:
+      name: appId
+      in: path
+      required: true
+      description: ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal.
+      schema:
+        type: string
+    FilterParameter:
+      name: $filter
+      in: query
+      required: false
+      description: The $filter is used to reduce the set of metric data returned. Uses OData filter expressions.
+      schema:
+        type: string
+    RollUpByParameter:
+      name: rollUpBy
+      in: query
+      required: false
+      description: Dimension name(s) to rollup results by.
+      schema:
+        type: string
+    ResultTypeParameter:
+      name: resultType
+      in: query
+      required: false
+      description: Reduces the set of data collected. Data or Metadata.
+      schema:
+        type: string
+        enum:
+        - Data
+        - Metadata
+    ApiVersionParameter:
+      name: api-version
+      in: query
+      required: true
+      description: Client API version.
+      schema:
+        type: string
+        default: '2023-10-01'
+    ValidateDimensionsParameter:
+      name: ValidateDimensions
+      in: query
+      required: false
+      description: If set to false, invalid filter parameter values will be ignored.
+      schema:
+        type: boolean
+    OrderByParameter:
+      name: orderBy
+      in: query
+      required: false
+      description: The aggregation to use for sorting results and the direction of the sort.
+      schema:
+        type: string
+    TimespanParameter:
+      name: timespan
+      in: query
+      required: false
+      description: The timespan of the query in ISO 8601 duration format (startDateTime_ISO/endDateTime_ISO).
+      schema:
+        type: string
+    SubscriptionIdParameter:
+      name: subscriptionId
+      in: path
+      required: true
+      description: The ID of the target subscription.
+      schema:
+        type: string
+    AutoAdjustTimegrainParameter:
+      name: AutoAdjustTimegrain
+      in: query
+      required: false
+      description: If set to true, the time grain is automatically adjusted based on the timespan.
+      schema:
+        type: boolean
+    MetricNamesParameter:
+      name: metricnames
+      in: query
+      required: false
+      description: The names of the metrics (comma-separated) to retrieve. Maximum of 20.
+      schema:
+        type: string
+    IntervalParameter:
+      name: interval
+      in: query
+      required: false
+      description: The interval (window size) of the query in ISO 8601 duration format.
+      schema:
+        type: string
+        default: PT1M
+    TopParameter:
+      name: top
+      in: query
+      required: false
+      description: The maximum number of records to retrieve. Defaults to 10.
+      schema:
+        type: integer
+        format: int32
+        default: 10
+    ResourceUriParameter:
+      name: resourceUri
+      in: path
+      required: true
+      description: The identifier of the resource.
+      schema:
+        type: string
+    MetricNamespaceParameter:
+      name: metricNamespace
+      in: query
+      required: false
+      description: Metric namespace to query metric definitions for.
+      schema:
+        type: string
+    RegionParameter:
+      name: region
+      in: query
+      required: false
+      description: The region where the metrics you want reside.
+      schema:
+        type: string
+    AggregationParameter:
+      name: aggregation
+      in: query
+      required: false
+      description: The list of aggregation types (comma-separated) to retrieve.
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2

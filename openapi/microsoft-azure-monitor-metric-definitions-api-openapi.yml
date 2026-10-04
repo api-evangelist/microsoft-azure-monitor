@@ -69,43 +69,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
-  parameters:
-    ResourceUriParameter:
-      name: resourceUri
-      in: path
-      required: true
-      description: The identifier of the resource.
-      schema:
-        type: string
-    MetricNamespaceParameter:
-      name: metricNamespace
-      in: query
-      required: false
-      description: Metric namespace to query metric definitions for.
-      schema:
-        type: string
-    ApiVersionParameter:
-      name: api-version
-      in: query
-      required: true
-      description: Client API version.
-      schema:
-        type: string
-        default: '2023-10-01'
-    SubscriptionIdParameter:
-      name: subscriptionId
-      in: path
-      required: true
-      description: The ID of the target subscription.
-      schema:
-        type: string
-    RegionParameter:
-      name: region
-      in: query
-      required: false
-      description: The region where the metrics you want reside.
-      schema:
-        type: string
   schemas:
     MetricDefinition:
       type: object
@@ -188,25 +151,6 @@ components:
           items:
             $ref: '#/components/schemas/LocalizableString'
           description: The name and the display name of the dimension, i.e. the localized string representation.
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code.
-        message:
-          type: string
-          description: Error message indicating why the operation failed.
-    MetricDefinitionCollection:
-      type: object
-      required:
-      - value
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/MetricDefinition'
-          description: The values for the metric definitions.
     MetricAvailability:
       type: object
       properties:
@@ -227,6 +171,62 @@ components:
         localizedValue:
           type: string
           description: The display name.
+    MetricDefinitionCollection:
+      type: object
+      required:
+      - value
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricDefinition'
+          description: The values for the metric definitions.
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code.
+        message:
+          type: string
+          description: Error message indicating why the operation failed.
+  parameters:
+    ResourceUriParameter:
+      name: resourceUri
+      in: path
+      required: true
+      description: The identifier of the resource.
+      schema:
+        type: string
+    MetricNamespaceParameter:
+      name: metricNamespace
+      in: query
+      required: false
+      description: Metric namespace to query metric definitions for.
+      schema:
+        type: string
+    ApiVersionParameter:
+      name: api-version
+      in: query
+      required: true
+      description: Client API version.
+      schema:
+        type: string
+        default: '2023-10-01'
+    RegionParameter:
+      name: region
+      in: query
+      required: false
+      description: The region where the metrics you want reside.
+      schema:
+        type: string
+    SubscriptionIdParameter:
+      name: subscriptionId
+      in: path
+      required: true
+      description: The ID of the target subscription.
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2
