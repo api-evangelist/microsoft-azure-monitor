@@ -1,0 +1,12 @@
+{
+ "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/monitor/resource-manager/Microsoft.Insights/preview/2017-05-01-preview/diagnosticsSettings_API.json",
+ "requested_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/monitor/resource-manager/Microsoft.Insights/preview/2017-05-01-preview/diagnosticsSettings_API.json",
+ "status": 200,
+ "content_type": "text/plain; charset=utf-8",
+ "bytes": 12686,
+ "sha256": "84cda7dfe4e003bc9cfe97e4adf2cc228cde41c63d8a99d180c7b623c3124618",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}

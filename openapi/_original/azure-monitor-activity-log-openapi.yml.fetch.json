@@ -1,0 +1,12 @@
+{
+ "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/activityLogs_API.json",
+ "requested_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/activityLogs_API.json",
+ "status": 200,
+ "content_type": "text/plain; charset=utf-8",
+ "bytes": 13587,
+ "sha256": "859fcb5ed26a6fe39932eb0ee20c33f20a48ab2f359514e9299d30b86e4f34fc",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
