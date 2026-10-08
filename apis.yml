@@ -1925,6 +1925,12 @@ apis:
   - type: Reference
     url: https://learn.microsoft.com/en-us/azure/azure-monitor/logs/private-link-design
 common:
+  - type: Plans
+    url: plans/microsoft-azure-monitor-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/microsoft-azure-monitor-rate-limits.yml
+  - type: FinOps
+    url: finops/microsoft-azure-monitor-finops.yml
   - type: CapabilityMap
     url: capabilities/microsoft-azure-monitor-capability-edges.yml
     name: Azure Monitor Business Capability Map
