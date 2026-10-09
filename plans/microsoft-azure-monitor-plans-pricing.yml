@@ -236,3 +236,73 @@ plans:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - metered
+  - subscription
+  units:
+  - data
+  - message
+  plans:
+  - name: Analytics Logs - Pay-As-You-Go
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - data
+    periods:
+    - month
+  - name: Analytics Logs - Commitment Tiers
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - data
+    periods:
+    - day
+  - name: Basic Logs
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - data
+    periods:
+    - month
+    - per-use
+  - name: Log Archive
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - data
+    periods:
+    - month
+    - per-use
+  - name: Custom Metrics
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - other
+    periods:
+    - per-use
+  - name: Alerts
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - message
+    - other
+    periods:
+    - month
+    - per-use
+  - name: Application Insights
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - data
+    periods:
+    - month
