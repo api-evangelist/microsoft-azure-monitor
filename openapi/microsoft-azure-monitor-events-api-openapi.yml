@@ -173,31 +173,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
+  parameters:
+    AppIdParameter:
+      name: appId
+      in: path
+      required: true
+      description: ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal.
+      schema:
+        type: string
   schemas:
-    EventsResults:
-      type: object
-      properties:
-        '@ai.messages':
-          type: array
-          items:
-            type: object
-            properties:
-              code:
-                type: string
-              message:
-                type: string
-          description: Messages from the service.
-        '@odata.context':
-          type: string
-          description: OData context.
-        '@odata.count':
-          type: integer
-          description: Count of matching results.
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/EventsResultData'
-          description: The collection of events.
     EventsResultData:
       type: object
       properties:
@@ -279,14 +263,30 @@ components:
           required:
           - code
           - message
-  parameters:
-    AppIdParameter:
-      name: appId
-      in: path
-      required: true
-      description: ID of the Application Insights component. This is the Application ID from the API Access settings blade in the Azure portal.
-      schema:
-        type: string
+    EventsResults:
+      type: object
+      properties:
+        '@ai.messages':
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+          description: Messages from the service.
+        '@odata.context':
+          type: string
+          description: OData context.
+        '@odata.count':
+          type: integer
+          description: Count of matching results.
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventsResultData'
+          description: The collection of events.
   securitySchemes:
     oauth2:
       type: oauth2

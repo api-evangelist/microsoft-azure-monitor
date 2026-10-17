@@ -183,15 +183,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code.
-        message:
-          type: string
-          description: Error message indicating why the operation failed.
     Condition:
       type: object
       properties:
@@ -248,6 +239,14 @@ components:
         metricName:
           type: string
           description: The name of the metric to be sent.
+    ScheduledQueryRuleCriteria:
+      type: object
+      properties:
+        allOf:
+          type: array
+          items:
+            $ref: '#/components/schemas/Condition'
+          description: A list of conditions to evaluate against the specified scopes.
     Dimension:
       type: object
       required:
@@ -269,6 +268,16 @@ components:
           items:
             type: string
           description: List of dimension values.
+    ScheduledQueryRuleResourcePatch:
+      type: object
+      properties:
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          description: Resource tags.
+        properties:
+          $ref: '#/components/schemas/ScheduledQueryRuleProperties'
     ScheduledQueryRuleResourceCollection:
       type: object
       properties:
@@ -280,19 +289,39 @@ components:
         nextLink:
           type: string
           description: Link to retrieve next set of results.
-    Actions:
+    SystemData:
       type: object
       properties:
-        actionGroups:
-          type: array
-          items:
-            type: string
-          description: Action Group resource IDs to invoke when the alert fires.
-        customProperties:
-          type: object
-          additionalProperties:
-            type: string
-          description: The properties of an alert payload.
+        createdBy:
+          type: string
+          description: The identity that created the resource.
+        createdByType:
+          type: string
+          enum:
+          - User
+          - Application
+          - ManagedIdentity
+          - Key
+          description: The type of identity that created the resource.
+        createdAt:
+          type: string
+          format: date-time
+          description: The timestamp of resource creation.
+        lastModifiedBy:
+          type: string
+          description: The identity that last modified the resource.
+        lastModifiedByType:
+          type: string
+          enum:
+          - User
+          - Application
+          - ManagedIdentity
+          - Key
+          description: The type of identity that last modified the resource.
+        lastModifiedAt:
+          type: string
+          format: date-time
+          description: The timestamp of resource last modification.
     ScheduledQueryRuleResource:
       type: object
       required:
@@ -333,24 +362,15 @@ components:
           $ref: '#/components/schemas/SystemData'
         properties:
           $ref: '#/components/schemas/ScheduledQueryRuleProperties'
-    ScheduledQueryRuleCriteria:
+    ErrorResponse:
       type: object
       properties:
-        allOf:
-          type: array
-          items:
-            $ref: '#/components/schemas/Condition'
-          description: A list of conditions to evaluate against the specified scopes.
-    ScheduledQueryRuleResourcePatch:
-      type: object
-      properties:
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-          description: Resource tags.
-        properties:
-          $ref: '#/components/schemas/ScheduledQueryRuleProperties'
+        code:
+          type: string
+          description: Error code.
+        message:
+          type: string
+          description: Error message indicating why the operation failed.
     ScheduledQueryRuleProperties:
       type: object
       required:
@@ -427,47 +447,20 @@ components:
         autoMitigate:
           type: boolean
           description: The flag that indicates whether the alert should be automatically resolved.
-    SystemData:
+    Actions:
       type: object
       properties:
-        createdBy:
-          type: string
-          description: The identity that created the resource.
-        createdByType:
-          type: string
-          enum:
-          - User
-          - Application
-          - ManagedIdentity
-          - Key
-          description: The type of identity that created the resource.
-        createdAt:
-          type: string
-          format: date-time
-          description: The timestamp of resource creation.
-        lastModifiedBy:
-          type: string
-          description: The identity that last modified the resource.
-        lastModifiedByType:
-          type: string
-          enum:
-          - User
-          - Application
-          - ManagedIdentity
-          - Key
-          description: The type of identity that last modified the resource.
-        lastModifiedAt:
-          type: string
-          format: date-time
-          description: The timestamp of resource last modification.
+        actionGroups:
+          type: array
+          items:
+            type: string
+          description: Action Group resource IDs to invoke when the alert fires.
+        customProperties:
+          type: object
+          additionalProperties:
+            type: string
+          description: The properties of an alert payload.
   parameters:
-    RuleNameParameter:
-      name: ruleName
-      in: path
-      required: true
-      description: The name of the rule.
-      schema:
-        type: string
     ApiVersionParameter:
       name: api-version
       in: query
@@ -476,6 +469,13 @@ components:
       schema:
         type: string
         default: '2021-08-01'
+    SubscriptionIdParameter:
+      name: subscriptionId
+      in: path
+      required: true
+      description: The ID of the target subscription.
+      schema:
+        type: string
     ResourceGroupNameParameter:
       name: resourceGroupName
       in: path
@@ -483,11 +483,11 @@ components:
       description: The name of the resource group.
       schema:
         type: string
-    SubscriptionIdParameter:
-      name: subscriptionId
+    RuleNameParameter:
+      name: ruleName
       in: path
       required: true
-      description: The ID of the target subscription.
+      description: The name of the rule.
       schema:
         type: string
   securitySchemes:

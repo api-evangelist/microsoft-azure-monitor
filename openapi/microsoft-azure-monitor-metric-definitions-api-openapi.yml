@@ -160,6 +160,16 @@ components:
         retention:
           type: string
           description: The retention period for the metric in ISO 8601 duration format.
+    MetricDefinitionCollection:
+      type: object
+      required:
+      - value
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricDefinition'
+          description: The values for the metric definitions.
     LocalizableString:
       type: object
       required:
@@ -171,16 +181,6 @@ components:
         localizedValue:
           type: string
           description: The display name.
-    MetricDefinitionCollection:
-      type: object
-      required:
-      - value
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/MetricDefinition'
-          description: The values for the metric definitions.
     ErrorResponse:
       type: object
       properties:
@@ -191,20 +191,6 @@ components:
           type: string
           description: Error message indicating why the operation failed.
   parameters:
-    ResourceUriParameter:
-      name: resourceUri
-      in: path
-      required: true
-      description: The identifier of the resource.
-      schema:
-        type: string
-    MetricNamespaceParameter:
-      name: metricNamespace
-      in: query
-      required: false
-      description: Metric namespace to query metric definitions for.
-      schema:
-        type: string
     ApiVersionParameter:
       name: api-version
       in: query
@@ -225,6 +211,20 @@ components:
       in: path
       required: true
       description: The ID of the target subscription.
+      schema:
+        type: string
+    MetricNamespaceParameter:
+      name: metricNamespace
+      in: query
+      required: false
+      description: Metric namespace to query metric definitions for.
+      schema:
+        type: string
+    ResourceUriParameter:
+      name: resourceUri
+      in: path
+      required: true
+      description: The identifier of the resource.
       schema:
         type: string
   securitySchemes:

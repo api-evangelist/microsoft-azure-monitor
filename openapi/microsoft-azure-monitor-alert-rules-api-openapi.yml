@@ -214,46 +214,14 @@ components:
           items:
             $ref: '#/components/schemas/RuleAction'
           description: The array of actions that are performed when the alert rule becomes active.
-    RuleDataSource:
-      type: object
-      required:
-      - odata.type
-      properties:
-        odata.type:
-          type: string
-          description: Specifies the type of data source. Possible values include RuleMetricDataSource, RuleManagementEventDataSource.
-        resourceUri:
-          type: string
-          description: The resource identifier of the resource the rule monitors.
-        legacyResourceId:
-          type: string
-          description: The legacy resource identifier of the resource the rule monitors.
-        resourceLocation:
-          type: string
-          description: The location of the resource.
-        metricNamespace:
-          type: string
-          description: The namespace of the metric.
-    RuleCondition:
-      type: object
-      required:
-      - odata.type
-      properties:
-        odata.type:
-          type: string
-          description: Specifies the type of condition. Possible values include ThresholdRuleCondition, LocationThresholdRuleCondition, ManagementEventRuleCondition.
-        dataSource:
-          $ref: '#/components/schemas/RuleDataSource'
-    AlertRuleResourcePatch:
+    AlertRuleResourceCollection:
       type: object
       properties:
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-          description: Resource tags.
-        properties:
-          $ref: '#/components/schemas/AlertRule'
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/AlertRuleResource'
+          description: The values for the alert rule resources.
     AlertRuleResource:
       type: object
       required:
@@ -282,14 +250,36 @@ components:
           description: Resource tags.
         properties:
           $ref: '#/components/schemas/AlertRule'
-    RuleAction:
+    RuleDataSource:
       type: object
       required:
       - odata.type
       properties:
         odata.type:
           type: string
-          description: Specifies the type of action. Possible values include RuleEmailAction and RuleWebhookAction.
+          description: Specifies the type of data source. Possible values include RuleMetricDataSource, RuleManagementEventDataSource.
+        resourceUri:
+          type: string
+          description: The resource identifier of the resource the rule monitors.
+        legacyResourceId:
+          type: string
+          description: The legacy resource identifier of the resource the rule monitors.
+        resourceLocation:
+          type: string
+          description: The location of the resource.
+        metricNamespace:
+          type: string
+          description: The namespace of the metric.
+    AlertRuleResourcePatch:
+      type: object
+      properties:
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          description: Resource tags.
+        properties:
+          $ref: '#/components/schemas/AlertRule'
     ErrorResponse:
       type: object
       properties:
@@ -299,22 +289,25 @@ components:
         message:
           type: string
           description: Error message indicating why the operation failed.
-    AlertRuleResourceCollection:
+    RuleAction:
       type: object
+      required:
+      - odata.type
       properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/AlertRuleResource'
-          description: The values for the alert rule resources.
+        odata.type:
+          type: string
+          description: Specifies the type of action. Possible values include RuleEmailAction and RuleWebhookAction.
+    RuleCondition:
+      type: object
+      required:
+      - odata.type
+      properties:
+        odata.type:
+          type: string
+          description: Specifies the type of condition. Possible values include ThresholdRuleCondition, LocationThresholdRuleCondition, ManagementEventRuleCondition.
+        dataSource:
+          $ref: '#/components/schemas/RuleDataSource'
   parameters:
-    RuleNameParameter:
-      name: ruleName
-      in: path
-      required: true
-      description: The name of the rule.
-      schema:
-        type: string
     ApiVersionParameter:
       name: api-version
       in: query
@@ -323,6 +316,13 @@ components:
       schema:
         type: string
         default: '2016-03-01'
+    SubscriptionIdParameter:
+      name: subscriptionId
+      in: path
+      required: true
+      description: The ID of the target subscription.
+      schema:
+        type: string
     ResourceGroupNameParameter:
       name: resourceGroupName
       in: path
@@ -330,11 +330,11 @@ components:
       description: The name of the resource group.
       schema:
         type: string
-    SubscriptionIdParameter:
-      name: subscriptionId
+    RuleNameParameter:
+      name: ruleName
       in: path
       required: true
-      description: The ID of the target subscription.
+      description: The name of the rule.
       schema:
         type: string
   securitySchemes:
